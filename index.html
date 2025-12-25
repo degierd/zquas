@@ -13,33 +13,89 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh; /* Changed to min-height for scrolling */
             margin: 0;
             text-align: center;
         }
-        .container { max-width: 600px; padding: 20px; }
-        h1 { 
-            font-size: 3rem; 
-            letter-spacing: 5px; 
-            margin-bottom: 0.5rem; 
-            text-transform: uppercase;
+        .container { max-width: 800px; padding: 40px 20px; }
+        
+        /* Logo Styling */
+        .logo {
+            max-width: 200px;
+            margin-bottom: 1rem;
+            filter: grayscale(100%) brightness(1.2); /* Makes it look techy */
         }
-        .tagline { color: #888; margin-bottom: 2rem; }
+
+        .tagline { color: #888; margin-bottom: 2rem; letter-spacing: 2px; font-size: 0.9rem;}
         .cursor { display: inline-block; width: 10px; height: 1em; background-color: #00FF99; animation: blink 1s step-end infinite; vertical-align: middle;}
         @keyframes blink { 50% { opacity: 0; } }
-        a { color: #00FF99; text-decoration: none; border: 1px solid #00FF99; padding: 10px 20px; transition: all 0.3s; }
-        a:hover { background-color: #00FF99; color: #000; }
-        .status { margin-top: 50px; font-size: 0.8rem; color: #444; }
+        
+        /* Video Container - The "Monitor" Look */
+        .video-frame {
+            border: 1px solid #333;
+            padding: 5px;
+            margin-bottom: 30px;
+            background: #000;
+            position: relative;
+        }
+        
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.9;
+        }
+
+        /* Scanline Overlay effect */
+        .video-frame::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        a { 
+            color: #00FF99; 
+            text-decoration: none; 
+            border: 1px solid #00FF99; 
+            padding: 15px 30px; 
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s; 
+            display: inline-block;
+        }
+        a:hover { background-color: #00FF99; color: #000; box-shadow: 0 0 15px #00FF99; }
+        
+        .status { margin-top: 60px; font-size: 0.7rem; color: #444; border-top: 1px solid #222; padding-top: 20px;}
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>ZQUAS</h1>
+        <!-- Logo Section -->
+        <!-- Ensure your file is named logo.png. If it breaks, it shows text. -->
+        <img src="logo.png" alt="ZQUAS" class="logo" onerror="this.style.display='none'; document.getElementById('alt-title').style.display='block';">
+        <h1 id="alt-title" style="display:none; font-size: 3rem; margin:0;">ZQUAS</h1>
+
         <p class="tagline">SPEED. SCALE. SOVEREIGNTY.<span class="cursor"></span></p>
         
-        <p style="margin-bottom: 40px; line-height: 1.6;">
+        <!-- Video Section -->
+        <div class="video-frame">
+            <video autoplay muted loop playsinline poster="">
+                <source src="demo.mp4" type="video/mp4">
+                [SYSTEM ERROR: VIDEO STREAM UNAVAILABLE]
+            </video>
+        </div>
+
+        <p style="margin-bottom: 40px; line-height: 1.6; color: #ccc;">
             High-frequency simulation infrastructure for financial integrity.<br>
-            8,000,000+ Active Agents. Zero Latency.
+            <strong>8,000,000+ Active Agents. Zero Latency.</strong>
         </p>
 
         <a href="https://www.linkedin.com/company/zquas" target="_blank">ACCESS INTELLIGENCE</a>
