@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZQUAS | Capital Allocation</title>
+    <style>
+        body {
+            background-color: #050505;
+            color: #E0E0E0;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container { max-width: 800px; width: 100%; }
+        
+        h1 { margin-top: 0; font-size: 2rem; color: #00FF99; border-bottom: 2px solid #00FF99; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+        h2 { color: #fff; text-transform: uppercase; letter-spacing: 1px; margin-top: 40px; border-left: 3px solid #00FF99; padding-left: 15px;}
+        
+        .highlight { color: #00FF99; font-weight: bold; }
+        .meta { color: #666; font-size: 0.8rem; margin-bottom: 40px; }
+
+        /* Metric Grid */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+        .stat-box { border: 1px solid #333; padding: 20px; background: #0a0a0a; }
+        .stat-label { font-size: 0.8rem; color: #888; text-transform: uppercase; }
+        .stat-value { font-size: 1.5rem; color: #fff; font-weight: bold; margin-top: 5px; }
+
+        /* Progress Bar Style for Timeline */
+        .timeline-item { margin-bottom: 15px; }
+        .timeline-date { color: #00FF99; font-weight: bold; min-width: 100px; display: inline-block; }
+
+        /* Navigation */
+        .nav { margin-bottom: 40px; }
+        a { 
+            color: #888; 
+            text-decoration: none; 
+            margin-right: 20px; 
+            font-size: 0.9rem; 
+            border: 1px solid #333;
+            padding: 5px 15px;
+            transition: 0.3s;
+        }
+        a:hover { color: #00FF99; border-color: #00FF99; }
+        a.active { color: #00FF99; border-color: #00FF99; }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: #00FF99;
+            color: #000;
+            font-weight: bold;
+            padding: 15px 30px;
+            margin-top: 40px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .cta-button:hover { background: #fff; box-shadow: 0 0 15px #fff; }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="index.html"><< TERMINAL</a>
+            <a href="about.html">MISSION</a>
+            <a href="#" class="active">INVESTORS</a>
+        </div>
+
+        <div class="meta">
+            DOC_ID: ZQ-CAPITAL-V1<br>
+            STATUS: PRE-SEED OPEN<br>
+            ACCESS: RESTRICTED
+        </div>
+
+        <h1>Investment Protocol</h1>
+
+        <p>Zquas is raising capital to accelerate the deployment of the world's first <strong>Sovereign Memory Simulation Engine</strong> for financial integrity.</p>
+
+        <!-- Key Metrics -->
+        <div class="grid">
+            <div class="stat-box">
+                <div class="stat-label">Market Opportunity</div>
+                <div class="stat-value">$5.8 Billion</div>
+                <div style="font-size: 0.8rem; color: #666; margin-top: 5px;">AML Software Market (CAGR 15%)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Technical Alpha</div>
+                <div class="stat-value">160x Scale</div>
+                <div style="font-size: 0.8rem; color: #666; margin-top: 5px;">Vs. Standard Agent-Based Models</div>
+            </div>
+        </div>
+
+        <h2>The Thesis</h2>
+        <p><strong>Compliance is a Physics Problem.</strong></p>
+        <p>Banks are fined billions because they cannot detect money laundering patterns in real-time. The computational cost of querying graph relationships in SQL databases is too high. They rely on batch processing, which introduces a fatal latency gap.</p>
+        <p>Zquas closes this gap. By moving from <span class="highlight">Database Querying</span> to <span class="highlight">Active Simulation</span>, we enable banks to visualize the topology of financial crime the moment it happens.</p>
+
+        <h2>Strategic Roadmap</h2>
+        <div class="timeline-item">
+            <span class="timeline-date">Q1 2026</span>
+            Headless Compute Engine (Server Deployment)
+        </div>
+        <div class="timeline-item">
+            <span class="timeline-date">Q2 2026</span>
+            The "Analyst Dashboard" (Python/Web Interface)
+        </div>
+        <div class="timeline-item">
+            <span class="timeline-date">Q3 2026</span>
+            Pilot Program with Tier-1 Financial Institution
+        </div>
+
+        <h2>The Ask</h2>
+        <p>We are opening a <strong>Pre-Seed Round</strong> to fund the expansion of the engineering team and the development of the commercial Pilot Program.</p>
+        <p>We are looking for strategic partners with deep expertise in:</p>
+        <ul>
+            <li>Financial Infrastructure / RegTech</li>
+            <li>High-Performance Computing</li>
+            <li>Enterprise SaaS Scaling</li>
+        </ul>
+
+        <a href="https://www.linkedin.com/in/danny-de-gier-prof-pgdip-fcc/" target="_blank" class="cta-button">Request Pitch Deck >></a>
+
+        <div style="margin-top: 50px; border-top: 1px solid #333; padding-top: 20px; font-size: 0.8rem; color: #666;">
+            DISCLAIMER: This document is for informational purposes only and does not constitute an offer to sell securities.
+        </div>
+
+    </div>
+</body>
+</html>
