@@ -13,7 +13,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh; /* Changed to min-height for scrolling */
+            min-height: 100vh;
             margin: 0;
             text-align: center;
         }
@@ -23,14 +23,14 @@
         .logo {
             max-width: 200px;
             margin-bottom: 1rem;
-            filter: grayscale(100%) brightness(1.2); /* Makes it look techy */
+            filter: grayscale(100%) brightness(1.2);
         }
 
         .tagline { color: #888; margin-bottom: 2rem; letter-spacing: 2px; font-size: 0.9rem;}
         .cursor { display: inline-block; width: 10px; height: 1em; background-color: #00FF99; animation: blink 1s step-end infinite; vertical-align: middle;}
         @keyframes blink { 50% { opacity: 0; } }
         
-        /* Video Container - The "Monitor" Look */
+        /* Video Container */
         .video-frame {
             border: 1px solid #333;
             padding: 5px;
@@ -46,7 +46,7 @@
             opacity: 0.9;
         }
 
-        /* Scanline Overlay effect */
+        /* Scanline Overlay */
         .video-frame::after {
             content: " ";
             display: block;
@@ -61,6 +61,29 @@
             pointer-events: none;
         }
 
+        /* Capabilities Grid */
+        .capabilities {
+            text-align: left;
+            margin-bottom: 40px;
+            border-left: 2px solid #333;
+            padding-left: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 600px;
+        }
+        
+        .cap-item {
+            margin-bottom: 10px;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        .cap-highlight {
+            color: #00FF99;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
         a { 
             color: #00FF99; 
             text-decoration: none; 
@@ -70,6 +93,7 @@
             letter-spacing: 1px;
             transition: all 0.3s; 
             display: inline-block;
+            margin-top: 20px;
         }
         a:hover { background-color: #00FF99; color: #000; box-shadow: 0 0 15px #00FF99; }
         
@@ -79,7 +103,6 @@
 <body>
     <div class="container">
         <!-- Logo Section -->
-        <!-- Ensure your file is named logo.png. If it breaks, it shows text. -->
         <img src="logo.png" alt="ZQUAS" class="logo" onerror="this.style.display='none'; document.getElementById('alt-title').style.display='block';">
         <h1 id="alt-title" style="display:none; font-size: 3rem; margin:0;">ZQUAS</h1>
 
@@ -93,10 +116,13 @@
             </video>
         </div>
 
-        <p style="margin-bottom: 40px; line-height: 1.6; color: #ccc;">
-            High-frequency simulation infrastructure for financial integrity.<br>
-            <strong>8,000,000+ Active Agents. Zero Latency.</strong>
-        </p>
+        <!-- Capabilities Section -->
+        <div class="capabilities">
+            <div class="cap-item"><span class="cap-highlight">>> NUCLEAR SCALE:</span> 8,000,000+ Active Agents.</div>
+            <div class="cap-item"><span class="cap-highlight">>> ZERO LATENCY:</span> 160M+ Decisions / Second.</div>
+            <div class="cap-item"><span class="cap-highlight">>> UNIFIED PHYSICS:</span> Fiat & Digital Assets (Crypto).</div>
+            <div class="cap-item"><span class="cap-highlight">>> SOVEREIGN MEMORY:</span> Zero-Copy AI Integration.</div>
+        </div>
 
         <a href="https://www.linkedin.com/company/zquas" target="_blank">ACCESS INTELLIGENCE</a>
         
