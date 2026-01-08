@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZQUAS | Use Case</title>
+    <title>ZQUAS | Use Case: Financial Crime</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <style>
         :root { --bg: #050505; --text: #E0E0E0; --border: #333; --accent: #fff; }
@@ -15,9 +16,10 @@
         p { color: #888; font-size: 1rem; margin-bottom: 20px; }
         strong { color: #fff; }
         
-        .nav { margin-bottom: 60px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; border-bottom: 1px solid var(--border); padding-bottom: 20px; display:flex; justify-content:space-between;}
-        .nav a { color: #666; text-decoration: none; }
+        .nav { margin-bottom: 60px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; border-bottom: 1px solid var(--border); padding-bottom: 20px; display:flex; justify-content:space-between; align-items: center;}
+        .nav a { color: #666; text-decoration: none; margin-left: 20px;}
         .nav a:hover, .nav a.active { color: var(--accent); }
+        .branding img { height: 30px; width: auto; display: block; }
 
         .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
         .stat-card { border: 1px solid var(--border); padding: 25px; background: #0a0a0a; }
@@ -49,7 +51,7 @@
 <body>
     <div class="container">
         <div class="nav">
-            <a href="index.html">ZQUAS</a>
+            <a href="index.html" class="branding"><img src="logo.png" alt="ZQUAS"></a>
             <div>
                 <a href="technology.html" style="margin-right:20px;">TECHNOLOGY</a>
                 <a href="#" class="active">USE CASE</a>
@@ -58,12 +60,20 @@
 
         <h1>Proven Use Case:<br>Financial Crime</h1>
 
-        <p>Financial crime is the defining real-time problem of this decade. The shift to Real-Time Payments (RTP) is forcing banks to replace their entire compliance stack.</p>
-        
+        <p>Financial crime was chosen as Zquas' first production deployment because it is one of the most demanding real-time system problems in existence.</p>
+
+        <p>It demands an architecture capable of handling:</p>
+        <ul style="color: #aaa; margin-bottom: 40px;">
+            <li>Extremely high event rates (RTP/Crypto)</li>
+            <li>Adversarial behavior (Active Evasion)</li>
+            <li>Regulatory audit requirements (7-Year History)</li>
+            <li>Zero tolerance for data loss</li>
+        </ul>
+
         <p>The market is bifurcating into two distinct layers:</p>
         
         <ul style="color: #aaa; margin-bottom: 40px;">
-            <li><strong>Identity (Static):</strong> Verifying documents and passports. This market is ~$4B and rapidly commoditizing.</li>
+            <li><strong>Identity (Static):</strong> Verifying documents and passports. This market (~$4B) is rapidly commoditizing.</li>
             <li><strong>Transaction Monitoring (Kinetic):</strong> The engine that processes every payment to stop fraud instantly. This is the bottleneck.</li>
         </ul>
 
@@ -72,7 +82,7 @@
         <div class="stat-grid">
             <div class="stat-card">
                 <span class="stat-num">$42B</span>
-                <span class="stat-desc">Total Market (2026)</span>
+                <span class="stat-desc">Total Fraud Market (2026)</span>
             </div>
             <div class="stat-card">
                 <span class="stat-num">400x</span>
@@ -91,6 +101,10 @@
                 <a href="https://www.linkedin.com/in/danny-de-gier-prof-pgdip-fcc/" target="_blank" style="font-size: 0.8rem; color: #666; text-decoration: none;">Connect on LinkedIn</a>
             </div>
         </div>
+        
+        <p style="text-align: center; margin-top: 40px; margin-bottom: 60px; font-size: 0.7rem; color: #333; font-family: 'JetBrains Mono', monospace;">
+            Restricted Access. Institutional Investors Only.
+        </p>
     </div>
 </body>
 </html>
