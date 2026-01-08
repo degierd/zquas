@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZQUAS | Technology</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <style>
         :root { --bg: #050505; --text: #E0E0E0; --border: #333; --accent: #fff; }
@@ -12,12 +13,12 @@
         
         h1 { font-size: 2rem; font-weight: 600; letter-spacing: -1px; margin-bottom: 40px; color: var(--accent); }
         h3 { font-size: 1.1rem; color: #fff; margin-top: 40px; margin-bottom: 10px; }
-        
         p { color: #888; font-size: 1rem; margin-bottom: 20px; }
         
-        .nav { margin-bottom: 60px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; border-bottom: 1px solid var(--border); padding-bottom: 20px; display:flex; justify-content:space-between;}
-        .nav a { color: #666; text-decoration: none; }
+        .nav { margin-bottom: 60px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; border-bottom: 1px solid var(--border); padding-bottom: 20px; display:flex; justify-content:space-between; align-items: center;}
+        .nav a { color: #666; text-decoration: none; margin-left: 20px; }
         .nav a:hover, .nav a.active { color: var(--accent); }
+        .branding img { height: 30px; width: auto; display: block; }
 
         .principle {
             border-left: 2px solid var(--border);
@@ -31,6 +32,7 @@
             border: 1px solid var(--border);
             padding: 30px;
             margin-top: 80px;
+            margin-bottom: 60px;
         }
         .role { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #666; text-transform: uppercase; display: block; margin-bottom: 10px; }
     </style>
@@ -38,9 +40,9 @@
 <body>
     <div class="container">
         <div class="nav">
-            <a href="index.html">ZQUAS</a>
+            <a href="index.html" class="branding"><img src="logo.png" alt="ZQUAS"></a>
             <div>
-                <a href="#" class="active" style="margin-right:20px;">TECHNOLOGY</a>
+                <a href="#" class="active">TECHNOLOGY</a>
                 <a href="usecase.html">USE CASE</a>
             </div>
         </div>
@@ -53,6 +55,8 @@
         <h3>The Zquas Runtime</h3>
         <p>Zquas is a GPU-native runtime designed for deterministic, high-frequency simulation of large, stateful systems.</p>
         <p>Rather than querying historical data, the system continuously simulates behavior in memory, allowing decisions to be made as events occur. Some domains describe this as "physics-based simulation." We describe it as <strong>deterministic system execution.</strong></p>
+        
+        <p style="color: #fff; font-weight: 500; border-left: 2px solid #fff; padding-left: 15px;">Legacy vendors optimize databases and workflows; Zquas replaces the execution model itself.</p>
 
         <h3 style="margin-top: 60px;">Core Architectural Principles</h3>
         
