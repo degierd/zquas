@@ -63,9 +63,18 @@
         <p>Many critical systems operate in real time, but are governed by infrastructure that does not.</p>
         <p>Databases, batch processing, and CPU-bound runtimes introduce unavoidable latency and non-determinism. This makes precise control, replay, and auditing impossible once systems reach national or industrial scale.</p>
 
-        <h3>The Zquas Runtime</h3>
-        <p>Zquas is a GPU-native runtime designed for deterministic, high-frequency simulation of large, stateful systems.</p>
-        <p>Rather than querying historical data, the system continuously simulates behavior in memory, allowing decisions to be made as events occur. Some domains describe this as "physics-based simulation." We describe it as <strong>deterministic system execution.</strong></p>
+        <h3>The Zquas Platform</h3>
+        <p>Zquas is a vertical infrastructure platform designed to replace the entire legacy processing stack.</p> 
+        
+        <p>It unifies three critical layers into a single sovereign deployment:</p>
+
+        <ul style="color: #aaa; margin-bottom: 30px; font-size: 0.95rem;">
+            <li style="margin-bottom: 10px;"><strong>The Symbiotic Core (Runtime):</strong> A C++/CUDA physics engine that handles state updates at wire speed (4.2M TPS).</li>
+            <li style="margin-bottom: 10px;"><strong>The Synapse (Integration):</strong> A zero-copy bridge that allows Python data science models to interact with the GPU memory without latency.</li>
+            <li style="margin-bottom: 10px;"><strong>The Glass Box (Observability):</strong> A real-time visual debugger that allows operators to inspect the logic of any single transaction amidst millions.</li>
+        </ul>
+
+        <p>Rather than querying historical data, the platform continuously simulates behavior in memory. Some domains describe this as "physics-based simulation." We describe it as <strong>deterministic system execution.</strong></p>
         
         <p style="color: #fff; font-weight: 500; border-left: 2px solid #fff; padding-left: 15px;">Legacy vendors optimize databases and workflows; Zquas replaces the execution model itself.</p>
 
@@ -86,7 +95,6 @@
             <p style="margin:0; font-size: 0.9rem;">Designed for on-premise, air-gapped, and highly regulated environments. Zero external dependencies.</p>
         </div>
 
-        <!-- NEW BENCHMARK LINE -->
         <div class="benchmark">
             <span style="color: var(--accent);">Measured Execution Throughput:</span> 4.2M+ transactions/sec on a single workstation GPU.
         </div>
