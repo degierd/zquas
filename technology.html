@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZQUAS | Technology</title>
     <link rel="icon" type="image/png" href="logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root { --bg: #050505; --text: #E0E0E0; --border: #333; --accent: #fff; }
         body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; display: flex; justify-content: center; padding: 40px 20px; margin:0;}
@@ -27,6 +27,17 @@
         }
         .principle strong { color: #fff; display: block; margin-bottom: 5px; }
 
+        .benchmark {
+            margin-top: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #666;
+            border: 1px solid #222;
+            background: #0a0a0a;
+            padding: 15px;
+            display: inline-block;
+        }
+
         .founder-box {
             background: #0a0a0a;
             border: 1px solid var(--border);
@@ -42,7 +53,7 @@
         <div class="nav">
             <a href="index.html" class="branding"><img src="logo.png" alt="ZQUAS"></a>
             <div>
-                <a href="#" class="active">TECHNOLOGY</a>
+                <a href="#" class="active" style="margin-right:20px;">TECHNOLOGY</a>
                 <a href="usecase.html">USE CASE</a>
             </div>
         </div>
@@ -73,6 +84,11 @@
         <div class="principle">
             <strong>Sovereign Compute</strong>
             <p style="margin:0; font-size: 0.9rem;">Designed for on-premise, air-gapped, and highly regulated environments. Zero external dependencies.</p>
+        </div>
+
+        <!-- NEW BENCHMARK LINE -->
+        <div class="benchmark">
+            <span style="color: var(--accent);">Measured Execution Throughput:</span> 4.2M+ transactions/sec on a single workstation GPU.
         </div>
 
         <div class="founder-box">
