@@ -3,170 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ZQUAS provides sovereign, nuclear-scale AI infrastructure for real-time financial crime detection. Simulating 8,000,000+ active agents on-premise.">
-    <title>ZQUAS | Sovereign Financial Infrastructure</title>
+    <meta name="description" content="ZQUAS | Deterministic Infrastructure for Real-Time Systems.">
+    <title>ZQUAS | Deterministic Infrastructure</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "ZQUAS",
-      "alternateName": "ZQUAS AI",
-      "url": "https://zquas.ai",
-      "logo": "https://zquas.ai/logo.png", 
-      "description": "ZQUAS provides sovereign, nuclear-scale AI infrastructure for real-time financial crime detection. Our on-premise engine simulates over 8,000,000 active agents to instantly identify complex money laundering networks across fiat and crypto, without data exfiltration.",
-      "founder": {
-        "@type": "Person",
-        "name": "Danny de Gier"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Amsterdam",
-        "addressCountry": "NL"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/company/zquas",
-        "https://twitter.com/ZQUAS_AI"
-      ]
-    }
-    </script>
     <style>
+        :root {
+            --bg: #050505;
+            --surface: #0f0f0f;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --accent: #ffffff; 
+            --border: #222222;
+        }
+
         body {
-            background-color: #050505;
-            color: #E0E0E0;
-            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--bg);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             min-height: 100vh;
             margin: 0;
-            text-align: center;
-        }
-        .container { max-width: 800px; padding: 40px 20px; }
-        
-        /* Logo Styling */
-        .logo {
-            max-width: 200px;
-            margin-bottom: 1rem;
-            filter: grayscale(100%) brightness(1.2);
+            padding: 0 20px;
         }
 
-        .tagline { color: #888; margin-bottom: 2rem; letter-spacing: 2px; font-size: 0.9rem;}
-        .cursor { display: inline-block; width: 10px; height: 1em; background-color: #00FF99; animation: blink 1s step-end infinite; vertical-align: middle;}
-        @keyframes blink { 50% { opacity: 0; } }
+        .container { max-width: 900px; width: 100%; margin-top: 10vh; }
         
-        /* Video Container */
-        .video-frame {
-            border: 1px solid #333;
-            padding: 5px;
-            margin-bottom: 30px;
-            background: #000;
-            position: relative;
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 80px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
         }
         
-        video {
-            width: 100%;
-            height: auto;
-            display: block;
-            opacity: 0.9;
+        .nav a { color: var(--text-secondary); text-decoration: none; transition: 0.2s; }
+        .nav a:hover { color: var(--text-primary); }
+        .nav .active { color: var(--text-primary); }
+
+        .hero { text-align: left; margin-bottom: 60px; }
+        
+        h1 {
+            font-weight: 600;
+            font-size: 2.8rem;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            margin: 0 0 20px 0;
         }
 
-        /* Scanline Overlay */
-        .video-frame::after {
-            content: " ";
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 2;
-            background-size: 100% 2px, 3px 100%;
-            pointer-events: none;
-        }
-
-        /* Capabilities Grid */
-        .capabilities {
-            text-align: left;
-            margin-bottom: 40px;
-            border-left: 2px solid #333;
-            padding-left: 20px;
-            margin-left: auto;
-            margin-right: auto;
+        .subline { 
+            color: var(--text-secondary); 
+            font-size: 1.1rem; 
+            line-height: 1.6;
             max-width: 600px;
         }
-        
-        .cap-item {
-            margin-bottom: 10px;
-            color: #ccc;
-            font-size: 0.9rem;
+
+        .video-frame {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            margin-bottom: 2px;
         }
         
-        .cap-highlight {
-            color: #00FF99;
-            font-weight: bold;
-            margin-right: 10px;
+        video { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-left: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 60px;
         }
 
-        /* Navigation Buttons */
-        .nav-grid {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap; /* Stack on small screens */
-            margin-top: 30px;
+        .stat {
+            border-right: 1px solid var(--border);
+            border-top: 1px solid var(--border);
+            padding: 20px;
+            background: var(--bg);
         }
 
-        a { 
-            color: #00FF99; 
-            text-decoration: none; 
-            border: 1px solid #00FF99; 
-            padding: 15px 30px; 
-            font-weight: bold;
-            letter-spacing: 1px;
-            transition: all 0.3s; 
-            display: inline-block;
-            background-color: rgba(0, 255, 153, 0.05);
-            font-size: 0.9rem;
+        .stat-val {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 5px;
+            color: var(--accent);
         }
-        a:hover { background-color: #00FF99; color: #000; box-shadow: 0 0 15px #00FF99; }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
         
-        .status { margin-top: 60px; font-size: 0.7rem; color: #444; border-top: 1px solid #222; padding-top: 20px;}
+        .footer {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #333;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr 1fr; }
+            h1 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="logo.png" alt="ZQUAS" class="logo" onerror="this.style.display='none'; document.getElementById('alt-title').style.display='block';">
-        <h1 id="alt-title" style="display:none; font-size: 3rem; margin:0;">ZQUAS</h1>
+        <div class="nav">
+            <span style="font-weight:700;">ZQUAS</span>
+            <div>
+                <a href="technology.html" style="margin-right: 20px;">TECHNOLOGY</a>
+                <a href="usecase.html">PROVEN USE CASE</a>
+            </div>
+        </div>
 
-        <p class="tagline">SPEED. SCALE. SOVEREIGNTY.<span class="cursor"></span></p>
+        <div class="hero">
+            <h1>Deterministic Infrastructure<br>for Real-Time Systems.</h1>
+            <p class="subline">
+                GPU-native runtime for simulating, observing, and controlling complex systems with millisecond latency and full reproducibility.
+            </p>
+        </div>
         
         <div class="video-frame">
-            <video autoplay muted loop playsinline poster="">
+            <video autoplay muted loop playsinline poster="poster.jpg">
                 <source src="demo.mp4" type="video/mp4">
-                [SYSTEM ERROR: VIDEO STREAM UNAVAILABLE]
             </video>
         </div>
 
-        <div class="capabilities">
-            <div class="cap-item"><span class="cap-highlight">>> NUCLEAR SCALE:</span> 8,000,000+ Active Agents.</div>
-            <div class="cap-item"><span class="cap-highlight">>> ZERO LATENCY:</span> 160M+ Decisions / Second.</div>
-            <div class="cap-item"><span class="cap-highlight">>> UNIFIED PHYSICS:</span> Fiat & Digital Assets (Crypto).</div>
-            <div class="cap-item"><span class="cap-highlight">>> SOVEREIGN MEMORY:</span> Zero-Copy AI Integration.</div>
-        </div>
-
-        <div class="nav-grid">
-            <a href="about.html">MISSION PROTOCOL</a>
-            <a href="investors.html">INVESTORS</a>
-            <a href="https://www.linkedin.com/company/zquas" target="_blank">ACCESS INTELLIGENCE</a>
+        <div class="grid">
+            <div class="stat">
+                <span class="stat-val">4,200,000+</span>
+                <span class="stat-label">TPS Capacity</span>
+            </div>
+            <div class="stat">
+                <span class="stat-val">Sovereign</span>
+                <span class="stat-label">On-Premise</span>
+            </div>
+            <div class="stat">
+                <span class="stat-val">Zero-Copy</span>
+                <span class="stat-label">Memory Model</span>
+            </div>
+            <div class="stat">
+                <span class="stat-val">Deterministic</span>
+                <span class="stat-label">Simulation</span>
+            </div>
         </div>
         
-        <div class="status">
-            SYSTEM STATUS: ONLINE<br>
-            LOCATION: AMSTERDAM<br>
-            EST. 2024
+        <div class="footer">
+            Amsterdam, NL &bull; Zquas AI &bull; Est. 2024
         </div>
     </div>
 </body>
