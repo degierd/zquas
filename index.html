@@ -3,9 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ZQUAS | Deterministic Infrastructure for Real-Time Systems.">
-    <title>ZQUAS | Deterministic Infrastructure</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
+    <!-- BRAND IDENTITY -->
+    <title>ZQUAS | Sovereign Financial Infrastructure</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <!-- SEO METADATA -->
+    <meta name="description" content="ZQUAS is a GPU-native runtime for deterministic, high-frequency financial simulation. Processing 4.2M+ TPS on sovereign infrastructure.">
+    <meta name="keywords" content="RegTech, AML, High-Performance Computing, GPU Simulation, Financial Crime, Digital Twin, Sovereign Compute">
+    <meta name="author" content="Danny de Gier">
+
+    <!-- OPEN GRAPH (LinkedIn/Slack Previews) -->
+    <meta property="og:title" content="ZQUAS | The Physics of Finance">
+    <meta property="og:description" content="Simulating 8,000,000+ active agents at 4.2M TPS. Compliance is a physics problem, not a database problem.">
+    <meta property="og:image" content="https://zquas.ai/poster.jpg">
+    <meta property="og:url" content="https://zquas.ai">
+    <meta property="og:type" content="website">
+
+    <!-- AI AGENT CONTEXT (JSON-LD) -->
+    <!-- This tells LLMs and Search Engines exactly who you are and what you do. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "ZQUAS Engine",
+      "operatingSystem": "Linux, Windows",
+      "applicationCategory": "FinanceApplication",
+      "description": "A sovereign, GPU-native simulation runtime for financial crime detection and complex system modeling.",
+      "author": {
+        "@type": "Person",
+        "name": "Danny de Gier",
+        "jobTitle": "Founder & Principal Architect",
+        "url": "https://www.linkedin.com/in/danny-de-gier-prof-pgdip-fcc/"
+      },
+      "offers": {
+        "@type": "Offer",
+        "category": "Enterprise Infrastructure"
+      },
+      "featureList": [
+        "4.2 Million Transactions Per Second",
+        "Zero-Copy GPU Architecture",
+        "Sovereign On-Premise Deployment",
+        "Deterministic Simulation"
+      ]
+    }
+    </script>
+
+    <!-- TYPOGRAPHY -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -23,79 +68,108 @@
         body {
             background-color: var(--bg);
             color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
             margin: 0;
             padding: 0 20px;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .container { max-width: 900px; width: 100%; margin-top: 10vh; }
+        .container { max-width: 900px; width: 100%; margin-top: 8vh; }
         
+        /* NAVIGATION */
         .nav {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             margin-bottom: 80px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.8rem;
             border-bottom: 1px solid var(--border);
             padding-bottom: 20px;
         }
-        
-        .nav a { color: var(--text-secondary); text-decoration: none; transition: 0.2s; }
-        .nav a:hover { color: var(--text-primary); }
-        .nav .active { color: var(--text-primary); }
 
+        .branding img {
+            height: 40px;
+            width: auto;
+            display: block;
+            /* If your logo is black text, uncomment this to invert it for dark mode: */
+            /* filter: invert(1); */
+        }
+        
+        .nav-links a { 
+            color: var(--text-secondary); 
+            text-decoration: none; 
+            transition: color 0.2s; 
+            margin-left: 30px;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+
+        /* HERO SECTION */
         .hero { text-align: left; margin-bottom: 60px; }
         
         h1 {
             font-weight: 600;
-            font-size: 2.8rem;
+            font-size: 3rem;
             letter-spacing: -1.5px;
-            line-height: 1.1;
-            margin: 0 0 20px 0;
+            line-height: 1.05;
+            margin: 0 0 25px 0;
+            background: linear-gradient(180deg, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .subline { 
             color: var(--text-secondary); 
-            font-size: 1.1rem; 
+            font-size: 1.15rem; 
             line-height: 1.6;
-            max-width: 600px;
+            max-width: 650px;
+            font-weight: 300;
         }
 
+        /* EVIDENCE (VIDEO) */
         .video-frame {
             border: 1px solid var(--border);
             background: var(--surface);
             aspect-ratio: 16/9;
             overflow: hidden;
-            margin-bottom: 2px;
+            margin-bottom: 1px;
+            position: relative;
         }
         
-        video { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+        video { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            opacity: 0.9;
+            display: block; 
+        }
 
+        /* DATA GRID */
         .grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             border-left: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
             margin-bottom: 60px;
+            background: var(--border); /* Gap color */
+            gap: 1px; /* Creates sharp grid lines */
         }
 
         .stat {
-            border-right: 1px solid var(--border);
-            border-top: 1px solid var(--border);
             padding: 20px;
             background: var(--bg);
         }
 
         .stat-val {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             font-weight: 500;
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             color: var(--accent);
         }
 
@@ -104,6 +178,45 @@
             color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+        }
+
+        /* ACTION AREA */
+        .nav-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 80px;
+        }
+
+        .btn {
+            flex: 1;
+            text-align: center;
+            padding: 18px;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            background: var(--bg);
+        }
+
+        .btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--surface);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            border-color: var(--accent);
+            color: var(--bg);
+            background: var(--accent);
+        }
+        
+        .btn-primary:hover {
+            background: #e0e0e0;
+            border-color: #e0e0e0;
+            color: #000;
         }
         
         .footer {
@@ -115,40 +228,47 @@
             text-align: center;
         }
 
-        @media (max-width: 600px) {
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
             .grid { grid-template-columns: 1fr 1fr; }
-            h1 { font-size: 2rem; }
+            h1 { font-size: 2.2rem; }
+            .nav { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .nav-links a { margin-left: 0; margin-right: 20px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="nav">
-            <span style="font-weight:700;">ZQUAS</span>
-            <div>
-                <a href="technology.html" style="margin-right: 20px;">TECHNOLOGY</a>
+    <main class="container">
+        <!-- NAVIGATION -->
+        <nav class="nav">
+            <div class="branding">
+                <!-- LOGO RESTORED -->
+                <img src="logo.png" alt="ZQUAS AI">
+            </div>
+            <div class="nav-links">
+                <a href="technology.html">TECHNOLOGY</a>
                 <a href="usecase.html">PROVEN USE CASE</a>
             </div>
-        </div>
+        </nav>
 
-        <div class="hero">
+        <!-- HERO -->
+        <header class="hero">
             <h1>Deterministic Infrastructure<br>for Real-Time Systems.</h1>
             <p class="subline">
-                GPU-native runtime for simulating, observing, and controlling complex systems with millisecond latency and full reproducibility.
+                GPU-native runtime for simulating, observing, and controlling complex financial systems with millisecond latency and full reproducibility.
             </p>
-        </div>
+        </header>
         
-        <div class="video-frame">
+        <!-- EVIDENCE -->
+        <section class="video-frame">
             <video autoplay muted loop playsinline poster="poster.jpg">
                 <source src="demo.mp4" type="video/mp4">
+                <img src="poster.jpg" alt="Zquas Dashboard Visualization" style="width:100%; height:100%; object-fit:cover;">
             </video>
-        </div>
+        </section>
 
-        <div class="grid">
-            <div class="stat">
-                <span class="stat-val">$42 Billion</span>
-                <span class="stat-label">Total Market</span>
-            </div>
+        <!-- METRICS -->
+        <section class="grid">
             <div class="stat">
                 <span class="stat-val">4,200,000+</span>
                 <span class="stat-label">TPS Capacity</span>
@@ -158,14 +278,24 @@
                 <span class="stat-label">On-Premise</span>
             </div>
             <div class="stat">
+                <span class="stat-val">Zero-Copy</span>
+                <span class="stat-label">Memory Model</span>
+            </div>
+            <div class="stat">
                 <span class="stat-val">Deterministic</span>
                 <span class="stat-label">Simulation</span>
             </div>
+        </section>
+
+        <!-- ACTIONS -->
+        <div class="nav-row">
+            <a href="technology.html" class="btn">Mission Protocol</a>
+            <a href="usecase.html" class="btn btn-primary">Investor Relations</a>
         </div>
         
-        <div class="footer">
+        <footer class="footer">
             Amsterdam, NL &bull; Zquas AI &bull; Est. 2024
-        </div>
-    </div>
+        </footer>
+    </main>
 </body>
 </html>
