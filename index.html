@@ -42,6 +42,7 @@
             margin: 0;
             padding: 0 20px;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
         .container { max-width: 900px; width: 100%; margin-top: 8vh; }
@@ -97,19 +98,39 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        .video-wrapper { margin-bottom: 2px; }
+        /* SIMULATION CANVAS */
+        .simulation-wrapper { margin-bottom: 2px; position: relative; }
 
-        .video-frame {
+        .simulation-container {
             border: 1px solid var(--border);
             background: var(--surface);
             aspect-ratio: 16/9;
             overflow: hidden;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        video { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; display: block; }
+        #engine-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
 
-        .video-caption {
+        .simulation-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            pointer-events: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .simulation-caption {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.7rem;
             color: #444;
@@ -220,14 +241,16 @@
             </p>
         </header>
         
-        <section class="video-wrapper">
-            <div class="video-frame">
-                <video autoplay muted loop playsinline poster="poster.jpg">
-                    <source src="demo.mp4" type="video/mp4">
-                    <img src="poster.jpg" alt="Zquas Dashboard Visualization" style="width:100%; height:100%; object-fit:cover;">
-                </video>
+        <section class="simulation-wrapper">
+            <div class="simulation-container">
+                <div class="simulation-overlay">
+                    Runtime: F1_Kernel_v5.0<br>
+                    Status: Adjudicating<br>
+                    VRAM_LOAD: 42%
+                </div>
+                <canvas id="engine-canvas"></canvas>
             </div>
-            <div class="video-caption">Live simulation of national-scale transaction flows with real-time rule evaluation</div>
+            <div class="simulation-caption">Sub-millisecond adjudication loop simulating high-frequency transaction causality</div>
         </section>
 
         <section class="grid">
@@ -258,5 +281,152 @@
             Amsterdam, NL &bull; Zquas AI &bull; Est. 2024
         </footer>
     </main>
+
+    <script>
+        const canvas = document.getElementById('engine-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+
+        function resize() {
+            width = canvas.width = canvas.offsetWidth;
+            height = canvas.height = canvas.offsetHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.reset();
+                this.x = Math.random() * width * 0.4; // Start in ingress zone
+            }
+
+            reset() {
+                this.x = -20;
+                this.y = (height * 0.2) + (Math.random() * height * 0.6);
+                this.speed = 2 + Math.random() * 5;
+                this.size = 1 + Math.random() * 2;
+                this.alpha = 0;
+                this.state = 'INGRESS'; // INGRESS, ADJUDICATING, COMMITTED
+                this.history = [];
+            }
+
+            update() {
+                this.history.unshift({x: this.x, y: this.y});
+                if(this.history.length > 10) this.history.pop();
+
+                const oracleGate = width * 0.5;
+                const ledgerGate = width * 0.9;
+
+                if (this.state === 'INGRESS') {
+                    this.x += this.speed;
+                    this.alpha = Math.min(1, this.alpha + 0.1);
+                    if (this.x >= oracleGate - 10) {
+                        this.state = 'ADJUDICATING';
+                        this.speed *= 0.1; // Slow down for "processing"
+                    }
+                } else if (this.state === 'ADJUDICATING') {
+                    this.x += this.speed;
+                    if (this.x >= oracleGate + 20) {
+                        this.state = 'COMMITTED';
+                        this.speed = 10; // Rapid commitment
+                    }
+                } else if (this.state === 'COMMITTED') {
+                    this.x += this.speed;
+                    this.alpha -= 0.05;
+                    if (this.alpha <= 0) this.reset();
+                }
+            }
+
+            draw() {
+                // Draw trail
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(255, 255, 255, ${this.alpha * 0.2})`;
+                ctx.lineWidth = 1;
+                this.history.forEach((pos, i) => {
+                    if(i === 0) ctx.moveTo(pos.x, pos.y);
+                    else ctx.lineTo(pos.x, pos.y);
+                });
+                ctx.stroke();
+
+                // Draw particle
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+                ctx.fillRect(this.x, this.y, this.size, this.size);
+            }
+        }
+
+        const particles = Array.from({ length: 40 }, () => new Particle());
+
+        function drawOracle() {
+            const centerX = width * 0.5;
+            const centerY = height * 0.5;
+            
+            // Draw scanning lines
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            ctx.lineWidth = 1;
+            for(let i = 0; i < height; i += 20) {
+                ctx.beginPath();
+                ctx.moveTo(centerX - 40, i);
+                ctx.lineTo(centerX + 40, i);
+                ctx.stroke();
+            }
+
+            // Central Hub
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+            ctx.strokeRect(centerX - 50, centerY - 100, 100, 200);
+            
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.fillRect(centerX - 2, 0, 4, height);
+            
+            // Text Label
+            ctx.fillStyle = '#666';
+            ctx.font = '8px "JetBrains Mono"';
+            ctx.textAlign = 'center';
+            ctx.fillText('ORACLE_RUNTIME', centerX, centerY - 110);
+        }
+
+        function drawGrid() {
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+            ctx.lineWidth = 1;
+            const size = 40;
+            for(let x = 0; x < width; x += size) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, height);
+                ctx.stroke();
+            }
+            for(let y = 0; y < height; y += size) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+            }
+        }
+
+        function animate() {
+            ctx.fillStyle = '#0f0f0f';
+            ctx.fillRect(0, 0, width, height);
+
+            drawGrid();
+            drawOracle();
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            // Draw Ingress/Ledger Labels
+            ctx.fillStyle = '#444';
+            ctx.font = '10px "JetBrains Mono"';
+            ctx.textAlign = 'left';
+            ctx.fillText('INGRESS_ZONE', 20, height - 20);
+            ctx.textAlign = 'right';
+            ctx.fillText('CHRONOS_LEDGER', width - 20, height - 20);
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
 </body>
 </html>
