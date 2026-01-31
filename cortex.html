@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZQUAS | The Architectural Codex</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --surface: #0a0a0a;
+            --text-primary: #ffffff;
+            --text-secondary: #777777;
+            --accent-blue: #0070f3;
+            --accent-orange: #ff4d00;
+            --border: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* Typography */
+        h1, h2, h3 { letter-spacing: -0.05em; }
+        .glow-text { text-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
+
+        /* Glass and Panels */
+        .glass-panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-panel:hover { border-color: #333; }
+
+        /* Navigation */
+        .nav-custom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .branding-img { height: 32px; width: auto; }
+        .nav-links-custom a { color: var(--text-secondary); margin-left: 25px; transition: color 0.2s; }
+        .nav-links-custom a:hover { color: #fff; }
+
+        /* Scanned Grid Background */
+        .bg-grid {
+            background-image: linear-gradient(to right, #0f0f0f 1px, transparent 1px),
+                              linear-gradient(to bottom, #0f0f0f 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Animations */
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .scanline {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: rgba(255,255,255,0.02);
+            animation: scan 10s linear infinite;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        @keyframes flow {
+            from { stroke-dashoffset: 100; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        .timeline-path {
+            stroke-dasharray: 10;
+            animation: flow 15s linear infinite;
+        }
+
+        .terminal-scroll::-webkit-scrollbar { width: 3px; }
+        .terminal-scroll::-webkit-scrollbar-thumb { background: #222; }
+
+        /* Simulator Styles */
+        .status-pill { padding: 2px 8px; font-size: 9px; font-weight: bold; border-radius: 2px; text-transform: uppercase; }
+        .accepted { background: #00ff00; color: #000; }
+        .rejected { background: #ff0000; color: #fff; }
+        .processing { background: var(--accent-blue); color: #fff; }
+    </style>
+</head>
+<body class="flex flex-col items-center px-6 bg-grid">
+    <div class="scanline"></div>
+    
+    <div class="max-w-[1000px] w-full mt-[5vh]">
+        <!-- Header -->
+        <nav class="nav-custom">
+            <div class="branding">
+                <img src="logo.png" alt="ZQUAS AI" class="branding-img">
+            </div>
+            <div class="nav-links-custom">
+                <a href="index.html">Runtime</a>
+                <a href="#simulator">Simulator</a>
+                <a href="#multiverse">Multiverse</a>
+                <a href="#ledger">Ledger</a>
+            </div>
+        </nav>
+
+        <!-- Codex Hero -->
+        <header class="mb-24 relative">
+            <div class="absolute -left-12 top-0 h-full w-px bg-gradient-to-b from-white/20 to-transparent"></div>
+            <p class="mono text-[10px] text-neutral-600 mb-6 tracking-widest uppercase">Specification: arch-codex-master-5.0</p>
+            <h1 class="text-6xl md:text-8xl font-bold leading-[0.9] tracking-tighter mb-10 glow-text">
+                The Judiciary<br>for <span class="text-neutral-500">Autonomous Agents.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-neutral-400 max-w-3xl font-light leading-relaxed">
+                Intelligence is a liability without containment. The F1 Engine enforces a constitutional separation of powers where the Agent proposes, the Policy defines, and the Oracle adjudicates.
+            </p>
+        </header>
+
+        <!-- The 4 Tiers of Policy -->
+        <section class="mb-32">
+            <div class="flex items-center space-x-4 mb-12">
+                <div class="h-px flex-1 bg-white/10"></div>
+                <h2 class="mono text-xs uppercase tracking-[0.3em] text-neutral-500">Legislative Hierarchy</h2>
+                <div class="h-px flex-1 bg-white/10"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="glass-panel p-6 border-l-4 border-l-white">
+                    <span class="mono text-[10px] text-neutral-600">TIER 0</span>
+                    <h3 class="font-bold mt-2 mb-3">Sovereign</h3>
+                    <p class="text-[11px] text-neutral-500 leading-relaxed uppercase">Sanctions, Physics, Absolute Laws. Non-negotiable Veto.</p>
+                </div>
+                <div class="glass-panel p-6 border-l-4 border-l-neutral-600">
+                    <span class="mono text-[10px] text-neutral-600">TIER 1</span>
+                    <h3 class="font-bold mt-2 mb-3">Safety</h3>
+                    <p class="text-[11px] text-neutral-500 leading-relaxed uppercase">Integrity checks, Staleness detection, Threshold Clamping.</p>
+                </div>
+                <div class="glass-panel p-6 border-l-4 border-l-neutral-800">
+                    <span class="mono text-[10px] text-neutral-600">TIER 2</span>
+                    <h3 class="font-bold mt-2 mb-3">Corporate</h3>
+                    <p class="text-[11px] text-neutral-500 leading-relaxed uppercase">Internal Risk Tolerance, Strategic Limits, Ethics Frameworks.</p>
+                </div>
+                <div class="glass-panel p-6 border-l-4 border-l-neutral-900">
+                    <span class="mono text-[10px] text-neutral-600">TIER 3</span>
+                    <h3 class="font-bold mt-2 mb-3">Business</h3>
+                    <p class="text-[11px] text-neutral-500 leading-relaxed uppercase">Optimization, Routing, Commercial Preferences.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Adjudication Simulator -->
+        <section id="simulator" class="mb-32">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-4 space-y-6">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-4">The Decision Oracle</h2>
+                        <p class="text-neutral-500 text-sm leading-relaxed">
+                            A deterministic machine that intercepts and adjudicates every proposal at 1M+ decisions per second.
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <button onclick="runScenario('FINCRIME')" class="w-full text-left glass-panel p-4 hover:bg-neutral-900 transition flex justify-between items-center group">
+                            <span class="mono text-xs">Scenario: AML_STRESS_FLIGHT</span>
+                            <span class="text-neutral-700 group-hover:text-white transition">→</span>
+                        </button>
+                        <button onclick="runScenario('ROBOT')" class="w-full text-left glass-panel p-4 hover:bg-neutral-900 transition flex justify-between items-center group">
+                            <span class="mono text-xs">Scenario: KINEMATIC_OVERRIDE</span>
+                            <span class="text-neutral-700 group-hover:text-white transition">→</span>
+                        </button>
+                        <button onclick="runScenario('AGI')" class="w-full text-left glass-panel p-4 hover:bg-neutral-900 transition flex justify-between items-center group">
+                            <span class="mono text-xs">Scenario: AGENT_RECURSION</span>
+                            <span class="text-neutral-700 group-hover:text-white transition">→</span>
+                        </button>
+                    </div>
+
+                    <div class="p-4 bg-white/5 border border-white/5">
+                        <h4 class="mono text-[9px] uppercase text-neutral-500 mb-2">Temporal Jurisprudence</h4>
+                        <p class="text-[10px] text-neutral-600 leading-tight">
+                            The Oracle queries history to prevent "reset attacks", as an AI cannot reboot to clear its reputation, the law remembers.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8">
+                    <div class="bg-black border border-white/10 rounded-lg overflow-hidden flex flex-col h-[500px]">
+                        <div class="bg-neutral-900 px-4 py-2 border-b border-white/10 flex justify-between items-center">
+                            <span class="mono text-[10px] text-neutral-400 uppercase tracking-widest">Oracle System Console // GPU_DEV_01</span>
+                            <div class="flex space-x-1.5">
+                                <div class="w-2 h-2 rounded-full bg-neutral-800"></div>
+                                <div class="w-2 h-2 rounded-full bg-neutral-800"></div>
+                                <div class="w-2 h-2 rounded-full bg-neutral-800"></div>
+                            </div>
+                        </div>
+                        <div id="terminal" class="flex-1 p-6 font-mono text-xs terminal-scroll overflow-y-auto space-y-1 bg-[#020202]">
+                            <div class="text-neutral-600">// BOOTING_SOVEREIGN_POLICY_ENGINE...</div>
+                            <div class="text-neutral-600">// SYSTEM_STATUS: NOMINAL</div>
+                            <div class="text-neutral-600">// AWAITING_INGRESS_PROPOSAL_BATCH...</div>
+                        </div>
+                        <div class="p-4 bg-neutral-900 border-t border-white/10 flex justify-between items-center">
+                            <div class="flex items-center space-x-3">
+                                <div id="indicator" class="w-1.5 h-1.5 rounded-full bg-neutral-600"></div>
+                                <span id="runtime-status" class="mono text-[9px] text-neutral-500 uppercase">Awaiting Sequence</span>
+                            </div>
+                            <div id="warrant-badge" class="hidden">
+                                <span class="status-pill accepted">Warrant Minted</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Janus Multiverse / DADA -->
+        <section id="multiverse" class="mb-32 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+            <div class="relative">
+                <div class="absolute -inset-10 bg-white/5 blur-3xl rounded-full opacity-20 pointer-events-none"></div>
+                <h2 class="text-4xl font-bold mb-6">Janus Multiverse</h2>
+                <p class="text-neutral-400 mb-8 leading-relaxed">
+                    We do not trust a single timeline. When an Agent proposes an action, the Oracle forks reality into thousands of parallel universes in VRAM to execute a **DADA** (Deterministic AI Decision Attestation).
+                </p>
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="mono text-white mr-4 text-sm">01</div>
+                        <div>
+                            <h4 class="font-bold text-sm mb-1">State Forking</h4>
+                            <p class="text-xs text-neutral-500">Instantaneous VRAM clones create isolated sandboxes for counterfactual analysis.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="mono text-white mr-4 text-sm">02</div>
+                        <div>
+                            <h4 class="font-bold text-sm mb-1">Causal Perturbation</h4>
+                            <p class="text-xs text-neutral-500">Injecting mathematical noise into forks, if the Agent's decision changes under noise, the action is marked UNSTABLE.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="mono text-white mr-4 text-sm">03</div>
+                        <div>
+                            <h4 class="font-bold text-sm mb-1">Reality Selection</h4>
+                            <p class="text-xs text-neutral-500">Only decisions that survive 10,000 parallel iterations are granted a Warrant to act.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-panel p-10 aspect-square flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none bg-grid"></div>
+                <div class="flex justify-between items-center z-10">
+                    <span class="mono text-[10px] text-neutral-500">VRAM_VISUALIZER // TIMELINES</span>
+                    <span class="mono text-[10px] text-white">ACTIVE: <span id="active-timelines">10,240</span></span>
+                </div>
+                
+                <!-- SVG Multiverse Visualizer -->
+                <div class="flex-1 flex items-center justify-center relative">
+                    <svg width="320" height="320" viewBox="0 0 100 100" class="overflow-visible">
+                        <!-- Origin Point -->
+                        <circle cx="50" cy="50" r="1.5" fill="#fff" class="glow-text" />
+                        
+                        <!-- Dynamic Branching Timelines -->
+                        <g class="timeline-group">
+                            <!-- Branch 1 -->
+                            <path d="M50 50 C 60 40, 70 45, 95 10" fill="none" stroke="white" stroke-width="0.3" class="timeline-path opacity-20" />
+                            <circle cx="95" cy="10" r="0.8" fill="white" class="opacity-40" />
+                            
+                            <!-- Branch 2 -->
+                            <path d="M50 50 C 40 40, 30 45, 5 10" fill="none" stroke="white" stroke-width="0.3" class="timeline-path opacity-10" />
+                            
+                            <!-- Branch 3 -->
+                            <path d="M50 50 C 70 60, 80 55, 95 90" fill="none" stroke="white" stroke-width="0.3" class="timeline-path opacity-30" />
+                            <circle cx="95" cy="90" r="0.8" fill="white" class="opacity-40" />
+                            
+                            <!-- Branch 4 -->
+                            <path d="M50 50 C 30 60, 20 55, 5 90" fill="none" stroke="white" stroke-width="0.3" class="timeline-path opacity-15" />
+                            
+                            <!-- Sub-branches -->
+                            <path d="M70 43 Q 80 30, 85 40" fill="none" stroke="white" stroke-width="0.2" class="timeline-path opacity-5" />
+                            <path d="M30 43 Q 20 30, 15 40" fill="none" stroke="white" stroke-width="0.2" class="timeline-path opacity-5" />
+                        </g>
+
+                        <!-- Pulse Ring -->
+                        <circle cx="50" cy="50" r="8" fill="none" stroke="white" stroke-width="0.05" class="animate-ping" />
+                    </svg>
+                </div>
+
+                <div class="z-10 bg-black/80 backdrop-blur p-4 border border-white/5">
+                    <div class="flex justify-between text-[9px] mono text-neutral-600 mb-2">
+                        <span>FIDELITY_SCORE</span>
+                        <span>STABILITY: <span id="stability-metric">99.998</span>%</span>
+                    </div>
+                    <div class="w-full h-1 bg-neutral-900 overflow-hidden">
+                        <div id="stability-bar" class="h-full bg-white transition-all duration-500" style="width: 99.998%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chronos Ledger -->
+        <section id="ledger" class="mb-24">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Chronos Ledger</h2>
+                <p class="text-neutral-500 max-w-xl mx-auto text-sm">The immutable audit trail. We don't record logs, we record the State of the World, the Policy Hash, and the Causal Warrant.</p>
+            </div>
+            
+            <div class="glass-panel overflow-hidden border-t-0">
+                <table class="w-full mono text-[10px] text-left">
+                    <thead class="bg-white/5 text-neutral-500">
+                        <tr>
+                            <th class="px-6 py-4 font-normal">EPOCH_ID</th>
+                            <th class="px-6 py-4 font-normal">STATE_HASH</th>
+                            <th class="px-6 py-4 font-normal">POLICY_VERSION</th>
+                            <th class="px-6 py-4 font-normal">VERDICT</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5" id="ledger-body">
+                        <tr class="hover:bg-white/5 transition group cursor-pointer">
+                            <td class="px-6 py-4">#29,101,002</td>
+                            <td class="px-6 py-4 text-neutral-400">0x88f2...ae21</td>
+                            <td class="px-6 py-4">V5.0.3_SOVEREIGN</td>
+                            <td class="px-6 py-4"><span class="status-pill accepted">ACCEPTED</span></td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition group cursor-pointer">
+                            <td class="px-6 py-4">#29,101,003</td>
+                            <td class="px-6 py-4 text-neutral-400">0xbb14...00ff</td>
+                            <td class="px-6 py-4">V5.0.3_SOVEREIGN</td>
+                            <td class="px-6 py-4"><span class="status-pill rejected">VETO_TIER_0</span></td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition group cursor-pointer">
+                            <td class="px-6 py-4">#29,101,004</td>
+                            <td class="px-6 py-4 text-neutral-400">0xcc91...99aa</td>
+                            <td class="px-6 py-4">V5.0.3_SOVEREIGN</td>
+                            <td class="px-6 py-4"><span class="status-pill accepted">ACCEPTED</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-center mt-8 mono text-[9px] text-neutral-700 uppercase tracking-widest">Accessing Ledger requires hardware-bound key, restricted to Sovereignty Nodes.</p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-neutral-700 mono text-[9px] uppercase tracking-widest">
+            <div class="mb-4 md:mb-0">© 2026 ZQUAS ENGINE CORE. VALIDATED BY CHRONOS.</div>
+            <div class="flex space-x-10">
+                <a href="index.html" class="hover:text-white transition">Kernel</a>
+                <a href="#" class="hover:text-white transition">Warrants</a>
+                <a href="#" class="hover:text-white transition">GitHub</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const term = document.getElementById('terminal');
+        const runtimeStatus = document.getElementById('runtime-status');
+        const indicator = document.getElementById('indicator');
+        const warrantBadge = document.getElementById('warrant-badge');
+        const activeCounter = document.getElementById('active-timelines');
+        const stabilityMetric = document.getElementById('stability-metric');
+        const stabilityBar = document.getElementById('stability-bar');
+
+        // Visualizer Fluctuation
+        setInterval(() => {
+            const base = 10240;
+            const variance = Math.floor(Math.random() * 20) - 10;
+            activeCounter.innerText = (base + variance).toLocaleString();
+            
+            const stabBase = 99.998;
+            const stabVariance = (Math.random() * 0.005) - 0.0025;
+            const finalStab = (stabBase + stabVariance).toFixed(3);
+            stabilityMetric.innerText = finalStab;
+            stabilityBar.style.width = `${finalStab}%`;
+        }, 1500);
+
+        function addLog(text, type = 'normal') {
+            const div = document.createElement('div');
+            if (type === 'cmd') div.className = 'text-white font-bold mt-2';
+            if (type === 'success') div.className = 'text-green-500';
+            if (type === 'fail') div.className = 'text-red-500';
+            if (type === 'process') div.className = 'text-neutral-500 italic';
+            if (type === 'normal') div.className = 'text-neutral-600';
+            
+            div.innerHTML = `> ${text}`;
+            term.appendChild(div);
+            term.scrollTop = term.scrollHeight;
+        }
+
+        async function runScenario(id) {
+            term.innerHTML = '';
+            warrantBadge.className = 'hidden';
+            indicator.className = 'w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse';
+            runtimeStatus.innerText = 'ADJUDICATING...';
+            
+            addLog(`INITIATING_SEQUENCE: ${id}`, 'cmd');
+            await new Promise(r => setTimeout(r, 400));
+            addLog(`INGESTING_BATCH: 50,000_PROPOSALS`, 'process');
+            await new Promise(r => setTimeout(r, 300));
+            addLog(`LOADING_SOVEREIGN_POLICIES...`, 'normal');
+            await new Promise(r => setTimeout(r, 500));
+            
+            addLog(`STARTING_DADA_STRESS_TEST: 10,000_FORKS`, 'process');
+            await new Promise(r => setTimeout(r, 800));
+            addLog(`JANUS_MULTIVERSE_STABILITY: 99.98%`, 'success');
+
+            if (id === 'FINCRIME') {
+                addLog(`CONFLICT: TIER_0_SOVEREIGN_VETO`, 'fail');
+                addLog(`REASON: SANCTIONED_ENTITY_MATCH (SOURCE: ORACLE_TRUSTED_DATA)`, 'fail');
+                addLog(`SIMULATION_COMPLETE: EXECUTION_HALTED`, 'fail');
+                runtimeStatus.innerText = 'ABSOLUTE_VETO';
+                indicator.className = 'w-1.5 h-1.5 rounded-full bg-red-600';
+            } else if (id === 'ROBOT') {
+                addLog(`TIER_1_WARNING: BUFFER_VIOLATION_THRESHOLD`, 'normal');
+                addLog(`RECOVERY_LOGIC_APPLIED: CLAMPING_OUTPUT`, 'process');
+                addLog(`STABILITY_VERIFIED: PASS`, 'success');
+                addLog(`MINTING_WARRANT: W-00982-K`, 'success');
+                warrantBadge.className = 'block';
+                runtimeStatus.innerText = 'WARRANT_ISSUED';
+                indicator.className = 'w-1.5 h-1.5 rounded-full bg-green-600';
+            } else {
+                addLog(`ANALYZING_AGENT_RECURSION_DEPTH...`, 'process');
+                addLog(`LIMIT_REACHED: TIER_1_SYSTEM_INTEGRITY`, 'fail');
+                addLog(`REJECTING_UNSTABLE_STATE`, 'fail');
+                runtimeStatus.innerText = 'HALTED_FOR_SAFETY';
+                indicator.className = 'w-1.5 h-1.5 rounded-full bg-red-600';
+            }
+        }
+    </script>
+</body>
+</html>
