@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZQUAS | Chronos Ledger & Temporal Jurisprudence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --surface: #0a0a0a;
+            --text-primary: #ffffff;
+            --text-secondary: #666666;
+            --border: #1a1a1a;
+            --accent: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* Navigation */
+        .nav-custom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .branding-img { height: 32px; width: auto; }
+        .nav-links-custom a { color: var(--text-secondary); margin-left: 25px; transition: color 0.2s; }
+        .nav-links-custom a:hover { color: #fff; }
+
+        /* Ledger Table Styling */
+        .ledger-row {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s ease;
+            cursor: pointer;
+        }
+        .ledger-row:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .terminal-scroll::-webkit-scrollbar { width: 2px; }
+        .terminal-scroll::-webkit-scrollbar-thumb { background: #333; }
+
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        .pulse { animation: pulse-slow 4s infinite; }
+
+        .scanline {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 1px;
+            background: rgba(255,255,255,0.05);
+            animation: scan 12s linear infinite;
+            pointer-events: none;
+            z-index: 100;
+        }
+        @keyframes scan { from { top: 0; } to { top: 100vh; } }
+
+        /* Modal Styles */
+        #evidence-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center px-6">
+    <div class="scanline"></div>
+
+    <!-- Causal Evidence Modal -->
+    <div id="evidence-modal" class="flex items-center justify-center p-6">
+        <div class="max-w-2xl w-full bg-neutral-950 border border-white/10 flex flex-col h-[80vh]">
+            <div class="p-4 border-b border-white/10 flex justify-between items-center bg-neutral-900">
+                <span class="mono text-[10px] uppercase tracking-widest text-neutral-400">Causal_Evidence_Viewer</span>
+                <button onclick="closeModal()" class="mono text-[10px] text-neutral-500 hover:text-white transition">CLOSE [ESC]</button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-8 terminal-scroll">
+                <pre id="modal-content" class="mono text-[11px] leading-relaxed text-neutral-400 whitespace-pre-wrap"></pre>
+            </div>
+            <div class="p-4 border-t border-white/10 bg-neutral-900 flex justify-end">
+                <button onclick="copyToClipboard()" class="mono text-[10px] border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition">Copy To Clipboard</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-[1000px] w-full mt-[5vh]">
+        <!-- Header -->
+        <nav class="nav-custom">
+            <div class="branding">
+                <img src="logo.png" alt="ZQUAS AI" class="branding-img">
+            </div>
+            <div class="nav-links-custom">
+                <a href="index.html">Runtime</a>
+                <a href="cortex.html">Codex</a>
+                <a href="#explorer">Explorer</a>
+            </div>
+        </nav>
+
+        <!-- Hero -->
+        <header class="mb-24">
+            <p class="mono text-[10px] text-neutral-600 mb-6 tracking-widest uppercase">System: Chronos_Audit_v1.2</p>
+            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter mb-10">
+                Truth is <br><span class="text-neutral-500">Immutable.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-neutral-400 max-w-3xl font-light leading-relaxed">
+                Log files are narratives, but the Chronos Ledger is evidence. We record the bit-exact state of the world, the versioned policy, and the resulting warrant in a causally closed loop.
+            </p>
+        </header>
+
+        <!-- Temporal Jurisprudence Explanation -->
+        <section class="mb-32 grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="text-2xl font-bold mb-6">Temporal Jurisprudence</h2>
+                <p class="text-sm text-neutral-500 leading-relaxed mb-6">
+                    Most AI guardrails fail because they are stateless, observing only the current prompt or transaction. Our Oracle has memory. It queries the Chronos Ledger to enforce laws that span across time, such as velocity spikes, cumulative risk, or credential rotation.
+                </p>
+                <div class="p-6 border border-white/5 bg-neutral-950 mono text-[11px] text-neutral-400">
+                    <span class="text-white">// REPUTATION_PERSISTENCE</span><br>
+                    An agent cannot "reset" its history by rebooting. The Oracle hashes the identity to its historical ledger entries, ensuring that accountability persists across sessions.
+                </div>
+            </div>
+            <div class="flex items-center justify-center">
+                <div class="relative w-full aspect-square border border-white/5 flex items-center justify-center">
+                    <div class="absolute inset-0 flex items-center justify-center pulse">
+                        <div class="w-64 h-64 border border-white/10 rounded-full"></div>
+                        <div class="absolute w-48 h-48 border border-white/20 rounded-full"></div>
+                    </div>
+                    <div class="z-10 text-center">
+                        <div class="mono text-[40px] font-bold">60Hz</div>
+                        <div class="mono text-[10px] text-neutral-600 uppercase tracking-widest">Audit Frequency</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ledger Explorer Simulator -->
+        <section id="explorer" class="mb-32">
+            <div class="flex justify-between items-end mb-10">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2">Audit Explorer</h2>
+                    <p class="mono text-[10px] text-neutral-600 uppercase">Causal Chain Verification</p>
+                </div>
+                <div class="mono text-[10px] text-neutral-500">
+                    Sovereign Node: <span class="text-white">AMS-01-RUNTIME</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Ledger List -->
+                <div class="lg:col-span-2 border border-white/10 bg-neutral-950 overflow-hidden">
+                    <div class="bg-neutral-900 px-4 py-2 mono text-[10px] text-neutral-500 flex justify-between">
+                        <span>EPOCH_BLOCK</span>
+                        <span>STATE_HASH</span>
+                    </div>
+                    <div class="h-[400px] overflow-y-auto terminal-scroll" id="ledger-list">
+                        <!-- Rows injected by JS -->
+                    </div>
+                </div>
+
+                <!-- Inspector Panel -->
+                <div class="border border-white/10 p-6 flex flex-col justify-between">
+                    <div id="inspector-content">
+                        <div class="mono text-[10px] text-neutral-600 mb-8 uppercase">Block Inspector</div>
+                        <div class="text-center py-20 text-neutral-700 mono text-xs uppercase">
+                            Select block to <br>verify causality
+                        </div>
+                    </div>
+                    <div class="pt-6 border-t border-white/5">
+                        <button id="view-btn" onclick="openEvidenceModal()" class="w-full border border-white/10 py-3 mono text-[10px] uppercase hover:bg-white hover:text-black transition opacity-50 cursor-not-allowed" disabled>
+                            View Evidence Package
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Causal Evidence Callout -->
+        <section class="mb-32 py-20 border-y border-white/5 text-center">
+            <h3 class="text-2xl font-bold mb-4">Provenance is the only defense.</h3>
+            <p class="text-neutral-500 max-w-2xl mx-auto text-sm leading-relaxed mb-8">
+                By proving the exact state of inputs and policy at Frame T, we shift liability from the Execution System to the Data Provider. We make autonomous agents insurable by removing the "why" as a variable.
+            </p>
+            <div class="inline-block px-6 py-2 border border-white/20 mono text-[10px] uppercase tracking-widest text-neutral-400">
+                Validated by Ed25519 Signatures
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-20 flex flex-col md:flex-row justify-between items-center text-neutral-700 mono text-[9px] uppercase tracking-widest">
+            <div>© 2026 ZQUAS ENGINE PROJECT. BIT-EXACT FIDELITY.</div>
+            <div class="flex space-x-10 mt-4 md:mt-0">
+                <a href="index.html" class="hover:text-white transition">Kernel</a>
+                <a href="cortex.html" class="hover:text-white transition">Codex</a>
+                <a href="#" class="hover:text-white transition">Compliance API</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const blocks = [
+            { id: "29,104,881", hash: "0xaa1288b220091", status: "ACCEPTED", policy: "Sovereign_v5", warrant: "W-8821" },
+            { id: "29,104,882", hash: "0xcc4477ee822", status: "REJECTED", policy: "Sovereign_v5", warrant: "NULL" },
+            { id: "29,104,883", hash: "0xdd90cc441ab", status: "ACCEPTED", policy: "Sovereign_v5", warrant: "W-8822" },
+            { id: "29,104,884", hash: "0xee01ff33bc44", status: "ACCEPTED", policy: "Sovereign_v5", warrant: "W-8823" },
+            { id: "29,104,885", hash: "0xff22bb559900", status: "REJECTED", policy: "Sovereign_v5", warrant: "NULL" },
+            { id: "29,104,886", hash: "0x11bb88cc12", status: "ACCEPTED", policy: "Sovereign_v5", warrant: "W-8824" }
+        ];
+
+        let selectedBlock = null;
+
+        const list = document.getElementById('ledger-list');
+        const inspector = document.getElementById('inspector-content');
+        const viewBtn = document.getElementById('view-btn');
+        const modal = document.getElementById('evidence-modal');
+        const modalContent = document.getElementById('modal-content');
+
+        function renderLedger() {
+            list.innerHTML = blocks.slice().reverse().map(b => `
+                <div class="ledger-row p-4 flex justify-between items-center" onclick="inspect('${b.id}')">
+                    <div class="mono text-xs font-bold text-neutral-400">#${b.id}</div>
+                    <div class="mono text-[10px] text-neutral-600">${b.hash}</div>
+                    <div>
+                        <span class="mono text-[9px] px-2 py-0.5 ${b.status === 'ACCEPTED' ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'}">
+                            ${b.status}
+                        </span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function inspect(id) {
+            selectedBlock = blocks.find(b => b.id === id);
+            
+            viewBtn.disabled = false;
+            viewBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+
+            inspector.innerHTML = `
+                <div class="mono text-[10px] text-neutral-600 mb-8 uppercase">Block Inspector // #${selectedBlock.id}</div>
+                <div class="space-y-6">
+                    <div>
+                        <div class="mono text-[9px] text-neutral-700 uppercase mb-1">State Merkle Root</div>
+                        <div class="mono text-xs text-white break-all">${selectedBlock.hash}6677889900aabbcc</div>
+                    </div>
+                    <div>
+                        <div class="mono text-[9px] text-neutral-700 uppercase mb-1">Applied Policy</div>
+                        <div class="mono text-xs text-white">${selectedBlock.policy}</div>
+                    </div>
+                    <div>
+                        <div class="mono text-[9px] text-neutral-700 uppercase mb-1">Causal Result</div>
+                        <div class="mono text-xs ${selectedBlock.status === 'ACCEPTED' ? 'text-green-500' : 'text-red-500'} font-bold">${selectedBlock.status}</div>
+                    </div>
+                    <div>
+                        <div class="mono text-[9px] text-neutral-700 uppercase mb-1">Warrant ID</div>
+                        <div class="mono text-xs text-blue-500 font-bold">${selectedBlock.warrant}</div>
+                    </div>
+                    <div class="p-3 bg-white/5 border border-white/5 mono text-[9px] text-neutral-500 leading-tight">
+                        VALIDATION: ED25519_SIG_MATCH<br>
+                        AUDIT_READY: YES
+                    </div>
+                </div>
+            `;
+        }
+
+        function openEvidenceModal() {
+            if (!selectedBlock) return;
+
+            const timestamp = new Date().toISOString();
+            const content = `
+--------------------------------------------------
+ZQUAS CHRONOS LEDGER | CAUSAL EVIDENCE PACKAGE
+--------------------------------------------------
+DOCUMENT_ID: EVIDENCE_${selectedBlock.id.replace(/,/g, '')}_${Date.now()}
+EXPORT_TIME: ${timestamp}
+ORIGIN_NODE: AMS-01-RUNTIME
+--------------------------------------------------
+
+[METADATA]
+EPOCH_BLOCK: ${selectedBlock.id}
+STATE_HASH:  ${selectedBlock.hash}6677889900aabbcc
+POLICY_REF:  ${selectedBlock.policy}
+VERDICT:     ${selectedBlock.status}
+WARRANT_ID:  ${selectedBlock.warrant}
+
+[PROOF_OF_SOVEREIGNTY]
+ADJUDICATOR_ID: 0x88AF1_ORACLE_V5
+ATTESTATION:    ED25519_DET_SIG_MATCHED
+CHAIN_STABILITY: 1.0 (BIT-EXACT REPRODUCIBILITY)
+
+[BIT_EXACT_RECEIPT_SIGNATURE]
+---BEGIN CAUSAL SIGNATURE---
+z7A8x9B2C3D4E5F6G7H8I9J0K1L2M3N4O5P6Q7R8S9T0U1V2W3X4Y5Z6A7B8C9D0
+E1F2G3H4I5J6K7L8M9N0O1P2Q3R4S5T6U7V8W9X0Y1Z2A3B4C5D6E7F8G9H0I1J2
+---END CAUSAL SIGNATURE---
+
+[SUMMARY]
+This package proves that at Frame ${selectedBlock.id.split(',').pop()}, the Authority State
+as ingested by the engine contained no revocation signals against the 
+Sovereign Policy. 
+
+Liability for this decision is mathematically attributed to the Data Provider.
+--------------------------------------------------
+(C) 2026 ZQUAS ENGINE PROJECT | IMMUTABLE TRUTH
+--------------------------------------------------`;
+
+            modalContent.innerText = content;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        function copyToClipboard() {
+            const text = modalContent.innerText;
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            const btn = event.target;
+            const originalText = btn.innerText;
+            btn.innerText = 'COPIED TO CLIPBOARD';
+            setTimeout(() => btn.innerText = originalText, 2000);
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) closeModal();
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") closeModal();
+        });
+
+        renderLedger();
+    </script>
+</body>
+</html>
