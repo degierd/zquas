@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Regulators — ZQUAS</title>
+    <meta name="description" content="ZQUAS produces cryptographic proof of every compliance decision. Supervisory teams verify outcomes independently, without accessing bank systems or installing vendor software.">
+    <link rel="canonical" href="https://zquas.ai/regulators.html">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="/#platform">Platform</a>
+            <a href="/#architecture">Architecture</a>
+            <a href="regulators.html" class="active">Regulators</a>
+            <a href="/#for-banks">Banks</a>
+            <a href="/#for-investors">Investors</a>
+            <a href="articles.html">Articles</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<section class="reg-header">
+    <div class="container">
+        <div class="section-label">For Supervisory Authorities</div>
+        <h1>Verify compliance decisions. Don't trust vendor reports.</h1>
+        <p class="section-desc">
+            ZQUAS produces cryptographic proof of every compliance decision. Your supervisory team verifies outcomes independently, without accessing bank systems, without installing vendor software, and without seeing underlying transaction data.
+        </p>
+        <div class="reg-badge">
+            <span class="dot"></span>
+            Engaged with DNB InnovationHub &middot; FCA Regulatory Sandbox
+        </div>
+    </div>
+</section>
+
+<section class="problem-section">
+    <div class="container">
+        <div class="section-label">Current Limitations</div>
+        <h2 class="section-title">Trust-based supervision has structural gaps</h2>
+        <div class="problem-grid">
+            <div class="problem-card">
+                <h3>System Behavior Is Unverifiable</h3>
+                <p>When a bank describes how its monitoring system works, there is no way to independently confirm that the production system matches the description. Configuration drift, undocumented rule changes, and silent processing failures are invisible to examiners relying on the bank's own reporting.</p>
+            </div>
+            <div class="problem-card">
+                <h3>Temporal Reconstruction Is Imprecise</h3>
+                <p>The question "what rules were in effect on this date?" requires reconstructing from change logs and deployment records. In batch processing systems, the relationship between rule changes, batch execution times, and which transactions were evaluated under which rule version is often genuinely ambiguous.</p>
+            </div>
+            <div class="problem-card">
+                <h3>AI Oversight Is Approaching Without Tools</h3>
+                <p>The EU AI Act classifies AML systems as high-risk. Article 12 requires record-keeping that allows tracing back system operations. Article 14 requires human oversight. Most monitoring systems weren't designed with this level of logging granularity. The technical standards are being drafted now.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="section-label">Cryptographic Verification</div>
+        <h2 class="section-title">Mathematical proof replaces institutional trust</h2>
+        <p class="section-desc">
+            Every batch of compliance decisions produces a sealed proof bundle. The bundle is self-contained, tamper-evident, and independently verifiable.
+        </p>
+
+        <div class="verify-flow">
+            <div class="verify-step">
+                <div class="verify-num">1</div>
+                <div class="verify-label">Policy Set</div>
+                <div class="verify-detail">hashed and signed</div>
+            </div>
+            <div class="verify-connector">&rarr;</div>
+            <div class="verify-step">
+                <div class="verify-num">2</div>
+                <div class="verify-label">Transaction Data</div>
+                <div class="verify-detail">evaluated on GPU against full policy set</div>
+            </div>
+            <div class="verify-connector">&rarr;</div>
+            <div class="verify-step">
+                <div class="verify-num">3</div>
+                <div class="verify-label">Verdicts</div>
+                <div class="verify-detail">bound together via Merkle root</div>
+            </div>
+            <div class="verify-connector">&rarr;</div>
+            <div class="verify-step">
+                <div class="verify-num">4</div>
+                <div class="verify-label">Proof Bundle</div>
+                <div class="verify-detail">Ed25519 signed, timestamped</div>
+            </div>
+            <div class="verify-connector">&rarr;</div>
+            <div class="verify-step">
+                <div class="verify-num">5</div>
+                <div class="verify-label">Verification</div>
+                <div class="verify-detail">standalone CLI confirms validity</div>
+            </div>
+        </div>
+
+        <div class="arch-grid">
+            <div class="arch-card">
+                <div class="arch-tag">COMPLETENESS</div>
+                <h3>Every verdict is accounted for</h3>
+                <p>The Merkle root covers every verdict in the batch. A missing verdict invalidates the root. Unlike log-based audit trails, gaps are mathematically detectable.</p>
+            </div>
+            <div class="arch-card">
+                <div class="arch-tag">POLICY INTEGRITY</div>
+                <h3>The running code matches the documented policy</h3>
+                <p>The proof bundle includes a cryptographic hash of the exact policy set that was executed. If the production configuration differs from the documented policy, the hashes won't match.</p>
+            </div>
+            <div class="arch-card">
+                <div class="arch-tag">TEMPORAL PRECISION</div>
+                <h3>Timestamps are part of the signed proof</h3>
+                <p>The evaluation timestamp is bound into the cryptographic signature. Modifying the timestamp invalidates the proof. The question "when was this transaction evaluated?" has a provable answer.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="problem-section">
+    <div class="container">
+        <div class="section-label">Verification Tool</div>
+        <h2 class="section-title">No vendor software required</h2>
+        <p class="section-desc">
+            The verification tool is independent of the ZQUAS engine. It takes a proof bundle as input, applies standard cryptographic operations, and outputs VALID or INVALID. The tool is auditable, inspectable, and runs without any vendor infrastructure.
+        </p>
+
+        <div class="terminal-block"><pre><span class="terminal-prompt">$</span> themis-verify --epoch epoch_2026-03-08.bundle --policies /registered/policy-set-v4.2/
+
+Verifying epoch 2026-03-08_14:32:00Z...
+Policy hash:     <span class="terminal-ok">OK</span> (matches registered set v4.2)
+Merkle root:     <span class="terminal-ok">OK</span> (1,247 verdicts verified)
+Ed25519 sig:     <span class="terminal-ok">OK</span> (key: DNB-registered-pub-2026)
+Temporal range:  14:30:00Z - 14:35:00Z
+
+Result: <span class="terminal-ok">VALID</span></pre></div>
+
+        <p class="terminal-note">
+            The regulator registers the bank's public key and policy set hashes. Verification confirms that the registered policies produced the claimed verdicts on the claimed data at the claimed time. No access to the bank's systems or the underlying transaction data is needed.
+        </p>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="section-label">Regulatory Framework Alignment</div>
+        <h2 class="section-title">Built-in compliance evidence production</h2>
+        <p class="section-desc">
+            The engine produces sealed Control Evaluation Records aligned to multiple regulatory frameworks. Evidence bundles include Merkle roots and Ed25519 signatures.
+        </p>
+        <div class="fw-mini-grid">
+            <div class="fw-mini-card">
+                <h3>EU AI Act</h3>
+                <p>Articles 9, 11, 12, 14. Risk management, technical documentation, record-keeping, and human oversight for high-risk AI systems.</p>
+            </div>
+            <div class="fw-mini-card">
+                <h3>AMLR / 6AMLD</h3>
+                <p>Real-time monitoring capability, privacy-preserving cross-institutional detection, and explainable automated decision-making.</p>
+            </div>
+            <div class="fw-mini-card">
+                <h3>FATF Recommendation 15</h3>
+                <p>New technologies and virtual assets. Risk-based approach to innovation in AML/CFT systems.</p>
+            </div>
+            <div class="fw-mini-card">
+                <h3>NIST AI RMF</h3>
+                <p>AI risk management framework alignment. Map, measure, manage, and govern AI risks.</p>
+            </div>
+            <div class="fw-mini-card">
+                <h3>ISO 42001</h3>
+                <p>AI management system standard. Organizational governance requirements for AI systems.</p>
+            </div>
+            <div class="fw-mini-card">
+                <h3>MAS TRM</h3>
+                <p>Technology Risk Management guidelines. Applicable to financial institutions under Monetary Authority of Singapore supervision.</p>
+            </div>
+            <div class="fw-mini-card">
+                <h3>GDPR</h3>
+                <p>Data protection by design. Privacy-preserving MPC architecture eliminates cross-institutional data exposure.</p>
+            </div>
+            <div class="fw-mini-card">
+                <h3>DORA</h3>
+                <p>Digital operational resilience. ICT risk management, incident reporting, and third-party oversight.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="audience-section alt-bg">
+    <div class="container">
+        <div class="section-label">SupTech Implications</div>
+        <h2 class="section-title">What this enables for supervisory strategy</h2>
+        <div class="two-col-grid">
+            <div class="two-col-card">
+                <h3>Continuous Supervision</h3>
+                <p>Instead of periodic examinations with sampled reviews, regulators could receive proof bundles on an ongoing basis and verify them automatically. Anomalies like missing epochs, unexpected policy changes, or verdict distribution shifts trigger alerts for human review. Supervision shifts from periodic sampling to continuous monitoring.</p>
+            </div>
+            <div class="two-col-card">
+                <h3>Cross-Jurisdictional Verification</h3>
+                <p>A proof bundle from one jurisdiction can be verified by another jurisdiction's examiner without data sharing or system access. The proof is self-contained. This simplifies supervisory cooperation under frameworks like the ECB's Single Supervisory Mechanism and emerging AMLA coordination requirements.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="section-label">Engagement</div>
+        <h2 class="section-title">Designed for regulatory scrutiny</h2>
+        <p class="section-desc">
+            ZQUAS is purpose-built for supervisory evaluation. Currently engaged with DNB InnovationHub and FCA regulatory sandbox programmes.
+        </p>
+        <div class="engage-grid">
+            <div class="engage-card">
+                <h3>Sandbox Evaluation</h3>
+                <p>We welcome structured evaluation through regulatory sandbox programmes. The architecture is designed to be tested, challenged, and validated under supervisory conditions.</p>
+            </div>
+            <div class="engage-card">
+                <h3>Standards Contribution</h3>
+                <p>As CEN/CENELEC drafts technical standards for the EU AI Act's high-risk AI requirements, we're available to contribute technical expertise on cryptographic attestation and deterministic compliance evaluation.</p>
+            </div>
+        </div>
+        <div class="engage-contact">
+            <a href="mailto:danny@zquas.ai?subject=ZQUAS%20Regulatory%20Inquiry" class="contact-btn-primary">danny@zquas.ai</a>
+            <a href="https://www.linkedin.com/in/danny-de-gier-prof-pgdip-fcc/" target="_blank" rel="noopener" class="contact-btn-secondary">LinkedIn</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 ZQUAS &middot; Sovereign Compliance Infrastructure</p>
+</footer>
+
+</body>
+</html>
