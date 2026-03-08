@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If Your AI Compliance System Can't Attack Itself, How Do You Know It Works? — ZQUAS</title>
+    <meta name="description" content="The EU AI Act requires continuous risk management for high-risk AI systems. Most AML vendors test against historical data. That tells you how the system performed in the past.">
+    <meta property="og:title" content="If Your AI Compliance System Can't Attack Itself, How Do You Know It Works? — ZQUAS">
+    <meta property="og:description" content="The EU AI Act requires continuous risk management for high-risk AI systems. Most AML vendors test against historical data. That tells you how the system performed in the past.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://zquas.ai/article-adversarial-testing.html">
+    <meta property="og:image" content="https://zquas.ai/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://zquas.ai/og-image.png">
+    <meta name="author" content="Danny de Gier">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://zquas.ai/article-adversarial-testing.html">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="technology.html">Technology</a>
+            <a href="/#architecture">Architecture</a>
+            <a href="regulators.html">Regulators</a>
+            <a href="/#for-banks">Banks</a>
+            <a href="/#for-investors">Investors</a>
+            <a href="about.html">About</a>
+            <a href="articles.html">Articles</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<article>
+    <div class="article-header">
+        <a href="articles.html" class="article-back">&larr; Articles</a>
+        <div class="article-meta">October 2025 &middot; Regulators &middot; 8 min read</div>
+        <h1>If Your AI Compliance System Can't Attack Itself, How Do You Know It Works?</h1>
+        <p class="lead">The EU AI Act requires continuous risk management for high-risk AI systems. Most AML vendors test against historical data. That tells you how the system performed in the past. It says nothing about how it will handle attacks it hasn't seen yet.</p>
+    </div>
+
+    <div class="article-body">
+        <p>There's a standard practice in AML model validation. You take a set of known suspicious transactions and a set of known legitimate ones, run them through the monitoring system, and measure how well it separates the two. Precision, recall, F1 score. The model validation report goes to the board. Everyone feels reassured.</p>
+
+        <p>The problem is that this tells you how the system performs against attacks you've already seen. Criminals don't repeat themselves. The laundering typologies of 2024 are not the typologies of 2026. The question that matters isn't "did the system catch last year's patterns?" It's "will the system catch patterns that don't exist yet?"</p>
+
+        <p>That's a much harder question to answer. Most vendors don't even try.</p>
+
+        <h2>What the EU AI Act Actually Demands</h2>
+
+        <p>Article 9 of the EU AI Act requires that high-risk AI systems have a risk management system that operates throughout the system's lifecycle. Not a one-time assessment at deployment. Continuous, ongoing risk management.</p>
+
+        <p>The regulation specifically mentions "testing in order to identify the most appropriate and targeted risk management measures." It calls for testing that addresses "reasonably foreseeable misuse" and "risks arising from the interaction between the AI system and the environment."</p>
+
+        <p>Translated into compliance technology terms: you need to test your monitoring system against attacks that are designed to evade it. Not just historical patterns, but adversarial inputs crafted specifically to exploit the system's weaknesses.</p>
+
+        <p>This is a higher standard than anything most AML vendors currently meet. Annual model validation with historical data doesn't satisfy "continuous" or "throughout the lifecycle." And testing against known patterns doesn't address "reasonably foreseeable misuse."</p>
+
+        <h2>Why Historical Testing Is Insufficient</h2>
+
+        <p>Historical back-testing has a survivorship bias problem. The test set consists of transactions that were flagged, investigated, and confirmed as suspicious. By definition, it doesn't include the transactions that the system missed. You're testing the system against the cases it already caught, and concluding that it works.</p>
+
+        <p>There's a second problem. Criminals adapt. When banks started monitoring for structuring (splitting large transactions into smaller ones to avoid reporting thresholds), criminals switched to different techniques. They used trade-based laundering, digital asset conversion, or nested correspondent banking chains. The monitoring rules caught the old technique. The new technique sailed through undetected until someone built new rules for it.</p>
+
+        <p>Testing against last year's SAR filings tells you whether the system can catch last year's criminals. It tells you nothing about whether this year's criminals, who have adapted their methods, will evade the current rule set.</p>
+
+        <h2>Adversarial Testing as a Discipline</h2>
+
+        <p>In cybersecurity, this problem was solved years ago. Red teams actively attack systems to find vulnerabilities before real attackers do. Penetration testing is standard practice. Bug bounties incentivise external researchers to find weaknesses.</p>
+
+        <p>Compliance technology has no equivalent practice. Most AML systems have never been subjected to systematic adversarial testing. Nobody has hired a team to design transactions specifically engineered to evade the monitoring rules.</p>
+
+        <p>This is partly because adversarial testing of AML systems is harder than penetration testing of IT systems. You're not looking for a software vulnerability. You're looking for combinations of transaction parameters that pass through the rule set without triggering any alerts, even though a human analyst would recognise them as suspicious. The input space is enormous. The rule interactions are complex. Manual adversarial testing is impractical.</p>
+
+        <p>GPU-accelerated adversarial testing changes this. When you can generate millions of adversarial inputs per second and evaluate each one against the full policy set, you can systematically map the decision boundaries of the monitoring system. You can find the exact parameter combinations that flip a verdict from "alert" to "no alert." You can identify the gaps between rules where evasion attempts concentrate.</p>
+
+        <h2>Decision Surface Mapping</h2>
+
+        <p>One of the most valuable outputs of adversarial testing is a map of the system's decision surface. This map shows, for every region of the input space, what verdict the system would produce.</p>
+
+        <p>In most monitoring systems, nobody has a complete picture of the decision surface. The compliance team knows what the individual rules do. They have a general sense of what the system catches and what it doesn't. But the interactions between hundreds of rules, each with its own thresholds, exceptions, and priority ordering, create a decision surface that nobody fully understands.</p>
+
+        <p>Decision surface mapping makes this visible. It shows the boundaries between "alert" and "no alert" across all dimensions of the input space. It identifies narrow corridors where specific parameter combinations pass through without detection. It highlights regions where small changes in transaction amount, frequency, or counterparty flip the verdict.</p>
+
+        <p>This information is valuable for compliance teams because it tells them exactly where their monitoring is weak. It's valuable for regulators because it provides a quantitative measure of monitoring coverage. And it's valuable for model governance because it creates a baseline against which the impact of any rule change can be measured.</p>
+
+        <h2>Continuous, Not Periodic</h2>
+
+        <p>The EU AI Act's requirement for continuous risk management is important. A monitoring system that passes an annual validation isn't necessarily safe for the other 364 days. Rules change. Reference data updates. Customer behaviour evolves. The decision surface shifts constantly.</p>
+
+        <p>Adversarial testing that runs continuously, alongside production workloads, catches drift in real time. If a rule change opens a new evasion corridor, the adversarial framework detects it immediately, not at the next annual review.</p>
+
+        <p>This requires the testing infrastructure to run on the same hardware as the production system. CPU-based adversarial testing would compete with production monitoring for compute resources. GPU-based testing runs on dedicated CUDA streams, parallel to production evaluation, without affecting monitoring throughput.</p>
+
+        <p>The result is a compliance system that continuously verifies its own robustness. Not because someone scheduled a review, but because the architecture demands it.</p>
+
+        <h2>What Regulators Should Ask</h2>
+
+        <p>When evaluating AI-based AML systems, the standard validation questions focus on historical performance. These questions should be supplemented with adversarial testing questions:</p>
+
+        <p>Has the system been tested against inputs specifically designed to evade it? If not, how do you know it catches novel evasion techniques?</p>
+
+        <p>Can the vendor produce a decision surface map showing where the monitoring boundaries are? If not, how does the institution know where its blind spots are?</p>
+
+        <p>Is adversarial testing continuous or periodic? If periodic, what happens to monitoring robustness between tests?</p>
+
+        <p>Does the adversarial testing run on the same infrastructure as production, or on a separate test environment? If separate, how do you ensure the test environment accurately represents production behaviour?</p>
+
+        <p>These questions will become increasingly relevant as Article 9 implementation guidance is finalised. The institutions and vendors that can answer them convincingly will be in a stronger position during supervisory evaluations.</p>
+
+        <div class="article-author">
+            <div class="name">Danny de Gier</div>
+            <div class="bio">
+                Founder, ZQUAS. 18+ years in financial crime compliance at Tier-1 banks and fintechs.
+                Professional Postgraduate Diploma in Financial Crime Compliance (ICA / University of Manchester).
+            </div>
+        </div>
+    </div>
+</article>
+
+<footer>
+    <p>&copy; 2026 ZQUAS &middot; Sovereign Compliance Infrastructure</p>
+</footer>
+
+</body>
+</html>

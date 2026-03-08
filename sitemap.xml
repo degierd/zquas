@@ -31,6 +31,11 @@
         <priority>0.7</priority>
     </url>
     <url>
+        <loc>https://zquas.ai/article-interbank-operations.html</loc>
+        <lastmod>2026-02-15</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://zquas.ai/article-false-positives.html</loc>
         <lastmod>2026-02-15</lastmod>
         <priority>0.7</priority>
@@ -88,6 +93,26 @@
     <url>
         <loc>https://zquas.ai/article-why-now.html</loc>
         <lastmod>2025-12-15</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://zquas.ai/article-adversarial-testing.html</loc>
+        <lastmod>2025-10-15</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://zquas.ai/article-predictive-compliance.html</loc>
+        <lastmod>2025-10-15</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://zquas.ai/article-governance-runtime.html</loc>
+        <lastmod>2025-10-15</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://zquas.ai/article-integration-reality.html</loc>
+        <lastmod>2025-10-15</lastmod>
         <priority>0.7</priority>
     </url>
 </urlset>
