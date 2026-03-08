@@ -3,430 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <title>ZQUAS | Deterministic Real-Time Infrastructure</title>
-    <link rel="icon" type="image/png" href="logo.png">
-    
-    <meta name="description" content="ZQUAS is a GPU-native platform for deterministic, high-frequency simulation. Validated at national scale in financial crime detection.">
-    <meta name="author" content="Danny de Gier">
-
-    <!-- OPEN GRAPH -->
-    <meta property="og:title" content="ZQUAS | Deterministic Infrastructure">
-    <meta property="og:description" content="Simulating 8,000,000+ active agents at 4.2M TPS. Compliance is a physics problem.">
-    <meta property="og:image" content="https://zquas.ai/poster.jpg">
+    <title>ZQUAS — Sovereign Compliance Infrastructure</title>
+    <meta name="description" content="GPU-native compliance engine for financial institutions. Cross-institutional detection without central data pooling.">
+    <meta property="og:title" content="ZQUAS — Sovereign Compliance Infrastructure">
+    <meta property="og:description" content="GPU-native compliance engine. Cross-institutional AML detection without central data pooling.">
+    <meta property="og:type" content="website">
     <meta property="og:url" content="https://zquas.ai">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg: #050505;
-            --surface: #0f0f0f;
-            --text-primary: #ffffff;
-            --text-secondary: #888888;
-            --accent: #ffffff; 
-            --border: #222222;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text-primary);
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 0 20px;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        .container { max-width: 900px; width: 100%; margin-top: 8vh; }
-        
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 80px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 20px;
-        }
-
-        .branding img { height: 40px; width: auto; display: block; }
-        
-        .nav-links a { 
-            color: var(--text-secondary); 
-            text-decoration: none; 
-            transition: color 0.2s; 
-            margin-left: 30px;
-            text-transform: uppercase;
-        }
-        .nav-links a:hover { color: var(--text-primary); }
-
-        .hero { text-align: left; margin-bottom: 60px; }
-        
-        h1 {
-            font-weight: 600;
-            font-size: 3rem;
-            letter-spacing: -1.5px;
-            line-height: 1.05;
-            margin: 0 0 25px 0;
-            background: linear-gradient(180deg, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subline { 
-            color: var(--text-secondary); 
-            font-size: 1.15rem; 
-            line-height: 1.6;
-            max-width: 650px;
-            font-weight: 300;
-        }
-        
-        .commercial-tag {
-            display: block;
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: #666;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* SIMULATION CANVAS */
-        .simulation-wrapper { margin-bottom: 2px; position: relative; }
-
-        .simulation-container {
-            border: 1px solid var(--border);
-            background: var(--surface);
-            aspect-ratio: 16/9;
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        #engine-canvas {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        .simulation-overlay {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            pointer-events: none;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            color: #555;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .simulation-caption {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: #444;
-            text-align: right;
-            margin-top: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            border-left: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 60px;
-            background: var(--border);
-            gap: 1px;
-        }
-
-        .stat { padding: 20px; background: var(--bg); }
-
-        .stat-val {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.25rem;
-            font-weight: 500;
-            display: block;
-            margin-bottom: 6px;
-            color: var(--accent);
-        }
-
-        .stat-label {
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-row { display: flex; gap: 20px; margin-bottom: 80px; }
-
-        .btn {
-            flex: 1;
-            text-align: center;
-            padding: 18px;
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            background: var(--bg);
-        }
-
-        .btn:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: var(--surface);
-            transform: translateY(-1px);
-        }
-
-        .btn-primary {
-            border-color: var(--accent);
-            color: var(--bg);
-            background: var(--accent);
-        }
-        
-        .btn-primary:hover {
-            background: #e0e0e0;
-            border-color: #e0e0e0;
-            color: #000;
-        }
-        
-        .footer {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: #333;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            .grid { grid-template-columns: 1fr 1fr; }
-            h1 { font-size: 2.2rem; }
-            .nav { flex-direction: column; align-items: flex-start; gap: 20px; }
-            .nav-links a { margin-left: 0; margin-right: 20px; }
-            .nav-row { flex-direction: column; }
-        }
-    </style>
+    <link rel="canonical" href="https://zquas.ai">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main class="container">
-        <nav class="nav">
-            <div class="branding">
-                <img src="logo.png" alt="ZQUAS AI">
-            </div>
-            <div class="nav-links">
-                <a href="cortex.html">Architectural Codex</a>
-                <a href="chronos.html">Chronos Ledger</a>
-                <a href="usecase.html">Use Case</a>
-            </div>
-        </nav>
 
-        <header class="hero">
-            <h1>Deterministic Infrastructure<br>for Real-Time Systems.</h1>
-            <p class="subline">
-                A GPU-native <strong>simulation platform</strong> for observing and controlling complex systems with millisecond latency and full reproducibility.
-                <span class="commercial-tag">Zquas is licensed as on-premise infrastructure.</span>
-            </p>
-        </header>
-        
-        <section class="simulation-wrapper">
-            <div class="simulation-container">
-                <div class="simulation-overlay">
-                    Runtime: F1_Kernel_v5.0<br>
-                    Status: Adjudicating<br>
-                    VRAM_LOAD: 42%
-                </div>
-                <canvas id="engine-canvas"></canvas>
-            </div>
-            <div class="simulation-caption">Sub-millisecond adjudication loop simulating high-frequency transaction causality</div>
-        </section>
-
-        <section class="grid">
-            <div class="stat">
-                <span class="stat-val">4,200,000+</span>
-                <span class="stat-label">TPS Capacity</span>
-            </div>
-            <div class="stat">
-                <span class="stat-val">Sovereign</span>
-                <span class="stat-label">On-Premise</span>
-            </div>
-            <div class="stat">
-                <span class="stat-val">Zero-Copy</span>
-                <span class="stat-label">Memory Model</span>
-            </div>
-            <div class="stat">
-                <span class="stat-val">Deterministic</span>
-                <span class="stat-label">Simulation</span>
-            </div>
-        </section>
-
-        <div class="nav-row">
-            <a href="cortex.html" class="btn btn-primary">Architectural Codex</a>
-            <a href="chronos.html" class="btn">Chronos Ledger</a>
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="#platform">Platform</a>
+            <a href="#architecture">Architecture</a>
+            <a href="articles.html">Articles</a>
+            <a href="#contact" class="nav-contact">Contact</a>
         </div>
-        
-        <footer class="footer">
-            Amsterdam, NL &bull; Zquas AI &bull; Est. 2024
-        </footer>
-    </main>
+    </div>
+</nav>
 
-    <script>
-        const canvas = document.getElementById('engine-canvas');
-        const ctx = canvas.getContext('2d');
-        let width, height;
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="dot"></span>
+            DNB InnovationHub — Under Review
+        </div>
+        <h1>Sovereign compliance infrastructure for <span class="accent">regulated finance</span></h1>
+        <p class="hero-sub">
+            GPU-native compliance engine enabling cross-institutional financial crime detection without central data pooling. Every decision cryptographically attested. Every verdict independently verifiable.
+        </p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="val">2.58M</div>
+                <div class="label">Compliance events / sec</div>
+            </div>
+            <div class="hero-stat">
+                <div class="val">29</div>
+                <div class="label">Policies evaluated in parallel</div>
+            </div>
+            <div class="hero-stat">
+                <div class="val">8</div>
+                <div class="label">Regulatory standards covered</div>
+            </div>
+        </div>
+    </div>
+</section>
 
-        function resize() {
-            width = canvas.width = canvas.offsetWidth;
-            height = canvas.height = canvas.offsetHeight;
-        }
+<section class="problem-section" id="platform">
+    <div class="container">
+        <div class="section-label">The Problem</div>
+        <h2 class="section-title">Cross-institutional detection is broken</h2>
+        <p class="section-desc">
+            Money laundering networks operate across multiple banks. Individual institutions only see fragments. Joint monitoring initiatives have stalled on a fundamental tension: detection requires shared visibility, but data centralisation violates privacy regulation.
+        </p>
+        <div class="problem-grid">
+            <div class="problem-card">
+                <div class="icon">&#x1F3E6;</div>
+                <h3>Siloed Detection</h3>
+                <p>Each bank monitors transactions in isolation. Criminal networks exploit this by spreading activity across institutions. Patterns visible at the system level remain invisible at the bank level.</p>
+            </div>
+            <div class="problem-card">
+                <div class="icon">&#x2696;</div>
+                <h3>Privacy vs. Detection</h3>
+                <p>Centralising transaction data for joint monitoring triggers GDPR objections and regulatory challenges. The EU AMLR (effective mid-2027) restricts data sharing to pre-identified high-risk customers only.</p>
+            </div>
+            <div class="problem-card">
+                <div class="icon">&#x1F4CA;</div>
+                <h3>95% False Positives</h3>
+                <p>Legacy rule-based systems generate overwhelming alert volumes. Compliance teams drown in manual reviews, costing Tier-1 banks &euro;50-100M+ annually in operational expense alone.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-        window.addEventListener('resize', resize);
-        resize();
+<section id="architecture">
+    <div class="container">
+        <div class="section-label">The Architecture</div>
+        <h2 class="section-title">Detect across institutions. Keep data sovereign.</h2>
+        <p class="section-desc">
+            ZQUAS enables multi-bank pattern detection through privacy-preserving computation. No bank shares raw transaction data. Risk comparisons happen cryptographically. The regulator verifies outcomes independently.
+        </p>
+        <div class="arch-grid">
+            <div class="arch-card">
+                <div class="arch-tag">GPU-NATIVE</div>
+                <h3>Real-Time Adjudication</h3>
+                <p>Full policy sets evaluated against every transaction simultaneously on GPU. No sampling, no batching, no sequential rule execution. 2.58 million compliance events per second on a single node.</p>
+            </div>
+            <div class="arch-card">
+                <div class="arch-tag">PRIVACY-PRESERVING</div>
+                <h3>Multi-Party Computation</h3>
+                <p>Cross-institutional risk comparison via GPU-accelerated secure multi-party computation. Each bank retains full data sovereignty. No central data pool. No GDPR exposure.</p>
+            </div>
+            <div class="arch-card">
+                <div class="arch-tag">VERIFIABLE</div>
+                <h3>Cryptographic Attestation</h3>
+                <p>Every compliance decision produces a cryptographic proof bundle. Regulators can independently verify any decision with a standalone tool — without trusting the vendor's software.</p>
+            </div>
+            <div class="arch-card">
+                <div class="arch-tag">CONSTITUTIONAL</div>
+                <h3>Policy-as-Code Governance</h3>
+                <p>Compliance policies compiled to bytecode and enforced deterministically on GPU. Same policy, same data, same verdict — reproducible by any party, at any time.</p>
+            </div>
+            <div class="arch-card">
+                <div class="arch-tag">GRAPH INTELLIGENCE</div>
+                <h3>Entity Resolution at GPU Speed</h3>
+                <p>GPU-resident identity resolution graph with neural network-based risk propagation. Full network context for every decision. Connected entity analysis in real time, not overnight batch.</p>
+            </div>
+            <div class="arch-card">
+                <div class="arch-tag">MULTI-FRAMEWORK</div>
+                <h3>Regulatory Coverage</h3>
+                <p>Built-in compliance evidence production for EU AI Act, NIST AI RMF, ISO 42001, FATF R15, and MAS TRM. Sealed evidence bundles with Merkle roots and Ed25519 signatures.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-        class Particle {
-            constructor() {
-                this.reset();
-                this.x = Math.random() * width * 0.4; // Start in ingress zone
-            }
+<section class="cred-section">
+    <div class="container">
+        <div class="section-label">Credentials</div>
+        <h2 class="section-title">Built by compliance. Engineered for regulators.</h2>
+        <div class="cred-grid">
+            <div class="cred-item">
+                <h3>18+ Years Financial Crime Compliance</h3>
+                <p>Senior compliance roles at Tier-1 banks including RBS, Deutsche Bank, HSBC, and Commerzbank. Fintech compliance leadership at ClearBank, Vivid Money, and CoinMetro.</p>
+            </div>
+            <div class="cred-item">
+                <h3>Regulatory Sandbox Engagement</h3>
+                <p>DNB InnovationHub submission under review. FCA regulatory sandbox programme engaged. Purpose-built for regulator scrutiny from day one.</p>
+            </div>
+            <div class="cred-item">
+                <h3>Academic Foundation</h3>
+                <p>Professional Postgraduate Diploma in Financial Crime Compliance — International Compliance Association / University of Manchester.</p>
+            </div>
+        </div>
+        <div class="fw-row">
+            <span class="fw-tag">EU AI Act</span>
+            <span class="fw-tag">AMLR / 6AMLD</span>
+            <span class="fw-tag">FATF R15</span>
+            <span class="fw-tag">NIST AI RMF</span>
+            <span class="fw-tag">ISO 42001</span>
+            <span class="fw-tag">MAS TRM</span>
+            <span class="fw-tag">GDPR</span>
+            <span class="fw-tag">DORA</span>
+        </div>
+    </div>
+</section>
 
-            reset() {
-                this.x = -20;
-                this.y = (height * 0.2) + (Math.random() * height * 0.6);
-                this.speed = 2 + Math.random() * 5;
-                this.size = 1 + Math.random() * 2;
-                this.alpha = 0;
-                this.state = 'INGRESS'; // INGRESS, ADJUDICATING, COMMITTED
-                this.history = [];
-            }
+<section>
+    <div class="container">
+        <div class="section-label">Insights</div>
+        <h2 class="section-title">Articles</h2>
+        <p class="section-desc">Analysis and perspective on compliance technology, regulatory architecture, and the future of cross-institutional financial crime detection.</p>
+        <div class="articles-list">
+            <a href="article-cross-institutional-detection.html" class="article-item">
+                <div class="article-meta">MARCH 2026 &middot; ANALYSIS</div>
+                <h3>Why Cross-Institutional AML Detection Requires a New Architecture</h3>
+                <p>Joint transaction monitoring initiatives have stalled across Europe. The core assumption — that centralising data is the path to better detection — is architecturally flawed. Privacy-preserving computation offers a fundamentally different approach.</p>
+            </a>
+        </div>
+    </div>
+</section>
 
-            update() {
-                this.history.unshift({x: this.x, y: this.y});
-                if(this.history.length > 10) this.history.pop();
+<section class="contact-section" id="contact">
+    <div class="container">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Let's talk</h2>
+        <p class="section-desc">
+            Interested in sovereign compliance infrastructure for your institution? Open to conversations with banks, regulators, and technology partners.
+        </p>
+        <div class="contact-links">
+            <a href="mailto:danny@zquas.ai" class="contact-link">
+                <span>danny@zquas.ai</span>
+            </a>
+            <a href="https://www.linkedin.com/in/danny-de-gier-prof-pgdip-fcc/" class="contact-link" target="_blank" rel="noopener">
+                <span>LinkedIn</span>
+            </a>
+            <span class="contact-location">
+                <span class="mono">Zwolle, Netherlands</span>
+            </span>
+        </div>
+    </div>
+</section>
 
-                const oracleGate = width * 0.5;
-                const ledgerGate = width * 0.9;
+<footer>
+    <p>&copy; 2026 ZQUAS &middot; Sovereign Compliance Infrastructure</p>
+</footer>
 
-                if (this.state === 'INGRESS') {
-                    this.x += this.speed;
-                    this.alpha = Math.min(1, this.alpha + 0.1);
-                    if (this.x >= oracleGate - 10) {
-                        this.state = 'ADJUDICATING';
-                        this.speed *= 0.1; // Slow down for "processing"
-                    }
-                } else if (this.state === 'ADJUDICATING') {
-                    this.x += this.speed;
-                    if (this.x >= oracleGate + 20) {
-                        this.state = 'COMMITTED';
-                        this.speed = 10; // Rapid commitment
-                    }
-                } else if (this.state === 'COMMITTED') {
-                    this.x += this.speed;
-                    this.alpha -= 0.05;
-                    if (this.alpha <= 0) this.reset();
-                }
-            }
-
-            draw() {
-                // Draw trail
-                ctx.beginPath();
-                ctx.strokeStyle = `rgba(255, 255, 255, ${this.alpha * 0.2})`;
-                ctx.lineWidth = 1;
-                this.history.forEach((pos, i) => {
-                    if(i === 0) ctx.moveTo(pos.x, pos.y);
-                    else ctx.lineTo(pos.x, pos.y);
-                });
-                ctx.stroke();
-
-                // Draw particle
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
-                ctx.fillRect(this.x, this.y, this.size, this.size);
-            }
-        }
-
-        const particles = Array.from({ length: 40 }, () => new Particle());
-
-        function drawOracle() {
-            const centerX = width * 0.5;
-            const centerY = height * 0.5;
-            
-            // Draw scanning lines
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-            ctx.lineWidth = 1;
-            for(let i = 0; i < height; i += 20) {
-                ctx.beginPath();
-                ctx.moveTo(centerX - 40, i);
-                ctx.lineTo(centerX + 40, i);
-                ctx.stroke();
-            }
-
-            // Central Hub
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-            ctx.strokeRect(centerX - 50, centerY - 100, 100, 200);
-            
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
-            ctx.fillRect(centerX - 2, 0, 4, height);
-            
-            // Text Label
-            ctx.fillStyle = '#666';
-            ctx.font = '8px "JetBrains Mono"';
-            ctx.textAlign = 'center';
-            ctx.fillText('ORACLE_RUNTIME', centerX, centerY - 110);
-        }
-
-        function drawGrid() {
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
-            ctx.lineWidth = 1;
-            const size = 40;
-            for(let x = 0; x < width; x += size) {
-                ctx.beginPath();
-                ctx.moveTo(x, 0);
-                ctx.lineTo(x, height);
-                ctx.stroke();
-            }
-            for(let y = 0; y < height; y += size) {
-                ctx.beginPath();
-                ctx.moveTo(0, y);
-                ctx.lineTo(width, y);
-                ctx.stroke();
-            }
-        }
-
-        function animate() {
-            ctx.fillStyle = '#0f0f0f';
-            ctx.fillRect(0, 0, width, height);
-
-            drawGrid();
-            drawOracle();
-
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-
-            // Draw Ingress/Ledger Labels
-            ctx.fillStyle = '#444';
-            ctx.font = '10px "JetBrains Mono"';
-            ctx.textAlign = 'left';
-            ctx.fillText('INGRESS_ZONE', 20, height - 20);
-            ctx.textAlign = 'right';
-            ctx.fillText('CHRONOS_LEDGER', width - 20, height - 20);
-
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-    </script>
 </body>
 </html>
