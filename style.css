@@ -369,8 +369,9 @@ h1 .accent { color: var(--accent); }
     padding: 8rem 2rem 4rem;
 }
 .contact-page-inner {
-    max-width: 800px;
+    max-width: 860px;
     width: 100%;
+    text-align: center;
 }
 .contact-page-title {
     font-size: clamp(2rem, 4vw, 3rem);
@@ -383,24 +384,26 @@ h1 .accent { color: var(--accent); }
     font-size: 1.05rem;
     line-height: 1.8;
     max-width: 560px;
-    margin-bottom: 3rem;
+    margin: 0 auto 3.5rem;
 }
 .contact-page-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+    gap: 1.75rem;
+    margin-bottom: 3.5rem;
 }
 .contact-page-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 2rem;
+    padding: 2.25rem 2rem;
     text-decoration: none;
     color: inherit;
     transition: border-color 0.3s, background 0.3s, transform 0.2s;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 .contact-page-card:hover {
     border-color: var(--border-accent);
@@ -414,54 +417,65 @@ h1 .accent { color: var(--accent); }
     transform: none;
 }
 .contact-page-icon {
-    font-size: 1.2rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--accent-glow);
+    border: 1px solid var(--accent-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.15rem;
     color: var(--accent);
-    margin-bottom: 1.25rem;
-    display: block;
     font-family: 'JetBrains Mono', monospace;
     font-weight: 700;
+    line-height: 1;
 }
 .contact-page-card h3 {
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.5rem;
 }
 .contact-page-card p {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--text-secondary);
-    line-height: 1.5;
+    line-height: 1.6;
     margin-bottom: auto;
 }
 .contact-page-action {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--accent);
-    margin-top: 1.25rem;
+    margin-top: 1.5rem;
     font-weight: 500;
 }
 .contact-page-detail {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
-    margin-top: 1.25rem;
+    margin-top: 1.5rem;
     letter-spacing: 0.05em;
 }
 .contact-page-note {
     border-top: 1px solid var(--border);
-    padding-top: 2rem;
+    padding-top: 2.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
 }
 .contact-page-note h3 {
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 }
 .contact-page-note p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--text-secondary);
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
 @media (max-width: 768px) {
     .contact-page { padding: 6rem 1.5rem 3rem; }
-    .contact-page-grid { grid-template-columns: 1fr; }
+    .contact-page-grid { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; }
 }
 
 /* ── ARTICLES LIST ── */

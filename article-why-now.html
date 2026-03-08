@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Compliance Tech Hasn't Been Disrupted Yet, and What Changes That — ZQUAS</title>
+    <meta name="description" content="The most conservative buyers in the most regulated industry, using tools that haven't changed in 15 years. There are specific reasons this market has resisted disruption. Those reasons are expiring.">
+    <link rel="canonical" href="https://zquas.ai/article-why-now.html">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="/#platform">Platform</a>
+            <a href="/#architecture">Architecture</a>
+            <a href="articles.html">Articles</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<article>
+    <div class="article-header">
+        <a href="articles.html" class="article-back">&larr; Articles</a>
+        <div class="article-meta">December 2025 &middot; Investors &middot; 7 min read</div>
+        <h1>Why Compliance Tech Hasn't Been Disrupted Yet, and What Changes That</h1>
+        <p class="lead">The most conservative buyers in the most regulated industry, using tools that haven't changed in 15 years. There are specific reasons this market has resisted disruption. Those reasons are expiring.</p>
+    </div>
+
+    <div class="article-body">
+        <p>
+            Financial crime compliance is one of the largest enterprise software categories in the world. Banks spend over &euro;200 billion per year on it. The tools they use are, by technology standards, ancient. Batch-processing rule engines designed in the 2000s, generating 95% false positive rates, running on architectures that predate cloud computing.
+        </p>
+        <p>
+            In any other market, this gap between spending and technology quality would have attracted disruptors years ago. In compliance, it hasn't. Understanding why tells you a lot about what needs to change for disruption to actually happen.
+        </p>
+
+        <h2>The Three Locks</h2>
+        <p>
+            There are three interlocking reasons compliance technology has resisted disruption.
+        </p>
+        <p>
+            The first is buyer psychology. Compliance officers don't buy technology the way a CTO or a VP of Engineering does. They buy based on risk. The question isn't "is this better?" The question is "if this goes wrong, what happens to me personally?" When the downside of a bad technology choice includes personal criminal liability (regulators investigated individual board members at both ING and ABN AMRO), the rational response is to buy what everyone else is buying. The incumbent vendor may be mediocre, but mediocre and widely adopted is safer than excellent and unproven.
+        </p>
+        <p>
+            The second is regulatory validation. Banks can't deploy a new monitoring system without their regulator being comfortable with it. This doesn't mean formal approval. Most regulators don't certify compliance software. But there's an informal validation process: the bank tells the regulator what system they're using, the regulator asks questions about it, and if the regulator has never heard of the vendor, the questions get harder and the scrutiny intensifies. This creates a chicken-and-egg problem. New vendors can't get regulatory familiarity without bank deployments, and banks won't deploy without regulatory familiarity.
+        </p>
+        <p>
+            The third is integration depth. Enterprise AML systems are deeply integrated into a bank's infrastructure. They connect to core banking systems, payment processors, customer databases, case management platforms, and regulatory reporting tools. Replacing them is a multi-year project that touches dozens of other systems. Even if a bank wants to switch, the migration cost and risk are enormous.
+        </p>
+        <p>
+            Together, these three locks create a market where incumbents survive not because they're good, but because the barriers to replacing them are so high that buyers don't bother trying.
+        </p>
+
+        <h2>What's Breaking the Locks</h2>
+        <p>
+            Each of these locks is weakening simultaneously. That hasn't happened before.
+        </p>
+        <p>
+            Buyer psychology is shifting because the cost of staying with incumbent systems is becoming visible at the board level. When ING pays &euro;775 million and ABN AMRO pays &euro;480 million in fines, the "safe choice" isn't safe anymore. When 95% false positive rates mean thousands of analysts doing unproductive work, the CFO starts asking questions the CCO used to deflect. The status quo has always had hidden costs, but those costs are now large enough to be line items in board presentations.
+        </p>
+        <p>
+            Regulatory validation is being addressed through sandbox programmes. The FCA's regulatory sandbox and DNB's InnovationHub exist specifically to break the chicken-and-egg problem. A startup that enters the sandbox and gets a positive assessment from the regulator has solved the validation problem without needing existing bank deployments. This is a recent institutional innovation, and it fundamentally changes the go-to-market dynamics for compliance technology startups.
+        </p>
+        <p>
+            Integration depth is being reduced by modern API architectures. Ten years ago, replacing a monitoring system meant ripping out and replacing deep mainframe integrations. Today, most banks have middleware layers, API gateways, and data lakes that decouple the monitoring system from the core infrastructure. A new monitoring engine that ingests data via standard APIs and exports alerts via standard formats can be deployed alongside (not instead of) the existing system. This enables a phased migration rather than a big-bang replacement, which dramatically reduces deployment risk.
+        </p>
+
+        <h2>The AMLR Catalyst</h2>
+        <p>
+            Even with the locks weakening, inertia might still hold. Banks might continue extending contracts with incumbent vendors, upgrading incrementally, and hoping for the best. This is what has happened in every previous regulatory cycle.
+        </p>
+        <p>
+            AMLR changes the equation because it makes incremental upgrades insufficient. The regulation doesn't just raise the bar. It changes what the bar is made of. Batch processing won't satisfy real-time monitoring expectations. Centralised data pooling won't satisfy privacy-preserving detection requirements. Opaque AI won't satisfy explainability standards.
+        </p>
+        <p>
+            For the first time, banks can't comply by tuning their existing systems. They need different systems. And they need them by mid-2027.
+        </p>
+        <p>
+            This creates the forcing function that has been absent in every previous disruption attempt. The demand is mandatory. The timeline is fixed. The existing solutions are architecturally inadequate. And the sandbox programmes provide a path for new entrants to establish regulatory credibility.
+        </p>
+
+        <h2>Why Previous Challengers Didn't Break Through</h2>
+        <p>
+            It's worth understanding why Sardine ($145M raised), Hawk AI ($56M raised), and other funded challengers haven't disrupted the Tier-1 bank market despite strong funding and good technology.
+        </p>
+        <p>
+            The answer isn't that their products are bad. They're genuinely better than legacy systems in many dimensions. The answer is that they're architecturally similar to the incumbents. They run on CPU infrastructure, process in cloud environments, and use conventional machine learning for alert scoring. They're better versions of the existing architecture.
+        </p>
+        <p>
+            Better-but-similar is enough to win fintech customers and mid-market banks that don't have deep incumbent lock-in. It's not enough to displace NICE Actimize or Oracle at a Tier-1 bank. The improvement isn't large enough to justify the migration risk, and the architecture doesn't offer capabilities that the incumbent fundamentally can't match.
+        </p>
+        <p>
+            Disruption in this market requires an architectural step change, not an incremental improvement. GPU-native processing, privacy-preserving cross-institutional detection, and cryptographic regulatory verification are capabilities that existing architectures can't absorb. They require a rebuild from first principles. That's the difference between a challenger and a disruptor.
+        </p>
+
+        <h2>The Window</h2>
+        <p>
+            The investment window for compliance technology disruption is defined by two events. The opening event is the finalisation of AMLR and the EU AI Act technical standards, which has happened. Banks know what they need to comply with, and they're beginning to evaluate alternatives. The closing event is the procurement commitment wave, when the majority of banks have selected their AMLR-compliant monitoring solution and signed contracts.
+        </p>
+        <p>
+            Based on typical enterprise procurement timelines, the commitment wave will run through 2026 into early 2027. Banks will be evaluating in 2026 and deploying in 2027. Companies that are positioned as credible alternatives during the evaluation phase will be in the running. Companies that aren't visible by then will miss the cycle.
+        </p>
+        <p>
+            This window is narrow by enterprise standards. It's also unusually predictable, because the regulatory deadline is fixed and applies uniformly across the EU. For investors, predictable timing in a mandatory-spend market with weak incumbents is about as good as the setup gets.
+        </p>
+
+        <div class="article-author">
+            <div class="name">Danny de Gier</div>
+            <div class="bio">
+                Founder, ZQUAS. 18+ years in financial crime compliance at Tier-1 banks and fintechs.
+                Professional Postgraduate Diploma in Financial Crime Compliance (ICA / University of Manchester).
+            </div>
+        </div>
+    </div>
+</article>
+
+<footer>
+    <p>&copy; 2026 ZQUAS &middot; Sovereign Compliance Infrastructure</p>
+</footer>
+
+</body>
+</html>
