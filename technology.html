@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology — ZQUAS</title>
+    <meta name="description" content="Technical overview of the ZQUAS engine architecture: GPU adjudication, policy compiler, identity graph, cryptographic attestation, and privacy-preserving MPC.">
+    <meta property="og:title" content="Technology — ZQUAS">
+    <meta property="og:description" content="Technical overview of the ZQUAS engine architecture for CTOs, technical evaluators, and due diligence teams.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zquas.ai/technology.html">
+    <meta property="og:image" content="https://zquas.ai/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://zquas.ai/og-image.png">
+    <meta name="author" content="Danny de Gier">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://zquas.ai/technology.html">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="technology.html" class="active">Technology</a>
+            <a href="/#architecture">Architecture</a>
+            <a href="regulators.html">Regulators</a>
+            <a href="/#for-banks">Banks</a>
+            <a href="/#for-investors">Investors</a>
+            <a href="about.html">About</a>
+            <a href="articles.html">Articles</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<div class="tech-header">
+    <div class="section-label">Technology</div>
+    <h1>How ZQUAS works</h1>
+    <p class="section-desc">
+        A technical overview of the engine architecture for CTOs, technical evaluators, and due diligence teams. No source code, no internal codenames. Enough depth to understand what's real and what's different.
+    </p>
+</div>
+
+<section class="problem-section">
+    <div class="container">
+        <div class="section-label">Architecture</div>
+        <h2 class="section-title">Five layers, one engine</h2>
+        <p class="section-desc">
+            ZQUAS is a vertically integrated compliance engine. Each layer is purpose-built, not assembled from third-party components. The engine runs on a single GPU node per institution.
+        </p>
+    </div>
+    <div class="layer-stack">
+        <div class="layer-card">
+            <div class="layer-card-inner">
+                <div class="arch-tag">LAYER 1</div>
+                <h3>Policy Language &amp; Compiler</h3>
+                <p>Compliance policies are written in a domain-specific language designed for regulatory rules. The language has its own lexer, parser, semantic analyser, and compiler. Policies compile to bytecode that can be evaluated on GPU. The bytecode is immutable once deployed. A new policy version produces a new compilation with a different cryptographic hash. This means the exact policy set in effect at any moment is unambiguously identifiable.</p>
+            </div>
+        </div>
+        <div class="layer-card">
+            <div class="layer-card-inner">
+                <div class="arch-tag">LAYER 2</div>
+                <h3>GPU Adjudication Engine</h3>
+                <p>The compiled policy bytecode executes on GPU. Each transaction is evaluated against the full policy set in parallel. One GPU block per transaction, one thread per policy. The engine processes 2.58 million compliance events per second on a single node with a 29-policy Tier-1 bank configuration. Results are deterministic: same policy version plus same input data always produces the same verdict.</p>
+            </div>
+        </div>
+        <div class="layer-card">
+            <div class="layer-card-inner">
+                <div class="arch-tag">LAYER 3</div>
+                <h3>Identity Resolution &amp; Graph Intelligence</h3>
+                <p>A GPU-resident entity graph maintains relationships between accounts, individuals, businesses, devices, and counterparties. The graph uses a double-buffered hash table for real-time updates without read contention. Graph neural network inference propagates risk scores across entity relationships, providing full network context for every compliance decision. Entity resolution runs at GPU speed, not in overnight batch.</p>
+            </div>
+        </div>
+        <div class="layer-card">
+            <div class="layer-card-inner">
+                <div class="arch-tag">LAYER 4</div>
+                <h3>Cryptographic Attestation</h3>
+                <p>Every batch of compliance decisions produces a sealed proof bundle. The bundle includes: a BLAKE3 hash of the policy set, a hash of the input data, individual verdict hashes, a Merkle root binding all verdicts together, and an Ed25519 signature over the complete bundle. A separate SHA-256 witness hash is produced for regulatory interfaces. Proof bundles can optionally include zero-knowledge governance proofs generated via GPU-accelerated PLONK.</p>
+            </div>
+        </div>
+        <div class="layer-card">
+            <div class="layer-card-inner">
+                <div class="arch-tag">LAYER 5</div>
+                <h3>Privacy-Preserving Cross-Institutional Layer</h3>
+                <p>When multiple institutions run ZQUAS, cross-bank detection activates via secure multi-party computation. The MPC layer uses ABY3 replicated secret sharing with GPU-accelerated comparison, oblivious sorting, and secure aggregation. Each institution retains full data sovereignty. No raw transaction data crosses institutional boundaries. The output is a risk indicator, not customer data. A separate federation protocol uses ECDH-based private set intersection and garbled circuits for entity matching across institutions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="section-label">Data Flow</div>
+        <h2 class="section-title">From transaction to verified verdict</h2>
+        <p class="section-desc">
+            The engine uses a triple-stream GPU pipeline for compliance adjudication.
+        </p>
+    </div>
+    <div class="container">
+        <div class="pipeline-flow">
+            <div class="pipeline-stream">
+                <div class="arch-tag">STREAM A</div>
+                <h4>Load</h4>
+                <p>Transaction data serialised to GPU-native evaluation contexts. Asynchronous host-to-device copy via pinned staging buffers.</p>
+            </div>
+            <div class="pipeline-stream">
+                <div class="arch-tag">STREAM B</div>
+                <h4>Adjudicate</h4>
+                <p>GPU kernel evaluates N transactions against M policies in parallel. One block per transaction, one thread per policy. Verdict per transaction.</p>
+            </div>
+            <div class="pipeline-stream">
+                <div class="arch-tag">STREAM C</div>
+                <h4>Commit</h4>
+                <p>Results copied device-to-host. Epoch commitment computed. Merkle root constructed. Ed25519 signature applied. Proof bundle sealed.</p>
+            </div>
+        </div>
+        <p class="pipeline-note">Inter-stream synchronisation uses CUDA events. Streams execute concurrently. Load, adjudicate, and commit operate on different batches simultaneously, maximising throughput.</p>
+    </div>
+</section>
+
+<section class="problem-section">
+    <div class="container">
+        <div class="section-label">Regulator Verification</div>
+        <h2 class="section-title">Independent verification without vendor software</h2>
+        <p class="section-desc">
+            The engine ships with a standalone verification CLI. The tool is independent of the ZQUAS engine. It takes a proof bundle, a registered policy set, and evaluation contexts as input. It replays the evaluation deterministically and confirms that the proof is valid. The tool outputs VALID (exit code 0), INVALID (exit code 1), or ERROR (exit code 2). No GPU required for verification. No vendor infrastructure needed.
+        </p>
+        <div class="terminal-block">
+<pre><span class="terminal-prompt">$</span> themis-verify --epoch epoch_2026-03-08.bundle --policies /registered/v4.2/ --contexts eval_contexts.bin
+
+Replaying epoch 2026-03-08_14:32:00Z...
+Policies:       29 loaded (hash: a3f7c2...)
+Contexts:       1,247 evaluated
+Verdicts:       1,247 matched
+Merkle root:    <span class="terminal-ok">OK</span>
+Ed25519 sig:    <span class="terminal-ok">OK</span>
+
+Result: <span class="terminal-ok">VALID</span> (deterministic replay confirmed)</pre>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="section-label">Engineering</div>
+        <h2 class="section-title">How it's built</h2>
+        <p class="section-desc">Standards and toolchain.</p>
+        <div class="eng-grid">
+            <div class="eng-card">
+                <h4>Language</h4>
+                <p>C++23 with CUDA. Self-contained CUDA compilation per kernel. No separable compilation dependencies.</p>
+            </div>
+            <div class="eng-card">
+                <h4>GPU Targets</h4>
+                <p>NVIDIA architectures: sm_86 (Ampere), sm_89 (Ada Lovelace), sm_100 (Blackwell), sm_120 (next-gen). Tested on RTX 5090.</p>
+            </div>
+            <div class="eng-card">
+                <h4>Build Hardening</h4>
+                <p>MSVC /sdl, /guard:cf, /GS, /Qspectre, /fp:strict. Linker: /CETCOMPAT, /DYNAMICBASE, /NXCOMPAT, /HIGHENTROPYVA.</p>
+            </div>
+            <div class="eng-card">
+                <h4>Testing</h4>
+                <p>~3,869 unit tests (GTest). Standalone benchmark harnesses for throughput, latency, determinism, and detection fidelity.</p>
+            </div>
+            <div class="eng-card">
+                <h4>Cryptography</h4>
+                <p>BLAKE3 (internal), SHA-256 (regulatory), Ed25519 (signatures), Poseidon (ZK circuits). DualHash at domain boundaries.</p>
+            </div>
+            <div class="eng-card">
+                <h4>Binary Attestation</h4>
+                <p>Reproducible builds with embedded BLAKE3 + SHA-256 hashes, compiler version, git commit, and Ed25519 signature for runtime self-verification.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="problem-section">
+    <div class="container">
+        <div class="section-label">Scope</div>
+        <p class="scope-text">
+            This page describes the architecture at a level appropriate for technical evaluation. Implementation details including the policy language syntax, GPU kernel design, MPC protocol specifics, and internal subsystem architecture are available under NDA for qualified evaluation partners. Contact <a href="mailto:danny@zquas.ai">danny@zquas.ai</a>.
+        </p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 ZQUAS &middot; Sovereign Compliance Infrastructure</p>
+</footer>
+
+</body>
+</html>

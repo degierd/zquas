@@ -1169,6 +1169,153 @@ h1 .accent { color: var(--accent); }
     margin-bottom: 1.5rem;
 }
 
+/* ── TECHNOLOGY PAGE ── */
+.tech-header {
+    padding: 8rem 2rem 4rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.tech-header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+}
+
+/* Layer stack */
+.layer-stack {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+}
+.layer-stack::before {
+    content: '';
+    position: absolute;
+    left: calc(2rem + 3px);
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+}
+.layer-card {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+}
+.layer-card:last-child {
+    margin-bottom: 0;
+}
+.layer-card-inner {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem;
+    transition: border-color 0.3s;
+}
+.layer-card-inner:hover {
+    border-color: var(--border-accent);
+}
+.layer-card .arch-tag {
+    margin-bottom: 0.75rem;
+}
+.layer-card h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+.layer-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+/* Pipeline streams */
+.pipeline-flow {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.pipeline-stream {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
+}
+.pipeline-stream::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+}
+.pipeline-stream .arch-tag {
+    margin-bottom: 0.75rem;
+}
+.pipeline-stream h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+.pipeline-stream p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+.pipeline-note {
+    max-width: 1100px;
+    margin: 1.5rem auto 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-style: italic;
+}
+
+/* Engineering compact grid */
+.eng-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+.eng-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.3s;
+}
+.eng-card:hover {
+    border-color: var(--border-accent);
+}
+.eng-card h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+.eng-card p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+}
+
+/* Scope section */
+.scope-text {
+    max-width: 720px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+.scope-text a {
+    color: var(--accent);
+    text-decoration: none;
+}
+.scope-text a:hover {
+    text-decoration: underline;
+}
+
 /* ── FOOTER ── */
 footer {
     border-top: 1px solid var(--border);
@@ -1215,6 +1362,12 @@ footer p {
     .verify-connector { transform: rotate(90deg); padding: 0; }
     .two-col-grid { grid-template-columns: 1fr; }
     .engage-grid { grid-template-columns: 1fr; }
+
+    .tech-header { padding: 6rem 1.5rem 3rem; }
+    .layer-stack { padding: 0 1.5rem; }
+    .layer-stack::before { left: calc(1.5rem + 3px); }
+    .pipeline-flow { grid-template-columns: 1fr; }
+    .eng-grid { grid-template-columns: 1fr; }
 
     .about-header { padding: 6rem 1.5rem 3rem; }
     .about-columns { grid-template-columns: 1fr; gap: 2rem; padding: 0 1.5rem; }
