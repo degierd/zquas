@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benchmark: 2.58M Compliance Events Per Second — ZQUAS</title>
+    <meta name="description" content="Documented GPU benchmark of the ZQUAS compliance engine. 29-policy Tier-1 bank policy set on a single RTX 5090. Methodology, results, and what it means for real-world compliance.">
+    <meta property="og:title" content="Benchmark: 2.58M Compliance Events Per Second — ZQUAS">
+    <meta property="og:description" content="Documented GPU benchmark of the ZQUAS compliance engine. 29-policy Tier-1 bank policy set on a single RTX 5090.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zquas.ai/benchmark.html">
+    <meta property="og:image" content="https://zquas.ai/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://zquas.ai/og-image.png">
+    <meta name="author" content="Danny de Gier">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://zquas.ai/benchmark.html">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="technology.html">Technology</a>
+            <a href="/#architecture">Architecture</a>
+            <a href="regulators.html">Regulators</a>
+            <a href="/#for-banks">Banks</a>
+            <a href="/#for-investors">Investors</a>
+            <a href="about.html">About</a>
+            <a href="articles.html">Articles</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<section class="bench-header">
+    <div class="container">
+        <div class="section-label">Benchmark Study</div>
+        <h1 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.6rem); max-width: 700px; margin-bottom: 1.5rem;">2.58 Million Compliance Events Per Second</h1>
+        <p class="section-desc">
+            A documented benchmark of the ZQUAS engine running a 29-policy Tier-1 bank policy set across 8 compliance domains on a single NVIDIA RTX 5090 GPU. This is what the number means, how it was measured, and why it matters.
+        </p>
+        <div class="bench-meta">Benchmark date: March 2026 &middot; Hardware: NVIDIA RTX 5090 (Blackwell, sm_100)</div>
+    </div>
+</section>
+
+<section style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+        <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 2rem;">Test Configuration</h2>
+        <div class="bench-spec-grid">
+            <div class="bench-spec-card">
+                <h3>Hardware</h3>
+                <div class="bench-spec-row">
+                    <span class="bench-spec-key">GPU</span>
+                    <span class="bench-spec-val">NVIDIA RTX 5090</span>
+                </div>
+                <div class="bench-spec-row">
+                    <span class="bench-spec-key">Architecture</span>
+                    <span class="bench-spec-val">Blackwell (sm_100)</span>
+                </div>
+                <div class="bench-spec-row">
+                    <span class="bench-spec-key">CUDA Cores</span>
+                    <span class="bench-spec-val">21,760</span>
+                </div>
+                <div class="bench-spec-row">
+                    <span class="bench-spec-key">VRAM</span>
+                    <span class="bench-spec-val">32 GB GDDR7</span>
+                </div>
+                <div class="bench-spec-row">
+                    <span class="bench-spec-key">Host CPU</span>
+                    <span class="bench-spec-val">AMD Ryzen 9 9950X</span>
+                </div>
+                <div class="bench-spec-row">
+                    <span class="bench-spec-key">Host RAM</span>
+                    <span class="bench-spec-val">64 GB DDR5</span>
+                </div>
+                <div class="bench-spec-row">
+                    <span class="bench-spec-key">OS</span>
+                    <span class="bench-spec-val">Windows 11 Pro</span>
+                </div>
+            </div>
+            <div class="bench-spec-card">
+                <h3>Policy Set</h3>
+                <div class="bench-spec-row">
+                    <span class="bench-spec-key">Policies</span>
+                    <span class="bench-spec-val">29 active policies</span>
+                </div>
+                <div class="bench-spec-row">
+                    <span class="bench-spec-key">Domains</span>
+                    <span class="bench-spec-val">8 compliance domains</span>
+                </div>
+                <div class="bench-spec-row">
+                    <span class="bench-spec-key">Format</span>
+                    <span class="bench-spec-val">CPL bytecode (compiled)</span>
+                </div>
+                <div class="bench-spec-row">
+                    <span class="bench-spec-key">Evaluation model</span>
+                    <span class="bench-spec-val">N blocks &times; M threads</span>
+                </div>
+                <div class="bench-spec-row">
+                    <span class="bench-spec-key">Max policies (M)</span>
+                    <span class="bench-spec-val">&le; 1,024</span>
+                </div>
+                <div class="bench-spec-row">
+                    <span class="bench-spec-key">Batch size</span>
+                    <span class="bench-spec-val">&le; 4,096 contexts</span>
+                </div>
+                <div class="bench-spec-row">
+                    <span class="bench-spec-key">Deadline flush</span>
+                    <span class="bench-spec-val">1,000 &micro;s</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="analysis-body">
+            <h2>What CEPS Means</h2>
+
+            <p>CEPS stands for Compliance Events Per Second. One compliance event is a single transaction evaluated against the full active policy set. Not one rule. All 29 policies, applied to one transaction, simultaneously.</p>
+
+            <p>This is an important distinction. Some vendors report throughput in transactions per second, where each transaction is checked against one rule at a time in sequence. If you have 29 rules, sequential evaluation means your effective policy throughput is 29 times lower than the headline transaction rate.</p>
+
+            <p>In the ZQUAS engine, the GPU evaluates all policies against each transaction in parallel. One GPU block per transaction. One thread per policy. The 2.58 million CEPS figure means 2.58 million transactions were each evaluated against all 29 policies simultaneously. That's over 74 million individual policy evaluations per second.</p>
+
+            <div class="callout">
+                <p>2.58M transactions &times; 29 policies = 74.8M individual policy evaluations per second. On a single GPU.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+        <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 0.75rem;">Policy Set Composition</h2>
+        <p class="section-desc">The benchmark used a 29-policy set modelled on a Tier-1 bank's production monitoring requirements, spanning 8 compliance domains:</p>
+        <div class="bench-domain-grid">
+            <div class="bench-domain-card">
+                <div class="bench-domain-num">01</div>
+                <h4>AML Transaction Monitoring</h4>
+                <p>Structuring detection, velocity analysis, counterparty risk, geographic risk</p>
+            </div>
+            <div class="bench-domain-card">
+                <div class="bench-domain-num">02</div>
+                <h4>Sanctions Screening</h4>
+                <p>Name matching, list-based screening, fuzzy matching thresholds</p>
+            </div>
+            <div class="bench-domain-card">
+                <div class="bench-domain-num">03</div>
+                <h4>Fraud Detection</h4>
+                <p>Anomaly scoring, device correlation, behavioural deviation</p>
+            </div>
+            <div class="bench-domain-card">
+                <div class="bench-domain-num">04</div>
+                <h4>KYC/KYB</h4>
+                <p>Customer risk classification, beneficial ownership verification, PEP screening</p>
+            </div>
+            <div class="bench-domain-card">
+                <div class="bench-domain-num">05</div>
+                <h4>Correspondent Banking</h4>
+                <p>Nested correspondent detection, payment chain analysis, jurisdiction risk</p>
+            </div>
+            <div class="bench-domain-card">
+                <div class="bench-domain-num">06</div>
+                <h4>Trade-Based Money Laundering</h4>
+                <p>Invoice manipulation, over/under pricing, phantom shipments</p>
+            </div>
+            <div class="bench-domain-card">
+                <div class="bench-domain-num">07</div>
+                <h4>Terrorist Financing</h4>
+                <p>Low-value high-frequency patterns, geographic indicators, list correlation</p>
+            </div>
+            <div class="bench-domain-card">
+                <div class="bench-domain-num">08</div>
+                <h4>Regulatory Reporting</h4>
+                <p>SAR trigger conditions, threshold-based filing requirements, cross-domain aggregation</p>
+            </div>
+        </div>
+        <p class="section-note" style="max-width: 900px;">These are representative compliance domains. The specific rules, thresholds, and scenarios are not disclosed. The policy set is designed to reflect the breadth and complexity of a real Tier-1 bank monitoring configuration.</p>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 2rem; text-align: center;">Results</h2>
+        <div class="bench-stat-grid">
+            <div class="bench-stat-card">
+                <div class="val">2,582,417</div>
+                <div class="label">Compliance events per second (peak sustained)</div>
+            </div>
+            <div class="bench-stat-card">
+                <div class="val">74.8M</div>
+                <div class="label">Individual policy evaluations per second</div>
+            </div>
+            <div class="bench-stat-card">
+                <div class="val">&lt; 1ms</div>
+                <div class="label">Batch latency (submission to verdict)</div>
+            </div>
+        </div>
+        <div class="bench-properties">
+            <div class="bench-prop"><strong>Determinism:</strong> Verified. Replaying the same policy set against the same input data produces byte-identical verdicts across multiple runs.</div>
+            <div class="bench-prop"><strong>Epoch commitment:</strong> Each batch produces a cryptographic proof bundle (Ed25519 signed, Merkle-rooted) within the measured latency.</div>
+            <div class="bench-prop"><strong>GPU utilization:</strong> Triple-stream pipeline (load, adjudicate, commit) operating concurrently across CUDA streams with inter-stream synchronisation via CUDA events.</div>
+        </div>
+    </div>
+</section>
+
+<section style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+        <div class="analysis-body">
+            <h2>How It Was Measured</h2>
+
+            <p>The benchmark uses the Themis Governance Benchmark (TGB v1.2), a standalone harness that measures throughput, latency, determinism, and cryptographic proof generation under controlled conditions.</p>
+
+            <p>Transactions are synthetically generated with realistic parameter distributions (amount, currency, jurisdiction, counterparty type, temporal spacing). The generator produces a continuous stream at a rate exceeding the engine's processing capacity to ensure the benchmark measures engine throughput, not data generation throughput.</p>
+
+            <p>Timing uses CUDA events for GPU-side measurement, eliminating host-side timing noise. The measurement window excludes startup and warmdown periods. The reported figure is sustained throughput over the measurement window, not a burst or peak.</p>
+
+            <p>The benchmark harness is a standalone executable (TgbBench) that runs independently of the full engine application. It isolates the policy evaluation pipeline: GPU context packet serialisation, kernel dispatch, verdict collection, and epoch commitment. It does not include data ingestion, entity graph updates, or rendering overhead. These subsystems operate concurrently in the full engine but are excluded from the policy evaluation benchmark to measure the adjudication pipeline in isolation.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="analysis-body">
+            <h2>Why This Matters for Banks</h2>
+
+            <p>A Tier-1 bank processes roughly 5 to 50 million transactions per day, depending on business mix and payment types. At 2.58 million compliance events per second, the engine can evaluate a full day's transaction volume in under 20 seconds. With the full policy set. Against every transaction. No sampling. No prioritisation. No overnight batch window.</p>
+
+            <p>For real-time payment rails (SEPA Instant, Faster Payments, RTP), the relevant metric is whether the engine can evaluate a transaction before settlement completes. SEPA Instant requires settlement in under 10 seconds. At sub-millisecond batch latency, the engine evaluates the transaction in a fraction of the settlement window.</p>
+
+            <p>For banks considering GPU-based compliance, the hardware cost is relevant. An NVIDIA RTX 5090 costs approximately &euro;2,000 to &euro;2,500 at retail. The entire benchmark was run on a single consumer-grade GPU. Enterprise GPUs (A100, H100) would provide higher throughput and larger VRAM, but the benchmark demonstrates that enterprise-class compliance performance is achievable on hardware that costs less than a single compliance analyst's monthly salary.</p>
+
+            <div class="callout">
+                <p>One GPU. One month's analyst salary. 2.58 million compliance events per second. The economics of GPU-native compliance are difficult to argue with.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+        <div class="analysis-body">
+            <h2>Detection Fidelity: 1.25M Transaction Simulation</h2>
+
+            <p>Separately from the throughput benchmark, a detection fidelity test simulated 1.25 million transactions modelled on Tier-1 bank transaction patterns, including known suspicious patterns based on published enforcement actions and FATF typologies.</p>
+
+            <p>The detection fidelity benchmark measures whether the policy set correctly identifies known suspicious patterns while avoiding false triggers on legitimate transaction patterns. Results are measured in precision (what percentage of alerts were genuine) and recall (what percentage of genuine suspicious patterns were detected).</p>
+
+            <p>Detailed detection fidelity results are available under NDA for qualified evaluation partners. The benchmark framework (HsbcDetectionReport) is available for inspection during technical due diligence.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="analysis-body">
+            <h2>Verification</h2>
+
+            <p>The benchmark is deterministic. Running TGB v1.2 with the same policy set on the same hardware produces identical results. The benchmark executable is subject to the same build attestation as the main engine: embedded BLAKE3 and SHA-256 hashes, compiler version, git commit, and Ed25519 signature.</p>
+
+            <p>The benchmark can be independently verified by running the TgbBench executable with the provided policy set and comparing results against the published figures. Hardware differences will affect absolute throughput but not determinism or correctness.</p>
+        </div>
+    </div>
+</section>
+
+<section class="contact-section">
+    <div class="container">
+        <p class="section-desc" style="margin-left: auto; margin-right: auto; text-align: center; font-size: 0.95rem;">
+            For benchmark reproduction, detection fidelity details, or technical due diligence: <a href="mailto:danny@zquas.ai" style="color: var(--accent); text-decoration: none;">danny@zquas.ai</a>
+        </p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 ZQUAS &middot; Sovereign Compliance Infrastructure</p>
+</footer>
+
+</body>
+</html>
