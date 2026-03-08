@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Same Data, Same Rules, Different Verdict: The Determinism Problem in AML — ZQUAS</title>
+    <meta name="description" content="Run the same transaction through the same monitoring system tomorrow and you might get a different result. That's not a bug. It's an architecture problem. And regulators are starting to notice.">
+    <link rel="canonical" href="https://zquas.ai/article-determinism-problem.html">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="/#platform">Platform</a>
+            <a href="/#architecture">Architecture</a>
+            <a href="articles.html">Articles</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<article>
+    <div class="article-header">
+        <a href="articles.html" class="article-back">&larr; Articles</a>
+        <div class="article-meta">January 2026 &middot; Banks &middot; 6 min read</div>
+        <h1>Same Data, Same Rules, Different Verdict: The Determinism Problem in AML</h1>
+        <p class="lead">Run the same transaction through the same monitoring system tomorrow and you might get a different result. That's not a bug. It's an architecture problem. And regulators are starting to notice.</p>
+    </div>
+
+    <div class="article-body">
+        <p>
+            A few years ago I was involved in a model validation exercise at a Tier-1 bank. The validation team took a set of historical transactions that had been flagged as alerts, fed them back through the monitoring system, and compared the results. About 12% of the transactions that originally triggered alerts did not trigger alerts on the second run.
+        </p>
+        <p>
+            Same data. Same rules. Different results.
+        </p>
+        <p>
+            The compliance team was understandably alarmed. If the system produces different results on the same input, what does that say about the reliability of every alert it has ever generated? And what does it say about every transaction it didn't alert on?
+        </p>
+        <p>
+            It turned out there were explanations. The ML model had been retrained between the two runs. Some reference data tables had been updated. The evaluation order of certain rules had shifted due to a system upgrade. Each individual cause was understandable. But the aggregate effect was that the system was non-deterministic, and nobody had fully appreciated what that meant until the validation exercise made it visible.
+        </p>
+
+        <h2>Why Monitoring Systems Are Non-Deterministic</h2>
+        <p>
+            Most AML monitoring systems have multiple sources of non-determinism, and most compliance teams aren't aware of all of them.
+        </p>
+        <p>
+            ML model updates are the most obvious source. Models are retrained periodically on new data. Each retraining produces slightly different parameters. A transaction that scored 0.68 under last month's model might score 0.72 under this month's model. If the alert threshold is 0.70, the verdict flips. This is by design. The model is learning. But it means that historical verdicts can't be reproduced exactly.
+        </p>
+        <p>
+            Reference data dependencies are another source. Many rules check transaction data against external reference lists: country risk ratings, sanctions lists, PEP databases, customer risk scores. These lists change constantly. A transaction to a country that was rated medium-risk last Tuesday might now be rated high-risk. If the system evaluates the transaction against today's reference data instead of the reference data that was in effect when the transaction occurred, the result changes.
+        </p>
+        <p>
+            Evaluation order matters in systems with cascading rules. If Rule A excludes a transaction from further evaluation, and Rule B would have flagged it, the result depends on which rule runs first. In some systems, the evaluation order is configuration-dependent or even load-dependent. A system under heavy load might execute rules in a different sequence than the same system under light load.
+        </p>
+        <p>
+            Floating point arithmetic introduces subtle non-determinism in ML-based systems. The order in which floating point operations are executed can affect the result due to rounding. GPU-accelerated ML inference can produce different results depending on the specific GPU hardware and driver version. These differences are typically tiny, but when scores are close to alert thresholds, tiny differences change verdicts.
+        </p>
+        <p>
+            Race conditions in parallel processing can cause non-determinism in systems that evaluate multiple rules concurrently. If two rules read from the same customer profile and one updates it during evaluation, the result depends on timing.
+        </p>
+
+        <h2>Why Determinism Matters for Compliance</h2>
+        <p>
+            Non-determinism creates three specific problems for compliance operations.
+        </p>
+        <p>
+            The first is defensibility. When a regulator asks why a transaction wasn't flagged, the bank needs to explain what the system did and why. If the answer is "the system might have produced a different result if it had run at a different time or in a different order," that's not a strong defence. Regulators expect monitoring systems to be reliable and consistent. Non-deterministic results undermine confidence in the system's overall effectiveness.
+        </p>
+        <p>
+            The second is model validation. Validation exercises require reproducing the system's behavior on known data. If the system is non-deterministic, the validation results don't tell you much about the production system's actual behavior. You're validating a different instance of the system, not the one that processed the real transactions.
+        </p>
+        <p>
+            The third is legal liability. In enforcement actions, banks need to demonstrate that their monitoring was adequate. If opposing counsel can show that the same system produces different results on the same data, the bank's position weakens significantly. The argument that "our system works" becomes difficult to sustain when the system's output depends on when you ask.
+        </p>
+
+        <h2>How Deterministic Evaluation Works</h2>
+        <p>
+            A deterministic compliance engine eliminates these problems by design.
+        </p>
+        <p>
+            The policy set is compiled to bytecode. The bytecode is immutable once deployed. There are no model retraining cycles that change evaluation behavior mid-deployment. When the policy set changes, a new version is compiled, and the transition is recorded with cryptographic hashes of both the old and new versions.
+        </p>
+        <p>
+            Reference data is versioned and snapshotted. When a batch of transactions is evaluated, the system records which version of each reference dataset was used. Replaying the evaluation with the same reference data version produces identical results.
+        </p>
+        <p>
+            The evaluation is fully parallel but order-independent. Each transaction is evaluated against the full policy set independently. There are no cascading rules that depend on evaluation order. No race conditions. No load-dependent sequencing.
+        </p>
+        <p>
+            The arithmetic is deterministic. The policy bytecode executes on GPU with fixed-point or controlled floating-point operations that produce identical results regardless of hardware specifics.
+        </p>
+        <p>
+            The practical result: given the same policy version, the same input data, and the same reference data version, the system always produces exactly the same verdict. Not "almost the same." Exactly the same. Byte-identical.
+        </p>
+
+        <h2>What This Means for Your Next Examination</h2>
+        <p>
+            When your regulator asks "how do you know your system is producing consistent results?", the answer matters.
+        </p>
+        <p>
+            With a conventional system, you can point to periodic validation exercises and model governance documentation. But you can't guarantee that the production system's behavior matches the validation results, because the system is non-deterministic.
+        </p>
+        <p>
+            With a deterministic engine, you can make a stronger claim. The system is mathematically incapable of producing different results on the same input with the same policies. You can demonstrate this by replaying any historical evaluation and showing byte-identical results. And the cryptographic proof bundles provide evidence that the same policy set was in effect throughout the evaluation period.
+        </p>
+        <p>
+            This isn't just a theoretical improvement. It changes the nature of the conversation with your regulator. Instead of explaining why your system might sometimes produce inconsistent results and arguing that the inconsistency is acceptable, you can demonstrate that inconsistency is architecturally impossible.
+        </p>
+        <p>
+            That's a conversation most compliance officers would prefer to be having.
+        </p>
+
+        <div class="article-author">
+            <div class="name">Danny de Gier</div>
+            <div class="bio">
+                Founder, ZQUAS. 18+ years in financial crime compliance at Tier-1 banks and fintechs.
+                Professional Postgraduate Diploma in Financial Crime Compliance (ICA / University of Manchester).
+            </div>
+        </div>
+    </div>
+</article>
+
+<footer>
+    <p>&copy; 2026 ZQUAS &middot; Sovereign Compliance Infrastructure</p>
+</footer>
+
+</body>
+</html>
