@@ -1316,6 +1316,51 @@ h1 .accent { color: var(--accent); }
     text-decoration: underline;
 }
 
+/* ── FEATURED ARTICLE ── */
+.featured-article {
+    margin-bottom: 2rem;
+}
+.featured-article .article-item.featured {
+    border-left: 3px solid var(--accent);
+}
+
+/* ── ANALYSIS PAGE ── */
+.analysis-header {
+    padding: 8rem 2rem 5rem;
+}
+.analysis-updated {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.03em;
+}
+.analysis-body {
+    max-width: 720px;
+    margin: 0 auto;
+}
+.analysis-body h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+}
+.analysis-body h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 2.5rem 0 1rem;
+}
+.analysis-body p {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+.analysis-body strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
 /* ── FOOTER ── */
 footer {
     border-top: 1px solid var(--border);
@@ -1368,6 +1413,8 @@ footer p {
     .layer-stack::before { left: calc(1.5rem + 3px); }
     .pipeline-flow { grid-template-columns: 1fr; }
     .eng-grid { grid-template-columns: 1fr; }
+
+    .analysis-header { padding: 6rem 1.5rem 3rem; }
 
     .about-header { padding: 6rem 1.5rem 3rem; }
     .about-columns { grid-template-columns: 1fr; gap: 2rem; padding: 0 1.5rem; }
