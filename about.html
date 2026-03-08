@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — ZQUAS</title>
+    <meta name="description" content="ZQUAS is built by Danny de Gier — 18 years in financial crime compliance at Tier-1 banks, now building GPU-native sovereign compliance infrastructure.">
+    <meta property="og:title" content="About — ZQUAS">
+    <meta property="og:description" content="18 years in financial crime compliance at Tier-1 banks. Now building GPU-native sovereign compliance infrastructure.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zquas.ai/about.html">
+    <meta name="author" content="Danny de Gier">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://zquas.ai/about.html">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="/#platform">Platform</a>
+            <a href="/#architecture">Architecture</a>
+            <a href="regulators.html">Regulators</a>
+            <a href="/#for-banks">Banks</a>
+            <a href="/#for-investors">Investors</a>
+            <a href="about.html" class="active">About</a>
+            <a href="articles.html">Articles</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<div class="about-header">
+    <div class="section-label">About</div>
+    <h1>Built by compliance. Not about compliance.</h1>
+    <p class="section-desc">
+        ZQUAS exists because I spent 18 years inside the compliance function at Tier-1 banks, watching the same architectural failures repeat across every institution I worked at. The tools weren't broken. The architecture was wrong. So I built a different one.
+    </p>
+    <div class="about-author-name">Danny de Gier</div>
+    <div class="about-author-role">Founder &amp; Engineer</div>
+</div>
+
+<section class="problem-section">
+    <div class="container">
+        <div class="section-label">Background</div>
+        <h2 class="section-title">Two careers in one</h2>
+    </div>
+</section>
+
+<section class="problem-section" style="padding-top: 0; border-top: none;">
+    <div class="about-columns">
+        <div class="about-col">
+            <h3>The Compliance Career</h3>
+            <p>I started in financial crime compliance in 2006 and spent the next 18 years inside the machine. RBS, Deutsche Bank, HSBC, Commerzbank on the banking side. ClearBank, Vivid Money, CoinMetro on the fintech side.</p>
+            <p>I've built onboarding frameworks, designed transaction monitoring rule sets, sat through regulatory examinations, written SARs, reviewed thousands of alerts, and watched analysts burn out on false positives that could have been avoided with better architecture.</p>
+            <p>I've seen what a &euro;775 million fine does to a bank from the inside. I've seen what happens when a regulator loses confidence in your monitoring programme. And I've seen how compliance teams compensate for bad tooling with sheer headcount, hiring hundreds of analysts to manually review alerts that a better system would never have generated.</p>
+            <p>The Professional Postgraduate Diploma in Financial Crime Compliance from the International Compliance Association and University of Manchester formalised what I'd learned on the job. But the real education was sitting in the chair, across the table from examiners, defending systems I knew were inadequate.</p>
+        </div>
+        <div class="about-col">
+            <h3>The Engineering Path</h3>
+            <p>Somewhere along the way I started asking why compliance systems were so far behind the technology curve. Trading systems process millions of events per second. Game engines render entire worlds in real time. GPU computing had transformed AI, scientific simulation, and high-frequency finance.</p>
+            <p>Compliance was still running batch jobs overnight on CPU-based rule engines designed in the 2000s.</p>
+            <p>I taught myself GPU programming. C++, CUDA, Vulkan. Not as a hobby, but because I could see that the compliance problems I'd spent years working around were fundamentally compute problems that GPU architecture could solve. Entity resolution across millions of accounts. Policy evaluation against every transaction in real time. Cryptographic proof generation for regulatory verification. These are massively parallel workloads. They belong on GPU.</p>
+            <p>ZQUAS is the engine I wished I'd had during every compliance role I ever held. It's built by someone who has reviewed the SARs, built the rule sets, sat through the examinations, and also writes the GPU kernels. That combination shapes every architectural decision in the system.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="section-label">Experience</div>
+        <h2 class="section-title">Where I've worked</h2>
+    </div>
+    <div class="timeline">
+        <!-- Career timeline aligned with CV -->
+        <div class="timeline-entry">
+            <div class="timeline-date">2024 &ndash; Present</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h4>ZQUAS</h4>
+                <div class="timeline-role">Founder &amp; Engineer</div>
+                <div class="timeline-desc">GPU-native compliance engine. C++/CUDA/Vulkan. Engaged with DNB InnovationHub and FCA regulatory sandbox.</div>
+            </div>
+        </div>
+        <div class="timeline-entry">
+            <div class="timeline-date">Jul 2022 &ndash; Feb 2024</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h4>ClearBank</h4>
+                <div class="timeline-role">Global Cryptoassets / Risk Director</div>
+                <div class="timeline-desc">Defined digital asset risk appetite with the Executive Board. Enterprise-wide AML transformation. Acting MLRO.</div>
+            </div>
+        </div>
+        <div class="timeline-entry">
+            <div class="timeline-date">Mar 2020 &ndash; Feb 2022</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h4>Vivid Money</h4>
+                <div class="timeline-role">Group Chief Risk &amp; Compliance Officer, MLRO</div>
+                <div class="timeline-desc">Board Member and Statutory Director. Built compliance from the ground up during 0 to 300 FTE scaling. Group DPO.</div>
+            </div>
+        </div>
+        <div class="timeline-entry">
+            <div class="timeline-date">Apr 2019 &ndash; Mar 2020</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h4>DLL / Rabobank</h4>
+                <div class="timeline-role">Global AML Programme Lead</div>
+                <div class="timeline-desc">Led global AML transaction monitoring program across 35 jurisdictions.</div>
+            </div>
+        </div>
+        <div class="timeline-entry">
+            <div class="timeline-date">Feb 2019 &ndash; Nov 2019</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h4>Crypterium</h4>
+                <div class="timeline-role">Chief Compliance Advisor</div>
+                <div class="timeline-desc">First- and second-line policies and controls for cryptocurrency fintech startup.</div>
+            </div>
+        </div>
+        <div class="timeline-entry">
+            <div class="timeline-date">Jun 2018 &ndash; Dec 2018</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h4>CoinMetro</h4>
+                <div class="timeline-role">Head of Compliance, CCO &amp; MLRO</div>
+                <div class="timeline-desc">Full accountability for Legal, Risk, and Compliance. Recruited core compliance team for high-growth crypto ecosystem.</div>
+            </div>
+        </div>
+        <div class="timeline-entry">
+            <div class="timeline-date">Dec 2017 &ndash; Jun 2018</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h4>Commerzbank</h4>
+                <div class="timeline-role">Senior Strategic Advisor: Trade Finance Financial Crime</div>
+                <div class="timeline-desc">Enhanced financial crime controls in response to FCA s166 Skilled Person findings. Strategic roadmap for global Trade Finance.</div>
+            </div>
+        </div>
+        <div class="timeline-entry">
+            <div class="timeline-date">Sep 2016 &ndash; Jul 2017</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h4>Deutsche Bank</h4>
+                <div class="timeline-role">Global Strategic Lead: Anti-Financial Crime Strategy &amp; Sanctions</div>
+                <div class="timeline-desc">40+ project compliance improvement program. Regulatory liaison with FED, FCA, and Independent Monitor.</div>
+            </div>
+        </div>
+        <div class="timeline-entry">
+            <div class="timeline-date">Dec 2014 &ndash; Jun 2016</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h4>Royal Bank of Scotland</h4>
+                <div class="timeline-role">Global Head of Sanctions, Transaction Monitoring &amp; Payments Filtering</div>
+                <div class="timeline-desc">Primary technical and operational authority for Financial Crime within CIB. Team of 32 FTE.</div>
+            </div>
+        </div>
+        <div class="timeline-entry">
+            <div class="timeline-date">Jun 2014 &ndash; Dec 2014</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h4>HSBC</h4>
+                <div class="timeline-role">Senior Strategic Project Manager: Global Sanctions &amp; Trade Finance</div>
+                <div class="timeline-desc">Translated global Sanctions policies into technical requirements within Financial Crime Compliance Change.</div>
+            </div>
+        </div>
+        <div class="timeline-entry">
+            <div class="timeline-date">Jun 2008 &ndash; Feb 2014</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h4>Royal Bank of Scotland</h4>
+                <div class="timeline-role">Strategic Lead: AML Systems Integration &amp; Operational Architecture</div>
+                <div class="timeline-desc">Led ABN AMRO and RBS KYC/AML infrastructure integration. End-to-end client onboarding re-engineering.</div>
+            </div>
+        </div>
+        <div class="timeline-entry">
+            <div class="timeline-date">Pre-2008</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h4>ABN AMRO / LeasePlan / IBM</h4>
+                <div class="timeline-role">AML Change Management, Systems Architecture &amp; Enterprise Delivery</div>
+                <div class="timeline-desc">Technical foundation in systems architecture, software development, and enterprise delivery.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="problem-section">
+    <div class="container">
+        <div class="section-label">Qualifications</div>
+        <h2 class="section-title">Education &amp; expertise</h2>
+    </div>
+    <ul class="qual-list">
+        <li><strong>Professional Postgraduate Diploma in Financial Crime Compliance</strong> — International Compliance Association / University of Manchester</li>
+        <li><strong>Business Analysis Diploma</strong> | <strong>PRINCE2 Practitioner</strong> — Project Management</li>
+        <li><strong>GPU Systems Programming</strong> — C++23, CUDA (sm_86/89/100/120), Vulkan</li>
+        <li><strong>Domain expertise spanning 8 compliance domains</strong> — AML, sanctions screening, fraud detection, KYC/KYB, trade surveillance, correspondent banking, crypto compliance, regulatory reporting</li>
+    </ul>
+</section>
+
+<section>
+    <div class="container">
+        <div class="section-label">Why This Matters</div>
+        <h2 class="section-title">The intersection that doesn't exist elsewhere</h2>
+    </div>
+    <div class="about-prose">
+        <p>There are plenty of compliance professionals in the world. There are plenty of GPU engineers. The intersection of those two groups is essentially empty.</p>
+        <p>Most compliance technology is built by engineers who learn about compliance from documentation and customer interviews. They build what they think compliance teams need based on requirements documents and feedback sessions. The result is software that looks right on a demo but misses the operational realities that only become visible after years inside the function.</p>
+        <p>ZQUAS is different because every design decision comes from direct experience. The policy language exists because I've written rules in vendor tools that couldn't express what the regulation actually required. The cryptographic attestation exists because I've spent weeks reconstructing audit trails during regulatory examinations and wished I could just hand the examiner a proof. The GPU architecture exists because I've watched banks hire 500 additional analysts to compensate for a monitoring system that couldn't keep up with transaction volume.</p>
+        <p>The engine doesn't just solve compliance problems technically. It solves them in the way that compliance professionals actually need them solved.</p>
+    </div>
+</section>
+
+<section class="contact-section">
+    <div class="container">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Let's talk</h2>
+        <p class="section-desc">
+            Interested in sovereign compliance infrastructure for your institution? Open to conversations with banks, regulators, and technology partners.
+        </p>
+        <div class="contact-actions">
+            <a href="contact.html" class="contact-btn-primary">Get in touch</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 ZQUAS &middot; Sovereign Compliance Infrastructure</p>
+</footer>
+
+</body>
+</html>
