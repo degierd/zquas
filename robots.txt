@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zquas.ai/sitemap.xml

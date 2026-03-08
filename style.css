@@ -943,6 +943,68 @@ h1 .accent { color: var(--accent); }
     flex-wrap: wrap;
 }
 
+/* ── 404 PAGE ── */
+.error-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 2rem 4rem;
+    text-align: center;
+}
+.error-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(5rem, 15vw, 10rem);
+    font-weight: 700;
+    color: var(--text-muted);
+    line-height: 1;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+}
+.error-page h1 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.error-page p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+.error-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.error-links a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--accent-dim);
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+.error-links a:hover {
+    background: var(--accent-glow);
+    color: var(--text-primary);
+}
+
+/* ── ARCHITECTURE DIAGRAM ── */
+.arch-diagram {
+    margin: 0 0 3rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.arch-diagram svg {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
 /* ── FOOTER ── */
 footer {
     border-top: 1px solid var(--border);
@@ -980,6 +1042,8 @@ footer p {
     .articles-container { padding: 0 1.5rem 4rem; }
     .article-header { padding: 6rem 1.5rem 2rem; }
     .article-body { padding: 0 1.5rem 4rem; }
+
+    .arch-diagram svg { min-width: 700px; }
 
     .reg-header { padding: 6rem 1.5rem 3rem; }
     .verify-flow { flex-direction: column; align-items: center; gap: 0.5rem; }
