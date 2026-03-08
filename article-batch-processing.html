@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Processing Is a Liability on Real-Time Payment Rails — ZQUAS</title>
+    <meta name="description" content="Your payment infrastructure settles in seconds. Your AML monitoring runs overnight. That gap is where both criminals and regulators will find you.">
+    <link rel="canonical" href="https://zquas.ai/article-batch-processing.html">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="/#platform">Platform</a>
+            <a href="/#architecture">Architecture</a>
+            <a href="articles.html">Articles</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<article>
+    <div class="article-header">
+        <a href="articles.html" class="article-back">&larr; Articles</a>
+        <div class="article-meta">February 2026 &middot; Banks &middot; 6 min read</div>
+        <h1>Batch Processing Is a Liability on Real-Time Payment Rails</h1>
+        <p class="lead">Your payment infrastructure settles in seconds. Your AML monitoring runs overnight. That gap is where both criminals and regulators will find you.</p>
+    </div>
+
+    <div class="article-body">
+        <p>
+            SEPA Instant settles in under 10 seconds. The UK's Faster Payments clears in minutes. RTP in the US is real-time. Banks have spent billions upgrading payment rails for speed, and it's working. Money moves faster than ever.
+        </p>
+        <p>
+            Transaction monitoring hasn't kept up. At most banks, the AML monitoring system ingests a batch of transactions every 15 minutes, every hour, or overnight. It runs rules against that batch. It generates alerts. Analysts review them the next business day.
+        </p>
+        <p>
+            Think about what that means. A fraudulent payment lands in a mule account, gets forwarded to three more accounts, converted to crypto, and exits the banking system entirely. All within an hour. The monitoring system doesn't even know the first transaction happened until the next batch cycle. By the time an analyst sees the alert, the money is in a different country.
+        </p>
+        <p>
+            This isn't a theoretical risk. It's happening every day. And regulators are starting to ask pointed questions about it.
+        </p>
+
+        <h2>The Regulatory Direction Is Clear</h2>
+        <p>
+            The ECB published guidance in 2023 making it clear that instant payment monitoring needs to happen before or during settlement, not after. The EBA's guidelines on fraud prevention for instant payments set expectations for real-time risk assessment. AMLR will reinforce this direction when it takes effect in 2027.
+        </p>
+        <p>
+            The logic is straightforward. If you offer instant payments, you need instant monitoring. Offering a payment product that settles in seconds while monitoring for fraud and money laundering on a next-day basis is a control gap. Regulators will treat it as one.
+        </p>
+        <p>
+            Some banks have tried to address this by adding a pre-screening step before instant payments clear. Run the payment through a quick sanctions check and a basic fraud score, and if it passes, let it go. But this is a thin layer. It catches sanctioned names and obvious velocity anomalies. It doesn't catch the coordinated cross-account patterns that characterise professional money laundering.
+        </p>
+
+        <h2>Why Legacy Systems Can't Do Real-Time</h2>
+        <p>
+            The architecture of most transaction monitoring systems was designed for a batch world. The system pulls a set of transactions from a data warehouse, loads them into memory, runs them through a rule engine sequentially, writes the results to a database, and generates alerts for the case management queue.
+        </p>
+        <p>
+            This works fine when you're processing yesterday's transactions today. It doesn't work when you need a decision in milliseconds.
+        </p>
+        <p>
+            Making a batch system "real-time" isn't a configuration change. The data pipeline, the rule execution engine, the memory model, and the output handling all need to change. Most vendors have added a real-time API layer on top of their batch engine, which gives you real-time latency for simple checks but not the ability to evaluate complex multi-factor rules with full customer context at payment speed.
+        </p>
+        <p>
+            True real-time monitoring means every transaction is evaluated against the full policy set, with access to the customer's complete transaction history and entity relationships, before the payment settles. That's a different class of computational problem. It requires an architecture designed for parallelism from the ground up.
+        </p>
+
+        <h2>What GPU-Native Processing Changes</h2>
+        <p>
+            GPU hardware was designed for exactly this kind of problem: evaluating many conditions against many data points simultaneously. A modern GPU has thousands of cores that can execute in parallel, compared to the tens of cores in a CPU.
+        </p>
+        <p>
+            When you run compliance evaluation on GPU, you're not processing transactions one at a time through a rule engine. You're evaluating every policy against every transaction simultaneously. The entire policy set, not a subset, not a simplified version, applied to every event in parallel.
+        </p>
+        <p>
+            The practical result is that monitoring keeps pace with payment speed without sacrificing detection depth. You don't have to choose between "fast but shallow" and "deep but slow." The hardware makes both possible at the same time.
+        </p>
+        <p>
+            This is what 2.58 million compliance events per second looks like in practice. It's not a burst benchmark on synthetic data. It's a 29-policy Tier-1 bank policy set covering eight compliance domains, evaluated against a realistic transaction stream.
+        </p>
+
+        <h2>The Audit Implication</h2>
+        <p>
+            There's a second problem with batch processing that's less obvious but equally important. When you process in batches, the monitoring system's state at any given moment is ambiguous. Which transactions have been evaluated? Which rules were in effect? If you changed a rule at 2pm and the batch ran at midnight, which version of the rule applied to the 3pm transactions?
+        </p>
+        <p>
+            These questions come up in every regulatory examination. Banks spend significant effort reconstructing timelines and proving that the right rules were applied at the right time. Often, they can't prove it definitively because the batch architecture doesn't preserve that granularity.
+        </p>
+        <p>
+            Real-time evaluation with cryptographic attestation eliminates this problem. Each batch of evaluations produces a sealed record: these policies, this data, this verdict, this timestamp, cryptographically signed. The question "what rules were in effect at 3pm on March 14th?" has a provable answer, not a reconstructed one.
+        </p>
+
+        <h2>What This Means Practically</h2>
+        <p>
+            Banks rolling out instant payment capabilities need to ask their monitoring vendors a direct question: can your system evaluate our full policy set against every transaction before settlement completes?
+        </p>
+        <p>
+            If the answer is "we can do a pre-screening check" or "we process in near-real-time batches," that's not sufficient. It creates a control gap between payment speed and monitoring speed. Regulators will find that gap. If they don't find it during an examination, they'll find it after an incident.
+        </p>
+        <p>
+            The technology to close this gap exists now. GPU-native compliance engines can process at payment speed with full detection depth. The question isn't whether real-time monitoring is possible. It's whether your current architecture can deliver it, or whether you need a different one.
+        </p>
+
+        <div class="article-author">
+            <div class="name">Danny de Gier</div>
+            <div class="bio">
+                Founder, ZQUAS. 18+ years in financial crime compliance at Tier-1 banks and fintechs.
+                Professional Postgraduate Diploma in Financial Crime Compliance (ICA / University of Manchester).
+            </div>
+        </div>
+    </div>
+</article>
+
+<footer>
+    <p>&copy; 2026 ZQUAS &middot; Sovereign Compliance Infrastructure</p>
+</footer>
+
+</body>
+</html>

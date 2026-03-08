@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The &euro;200 Billion Compliance Market Nobody Has Disrupted — ZQUAS</title>
+    <meta name="description" content="Financial institutions spend more on compliance than on almost any other technology category. The tooling hasn't fundamentally changed in 15 years.">
+    <link rel="canonical" href="https://zquas.ai/article-200b-market.html">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="/#platform">Platform</a>
+            <a href="/#architecture">Architecture</a>
+            <a href="articles.html">Articles</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<article>
+    <div class="article-header">
+        <a href="articles.html" class="article-back">&larr; Articles</a>
+        <div class="article-meta">February 2026 &middot; Investors &middot; 7 min read</div>
+        <h1>The &euro;200 Billion Compliance Market Nobody Has Disrupted</h1>
+        <p class="lead">Financial institutions spend more on compliance than on almost any other technology category. The tooling hasn't fundamentally changed in 15 years. Here's why, and what's about to break that open.</p>
+    </div>
+
+    <div class="article-body">
+        <p>
+            Global spending on financial crime compliance exceeds &euro;200 billion per year. That number has been growing at roughly 15-20% annually for the past decade. Banks now allocate 10-20% of their operating budgets to compliance operations.
+        </p>
+        <p>
+            To put that in context: the entire cybersecurity market is about $180 billion. The global CRM market is about $70 billion. Compliance spending dwarfs both.
+        </p>
+        <p>
+            And yet, the technology serving this market is remarkably unchanged. Most banks still run transaction monitoring systems built on 1990s-era rule engines. They generate alert volumes that are 95% false positives. They process in overnight batches while payments settle in seconds. And they can't detect criminal activity that spans multiple institutions, which is how most sophisticated laundering actually works.
+        </p>
+        <p>
+            The market is enormous, the pain is real, and the incumbents are architecturally stuck. That's not a common combination.
+        </p>
+
+        <h2>Why Nobody Has Disrupted This Yet</h2>
+        <p>
+            The compliance technology market has a structural barrier to disruption that most enterprise software markets don't: the buyer is terrified of change.
+        </p>
+        <p>
+            A Chief Compliance Officer who buys a new CRM and it underperforms has a bad quarter. A CCO who buys a new AML monitoring system and it misses a SAR filing can face personal criminal liability. ING paid &euro;775 million in fines. ABN AMRO paid &euro;480 million. In both cases, regulators investigated individual board members.
+        </p>
+        <p>
+            This means compliance buyers are the most conservative technology buyers in any industry. They prefer a mediocre system that twelve other banks already use over a revolutionary one that hasn't been battle-tested. They buy based on peer validation and regulator acceptance, not feature lists.
+        </p>
+        <p>
+            This dynamic has protected incumbents like NICE Actimize, Oracle Financial Crime, and SAS for years. Not because their technology is superior, but because nobody wants to be the first bank to replace them.
+        </p>
+
+        <h2>What's Different Now: The AMLR Forcing Function</h2>
+        <p>
+            The EU Anti-Money Laundering Regulation, effective mid-2027, changes the calculus. It's not a tweak to existing rules. It's a structural shift that makes certain architectural decisions mandatory.
+        </p>
+        <p>
+            AMLR restricts inter-bank data sharing to high-risk customers. It requires real-time monitoring capabilities. It demands explainable AI governance. And the EU AI Act, which classifies AML systems as high-risk, adds mandatory technical standards for record-keeping, risk management, and model transparency.
+        </p>
+        <p>
+            No legacy vendor's architecture satisfies all of these requirements simultaneously. Rule-based batch processing systems can't do real-time. Centralised cloud platforms can't do privacy-preserving cross-bank detection. None of them produce cryptographically verifiable audit trails.
+        </p>
+        <p>
+            Every bank in Europe must re-architect for AMLR by mid-2027. That's not a trend forecast. It's a compliance deadline with regulatory consequences for missing it. When the forcing function is regulatory, adoption timelines compress dramatically.
+        </p>
+
+        <h2>The Competitive Landscape</h2>
+        <p>
+            The current compliance technology market breaks into three tiers.
+        </p>
+        <p>
+            Legacy incumbents (NICE Actimize, Oracle, SAS) own the installed base at Tier-1 banks. They have deep integration, long contracts, and institutional inertia working for them. But their architectures are fundamentally CPU-bound, cloud-hosted, and rules-based. Retrofitting real-time GPU processing, MPC, or cryptographic attestation onto these platforms would be a multi-year re-engineering effort. They'll try to evolve, but they're constrained by their existing customers who are running in production.
+        </p>
+        <p>
+            Funded challengers (Sardine at $145M raised, Hawk AI at $56M, Featurespace, ComplyAdvantage) represent the AI-native wave. They're cloud-first, API-driven, and use machine learning for alert scoring. They're winning new fintech customers and some mid-market banks. But they're still architecturally conventional: CPU-based cloud processing, no GPU compute layer, no MPC capability, and no cryptographic proof generation. They're better versions of the old architecture, not a new architecture.
+        </p>
+        <p>
+            Nobody in either tier has GPU-native compliance with privacy-preserving multi-party computation. Nobody produces cryptographically verifiable decision proofs. Nobody has a standalone regulator verification tool. These aren't feature gaps that can be closed with a sprint. They require fundamental re-architecture.
+        </p>
+
+        <h2>The ZQUAS Position</h2>
+        <p>
+            ZQUAS is built on a different architectural premise. The compliance engine runs on GPU, processing millions of compliance events per second against full policy sets. Cross-institutional detection uses GPU-accelerated secure multi-party computation, so banks can detect cross-border patterns without sharing raw data. Every decision produces a cryptographic proof bundle that regulators can verify independently.
+        </p>
+        <p>
+            The founder profile is unusual. 18+ years of hands-on compliance at Tier-1 banks (RBS, Deutsche Bank, HSBC, Commerzbank) combined with GPU systems programming (C++, CUDA, Vulkan). That intersection essentially doesn't exist elsewhere. The engine is built by someone who has personally reviewed thousands of SARs and also writes GPU kernels. That dual expertise shapes every architectural decision.
+        </p>
+        <p>
+            Early traction includes engagement with DNB InnovationHub and FCA sandbox programmes. In a market where regulator acceptance is the primary buying signal, early regulatory engagement is the highest-value traction indicator possible.
+        </p>
+
+        <h2>The Business Model</h2>
+        <p>
+            Entry is single-bank, on-premise deployment. The bank runs ZQUAS on its own infrastructure. Data sovereignty is absolute. This eliminates the "who holds the data" objection that kills most enterprise compliance deals.
+        </p>
+        <p>
+            Expansion is cross-institutional. Once multiple banks run ZQUAS, MPC-based detection activates between them. Each additional node improves detection for all participants. This is a genuine network effect built into the architecture, not a marketing claim.
+        </p>
+        <p>
+            The switching cost compounds. As the bank builds policy sets in CPL (Constitutional Policy Language), trains the identity resolution graph on its entity network, and accumulates cryptographic audit history, the data and institutional knowledge locked into the platform increases over time.
+        </p>
+        <p>
+            Revenue model is annual licensing, tiered by transaction volume and policy complexity. Enterprise compliance budgets are large, recurring, and non-discretionary. Banks don't cut AML spending in a downturn. They increase it.
+        </p>
+
+        <h2>Why Now</h2>
+        <p>
+            Three things are converging. The regulatory forcing function (AMLR 2027) creates a hard deadline. GPU compute has reached the point where privacy-preserving cryptography runs at real-time financial transaction speeds. And the failure of centralised approaches across Europe has created both the political and institutional appetite for a different architecture.
+        </p>
+        <p>
+            Markets this large don't get disrupted by incremental improvement. They get disrupted when an architectural shift makes the old approach untenable and a new approach becomes simultaneously possible and necessary. That's where compliance technology is right now.
+        </p>
+
+        <div class="article-author">
+            <div class="name">Danny de Gier</div>
+            <div class="bio">
+                Founder, ZQUAS. 18+ years in financial crime compliance at Tier-1 banks and fintechs.
+                Professional Postgraduate Diploma in Financial Crime Compliance (ICA / University of Manchester).
+            </div>
+        </div>
+    </div>
+</article>
+
+<footer>
+    <p>&copy; 2026 ZQUAS &middot; Sovereign Compliance Infrastructure</p>
+</footer>
+
+</body>
+</html>
