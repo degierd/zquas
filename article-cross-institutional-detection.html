@@ -38,37 +38,37 @@
     <div class="article-body">
         <h2>The Detection Gap Is Real</h2>
         <p>
-            An estimated &euro;16 billion in criminal money is laundered through the Netherlands annually. Across the EU, the figures run into hundreds of billions. Banks collectively spend over &euro;200 billion per year on financial crime compliance. Yet by most estimates, less than 1% of illicit funds are successfully intercepted.
+            An estimated &euro;16 billion in criminal money moves through the Netherlands every year. The EU-wide figure is in the hundreds of billions. Banks spend over &euro;200 billion a year on compliance globally. And less than 1% of illicit funds actually get caught.
         </p>
         <p>
-            The reason is structural. Money laundering networks operate across institutions. A criminal deposits cash at Bank A, transfers to a shell company at Bank B, purchases real estate through Bank C, and repatriates funds via Bank D. Each bank sees a single, seemingly unremarkable transaction. None sees the pattern.
+            The reason comes down to how the system is built. Laundering networks don't stay inside one bank. A criminal deposits cash at Bank A, moves it to a shell company at Bank B, buys property through Bank C, and brings the clean money home via Bank D. Each bank sees one unremarkable transaction. Nobody sees the chain.
         </p>
         <p>
-            This is not a failure of technology or talent. It is a consequence of architecture. When each institution monitors only its own customers, cross-bank criminal networks are invisible by design.
+            The people are good. The technology within each bank is often good too. But the architecture makes it impossible. If every institution can only monitor its own customers, cross-bank networks stay invisible. That's not a bug in the system. It is the system.
         </p>
 
         <h2>Why Data Centralisation Failed</h2>
         <p>
-            The logical response — pooling transaction data across institutions for joint analysis — has been tried. Multiple European jurisdictions have explored or implemented shared monitoring utilities. The results have been instructive.
+            The obvious answer is to pool transaction data across banks and analyse it together. Several European jurisdictions have tried this. The results tell you everything you need to know.
         </p>
         <p>
-            The challenge is not technical. The challenge is legal and political. Centralising raw transaction data from multiple banks into a single entity creates a surveillance infrastructure that conflicts with fundamental rights under GDPR. Privacy advocates and civil liberties organisations have rightly objected. The EU's new Anti-Money Laundering Regulation (AMLR), effective mid-2027, explicitly restricts inter-bank data sharing to situations involving pre-identified high-risk customers — effectively prohibiting the centralised pooling model for broad-based detection.
+            The problem wasn't technical. It was legal and political. When you centralise raw transaction data from multiple banks into one place, you've built a mass surveillance tool. The Dutch Data Protection Authority said as much. The Council of State agreed. Privacy advocates and civil liberties groups objected, and they were right to. The EU's new Anti-Money Laundering Regulation (AMLR), effective mid-2027, now explicitly restricts inter-bank data sharing to pre-identified high-risk customers. That effectively kills the centralised pooling model for broad-based detection.
         </p>
 
         <div class="callout">
-            <p>The core paradox: effective detection requires cross-institutional visibility, but data centralisation — the most intuitive path to that visibility — violates the privacy principles that democratic societies require.</p>
+            <p>Here's the problem we keep running into: you need cross-bank visibility to catch the networks, but the moment you centralise the data to get that visibility, you've broken the privacy rules. And those rules exist for good reason. So the question isn't whether to centralise. It's whether there's a way to get the detection without the centralisation.</p>
         </div>
 
         <p>
-            This is not a policy failure. AMLR reflects a legitimate democratic judgement that mass financial surveillance, even for anti-crime purposes, must be bounded. Any viable solution must respect this constraint, not circumvent it.
+            AMLR isn't a mistake. It reflects a real democratic judgement that mass financial surveillance needs limits, even when the goal is catching criminals. Any solution that tries to get around that constraint instead of working within it is going to hit the same wall.
         </p>
 
         <h2>A Different Architectural Premise</h2>
         <p>
-            The assumption underlying centralised monitoring is that you need to see the data to analyse it. This assumption is false. Advances in privacy-preserving computation — specifically secure multi-party computation (MPC) and zero-knowledge proofs — allow meaningful analysis across datasets that never leave their respective institutions.
+            Centralised monitoring assumes you need to see the data to analyse it. But that's not actually true anymore. Secure multi-party computation (MPC) and zero-knowledge proofs let you run meaningful analysis across datasets that never leave their home institutions.
         </p>
         <p>
-            In an MPC-based architecture, each bank retains full sovereignty over its own data. No transaction record leaves the bank's perimeter. Instead, the system computes risk comparisons cryptographically: Bank A and Bank B can jointly determine whether a shared counterparty exhibits suspicious patterns across both institutions — without either bank revealing its underlying transactions to the other.
+            In practice, this means each bank keeps full control of its own data. No transaction records cross the perimeter. The system runs risk comparisons cryptographically. Bank A and Bank B can determine whether a shared counterparty shows suspicious patterns across both institutions, without either bank seeing the other's transactions.
         </p>
 
         <table class="comparison-table">
@@ -97,8 +97,8 @@
                 </tr>
                 <tr>
                     <td><strong>Single point of breach</strong></td>
-                    <td>Yes — central database</td>
-                    <td>No — distributed by design</td>
+                    <td>Yes, central database</td>
+                    <td>No, distributed by design</td>
                 </tr>
                 <tr>
                     <td><strong>Regulatory verifiability</strong></td>
@@ -110,35 +110,35 @@
 
         <h2>Performance Is No Longer the Barrier</h2>
         <p>
-            MPC protocols have historically been dismissed as impractical for real-time financial applications due to computational overhead. This objection was valid five years ago. It is no longer.
+            The standard objection to MPC is that it's too slow for real-time financial applications. Five years ago, that was true. It's not anymore.
         </p>
         <p>
-            GPU-accelerated MPC — running cryptographic comparison, oblivious sorting, and secure aggregation on modern GPU architectures — achieves throughput levels compatible with real-time transaction monitoring. The same GPU parallelism that powers AI training and high-frequency trading can execute privacy-preserving financial crime detection at scale.
+            GPU-accelerated MPC runs cryptographic comparison, oblivious sorting, and secure aggregation on modern hardware at throughput levels that work for real-time transaction monitoring. The same GPU parallelism behind AI training and high-frequency trading turns out to be well suited for privacy-preserving financial crime detection.
         </p>
         <p>
-            When combined with GPU-native policy evaluation, a single node can process millions of compliance events per second while running the complete policy set against every transaction. There is no longer a trade-off between detection breadth and computational feasibility.
+            Combined with GPU-native policy evaluation, a single node can process millions of compliance events per second, running the full policy set against every transaction. You don't have to choose between detection coverage and computational performance anymore.
         </p>
 
         <h2>Verifiability Changes the Regulatory Relationship</h2>
         <p>
-            Perhaps the most significant architectural shift is in auditability. In legacy compliance systems, regulators rely on log files, case management records, and institutional self-reporting to assess whether monitoring systems are functioning correctly. This is a trust-based model.
+            The part that matters most for regulators is auditability. Today, supervisors rely on log files, case management exports, and institutional self-reporting to assess whether monitoring systems actually work. That entire model runs on trust.
         </p>
         <p>
-            A cryptographically attested compliance architecture replaces trust with verification. Each batch of compliance decisions produces a sealed evidence bundle: a cryptographic proof that specific policies were applied to specific data and produced specific verdicts. The regulator can independently verify this proof using a standalone tool — without accessing the bank's systems, without trusting the vendor's software, and without seeing the underlying transaction data.
+            A cryptographically attested architecture changes that. Every batch of compliance decisions produces a sealed evidence bundle, a proof that specific policies were applied to specific data and produced specific verdicts. A regulator can verify that proof with a standalone tool. No need to access the bank's systems. No need to trust the vendor's software. No need to see the underlying data.
         </p>
         <p>
-            This transforms the supervisory relationship. Instead of asking "show me your monitoring reports," the regulator asks "give me your proof bundle." Verification becomes deterministic rather than interpretive.
+            That changes how supervision works in practice. Instead of asking "show me your monitoring reports" and spending weeks reviewing them, the regulator asks for the proof bundle and gets a clear answer: valid or invalid. The guesswork goes away.
         </p>
 
         <h2>What Comes Next</h2>
         <p>
-            The EU AMLR creates both the constraint and the opportunity. By restricting centralised data pooling, it forces the industry toward privacy-preserving alternatives. By establishing a pan-European legal framework for inter-institutional cooperation, it creates the regulatory foundation for MPC-based detection networks.
+            The AMLR creates a strange situation. It restricts centralised data pooling, which pushes the industry toward privacy-preserving alternatives. But it also establishes a pan-European legal framework for inter-institutional cooperation. That combination is exactly what an MPC-based detection network needs to operate.
         </p>
         <p>
-            The technology exists. The regulatory framework is emerging. The institutional will — demonstrated by years of investment in joint monitoring initiatives — is clearly present. What is needed is an architecture that satisfies all three simultaneously: detection efficacy, data sovereignty, and regulatory verifiability.
+            The technology is ready. The regulatory framework is taking shape. And the institutional willingness is clearly there, given the years of investment in joint monitoring initiatives that ultimately couldn't clear the legal bar. What's been missing is an architecture that delivers the detection without requiring the data centralisation.
         </p>
         <p>
-            That architecture is no longer theoretical.
+            We've built one. If you're dealing with these problems, we should talk.
         </p>
 
         <div class="article-author">

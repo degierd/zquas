@@ -499,6 +499,127 @@ h1 .accent { color: var(--accent); }
     font-family: 'DM Sans', sans-serif;
 }
 
+/* ── AUDIENCE SECTIONS ── */
+.audience-section {
+    border-top: 1px solid var(--border);
+}
+.audience-section.alt-bg {
+    background: var(--bg-secondary);
+}
+
+/* Metric cards (For Banks) */
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+.metric-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem;
+    transition: border-color 0.3s, background 0.3s;
+}
+.metric-card:hover {
+    border-color: var(--border-accent);
+    background: var(--bg-card-hover);
+}
+.metric-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+.metric-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 1rem;
+}
+.metric-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* Icon cards (For Regulators) */
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+.icon-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem;
+    transition: border-color 0.3s, background 0.3s;
+}
+.icon-card:hover {
+    border-color: var(--border-accent);
+    background: var(--bg-card-hover);
+}
+.card-icon {
+    font-size: 1.4rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: block;
+}
+.icon-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+.icon-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* Investor cards */
+.investor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+.investor-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem;
+    transition: border-color 0.3s, background 0.3s;
+}
+.investor-card:hover {
+    border-color: var(--border-accent);
+    background: var(--bg-card-hover);
+}
+.investor-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+.investor-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* Section bottom note */
+.section-note {
+    border-top: 1px solid var(--border);
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
 /* ── FOOTER ── */
 footer {
     border-top: 1px solid var(--border);
