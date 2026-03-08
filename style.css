@@ -190,6 +190,22 @@ h1 .accent { color: var(--accent); }
     letter-spacing: 0.04em;
 }
 
+.hero-download {
+    display: inline-block;
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    transition: color 0.2s, border-color 0.2s;
+}
+.hero-download:hover {
+    color: var(--accent);
+    border-color: var(--accent-dim);
+}
+
 /* ── PROBLEM SECTION ── */
 .problem-section {
     background: var(--bg-secondary);
