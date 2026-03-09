@@ -1,4 +1,10 @@
-"""Generate ZQUAS 4-page executive briefing PDF -- dark theme."""
+"""Generate ZQUAS 4-page executive briefing PDF -- dark theme.
+
+TODO: Update terminology from "compliance events per second" / "CEPS" to
+"governance decisions per second" / "GDPS" throughout this file, then
+regenerate the PDF. Affected strings: page1 stats, page1 solution bullets,
+page2 engine table, page3 competitive landscape table, page3 traction.
+"""
 
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.colors import HexColor

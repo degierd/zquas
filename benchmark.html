@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benchmark: 2.58M Compliance Events Per Second — ZQUAS</title>
+    <title>Benchmark: 2.58M Governance Decisions Per Second — ZQUAS</title>
     <meta name="description" content="Documented GPU benchmark of the ZQUAS compliance engine. 29-policy Tier-1 bank policy set on a single RTX 5090. Methodology, results, and what it means for real-world compliance.">
-    <meta property="og:title" content="Benchmark: 2.58M Compliance Events Per Second — ZQUAS">
+    <meta property="og:title" content="Benchmark: 2.58M Governance Decisions Per Second — ZQUAS">
     <meta property="og:description" content="Documented GPU benchmark of the ZQUAS compliance engine. 29-policy Tier-1 bank policy set on a single RTX 5090.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zquas.ai/benchmark.html">
@@ -25,7 +25,7 @@
     {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "headline": "Benchmark: 2.58M Compliance Events Per Second",
+        "headline": "Benchmark: 2.58M Governance Decisions Per Second",
         "description": "Documented GPU benchmark of the ZQUAS compliance engine. 29-policy Tier-1 bank policy set on a single RTX 5090. Methodology, results, and what it means for real-world compliance.",
         "datePublished": "2026-03-01",
         "author": {
@@ -67,7 +67,7 @@
 <section class="bench-header">
     <div class="container">
         <div class="section-label">Benchmark Study</div>
-        <h1 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.6rem); max-width: 700px; margin-bottom: 1.5rem;">2.58 Million Compliance Events Per Second</h1>
+        <h1 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.6rem); max-width: 700px; margin-bottom: 1.5rem;">2.58 Million Governance Decisions Per Second</h1>
         <p class="section-desc">
             A documented benchmark of the ZQUAS engine running a 29-policy Tier-1 bank policy set across 8 compliance domains on a single NVIDIA RTX 5090 GPU. This is what the number means, how it was measured, and why it matters.
         </p>
@@ -148,13 +148,15 @@
 <section>
     <div class="container">
         <div class="analysis-body">
-            <h2>What CEPS Means</h2>
+            <h2>What GDPS Means</h2>
 
-            <p>CEPS stands for Compliance Events Per Second. One compliance event is a single transaction evaluated against the full active policy set. Not one rule. All 29 policies, applied to one transaction, simultaneously.</p>
+            <p>GDPS stands for Governance Decisions Per Second. One governance decision is a single transaction evaluated against the full active policy set. Not one rule. All 29 policies, applied to one transaction, simultaneously. The result is a complete governance verdict — not a partial check.</p>
 
-            <p>This is an important distinction. Some vendors report throughput in transactions per second, where each transaction is checked against one rule at a time in sequence. If you have 29 rules, sequential evaluation means your effective policy throughput is 29 times lower than the headline transaction rate.</p>
+            <p>We use "governance decisions" rather than "compliance events" because the engine does more than flag transactions against static rules. Each decision incorporates full entity graph context, multi-policy evaluation, and produces a cryptographic proof bundle. It is a governed verdict, not an event counter.</p>
 
-            <p>In the ZQUAS engine, the GPU evaluates all policies against each transaction in parallel. One GPU block per transaction. One thread per policy. The 2.58 million CEPS figure means 2.58 million transactions were each evaluated against all 29 policies simultaneously. That's over 74 million individual policy evaluations per second.</p>
+            <p>This is an important distinction from how other vendors report throughput. Some report transactions per second, where each transaction is checked against one rule at a time in sequence. If you have 29 rules, sequential evaluation means your effective policy throughput is 29 times lower than the headline transaction rate.</p>
+
+            <p>In the ZQUAS engine, the GPU evaluates all policies against each transaction in parallel. One GPU block per transaction. One thread per policy. The 2.58 million GDPS figure means 2.58 million transactions were each evaluated against all 29 policies simultaneously. That's over 74 million individual policy evaluations per second.</p>
 
             <div class="callout">
                 <p>2.58M transactions &times; 29 policies = 74.8M individual policy evaluations per second. On a single GPU.</p>
@@ -219,7 +221,7 @@
         <div class="bench-stat-grid">
             <div class="bench-stat-card">
                 <div class="val">2,582,417</div>
-                <div class="label">Compliance events per second (peak sustained)</div>
+                <div class="label">Governance decisions per second (peak sustained)</div>
             </div>
             <div class="bench-stat-card">
                 <div class="val">74.8M</div>
@@ -259,14 +261,14 @@
         <div class="analysis-body">
             <h2>Why This Matters for Banks</h2>
 
-            <p>A Tier-1 bank processes roughly 5 to 50 million transactions per day, depending on business mix and payment types. At 2.58 million compliance events per second, the engine can evaluate a full day's transaction volume in under 20 seconds. With the full policy set. Against every transaction. No sampling. No prioritisation. No overnight batch window.</p>
+            <p>A Tier-1 bank processes roughly 5 to 50 million transactions per day, depending on business mix and payment types. At 2.58 million governance decisions per second, the engine can evaluate a full day's transaction volume in under 20 seconds. With the full policy set. Against every transaction. No sampling. No prioritisation. No overnight batch window.</p>
 
             <p>For real-time payment rails (SEPA Instant, Faster Payments, RTP), the relevant metric is whether the engine can evaluate a transaction before settlement completes. SEPA Instant requires settlement in under 10 seconds. At sub-millisecond batch latency, the engine evaluates the transaction in a fraction of the settlement window.</p>
 
             <p>For banks considering GPU-based compliance, the hardware cost is relevant. An NVIDIA RTX 5090 costs approximately &euro;2,000 to &euro;2,500 at retail. The entire benchmark was run on a single consumer-grade GPU. Enterprise GPUs (A100, H100) would provide higher throughput and larger VRAM, but the benchmark demonstrates that enterprise-class compliance performance is achievable on hardware that costs less than a single compliance analyst's monthly salary.</p>
 
             <div class="callout">
-                <p>One GPU. One month's analyst salary. 2.58 million compliance events per second. The economics of GPU-native compliance are difficult to argue with.</p>
+                <p>One GPU. One month's analyst salary. 2.58 million governance decisions per second. The economics of GPU-native compliance are difficult to argue with.</p>
             </div>
         </div>
     </div>
