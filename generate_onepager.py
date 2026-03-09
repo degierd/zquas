@@ -4,6 +4,12 @@ TODO: Update terminology from "compliance events per second" / "CEPS" to
 "governance decisions per second" / "GDPS" throughout this file, then
 regenerate the PDF. Affected strings: page1 stats, page1 solution bullets,
 page2 engine table, page3 competitive landscape table, page3 traction.
+
+TODO: Add honest qualifiers to cross-institutional MPC claims. The MPC protocol
+is validated in controlled testing (loopback transport). Multi-node deployment
+across separate banks is the next engineering milestone. Qualify page1 solution
+("Privacy-Preserving MPC"), page2 detection intelligence ("Cross-Institutional
+MPC"), and page3 competitive landscape ("cross-bank detection" row).
 """
 
 from reportlab.lib.pagesizes import A4

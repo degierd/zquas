@@ -2,7 +2,7 @@
   "name": "ZQUAS",
   "type": "compliance_technology_platform",
   "tagline": "Sovereign compliance infrastructure for regulated finance",
-  "description": "GPU-native compliance engine enabling cross-institutional financial crime detection without central data pooling. Every decision cryptographically attested. Every verdict independently verifiable.",
+  "description": "GPU-native compliance engine built for cross-institutional financial crime detection without central data pooling. Every decision cryptographically attested. Every verdict independently verifiable.",
   "website": "https://zquas.ai",
   "founded": "2024",
   "stage": "pre-revenue",
@@ -22,7 +22,7 @@
     "email": "danny@zquas.ai"
   },
   "benchmark": {
-    "throughput": "2.58M compliance events per second",
+    "throughput": "2.58M governance decisions per second",
     "throughput_numeric": 2582417,
     "policies_parallel": 29,
     "compliance_domains": 8,
@@ -37,7 +37,7 @@
     "privacy_preserving_mpc": true,
     "cryptographic_attestation": true,
     "deterministic_evaluation": true,
-    "cross_institutional_detection": true,
+    "cross_institutional_detection": "validated_in_testing",
     "zero_knowledge_proofs": true,
     "adversarial_self_testing": true,
     "predictive_governance": true,
