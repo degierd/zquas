@@ -229,13 +229,9 @@ def page1(c):
         draw_dot(c, MARGIN + 4, y)
         c.setFont("Helvetica-Bold", 9)
         c.setFillColor(TEXT_PRIMARY)
-        lw = pdfmetrics.stringWidth(label, "Helvetica-Bold", 9)
-        c.drawString(MARGIN + 14, y, label)
-        c.setFont("Helvetica", 9)
-        c.setFillColor(TEXT_SECONDARY)
-        # Draw label+text as combined string for wrapping
-        full = label + text
-        y = wrap_text(c, MARGIN + 14, y, full, size=9, max_width=CW - 14, leading=12)
+        c.drawString(MARGIN + 14, y, label.rstrip())
+        y -= 13
+        y = wrap_text(c, MARGIN + 14, y, text, size=9, max_width=CW - 14, leading=12)
         y -= 4
 
     y -= 6
@@ -475,10 +471,9 @@ def page3(c):
     for label, text in phases:
         c.setFont("Helvetica-Bold", 9)
         c.setFillColor(ACCENT)
-        lw = pdfmetrics.stringWidth(label, "Helvetica-Bold", 9)
-        c.drawString(MARGIN, y, label)
-        full = label + text
-        y = wrap_text(c, MARGIN, y, full, size=9, max_width=CW, leading=12)
+        c.drawString(MARGIN, y, label.rstrip())
+        y -= 13
+        y = wrap_text(c, MARGIN, y, text, size=9, max_width=CW, leading=12)
         y -= 5
 
 

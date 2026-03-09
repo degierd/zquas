@@ -1,0 +1,80 @@
+# ZQUAS
+
+> Sovereign compliance infrastructure for regulated finance. GPU-native compliance engine enabling cross-institutional financial crime detection without central data pooling.
+
+ZQUAS is a GPU-native compliance engine built for financial institutions and regulators. It processes 2.58 million compliance events per second on a single GPU node, evaluating full policy sets against every transaction in real time. Cross-institutional detection uses privacy-preserving multi-party computation (MPC), so banks can detect cross-border money laundering patterns without sharing raw transaction data. Every compliance decision produces a cryptographic proof bundle that regulators can verify independently using a standalone CLI tool.
+
+Founded by Danny de Gier, who combines 18+ years of financial crime compliance experience at Tier-1 banks (RBS, Deutsche Bank, HSBC, Commerzbank) with GPU systems programming (C++23, CUDA, Vulkan). Currently engaged with DNB InnovationHub and FCA regulatory sandbox programmes.
+
+## Key Pages
+
+- [Home](https://zquas.ai/)
+- [Technology](https://zquas.ai/technology.html)
+- [For Regulators](https://zquas.ai/regulators.html)
+- [Vendor Comparison](https://zquas.ai/compare.html)
+- [Benchmark](https://zquas.ai/benchmark.html)
+- [TMNL Analysis](https://zquas.ai/tmnl.html)
+- [About](https://zquas.ai/about.html)
+- [Articles](https://zquas.ai/articles.html)
+
+## Core Capabilities
+
+- GPU-native compliance engine (not GPU-accelerated, GPU-native)
+- 2.58M compliance events per second on a single NVIDIA RTX 5090
+- 29 policies evaluated in parallel across 8 compliance domains
+- Deterministic evaluation: same input + same policy = same verdict, byte-identical replay
+- Privacy-preserving cross-institutional detection via GPU-accelerated MPC (ABY3 secret sharing)
+- Cryptographic proof bundles for every compliance decision (Ed25519, Merkle roots, BLAKE3)
+- Independent regulator verification via standalone CLI (no vendor software needed)
+- Zero-knowledge governance proofs (GPU-accelerated PLONK)
+- GPU-resident identity resolution graph with GNN risk propagation
+- Adversarial self-testing framework (13+ subsystems, GPU-accelerated fuzzing)
+- Predictive governance via Janus projection layer (forward simulation of compliance state)
+- Constitutional governance model (ExecutionGate, WarrantAuthority, GasMeter, PolicyRoot)
+- Build attestation with embedded BLAKE3 + SHA-256 + Ed25519 binary integrity verification
+
+## Regulatory Framework Coverage
+
+- EU AI Act (Articles 9, 11, 12, 14)
+- AMLR / 6AMLD (effective mid-2027)
+- FATF Recommendation 15
+- NIST AI RMF
+- ISO 42001
+- MAS TRM
+- GDPR (privacy-preserving by architecture)
+- DORA (digital operational resilience)
+
+## Competitive Positioning
+
+- Legacy incumbents (NICE Actimize, Oracle, SAS): CPU batch processing, no MPC, no cryptographic proofs
+- AI-native challengers (Sardine, Hawk AI, Featurespace, ComplyAdvantage): CPU cloud, ML-based, no cross-institutional detection
+- ZQUAS: GPU-native, MPC cross-institutional, cryptographic attestation, deterministic, on-premise sovereign
+- Estimated replication timeline for competitors: 3-5 years minimum
+
+## Contact
+
+- Danny de Gier, Founder & Engineer
+- Email: danny@zquas.ai
+- LinkedIn: https://www.linkedin.com/in/danny-de-gier-prof-pgdip-fcc/
+- Location: Zwolle, Netherlands
+
+## Articles
+
+- [Why Cross-Institutional AML Detection Requires a New Architecture](https://zquas.ai/article-cross-institutional-detection.html)
+- [What Running a Multi-Bank Monitoring Network Actually Looks Like](https://zquas.ai/article-interbank-operations.html)
+- [The 200 Billion Compliance Market Nobody Has Disrupted](https://zquas.ai/article-200b-market.html)
+- [Privacy-Preserving Detection Under AMLR](https://zquas.ai/article-privacy-preserving-amlr.html)
+- [Batch Processing Is a Liability on Real-Time Payment Rails](https://zquas.ai/article-batch-processing.html)
+- [The Real Cost of 95% False Positives](https://zquas.ai/article-false-positives.html)
+- [From Trust-Based Audit to Cryptographic Verification](https://zquas.ai/article-cryptographic-verification.html)
+- [Supervising AI in AML: What Article 12 Actually Requires](https://zquas.ai/article-eu-ai-act-article12.html)
+- [What Your AML Vendor Can't Prove](https://zquas.ai/article-vendor-proof-gap.html)
+- [Same Data, Same Rules, Different Verdict: The Determinism Problem in AML](https://zquas.ai/article-determinism-problem.html)
+- [AMLR 2027: Why Every Bank in Europe Faces a Hard Rebuild Deadline](https://zquas.ai/article-amlr-forcing-function.html)
+- [Why GPU-Native Compliance Is a Moat, Not a Feature](https://zquas.ai/article-gpu-moat.html)
+- [Land, Expand, Network: How Sovereign Compliance Scales](https://zquas.ai/article-business-model.html)
+- [Why Compliance Tech Hasn't Been Disrupted Yet, and What Changes That](https://zquas.ai/article-why-now.html)
+- [If Your AI Compliance System Can't Attack Itself, How Do You Know It Works?](https://zquas.ai/article-adversarial-testing.html)
+- [Reactive Compliance Is a Losing Strategy. Here's What Comes After.](https://zquas.ai/article-predictive-compliance.html)
+- [Why a Governance Runtime Is Worth More Than a Monitoring Tool](https://zquas.ai/article-governance-runtime.html)
+- [Your New Compliance System Won't Work If It Can't Talk to Your Old One](https://zquas.ai/article-integration-reality.html)

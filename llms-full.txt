@@ -1,0 +1,466 @@
+# ZQUAS - Full Documentation
+
+> Complete content from all key pages on zquas.ai
+
+---
+
+## Home
+
+### Sovereign compliance infrastructure for regulated finance
+
+DNB InnovationHub -- Under Review
+
+GPU-native compliance engine enabling cross-institutional financial crime detection without central data pooling. Every decision cryptographically attested. Every verdict independently verifiable.
+
+- 2.58M compliance events per second
+- 29 policies evaluated in parallel
+- 8 regulatory standards covered
+
+### The Problem: Cross-institutional detection is broken
+
+Money laundering networks operate across multiple banks. Individual institutions only see fragments. Joint monitoring initiatives have stalled on a fundamental tension: detection requires shared visibility, but data centralisation violates privacy regulation.
+
+**Siloed Detection**: Each bank monitors transactions in isolation. Criminal networks exploit this by spreading activity across institutions. Patterns visible at the system level remain invisible at the bank level.
+
+**Privacy vs. Detection**: Centralising transaction data for joint monitoring triggers GDPR objections and regulatory challenges. The EU AMLR (effective mid-2027) restricts data sharing to pre-identified high-risk customers only.
+
+**95% False Positives**: Legacy rule-based systems generate overwhelming alert volumes. Compliance teams drown in manual reviews, costing Tier-1 banks EUR 50-100M+ annually in operational expense alone.
+
+### The Architecture: Detect across institutions. Keep data sovereign.
+
+ZQUAS enables multi-bank pattern detection through privacy-preserving computation. No bank shares raw transaction data. Risk comparisons happen cryptographically. The regulator verifies outcomes independently.
+
+**Real-Time Adjudication (GPU-NATIVE)**: Full policy sets evaluated against every transaction simultaneously on GPU. No sampling, no batching, no sequential rule execution. 2.58 million compliance events per second on a single node.
+
+**Multi-Party Computation (PRIVACY-PRESERVING)**: Cross-institutional risk comparison via GPU-accelerated secure multi-party computation. Each bank retains full data sovereignty. No central data pool. No GDPR exposure.
+
+**Cryptographic Attestation (VERIFIABLE)**: Every compliance decision produces a cryptographic proof bundle. Regulators can independently verify any decision with a standalone tool -- without trusting the vendor's software.
+
+**Policy-as-Code Governance (CONSTITUTIONAL)**: Compliance policies compiled to bytecode and enforced deterministically on GPU. Same policy, same data, same verdict -- reproducible by any party, at any time.
+
+**Entity Resolution at GPU Speed (GRAPH INTELLIGENCE)**: GPU-resident identity resolution graph with neural network-based risk propagation. Full network context for every decision. Connected entity analysis in real time, not overnight batch.
+
+**Regulatory Coverage (MULTI-FRAMEWORK)**: Built-in compliance evidence production for EU AI Act, NIST AI RMF, ISO 42001, FATF R15, and MAS TRM. Sealed evidence bundles with Merkle roots and Ed25519 signatures.
+
+### For Financial Institutions: One engine. Unified risk. Full sovereignty.
+
+Replace fragmented monitoring silos with a single GPU-native compliance engine that runs your entire policy set against every transaction -- in real time, with full entity graph context.
+
+- **70%+ false positive reduction**: Full network context for every decision eliminates context-blind threshold alerts. Your analysts investigate real risk, not noise.
+- **Real-time, not overnight batch**: Block suspicious payments before settlement on RTP and SEPA Instant rails. No more filing SARs after the money is gone.
+- **1 engine, not 5 siloed systems**: AML, fraud, sanctions, onboarding, and trade surveillance unified into one risk score per entity. Five analysts stop investigating the same customer in parallel.
+- **Day 1 integration, not rip-and-replace**: CEF-formatted export for direct SIEM ingestion (Splunk, QRadar, Sentinel). GRC API for governance platforms. 256MB shared memory ingest buffer accepts data from your existing payment infrastructure. Deploy alongside your current monitoring system, not instead of it.
+
+On-premise deployment. Your data never leaves your infrastructure. AMLR-compatible cross-institutional detection available via privacy-preserving MPC -- no central data pool required.
+
+### For Regulators: Verify. Don't trust.
+
+Every compliance decision produces a cryptographic proof bundle. Your supervisory team verifies outcomes independently -- without accessing bank systems, without trusting vendor software.
+
+- **Independent Verification**: Standalone verification CLI: feed in the proof bundle, the policy set, and the evaluation contexts. Get a deterministic VALID/INVALID verdict. No engine installation required.
+- **Framework Alignment**: Built-in evidence production for EU AI Act (Articles 9, 11, 12, 14), FATF R15, NIST AI RMF, ISO 42001, and MAS TRM. Sealed evidence bundles with Merkle roots and cryptographic signatures.
+- **Deterministic Replay**: Any supervisory review can replay any epoch and get byte-identical results. The same policy applied to the same data always produces the same verdict. Auditability by construction, not by report.
+- **Coverage Gap Analysis**: The engine continuously maps policy coverage against registered regulatory frameworks. Gaps between your required controls and active policy set are identified in real time.
+
+Currently engaged with DNB InnovationHub and FCA regulatory sandbox programmes. Designed for supervisory scrutiny from day one.
+
+### For Investors: Category-defining infrastructure at an inflection point
+
+The EU AMLR (effective mid-2027) forces every European financial institution to re-architect compliance. The incumbents can't get there. We're already built for it.
+
+- **EUR 200B+ Annual Market**: Global financial crime compliance spending exceeds EUR 200 billion annually. Banks spend 10-20% of operating budgets on compliance.
+- **Regulatory Forcing Function**: AMLR mid-2027 creates a hard deadline. EU AI Act classifies AML systems as high-risk with mandatory technical standards. Every bank in Europe must upgrade or rebuild.
+- **Defensible Technical Moat**: GPU-native compliance with privacy-preserving MPC, zero-knowledge governance proofs, and cryptographic attestation. No incumbent has this architecture. Replication timeline: 3-5 years minimum.
+- **Unique Founder Profile**: 18+ years hands-on compliance at Tier-1 banks combined with GPU systems programming (C++/CUDA/Vulkan). This intersection doesn't exist elsewhere.
+- **Regulator Traction**: DNB InnovationHub submission under review. FCA sandbox engaged.
+- **Land & Expand Model**: Enter via single-bank deployment (on-premise, sovereign). Expand to cross-institutional MPC network as adoption grows. Each additional node increases detection capability for all participants.
+
+### Credentials
+
+- 18+ Years Financial Crime Compliance: Senior compliance roles at Tier-1 banks including RBS, Deutsche Bank, HSBC, and Commerzbank. Fintech compliance leadership at ClearBank, Vivid Money, and CoinMetro.
+- Regulatory Sandbox Engagement: DNB InnovationHub submission under review. FCA regulatory sandbox programme engaged.
+- Academic Foundation: Professional Postgraduate Diploma in Financial Crime Compliance -- International Compliance Association / University of Manchester.
+
+Regulatory frameworks covered: EU AI Act, AMLR / 6AMLD, FATF R15, NIST AI RMF, ISO 42001, MAS TRM, GDPR, DORA.
+
+---
+
+## Technology
+
+### How ZQUAS works
+
+A technical overview of the engine architecture for CTOs, technical evaluators, and due diligence teams. No source code, no internal codenames. Enough depth to understand what's real and what's different.
+
+### Five layers, one engine
+
+ZQUAS is a vertically integrated compliance engine. Each layer is purpose-built, not assembled from third-party components. The engine runs on a single GPU node per institution.
+
+**Layer 1: Policy Language & Compiler** -- Compliance policies are written in a domain-specific language designed for regulatory rules. The language has its own lexer, parser, semantic analyser, and compiler. Policies compile to bytecode that can be evaluated on GPU. The bytecode is immutable once deployed. A new policy version produces a new compilation with a different cryptographic hash. This means the exact policy set in effect at any moment is unambiguously identifiable.
+
+**Layer 2: GPU Adjudication Engine** -- The compiled policy bytecode executes on GPU. Each transaction is evaluated against the full policy set in parallel. One GPU block per transaction, one thread per policy. The engine processes 2.58 million compliance events per second on a single node with a 29-policy Tier-1 bank configuration. Results are deterministic: same policy version plus same input data always produces the same verdict.
+
+**Layer 3: Identity Resolution & Graph Intelligence** -- A GPU-resident entity graph maintains relationships between accounts, individuals, businesses, devices, and counterparties. The graph uses a double-buffered hash table for real-time updates without read contention. Graph neural network inference propagates risk scores across entity relationships, providing full network context for every compliance decision. Entity resolution runs at GPU speed, not in overnight batch.
+
+**Layer 4: Cryptographic Attestation** -- Every batch of compliance decisions produces a sealed proof bundle. The bundle includes: a BLAKE3 hash of the policy set, a hash of the input data, individual verdict hashes, a Merkle root binding all verdicts together, and an Ed25519 signature over the complete bundle. A separate SHA-256 witness hash is produced for regulatory interfaces. Proof bundles can optionally include zero-knowledge governance proofs generated via GPU-accelerated PLONK.
+
+**Layer 5: Privacy-Preserving Cross-Institutional Layer** -- When multiple institutions run ZQUAS, cross-bank detection activates via secure multi-party computation. The MPC layer uses ABY3 replicated secret sharing with GPU-accelerated comparison, oblivious sorting, and secure aggregation. Each institution retains full data sovereignty. No raw transaction data crosses institutional boundaries. The output is a risk indicator, not customer data. A separate federation protocol uses ECDH-based private set intersection and garbled circuits for entity matching across institutions.
+
+### From transaction to verified verdict
+
+The engine uses a triple-stream GPU pipeline for compliance adjudication.
+
+- **Stream A (Load)**: Transaction data serialised to GPU-native evaluation contexts. Asynchronous host-to-device copy via pinned staging buffers.
+- **Stream B (Adjudicate)**: GPU kernel evaluates N transactions against M policies in parallel. One block per transaction, one thread per policy. Verdict per transaction.
+- **Stream C (Commit)**: Results copied device-to-host. Epoch commitment computed. Merkle root constructed. Ed25519 signature applied. Proof bundle sealed.
+
+Inter-stream synchronisation uses CUDA events. Streams execute concurrently. Load, adjudicate, and commit operate on different batches simultaneously, maximising throughput.
+
+### Independent verification without vendor software
+
+The engine ships with a standalone verification CLI. The tool is independent of the ZQUAS engine. It takes a proof bundle, a registered policy set, and evaluation contexts as input. It replays the evaluation deterministically and confirms that the proof is valid. The tool outputs VALID (exit code 0), INVALID (exit code 1), or ERROR (exit code 2). No GPU required for verification. No vendor infrastructure needed.
+
+### How it's built
+
+- **Language**: C++23 with CUDA. Self-contained CUDA compilation per kernel. No separable compilation dependencies.
+- **GPU Targets**: NVIDIA architectures: sm_86 (Ampere), sm_89 (Ada Lovelace), sm_100 (Blackwell), sm_120 (next-gen). Tested on RTX 5090.
+- **Build Hardening**: MSVC /sdl, /guard:cf, /GS, /Qspectre, /fp:strict. Linker: /CETCOMPAT, /DYNAMICBASE, /NXCOMPAT, /HIGHENTROPYVA.
+- **Testing**: ~3,869 unit tests (GTest). Standalone benchmark harnesses for throughput, latency, determinism, and detection fidelity.
+- **Cryptography**: BLAKE3 (internal), SHA-256 (regulatory), Ed25519 (signatures), Poseidon (ZK circuits). DualHash at domain boundaries.
+- **Binary Attestation**: Reproducible builds with embedded BLAKE3 + SHA-256 hashes, compiler version, git commit, and Ed25519 signature for runtime self-verification.
+
+### Nothing executes without constitutional authorization
+
+The engine enforces a zero-bypass governance model. Every computational action requires explicit authorization, every authorization is metered, and every action is cryptographically provable.
+
+- **ExecutionGate**: The single enforcement point through which every governed action must pass. There is no code path that bypasses the gate.
+- **WarrantAuthority**: Ephemeral Ed25519 keypairs mint cryptographic warrants for authorized actions. Each warrant is scoped to a specific action, agent, and time window. Warrants cannot be reused, extended, or forged.
+- **GasMeter**: Every agent has a monotonic gas ledger. Each action consumes gas. When gas is depleted, the agent cannot act until replenished by an authorized governance decision. Sixteen sharded mutexes ensure metering doesn't become a bottleneck.
+- **PolicyRoot**: A GPU-resident Sparse Merkle Tree maintains policy inclusion proofs. Any party can verify that a specific policy was part of the active policy set at a specific time without accessing the full policy database.
+
+### Detect problems before they happen
+
+The Janus projection layer simulates governance state forward in time without executing policies. It predicts gas depletion, resource violations, cascade failures, and warrant expiry over N future frames. Compliance issues are flagged before they materialise, not after.
+
+Janus uses a discrete-time state machine with Q32.32 fixed-point arithmetic for deterministic projection. It operates on copy-on-write shadow states, meaning projections don't interfere with live governance.
+
+### The engine attacks itself
+
+Sentinel is a built-in adversarial testing framework with 13+ subsystems. It continuously generates adversarial inputs, fuzzes policy evaluation boundaries, and maps decision surface coverage. This runs on GPU alongside production workloads.
+
+- **GPU-Accelerated Fuzzing**: Adversarial input generation running on dedicated CUDA streams. The fuzzer targets policy evaluation edge cases, threshold boundaries, and entity resolution logic.
+- **Decision Surface Mapping**: GPU-accelerated cartography subsystem maps the complete decision surface of the policy set. It identifies regions of the input space where small changes in transaction parameters flip verdicts.
+- **Two-Gate Pipeline**: A 6-step pre-commit gate runs before any policy change is deployed. A parallel CI/CD gate runs comprehensive adversarial testing.
+
+### Reasoning beyond patterns
+
+- **Noumenon Semantic Runtime**: A 7-domain ontology (Ontology, Topology, Dynamics, Epistemics, Salience, Affordance, Projection) provides structured contextual reasoning for agent decision-making.
+- **Multi-Timeline Virtualization**: The engine can evaluate the same entity under different temporal contexts simultaneously. Compare this month's transaction pattern against last month's baseline, project forward under different scenarios, or replay historical periods with current policies.
+
+### Plugs into what you already run
+
+- **Zero-Copy Export**: Verdict export in RAW and CEF formats for direct ingestion by SIEM platforms (Splunk, QRadar, Sentinel) and GRC systems.
+- **High-Throughput Ingest**: 256MB shared memory ring buffer with cache-line separated atomic indices for lock-free ingestion. Supports standard JSON payloads via the Synapse bridge and raw binary payloads via GPU-Direct bypass.
+
+### The engine verifies itself
+
+Every compiled binary embeds deterministic hashes (BLAKE3 and SHA-256) of its own content, the compiler version and flags used to build it, the git commit hash, and an Ed25519 signature over all of the above. At runtime, the engine can verify its own binary integrity. If the binary has been modified, patched, or tampered with, verification fails and the engine refuses to start.
+
+---
+
+## For Regulators
+
+### Verify compliance decisions. Don't trust vendor reports.
+
+ZQUAS produces cryptographic proof of every compliance decision. Your supervisory team verifies outcomes independently, without accessing bank systems, without installing vendor software, and without seeing underlying transaction data.
+
+Engaged with DNB InnovationHub and FCA Regulatory Sandbox.
+
+### Current Limitations: Trust-based supervision has structural gaps
+
+**System Behavior Is Unverifiable**: When a bank describes how its monitoring system works, there is no way to independently confirm that the production system matches the description. Configuration drift, undocumented rule changes, and silent processing failures are invisible to examiners relying on the bank's own reporting.
+
+**Temporal Reconstruction Is Imprecise**: The question "what rules were in effect on this date?" requires reconstructing from change logs and deployment records. In batch processing systems, the relationship between rule changes, batch execution times, and which transactions were evaluated under which rule version is often genuinely ambiguous.
+
+**AI Oversight Is Approaching Without Tools**: The EU AI Act classifies AML systems as high-risk. Article 12 requires record-keeping that allows tracing back system operations. Article 14 requires human oversight. Most monitoring systems weren't designed with this level of logging granularity.
+
+### Cryptographic Verification: Mathematical proof replaces institutional trust
+
+Every batch of compliance decisions produces a sealed proof bundle. The bundle is self-contained, tamper-evident, and independently verifiable.
+
+Verification flow: Policy Set (hashed and signed) -> Transaction Data (evaluated on GPU against full policy set) -> Verdicts (bound together via Merkle root) -> Proof Bundle (Ed25519 signed, timestamped) -> Verification (standalone CLI confirms validity).
+
+- **Completeness**: The Merkle root covers every verdict in the batch. A missing verdict invalidates the root. Unlike log-based audit trails, gaps are mathematically detectable.
+- **Policy Integrity**: The proof bundle includes a cryptographic hash of the exact policy set that was executed. If the production configuration differs from the documented policy, the hashes won't match.
+- **Temporal Precision**: The evaluation timestamp is bound into the cryptographic signature. Modifying the timestamp invalidates the proof.
+
+### Verification Tool: No vendor software required
+
+The verification tool is independent of the ZQUAS engine. It takes a proof bundle as input, applies standard cryptographic operations, and outputs VALID or INVALID. The tool is auditable, inspectable, and runs without any vendor infrastructure.
+
+The regulator registers the bank's public key and policy set hashes. Verification confirms that the registered policies produced the claimed verdicts on the claimed data at the claimed time. No access to the bank's systems or the underlying transaction data is needed.
+
+### Regulatory Framework Alignment: Built-in compliance evidence production
+
+The engine produces sealed Control Evaluation Records aligned to multiple regulatory frameworks. Evidence bundles include Merkle roots and Ed25519 signatures.
+
+- **EU AI Act**: Articles 9, 11, 12, 14. Risk management supported by built-in adversarial testing framework. Technical documentation via sealed evidence bundles. Record-keeping through cryptographic proof bundles. Human oversight enforced by constitutional warrant model.
+- **AMLR / 6AMLD**: Real-time monitoring capability, privacy-preserving cross-institutional detection, and explainable automated decision-making.
+- **FATF Recommendation 15**: New technologies and virtual assets. Risk-based approach to innovation in AML/CFT systems.
+- **NIST AI RMF**: AI risk management framework alignment. Map, measure, manage, and govern AI risks.
+- **ISO 42001**: AI management system standard. Organizational governance requirements for AI systems.
+- **MAS TRM**: Technology Risk Management guidelines for financial institutions.
+- **GDPR**: Data protection by design. Privacy-preserving MPC architecture eliminates cross-institutional data exposure.
+- **DORA**: Digital operational resilience. Binary self-verification ensures supply chain integrity.
+
+### SupTech Implications
+
+- **Continuous Supervision**: Regulators could receive proof bundles on an ongoing basis and verify them automatically. Anomalies trigger alerts for human review. Supervision shifts from periodic sampling to continuous monitoring.
+- **Cross-Jurisdictional Verification**: A proof bundle from one jurisdiction can be verified by another jurisdiction's examiner without data sharing or system access. This simplifies supervisory cooperation.
+
+### Examination Readiness
+
+- **Gap Detection**: The engine continuously analyses policy coverage against registered regulatory frameworks. Coverage gaps are surfaced in real time, not discovered during an examination.
+- **Predictive Compliance**: The Janus projection layer simulates governance state forward in time. It predicts when warrants will expire, when gas budgets will deplete, and when policy changes will create coverage gaps.
+
+---
+
+## Vendor Comparison
+
+### How ZQUAS compares
+
+An honest architectural comparison. Not every vendor is bad at everything. The differences are structural, not incremental.
+
+### Comparison Table
+
+| Capability | Legacy Incumbents (NICE Actimize, Oracle, SAS) | AI-Native Challengers (Sardine, Hawk AI, Featurespace) | ZQUAS |
+|---|---|---|---|
+| Architecture | CPU batch processing | CPU cloud, API-first | GPU-native, single-node |
+| Processing model | Overnight/periodic batch | Near real-time | Real-time: 2.58M events/sec |
+| Rule engine | Static rules, manual thresholds | Rules + ML scoring | Policy language compiled to GPU bytecode |
+| Determinism | Non-deterministic (model drift, eval order) | Non-deterministic (continuous ML updates) | Deterministic: same input + same policy = same verdict |
+| Cross-institutional detection | No | No | Yes, via GPU-accelerated MPC |
+| Data sovereignty | Vendor cloud or on-premise | Vendor cloud | On-premise only. Data never leaves the bank |
+| Privacy-preserving computation | No | No | ABY3 secret sharing, garbled circuits, ECDH-PSI |
+| Cryptographic decision proof | No | No | Ed25519-signed proof bundles with Merkle roots |
+| Independent regulator verification | No. Trust-based audit trails | No. Trust-based audit trails | Yes. Standalone CLI, no vendor software needed |
+| Zero-knowledge governance proofs | No | No | GPU-accelerated PLONK + IPA |
+| Entity resolution | Batch entity matching | ML-based, cloud | GPU-resident graph with GNN risk propagation |
+| Adversarial self-testing | No | No | Continuous GPU-accelerated fuzzing and cartography |
+| Predictive governance | No | No | Forward simulation of compliance state |
+| Policy coverage gap detection | Manual mapping | No | Real-time automated gap analysis across frameworks |
+| Build attestation / binary integrity | No | No | BLAKE3 + SHA-256 + Ed25519 embedded in binary |
+| EU AI Act readiness | Retrofit required | Partial (explainability tools) | Native: Articles 9, 11, 12, 14 addressed architecturally |
+| AMLR 2027 readiness | Significant re-architecture needed | Partial | Designed for AMLR from the start |
+
+### Reading this table
+
+This comparison reflects architectural capabilities, not product quality. Legacy incumbents have deep integration with bank infrastructure, decades of regulatory familiarity, and thousands of production deployments. AI-native challengers have modern interfaces, strong ML capabilities, and significant venture funding. These are real advantages.
+
+The differences shown above are structural. They reflect what each architecture can and cannot do, not what each company chooses to prioritise. A CPU-based cloud platform cannot offer GPU-native processing through a software update. A centralised SaaS platform cannot offer privacy-preserving MPC without fundamental re-architecture.
+
+### Vendor Details
+
+**Legacy Incumbents** (NICE Actimize, Oracle Financial Crime, SAS): These vendors own the installed base at most Tier-1 and Tier-2 banks globally. Their systems are deeply integrated into bank infrastructure with 15 to 20 integration points per deployment. They have extensive regulatory familiarity across multiple jurisdictions. Their architectural limitation is that they were designed for batch processing on CPU infrastructure.
+
+**AI-Native Challengers** (Sardine $145M raised, Hawk AI $56M raised, Featurespace, ComplyAdvantage): These companies represent the modern wave of compliance technology. Cloud-first, API-driven, with machine learning for alert scoring. Their architectural limitation is that they are better versions of the existing paradigm: CPU-based cloud processing with ML models. They do not offer GPU-native processing, privacy-preserving cross-institutional detection, or cryptographic decision proofs.
+
+**ZQUAS** (Pre-revenue, DNB InnovationHub, FCA Sandbox): ZQUAS is architecturally different, not incrementally better. The engine runs on GPU, processes 2.58 million compliance events per second, enforces policies deterministically via compiled bytecode, and produces cryptographic proof bundles for every decision. The trade-off is maturity: ZQUAS is pre-revenue with no production deployments.
+
+### Where ZQUAS is behind
+
+- **Production deployments**: Legacy vendors have thousands. AI-native challengers have hundreds. ZQUAS has zero.
+- **Regulatory familiarity**: Regulators know NICE Actimize and Oracle. ZQUAS is in sandbox engagement.
+- **Professional services**: Large vendors have implementation teams and 24/7 support. ZQUAS is a solo founder.
+- **Ecosystem integration**: Legacy vendors have pre-built connectors to every major core banking system. ZQUAS has standard format ingestion and export but not vendor-specific connectors.
+
+These gaps are real. They close with time, traction, and investment. The architectural gaps in the other direction do not close with time. They require re-architecture.
+
+---
+
+## Benchmark
+
+### 2.58 Million Compliance Events Per Second
+
+A documented benchmark of the ZQUAS engine running a 29-policy Tier-1 bank policy set across 8 compliance domains on a single NVIDIA RTX 5090 GPU. This is what the number means, how it was measured, and why it matters.
+
+Benchmark date: March 2026. Hardware: NVIDIA RTX 5090 (Blackwell, sm_100).
+
+### Test Configuration
+
+**Hardware**: GPU: NVIDIA RTX 5090, Architecture: Blackwell (sm_100), CUDA Cores: 21,760, VRAM: 32 GB GDDR7, Host CPU: AMD Ryzen 9 9950X, Host RAM: 64 GB DDR5, OS: Windows 11 Pro.
+
+**Policy Set**: 29 active policies, 8 compliance domains, CPL bytecode (compiled), N blocks x M threads evaluation model, Max policies (M) <= 1,024, Batch size <= 4,096 contexts, Deadline flush: 1,000 us.
+
+### What CEPS Means
+
+CEPS stands for Compliance Events Per Second. One compliance event is a single transaction evaluated against the full active policy set. Not one rule. All 29 policies, applied to one transaction, simultaneously.
+
+In the ZQUAS engine, the GPU evaluates all policies against each transaction in parallel. One GPU block per transaction. One thread per policy. The 2.58 million CEPS figure means 2.58 million transactions were each evaluated against all 29 policies simultaneously. That's over 74 million individual policy evaluations per second.
+
+2.58M transactions x 29 policies = 74.8M individual policy evaluations per second. On a single GPU.
+
+### Policy Set Composition
+
+The benchmark used a 29-policy set modelled on a Tier-1 bank's production monitoring requirements, spanning 8 compliance domains:
+
+1. AML Transaction Monitoring: Structuring detection, velocity analysis, counterparty risk, geographic risk
+2. Sanctions Screening: Name matching, list-based screening, fuzzy matching thresholds
+3. Fraud Detection: Anomaly scoring, device correlation, behavioural deviation
+4. KYC/KYB: Customer risk classification, beneficial ownership verification, PEP screening
+5. Correspondent Banking: Nested correspondent detection, payment chain analysis, jurisdiction risk
+6. Trade-Based Money Laundering: Invoice manipulation, over/under pricing, phantom shipments
+7. Terrorist Financing: Low-value high-frequency patterns, geographic indicators, list correlation
+8. Regulatory Reporting: SAR trigger conditions, threshold-based filing requirements, cross-domain aggregation
+
+### Results
+
+- 2,582,417 compliance events per second (peak sustained)
+- 74.8M individual policy evaluations per second
+- < 1ms batch latency (submission to verdict)
+- Determinism verified: byte-identical verdicts across multiple runs
+- Epoch commitment: cryptographic proof bundle (Ed25519 signed, Merkle-rooted) within measured latency
+- GPU utilization: triple-stream pipeline (load, adjudicate, commit) operating concurrently across CUDA streams
+
+### How It Was Measured
+
+The benchmark uses the Themis Governance Benchmark (TGB v1.2), a standalone harness that measures throughput, latency, determinism, and cryptographic proof generation under controlled conditions.
+
+Transactions are synthetically generated with realistic parameter distributions. The generator produces a continuous stream at a rate exceeding the engine's processing capacity to ensure the benchmark measures engine throughput, not data generation throughput.
+
+Timing uses CUDA events for GPU-side measurement, eliminating host-side timing noise. The measurement window excludes startup and warmdown periods. The reported figure is sustained throughput over the measurement window, not a burst or peak.
+
+The benchmark harness isolates the policy evaluation pipeline: GPU context packet serialisation, kernel dispatch, verdict collection, and epoch commitment. It does not include data ingestion, entity graph updates, or rendering overhead.
+
+### Why This Matters for Banks
+
+A Tier-1 bank processes roughly 5 to 50 million transactions per day. At 2.58 million compliance events per second, the engine can evaluate a full day's transaction volume in under 20 seconds. With the full policy set. Against every transaction. No sampling. No prioritisation. No overnight batch window.
+
+For real-time payment rails (SEPA Instant, Faster Payments, RTP), the engine evaluates the transaction in a fraction of the settlement window.
+
+An NVIDIA RTX 5090 costs approximately EUR 2,000 to EUR 2,500 at retail. The entire benchmark was run on a single consumer-grade GPU. Enterprise GPUs (A100, H100) would provide higher throughput and larger VRAM.
+
+One GPU. One month's analyst salary. 2.58 million compliance events per second. The economics of GPU-native compliance are difficult to argue with.
+
+### Detection Fidelity
+
+Separately from the throughput benchmark, a detection fidelity test simulated 1.25 million transactions modelled on Tier-1 bank transaction patterns. Detailed detection fidelity results are available under NDA for qualified evaluation partners.
+
+### Verification
+
+The benchmark is deterministic. Running TGB v1.2 with the same policy set on the same hardware produces identical results. The benchmark executable is subject to the same build attestation as the main engine.
+
+---
+
+## TMNL Analysis
+
+### Transaction Monitoring Netherlands: What Went Wrong, What Comes Next
+
+Five Dutch banks spent four years and tens of millions of euros building the world's most ambitious cross-institutional AML monitoring initiative. It was shut down in 2024. Not because it failed at detection. Because its architecture couldn't survive contact with privacy law.
+
+Last updated: March 2026.
+
+### What TMNL Was
+
+Transaction Monitoring Netherlands was founded in July 2020 by the five largest Dutch banks: ABN AMRO, ING, Rabobank, Triodos Bank, and de Volksbank. The initiative was coordinated by the Dutch Banking Association (NVB) and supported by the Dutch government's Money Laundering Action Plan.
+
+The premise was simple and compelling. An estimated EUR 16 billion in criminal money is laundered through the Netherlands every year. Criminals spread their activity across multiple banks. By pooling transaction data from all five banks and analysing it jointly, TMNL could detect money laundering networks that were invisible to any individual institution.
+
+TMNL was staffed with over 70 professionals from more than 20 nationalities. It built a cloud-based analytics platform, developed AI-driven detection models, and tested scenarios covering human trafficking, VAT fraud, and drug-related money flows. The combined data revealed previously unknown criminal schemes, including cocaine smuggling operations using fruit and vegetable import companies as fronts.
+
+The Wall Street Journal called it a 'cutting edge example' of innovation in the fight against money laundering. FATF referenced it as a key success factor in the Netherlands' AML efforts.
+
+### Why It Was Shut Down
+
+TMNL's architecture centralised raw transaction data from five banks into a single platform. This created a fundamental conflict with privacy rights.
+
+In April 2024, the human rights organisation HRIF.EU, together with other organisations, submitted a petition to the Dutch Parliament on behalf of nearly 15,000 banking customers demanding that TMNL stop processing data and destroy all collected data.
+
+The Dutch Data Protection Authority raised concerns. The Council of State questioned the legal basis. The EU Anti-Money Laundering Regulation (AMLR), finalised in May 2024, restricts data sharing to customers already identified as high-risk. Broad-based pooling of transaction data, TMNL's entire operational model, was no longer legally viable.
+
+In July 2024, TMNL announced it would wind down. By January 2025, most staff had departed. TMNL ceased to exist.
+
+### The Architecture Was the Problem
+
+TMNL didn't fail because of bad intentions, inadequate technology, or insufficient investment. It failed because its architecture required centralising data, and centralising data from multiple banks into a single platform is fundamentally incompatible with EU privacy law at scale.
+
+The core paradox: effective cross-institutional detection requires visibility across banks. Data centralisation provides that visibility but violates privacy rights. As long as detection and centralisation are architecturally coupled, the paradox is unsolvable.
+
+### Privacy-Preserving Cross-Institutional Detection
+
+Secure multi-party computation allows multiple parties to jointly compute a result from their combined data without any party revealing its data to the others. GPU-accelerated MPC implementations now achieve throughput levels compatible with real-time financial transaction monitoring.
+
+Each bank deploys a compliance engine on its own infrastructure. The bank's transaction data never leaves its premises. When two or more banks run compatible engines, cross-institutional detection activates via MPC. The engines jointly compute risk indicators for shared counterparties without either bank seeing the other's transactions.
+
+| Dimension | TMNL Model | MPC-Based Model |
+|---|---|---|
+| Data location | Central platform | Stays at each bank |
+| Privacy exposure | Full transaction visibility | Zero raw data disclosure |
+| GDPR/AMLR compatibility | Required legislative carve-out | Compatible by construction |
+| Single point of breach | Central database | No central target |
+| Bank autonomy | Shared rule set negotiations | Each bank runs own rules |
+| Policy change impact | Network-wide cascading | Contained to local node |
+| Governance overhead | Steering committee, PMO, consensus | Technical standards only |
+| Network scaling | Consortium agreement | Bilateral connections |
+| Regulatory verification | Trust-based audit | Cryptographic proof bundles |
+
+### The Window Is Open
+
+AMLR takes effect mid-2027. The five banks that founded TMNL still need cross-institutional detection capability. Privacy-preserving multi-party computation provides the alternative architecture. Each bank retains full data sovereignty. No central platform exists. The network can grow through bilateral connections between banks. The technology is ready. What's needed is the first two banks to start.
+
+---
+
+## About
+
+### Built by compliance. Not about compliance.
+
+Danny de Gier, Founder & Engineer.
+
+ZQUAS exists because I spent 18 years inside the compliance function at Tier-1 banks, watching the same architectural failures repeat across every institution I worked at. The tools weren't broken. The architecture was wrong. So I built a different one.
+
+### The Compliance Career
+
+I started in financial crime compliance in 2006 and spent the next 18 years inside the machine. RBS, Deutsche Bank, HSBC, Commerzbank on the banking side. ClearBank, Vivid Money, CoinMetro on the fintech side.
+
+I've built onboarding frameworks, designed transaction monitoring rule sets, sat through regulatory examinations, written SARs, reviewed thousands of alerts, and watched analysts burn out on false positives that could have been avoided with better architecture.
+
+I've seen what a EUR 775 million fine does to a bank from the inside. I've seen what happens when a regulator loses confidence in your monitoring programme.
+
+The Professional Postgraduate Diploma in Financial Crime Compliance from the International Compliance Association and University of Manchester formalised what I'd learned on the job. But the real education was sitting in the chair, across the table from examiners, defending systems I knew were inadequate.
+
+### The Engineering Path
+
+Somewhere along the way I started asking why compliance systems were so far behind the technology curve. Trading systems process millions of events per second. Game engines render entire worlds in real time. GPU computing had transformed AI, scientific simulation, and high-frequency finance. Compliance was still running batch jobs overnight on CPU-based rule engines designed in the 2000s.
+
+I taught myself GPU programming. C++, CUDA, Vulkan. Not as a hobby, but because I could see that the compliance problems I'd spent years working around were fundamentally compute problems that GPU architecture could solve.
+
+ZQUAS is the engine I wished I'd had during every compliance role I ever held. It's built by someone who has reviewed the SARs, built the rule sets, sat through the examinations, and also writes the GPU kernels.
+
+### Career Timeline
+
+- 2024-Present: ZQUAS -- Founder & Engineer. GPU-native compliance engine. Engaged with DNB InnovationHub and FCA regulatory sandbox.
+- Jul 2022-Feb 2024: ClearBank -- Global Cryptoassets / Risk Director. Digital asset risk appetite. Acting MLRO.
+- Mar 2020-Feb 2022: Vivid Money -- Group Chief Risk & Compliance Officer, MLRO. Board Member.
+- Apr 2019-Mar 2020: DLL / Rabobank -- Global AML Programme Lead. 35 jurisdictions.
+- Feb 2019-Nov 2019: Crypterium -- Chief Compliance Advisor.
+- Jun 2018-Dec 2018: CoinMetro -- Head of Compliance, CCO & MLRO.
+- Dec 2017-Jun 2018: Commerzbank -- Senior Strategic Advisor: Trade Finance Financial Crime.
+- Sep 2016-Jul 2017: Deutsche Bank -- Global Strategic Lead: Anti-Financial Crime Strategy & Sanctions.
+- Dec 2014-Jun 2016: Royal Bank of Scotland -- Global Head of Sanctions, Transaction Monitoring & Payments Filtering.
+- Jun 2014-Dec 2014: HSBC -- Senior Strategic Project Manager: Global Sanctions & Trade Finance.
+- Jun 2008-Feb 2014: Royal Bank of Scotland -- Strategic Lead: AML Systems Integration & Operational Architecture.
+- Pre-2008: ABN AMRO / LeasePlan / IBM -- AML Change Management, Systems Architecture & Enterprise Delivery.
+
+### Qualifications
+
+- Professional Postgraduate Diploma in Financial Crime Compliance -- International Compliance Association / University of Manchester
+- Business Analysis Diploma / PRINCE2 Practitioner -- Project Management
+- GPU Systems Programming -- C++23, CUDA (sm_86/89/100/120), Vulkan
+- Domain expertise spanning 8 compliance domains -- AML, sanctions screening, fraud detection, KYC/KYB, trade surveillance, correspondent banking, crypto compliance, regulatory reporting
+
+### The intersection that doesn't exist elsewhere
+
+There are plenty of compliance professionals in the world. There are plenty of GPU engineers. The intersection of those two groups is essentially empty.
+
+Most compliance technology is built by engineers who learn about compliance from documentation and customer interviews. ZQUAS is different because every design decision comes from direct experience. The policy language exists because I've written rules in vendor tools that couldn't express what the regulation actually required. The cryptographic attestation exists because I've spent weeks reconstructing audit trails during regulatory examinations. The GPU architecture exists because I've watched banks hire 500 additional analysts to compensate for a monitoring system that couldn't keep up with transaction volume.
+
+The engine doesn't just solve compliance problems technically. It solves them in the way that compliance professionals actually need them solved.

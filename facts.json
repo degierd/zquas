@@ -1,0 +1,92 @@
+{
+  "name": "ZQUAS",
+  "type": "compliance_technology_platform",
+  "tagline": "Sovereign compliance infrastructure for regulated finance",
+  "description": "GPU-native compliance engine enabling cross-institutional financial crime detection without central data pooling. Every decision cryptographically attested. Every verdict independently verifiable.",
+  "website": "https://zquas.ai",
+  "founded": "2024",
+  "stage": "pre-revenue",
+  "location": {
+    "city": "Zwolle",
+    "country": "Netherlands",
+    "region": "Europe"
+  },
+  "founder": {
+    "name": "Danny de Gier",
+    "title": "Founder & Engineer",
+    "experience_years": 18,
+    "previous_employers": ["RBS", "Deutsche Bank", "HSBC", "Commerzbank", "ClearBank", "Vivid Money", "CoinMetro"],
+    "qualification": "Professional Postgraduate Diploma in Financial Crime Compliance (ICA / University of Manchester)",
+    "technical_skills": ["C++23", "CUDA", "Vulkan", "GPU systems programming"],
+    "linkedin": "https://www.linkedin.com/in/danny-de-gier-prof-pgdip-fcc/",
+    "email": "danny@zquas.ai"
+  },
+  "benchmark": {
+    "throughput": "2.58M compliance events per second",
+    "throughput_numeric": 2582417,
+    "policies_parallel": 29,
+    "compliance_domains": 8,
+    "hardware": "NVIDIA RTX 5090 (Blackwell, sm_100)",
+    "nodes": 1,
+    "batch_latency": "<1ms",
+    "deterministic": true,
+    "policy_evaluations_per_second": "74.8M"
+  },
+  "capabilities": {
+    "gpu_native_processing": true,
+    "privacy_preserving_mpc": true,
+    "cryptographic_attestation": true,
+    "deterministic_evaluation": true,
+    "cross_institutional_detection": true,
+    "zero_knowledge_proofs": true,
+    "adversarial_self_testing": true,
+    "predictive_governance": true,
+    "entity_resolution_gpu": true,
+    "multi_timeline_evaluation": true,
+    "gap_detection": true,
+    "build_attestation": true,
+    "siem_integration": true,
+    "constitutional_governance": true
+  },
+  "regulatory_frameworks": [
+    "EU AI Act",
+    "AMLR / 6AMLD",
+    "FATF R15",
+    "NIST AI RMF",
+    "ISO 42001",
+    "MAS TRM",
+    "GDPR",
+    "DORA"
+  ],
+  "regulatory_engagement": {
+    "dnb_innovationhub": "under_review",
+    "fca_sandbox": "engaged"
+  },
+  "competitors": {
+    "legacy_incumbents": ["NICE Actimize", "Oracle Financial Crime", "SAS"],
+    "ai_native_challengers": ["Sardine", "Hawk AI", "Featurespace", "ComplyAdvantage"]
+  },
+  "differentiators": [
+    "GPU-native architecture (not GPU-accelerated)",
+    "Privacy-preserving cross-institutional detection via MPC",
+    "Cryptographic proof bundles for every compliance decision",
+    "Independent regulator verification via standalone CLI",
+    "Deterministic evaluation (byte-identical replay)",
+    "Constitutional zero-bypass governance model",
+    "Adversarial self-testing framework",
+    "Predictive governance (forward simulation)",
+    "3-5 year estimated replication timeline for competitors"
+  ],
+  "business_model": {
+    "deployment": "on-premise (bank's own infrastructure)",
+    "pricing": "annual licensing by transaction volume and policy complexity",
+    "expansion": "cross-institutional MPC network with network effects",
+    "data_sovereignty": "absolute (data never leaves the bank)"
+  },
+  "target_market": {
+    "primary": "Tier-1 and Tier-2 European banks",
+    "secondary": "Fintechs, payment service providers",
+    "geographic_focus": "EU (AMLR compliance deadline mid-2027)"
+  },
+  "last_updated": "2026-03-08"
+}

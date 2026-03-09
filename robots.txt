@@ -1,3 +1,8 @@
 User-agent: *
 Allow: /
 Sitemap: https://zquas.ai/sitemap.xml
+
+# AI/LLM specific
+# See https://zquas.ai/llms.txt for LLM-optimized content
+# See https://zquas.ai/llms-full.txt for complete documentation
+# See https://zquas.ai/facts.json for machine-readable fact sheet
