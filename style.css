@@ -1726,15 +1726,17 @@ footer p {
     .nav-links {
         display: none;
         position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100vh;
-        background: rgba(10, 11, 15, 0.97);
-        backdrop-filter: blur(20px);
+        inset: 0;
+        width: 100vw; height: 100vh;
+        height: 100dvh;
+        background: #0a0b0f;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 2rem;
+        gap: 1.25rem;
         z-index: 105;
+        overflow-y: auto;
+        padding: 5rem 2rem 3rem;
     }
     .nav-links.open { display: flex; }
     .nav-links a { font-size: 1.1rem; }
