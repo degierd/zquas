@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engine Demo — ZQUAS</title>
+    <meta name="description" content="Live demonstration of the ZQUAS GPU-native compliance engine processing 2.79M transactions per second across 1 million accounts.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="Engine Demo — ZQUAS">
+    <meta property="og:description" content="Live demonstration of the ZQUAS GPU-native compliance engine processing 2.79M transactions per second across 1 million accounts.">
+    <meta property="og:type" content="video.other">
+    <meta property="og:url" content="https://zquas.ai/demo.html">
+    <meta property="og:image" content="https://zquas.ai/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://zquas.ai/og-image.png">
+    <meta name="author" content="Danny de Gier">
+    <link rel="canonical" href="https://zquas.ai/demo.html">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .demo-header {
+            padding: 8rem 2rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .demo-video-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem 2rem;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: #000;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .demo-details {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 2rem 4rem;
+        }
+        .demo-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .demo-spec {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+        .demo-spec .val {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .demo-spec .label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+        .demo-note {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="technology.html">Technology</a>
+            <a href="/#architecture">Architecture</a>
+            <a href="regulators.html">Regulators</a>
+            <a href="/#for-banks">Banks</a>
+            <a href="/#for-investors">Investors</a>
+            <a href="about.html">About</a>
+            <a href="articles.html">Articles</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<div class="demo-header">
+    <div class="section-label" style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: #4a7dff; margin-bottom: 1rem;">Engine Demo</div>
+    <h1 style="font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem;">The engine running. Not a simulation.</h1>
+    <p style="font-size: 1.05rem; color: #8890a6; max-width: 640px; margin: 0 auto; line-height: 1.7;">GPU-native compliance engine processing millions of transactions in real time. Each building is an entity cluster. Each window is an account. Colors represent risk levels propagating through the entity graph.</p>
+</div>
+
+<div class="demo-video-container">
+    <div class="video-wrapper">
+        <iframe
+            src="https://www.youtube-nocookie.com/embed/3jNht-xOFX0?rel=0&modestbranding=1&showinfo=0&controls=1&iv_load_policy=3&playsinline=1&cc_load_policy=0&origin=https://zquas.ai"
+            title="ZQUAS Engine Demo"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+        ></iframe>
+    </div>
+</div>
+
+<div class="demo-details">
+    <h2 style="font-size: 1.2rem; font-weight: 600;">What you're seeing</h2>
+    <div class="demo-specs">
+        <div class="demo-spec">
+            <div class="val">2.79M</div>
+            <div class="label">Live transactions per second</div>
+        </div>
+        <div class="demo-spec">
+            <div class="val">1,042,061</div>
+            <div class="label">Accounts rendered in real time</div>
+        </div>
+        <div class="demo-spec">
+            <div class="val">78.3M</div>
+            <div class="label">Transactions ingested</div>
+        </div>
+        <div class="demo-spec">
+            <div class="val">17.3M</div>
+            <div class="label">Alerts generated</div>
+        </div>
+        <div class="demo-spec">
+            <div class="val">2,924</div>
+            <div class="label">Entity clusters (buildings)</div>
+        </div>
+        <div class="demo-spec">
+            <div class="val">5 tiers</div>
+            <div class="label">Risk classification levels</div>
+        </div>
+    </div>
+
+    <p class="demo-note">
+        The visualization maps a compliance monitoring network larger than Amsterdam. Each building represents an entity cluster (a bank branch, a corporate group, a correspondent chain). Each illuminated window represents an individual account. Window color reflects real-time risk classification: safe (blue/cyan), review (yellow), elevated (orange), high (red), critical (red pulse). Risk scores propagate through the entity graph via GPU-accelerated GNN inference. The drill-down panel shows individual account details including financial activity, risk flags, alert status, and neural lattice ML scoring.
+    </p>
+    <p class="demo-note">
+        This is the actual ZQUAS engine running on a single NVIDIA RTX 5090. Not a pre-rendered animation. Not a mockup. The transaction stream, risk evaluation, alert generation, and visualization all execute on GPU in real time.
+    </p>
+</div>
+
+<footer>
+    <p>&copy; 2026 ZQUAS &middot; Sovereign Compliance Infrastructure</p>
+</footer>
+
+</body>
+</html>

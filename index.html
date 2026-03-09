@@ -21,6 +21,45 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "ZQUAS",
+        "url": "https://zquas.ai",
+        "description": "GPU-native compliance engine enabling cross-institutional financial crime detection without central data pooling. Every decision cryptographically attested. Every verdict independently verifiable.",
+        "founder": {
+            "@type": "Person",
+            "name": "Danny de Gier",
+            "jobTitle": "Founder & Engineer",
+            "url": "https://www.linkedin.com/in/danny-de-gier-prof-pgdip-fcc/"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Zwolle",
+            "addressCountry": "NL"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "danny@zquas.ai",
+            "contactType": "sales"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "ZQUAS Compliance Engine",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Windows, Linux",
+        "description": "GPU-native compliance engine processing 2.58M compliance events per second. Privacy-preserving cross-institutional detection via MPC. Cryptographic proof bundles for every decision.",
+        "author": {
+            "@type": "Organization",
+            "name": "ZQUAS"
+        }
+    }
+    </script>
 </head>
 <body>
 
@@ -42,6 +81,8 @@
         </div>
     </div>
 </nav>
+
+<main>
 
 <section class="hero">
     <div class="hero-content">
@@ -68,6 +109,21 @@
                 <div class="val">8</div>
                 <div class="label">Regulatory standards covered</div>
             </div>
+        </div>
+        <div class="hero-video">
+            <a href="demo.html" class="video-preview">
+                <div class="video-overlay">
+                    <div class="play-icon">&#x25B6;</div>
+                    <div class="video-label">Watch the engine run</div>
+                </div>
+                <div class="video-stats">
+                    <span>2.79M TPS live</span>
+                    <span>&middot;</span>
+                    <span>1M+ accounts</span>
+                    <span>&middot;</span>
+                    <span>Real-time risk propagation</span>
+                </div>
+            </a>
         </div>
         <a href="zquas-onepager.pdf" class="hero-download" target="_blank">Download One-Pager (PDF)</a>
     </div>
@@ -109,7 +165,7 @@
         </p>
         <a href="compare.html" style="color: var(--accent); font-size: 0.9rem; display: inline-block; margin-bottom: 2rem; text-decoration: none;">See how ZQUAS compares to existing solutions &rarr;</a>
         <div class="arch-diagram">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" fill="none">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" fill="none" role="img" aria-label="Architecture diagram showing three bank nodes with GPU engines sending encrypted shares to an MPC computation layer, which produces a unified risk signal and cryptographic proof bundles for regulator verification">
                 <!-- Background -->
                 <rect width="880" height="420" rx="12" fill="#0d0e14"/>
                 <rect width="880" height="420" rx="12" stroke="#1e2030" stroke-width="1"/>
@@ -392,6 +448,8 @@
         </div>
     </div>
 </section>
+
+</main>
 
 <footer>
     <p>&copy; 2026 ZQUAS &middot; Sovereign Compliance Infrastructure</p>
