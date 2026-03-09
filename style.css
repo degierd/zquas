@@ -1733,7 +1733,7 @@ footer p {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 1.25rem;
+        gap: 1rem;
         z-index: 105;
         overflow-y: auto;
         padding: 5rem 2rem 3rem;
