@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Cross-Institutional Detection Works — ZQUAS</title>
+    <meta name="description" content="Complete end-to-end operational flow for cross-institutional transaction monitoring using privacy-preserving multi-party computation. From transaction to SAR.">
+    <meta name="keywords" content="cross-institutional AML, transaction monitoring, privacy-preserving detection, MPC, multi-party computation, TMNL alternative, AMLR compliance, federation">
+    <meta property="og:title" content="How Cross-Institutional Detection Works — ZQUAS">
+    <meta property="og:description" content="Complete end-to-end operational flow for cross-institutional transaction monitoring. Privacy-preserving federation that detects what single-bank monitoring misses.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://zquas.ai/use-case.html">
+    <meta property="og:image" content="https://zquas.ai/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://zquas.ai/og-image.png">
+    <meta name="author" content="Danny de Gier">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://zquas.ai/use-case.html">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How Cross-Institutional Detection Works",
+        "description": "Complete end-to-end operational flow for cross-institutional transaction monitoring using privacy-preserving multi-party computation.",
+        "author": {
+            "@type": "Person",
+            "name": "Danny de Gier",
+            "url": "https://www.linkedin.com/in/danny-de-gier-prof-pgdip-fcc/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ZQUAS",
+            "url": "https://zquas.ai"
+        },
+        "datePublished": "2026-03-10",
+        "dateModified": "2026-03-10",
+        "mainEntityOfPage": "https://zquas.ai/use-case.html"
+    }
+    </script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="technology.html">Technology</a>
+            <a href="/#architecture">Architecture</a>
+            <a href="regulators.html">Regulators</a>
+            <a href="use-case.html" class="active">Use Case</a>
+            <a href="/#for-banks">Banks</a>
+            <a href="about.html">About</a>
+            <a href="articles.html">Articles</a>
+            <a href="compare.html">Compare</a>
+            <a href="benchmark.html">Benchmark</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="analysis-header">
+    <div class="container">
+        <div class="section-label">Use Case</div>
+        <h1 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.6rem); max-width: 800px; margin-bottom: 1.5rem;">How Cross-Institutional Detection Works</h1>
+        <p class="hero-sub" style="text-align: left; max-width: 760px; margin: 0 0 1.5rem;">From transaction to SAR &mdash; the complete operational flow</p>
+        <p class="section-desc" style="max-width: 760px;">
+            Banks already monitor transactions. Criminals exploit the gaps between banks. ZQUAS adds a privacy-preserving federation layer that makes cross-institutional patterns visible without sharing any data. Each bank keeps its existing systems and processes. The federation layer adds one new capability: the ability to detect patterns that span institutional boundaries.
+        </p>
+    </div>
+</section>
+
+<!-- SECTION 1: THE PROBLEM -->
+<section class="problem-section">
+    <div class="container">
+        <div class="section-label">The Problem</div>
+        <h2 class="section-title">What single-bank monitoring misses</h2>
+        <div class="analysis-body" style="margin-bottom: 3rem;">
+            <p>A criminal entity &mdash; say, a trading company &mdash; has accounts at three banks. At each bank, the transaction pattern looks normal. Across all three, the pattern is classic money laundering: money enters through one bank, fragments through a second, and reconsolidates through a third.</p>
+            <p>No single bank can see this. Each bank's monitoring system scores the entity as low-risk because the local transactions are individually unremarkable.</p>
+        </div>
+
+        <!-- Visual: Three banks, each green, with invisible cross-bank flow -->
+        <div class="arch-diagram" style="margin-bottom: 2.5rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 280" fill="none" role="img" aria-label="Three banks each showing green (normal) status, with an invisible money flow pattern connecting them that no individual bank can see">
+                <rect width="880" height="280" rx="12" fill="#0d0e14"/>
+                <rect width="880" height="280" rx="12" stroke="#1e2030" stroke-width="1"/>
+
+                <!-- Bank A -->
+                <rect x="60" y="60" width="200" height="100" rx="8" fill="#161722" stroke="#1e2030"/>
+                <text x="160" y="90" text-anchor="middle" fill="#8890a6" font-family="DM Sans,sans-serif" font-size="12" font-weight="500">BANK A</text>
+                <text x="160" y="115" text-anchor="middle" fill="#565c72" font-family="JetBrains Mono,monospace" font-size="9">Local risk score: LOW</text>
+                <rect x="115" y="128" width="90" height="20" rx="4" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.3)"/>
+                <text x="160" y="142" text-anchor="middle" fill="#34d399" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">NORMAL</text>
+
+                <!-- Bank B -->
+                <rect x="340" y="60" width="200" height="100" rx="8" fill="#161722" stroke="#1e2030"/>
+                <text x="440" y="90" text-anchor="middle" fill="#8890a6" font-family="DM Sans,sans-serif" font-size="12" font-weight="500">BANK B</text>
+                <text x="440" y="115" text-anchor="middle" fill="#565c72" font-family="JetBrains Mono,monospace" font-size="9">Local risk score: LOW</text>
+                <rect x="395" y="128" width="90" height="20" rx="4" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.3)"/>
+                <text x="440" y="142" text-anchor="middle" fill="#34d399" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">NORMAL</text>
+
+                <!-- Bank C -->
+                <rect x="620" y="60" width="200" height="100" rx="8" fill="#161722" stroke="#1e2030"/>
+                <text x="720" y="90" text-anchor="middle" fill="#8890a6" font-family="DM Sans,sans-serif" font-size="12" font-weight="500">BANK C</text>
+                <text x="720" y="115" text-anchor="middle" fill="#565c72" font-family="JetBrains Mono,monospace" font-size="9">Local risk score: LOW</text>
+                <rect x="675" y="128" width="90" height="20" rx="4" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.3)"/>
+                <text x="720" y="142" text-anchor="middle" fill="#34d399" font-family="JetBrains Mono,monospace" font-size="8" font-weight="500">NORMAL</text>
+
+                <!-- Hidden flow arrows -->
+                <line x1="260" y1="110" x2="340" y2="110" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5"/>
+                <polygon points="336,106 344,110 336,114" fill="#f59e0b" opacity="0.5"/>
+                <line x1="540" y1="110" x2="620" y2="110" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5"/>
+                <polygon points="616,106 624,110 616,114" fill="#f59e0b" opacity="0.5"/>
+
+                <!-- Flow label -->
+                <text x="440" y="200" text-anchor="middle" fill="#f59e0b" font-family="JetBrains Mono,monospace" font-size="9" opacity="0.7">Money flow invisible to any single bank</text>
+
+                <!-- Deposit / Fragment / Consolidate labels -->
+                <text x="160" y="230" text-anchor="middle" fill="#565c72" font-family="JetBrains Mono,monospace" font-size="8">Deposit</text>
+                <text x="440" y="230" text-anchor="middle" fill="#565c72" font-family="JetBrains Mono,monospace" font-size="8">Fragment</text>
+                <text x="720" y="230" text-anchor="middle" fill="#565c72" font-family="JetBrains Mono,monospace" font-size="8">Reconsolidate</text>
+
+                <!-- Curved path showing the full laundering flow -->
+                <path d="M160,215 Q300,260 440,215 Q580,260 720,215" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,3" fill="none" opacity="0.35"/>
+            </svg>
+        </div>
+
+        <div class="callout">
+            <p>TMNL proved that cross-institutional analysis detects patterns that single-bank monitoring misses. The project was shut down because centralising the data violated privacy law. <a href="tmnl.html" style="color: var(--accent);">Read the full analysis.</a></p>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 2: SOLUTION ARCHITECTURE -->
+<section>
+    <div class="container">
+        <div class="section-label">Architecture</div>
+        <h2 class="section-title">Federation without centralisation</h2>
+        <div class="analysis-body" style="margin-bottom: 3rem;">
+            <p>Each participating bank installs a ZQUAS node on their own infrastructure. The node sits alongside the bank's existing transaction monitoring system &mdash; NICE Actimize, Oracle, SAS, or any other. It reads risk scores that the existing system already produces. No replacement. No migration.</p>
+        </div>
+
+        <!-- Architecture diagram -->
+        <div class="arch-diagram" style="margin-bottom: 2.5rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 520" fill="none" role="img" aria-label="Architecture diagram showing three banks, each with their existing TM system feeding risk scores to a ZQUAS node, which communicates peer-to-peer over a private network and delivers escalation alerts to existing case management">
+                <rect width="880" height="520" rx="12" fill="#0d0e14"/>
+                <rect width="880" height="520" rx="12" stroke="#1e2030" stroke-width="1"/>
+
+                <!-- Bank A Column -->
+                <rect x="40" y="30" width="240" height="460" rx="10" fill="#161722" stroke="#1e2030"/>
+                <text x="160" y="56" text-anchor="middle" fill="#8890a6" font-family="DM Sans,sans-serif" font-size="11" font-weight="600">BANK A</text>
+
+                <rect x="70" y="72" width="180" height="48" rx="6" fill="#0d0e14" stroke="#1e2030"/>
+                <text x="160" y="94" text-anchor="middle" fill="#565c72" font-family="DM Sans,sans-serif" font-size="9">Existing TM System</text>
+                <text x="160" y="108" text-anchor="middle" fill="#565c72" font-family="JetBrains Mono,monospace" font-size="7">(NICE / Oracle / SAS)</text>
+
+                <line x1="160" y1="120" x2="160" y2="144" stroke="#565c72" stroke-width="1"/>
+                <polygon points="156,140 164,140 160,148" fill="#565c72"/>
+
+                <rect x="90" y="148" width="140" height="32" rx="4" fill="#0d0e14" stroke="#1e2030"/>
+                <text x="160" y="168" text-anchor="middle" fill="#8890a6" font-family="JetBrains Mono,monospace" font-size="8">Risk scores / entity</text>
+
+                <line x1="160" y1="180" x2="160" y2="204" stroke="#565c72" stroke-width="1"/>
+                <polygon points="156,200 164,200 160,208" fill="#565c72"/>
+
+                <rect x="70" y="208" width="180" height="56" rx="6" fill="rgba(74,125,255,0.06)" stroke="#4a7dff" stroke-width="1.5"/>
+                <text x="160" y="232" text-anchor="middle" fill="#4a7dff" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600">ZQUAS NODE</text>
+                <text x="160" y="252" text-anchor="middle" fill="#565c72" font-family="JetBrains Mono,monospace" font-size="7">On-premise</text>
+
+                <line x1="160" y1="264" x2="160" y2="300" stroke="#565c72" stroke-width="1"/>
+                <polygon points="156,296 164,296 160,304" fill="#565c72"/>
+
+                <rect x="70" y="304" width="180" height="48" rx="6" fill="#0d0e14" stroke="#1e2030"/>
+                <text x="160" y="324" text-anchor="middle" fill="#f59e0b" font-family="JetBrains Mono,monospace" font-size="8">Escalation Alerts</text>
+                <text x="160" y="340" text-anchor="middle" fill="#565c72" font-family="JetBrains Mono,monospace" font-size="7">cross-institutional risk</text>
+
+                <line x1="160" y1="352" x2="160" y2="388" stroke="#565c72" stroke-width="1"/>
+                <polygon points="156,384 164,384 160,392" fill="#565c72"/>
+
+                <rect x="70" y="392" width="180" height="48" rx="6" fill="#0d0e14" stroke="#1e2030"/>
+                <text x="160" y="412" text-anchor="middle" fill="#565c72" font-family="DM Sans,sans-serif" font-size="9">Existing Case</text>
+                <text x="160" y="426" text-anchor="middle" fill="#565c72" font-family="DM Sans,sans-serif" font-size="9">Management</text>
+
+                <!-- Bank B Column -->
+                <rect x="320" y="30" width="240" height="460" rx="10" fill="#161722" stroke="#1e2030"/>
+                <text x="440" y="56" text-anchor="middle" fill="#8890a6" font-family="DM Sans,sans-serif" font-size="11" font-weight="600">BANK B</text>
+
+                <rect x="350" y="72" width="180" height="48" rx="6" fill="#0d0e14" stroke="#1e2030"/>
+                <text x="440" y="94" text-anchor="middle" fill="#565c72" font-family="DM Sans,sans-serif" font-size="9">Existing TM System</text>
+                <text x="440" y="108" text-anchor="middle" fill="#565c72" font-family="JetBrains Mono,monospace" font-size="7">(NICE / Oracle / SAS)</text>
+
+                <line x1="440" y1="120" x2="440" y2="144" stroke="#565c72" stroke-width="1"/>
+                <polygon points="436,140 444,140 440,148" fill="#565c72"/>
+
+                <rect x="370" y="148" width="140" height="32" rx="4" fill="#0d0e14" stroke="#1e2030"/>
+                <text x="440" y="168" text-anchor="middle" fill="#8890a6" font-family="JetBrains Mono,monospace" font-size="8">Risk scores / entity</text>
+
+                <line x1="440" y1="180" x2="440" y2="204" stroke="#565c72" stroke-width="1"/>
+                <polygon points="436,200 444,200 440,208" fill="#565c72"/>
+
+                <rect x="350" y="208" width="180" height="56" rx="6" fill="rgba(74,125,255,0.06)" stroke="#4a7dff" stroke-width="1.5"/>
+                <text x="440" y="232" text-anchor="middle" fill="#4a7dff" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600">ZQUAS NODE</text>
+                <text x="440" y="252" text-anchor="middle" fill="#565c72" font-family="JetBrains Mono,monospace" font-size="7">On-premise</text>
+
+                <line x1="440" y1="264" x2="440" y2="300" stroke="#565c72" stroke-width="1"/>
+                <polygon points="436,296 444,296 440,304" fill="#565c72"/>
+
+                <rect x="350" y="304" width="180" height="48" rx="6" fill="#0d0e14" stroke="#1e2030"/>
+                <text x="440" y="324" text-anchor="middle" fill="#f59e0b" font-family="JetBrains Mono,monospace" font-size="8">Escalation Alerts</text>
+                <text x="440" y="340" text-anchor="middle" fill="#565c72" font-family="JetBrains Mono,monospace" font-size="7">cross-institutional risk</text>
+
+                <line x1="440" y1="352" x2="440" y2="388" stroke="#565c72" stroke-width="1"/>
+                <polygon points="436,384 444,384 440,392" fill="#565c72"/>
+
+                <rect x="350" y="392" width="180" height="48" rx="6" fill="#0d0e14" stroke="#1e2030"/>
+                <text x="440" y="412" text-anchor="middle" fill="#565c72" font-family="DM Sans,sans-serif" font-size="9">Existing Case</text>
+                <text x="440" y="426" text-anchor="middle" fill="#565c72" font-family="DM Sans,sans-serif" font-size="9">Management</text>
+
+                <!-- Bank C Column -->
+                <rect x="600" y="30" width="240" height="460" rx="10" fill="#161722" stroke="#1e2030"/>
+                <text x="720" y="56" text-anchor="middle" fill="#8890a6" font-family="DM Sans,sans-serif" font-size="11" font-weight="600">BANK C</text>
+
+                <rect x="630" y="72" width="180" height="48" rx="6" fill="#0d0e14" stroke="#1e2030"/>
+                <text x="720" y="94" text-anchor="middle" fill="#565c72" font-family="DM Sans,sans-serif" font-size="9">Existing TM System</text>
+                <text x="720" y="108" text-anchor="middle" fill="#565c72" font-family="JetBrains Mono,monospace" font-size="7">(NICE / Oracle / SAS)</text>
+
+                <line x1="720" y1="120" x2="720" y2="144" stroke="#565c72" stroke-width="1"/>
+                <polygon points="716,140 724,140 720,148" fill="#565c72"/>
+
+                <rect x="650" y="148" width="140" height="32" rx="4" fill="#0d0e14" stroke="#1e2030"/>
+                <text x="720" y="168" text-anchor="middle" fill="#8890a6" font-family="JetBrains Mono,monospace" font-size="8">Risk scores / entity</text>
+
+                <line x1="720" y1="180" x2="720" y2="204" stroke="#565c72" stroke-width="1"/>
+                <polygon points="716,200 724,200 720,208" fill="#565c72"/>
+
+                <rect x="630" y="208" width="180" height="56" rx="6" fill="rgba(74,125,255,0.06)" stroke="#4a7dff" stroke-width="1.5"/>
+                <text x="720" y="232" text-anchor="middle" fill="#4a7dff" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600">ZQUAS NODE</text>
+                <text x="720" y="252" text-anchor="middle" fill="#565c72" font-family="JetBrains Mono,monospace" font-size="7">On-premise</text>
+
+                <line x1="720" y1="264" x2="720" y2="300" stroke="#565c72" stroke-width="1"/>
+                <polygon points="716,296 724,296 720,304" fill="#565c72"/>
+
+                <rect x="630" y="304" width="180" height="48" rx="6" fill="#0d0e14" stroke="#1e2030"/>
+                <text x="720" y="324" text-anchor="middle" fill="#f59e0b" font-family="JetBrains Mono,monospace" font-size="8">Escalation Alerts</text>
+                <text x="720" y="340" text-anchor="middle" fill="#565c72" font-family="JetBrains Mono,monospace" font-size="7">cross-institutional risk</text>
+
+                <line x1="720" y1="352" x2="720" y2="388" stroke="#565c72" stroke-width="1"/>
+                <polygon points="716,384 724,384 720,392" fill="#565c72"/>
+
+                <rect x="630" y="392" width="180" height="48" rx="6" fill="#0d0e14" stroke="#1e2030"/>
+                <text x="720" y="412" text-anchor="middle" fill="#565c72" font-family="DM Sans,sans-serif" font-size="9">Existing Case</text>
+                <text x="720" y="426" text-anchor="middle" fill="#565c72" font-family="DM Sans,sans-serif" font-size="9">Management</text>
+
+                <!-- P2P connections between ZQUAS nodes -->
+                <line x1="250" y1="236" x2="350" y2="236" stroke="#4a7dff" stroke-width="1.5" stroke-dasharray="4,3"/>
+                <line x1="530" y1="236" x2="630" y2="236" stroke="#4a7dff" stroke-width="1.5" stroke-dasharray="4,3"/>
+                <path d="M250,240 Q440,290 630,240" stroke="#4a7dff" stroke-width="1" stroke-dasharray="4,3" fill="none"/>
+
+                <!-- Private network label -->
+                <rect x="360" y="274" width="160" height="18" rx="4" fill="rgba(74,125,255,0.06)" stroke="rgba(74,125,255,0.2)"/>
+                <text x="440" y="287" text-anchor="middle" fill="#4a7dff" font-family="JetBrains Mono,monospace" font-size="7">PRIVATE NETWORK ONLY</text>
+
+                <!-- Data sovereignty label -->
+                <rect x="305" y="468" width="270" height="22" rx="4" fill="rgba(52,211,153,0.06)" stroke="rgba(52,211,153,0.2)"/>
+                <text x="440" y="483" text-anchor="middle" fill="#34d399" font-family="JetBrains Mono,monospace" font-size="7.5">ZERO RAW DATA CROSSES INSTITUTIONAL BOUNDARIES</text>
+            </svg>
+        </div>
+
+        <div class="arch-grid">
+            <div class="arch-card">
+                <div class="arch-tag">DECENTRALISED</div>
+                <h3>No central system</h3>
+                <p>Peer-to-peer federation. No central database, no central operator, no single point of failure or breach.</p>
+            </div>
+            <div class="arch-card">
+                <div class="arch-tag">SOVEREIGN</div>
+                <h3>No data leaves any bank</h3>
+                <p>Only cryptographic protocol messages cross the network. Transaction data, risk scores, and entity information stay on-premise.</p>
+            </div>
+            <div class="arch-card">
+                <div class="arch-tag">NON-INVASIVE</div>
+                <h3>Existing monitoring continues</h3>
+                <p>The ZQUAS node reads risk scores and produces alerts. The bank's existing TM system and case management workflow are unchanged.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 3: OPERATIONAL FLOW -->
+<section style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+        <div class="section-label">Operational Flow</div>
+        <h2 class="section-title">From transaction to SAR &mdash; six steps</h2>
+
+        <div class="layer-stack">
+            <div class="layer-card">
+                <div class="layer-card-inner">
+                    <div class="arch-tag">STEP 1 &mdash; EXISTING PROCESS</div>
+                    <h3>Local Monitoring</h3>
+                    <p>Banks monitor transactions using their existing systems. Each bank's system produces risk scores per entity based on local transaction patterns. This step is unchanged &mdash; banks already do this.</p>
+                </div>
+            </div>
+
+            <div class="layer-card">
+                <div class="layer-card-inner">
+                    <div class="arch-tag" style="color: var(--accent);">STEP 2 &mdash; NEW: THE ZQUAS LAYER</div>
+                    <h3>Federation Round</h3>
+                    <p>On a scheduled basis (nightly, or more frequently), the ZQUAS nodes execute bilateral federation rounds. For three banks, this means three rounds: A&harr;B, A&harr;C, B&harr;C.</p>
+                    <p style="margin-top: 1rem;">Each round has three phases:</p>
+                    <p style="margin-top: 0.75rem;"><strong style="color: var(--text-primary);">a) Private Set Intersection:</strong> discovers which entities have accounts at both banks. Neither bank learns which entities the other bank has &mdash; only the overlap is revealed.</p>
+                    <p style="margin-top: 0.5rem;"><strong style="color: var(--text-primary);">b) Secure Risk Comparison:</strong> for each shared entity, securely compares the combined risk score against a threshold using standard, peer-reviewed cryptographic techniques. Neither bank learns the other's individual score. The only output is a boolean: combined risk exceeds threshold, or it doesn't.</p>
+                    <p style="margin-top: 0.5rem;"><strong style="color: var(--text-primary);">c) Cryptographic Attestation:</strong> both banks cryptographically sign the result. This creates an unforgeable proof that the computation happened correctly.</p>
+                </div>
+            </div>
+
+            <div class="layer-card">
+                <div class="layer-card-inner">
+                    <div class="arch-tag" style="color: var(--accent);">STEP 3 &mdash; NEW: DELIVERED TO EXISTING SYSTEMS</div>
+                    <h3>Escalation Alert</h3>
+                    <p>If an entity's combined risk exceeds the threshold in any bilateral round, both participating banks receive an escalation alert.</p>
+                    <p style="margin-top: 1rem;"><strong style="color: var(--text-primary);">The alert contains:</strong></p>
+                    <ul style="margin-top: 0.5rem; padding-left: 1.5rem; color: var(--text-secondary);">
+                        <li>Entity identifier (the bank already knows this customer)</li>
+                        <li>Escalation flag: combined cross-institutional risk threshold exceeded</li>
+                        <li>Number of bilateral rounds that triggered escalation</li>
+                        <li>Cryptographic attestation (verifiable proof)</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong style="color: var(--text-primary);">The alert does NOT contain:</strong></p>
+                    <ul style="margin-top: 0.5rem; padding-left: 1.5rem; color: var(--text-secondary);">
+                        <li>The other bank's risk score</li>
+                        <li>The other bank's transaction data</li>
+                        <li>Which specific bank triggered the escalation (configurable)</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">The alert is delivered to the bank's existing case management system via API or file import. No new investigation interface needed.</p>
+                </div>
+            </div>
+
+            <div class="layer-card">
+                <div class="layer-card-inner">
+                    <div class="arch-tag">STEP 4 &mdash; EXISTING PROCESS</div>
+                    <h3>Enhanced Due Diligence</h3>
+                    <p>The bank's compliance analyst receives the alert in their normal workflow. They open the entity's dossier and review their own transactions &mdash; the same data they already have access to. The difference: they now know this entity has elevated cross-institutional risk. This context changes the analysis.</p>
+                    <p style="margin-top: 0.75rem;">Transactions that looked normal in isolation are now suspicious in the cross-institutional context. The analyst applies Enhanced Due Diligence using the bank's existing procedures.</p>
+                </div>
+            </div>
+
+            <div class="layer-card">
+                <div class="layer-card-inner">
+                    <div class="arch-tag">STEP 5 &mdash; EXISTING PROCESS</div>
+                    <h3>SAR Decision</h3>
+                    <p>Each bank independently decides whether to file a Suspicious Activity Report with FIU-Nederland. The bank uses only its own transaction data in the SAR. The cross-institutional escalation is the trigger, not the content.</p>
+                    <p style="margin-top: 0.75rem;">The SAR references the cross-institutional detection: <em>"This entity was identified through privacy-preserving cross-institutional analysis. The combined risk score at multiple institutions exceeded the monitoring threshold. Cryptographic attestation of the analysis is available."</em></p>
+                    <p style="margin-top: 0.75rem;">Each participating bank files their own SAR independently. Not a joint SAR. Each bank reports on its own customer relationship.</p>
+                </div>
+            </div>
+
+            <div class="layer-card">
+                <div class="layer-card-inner">
+                    <div class="arch-tag">STEP 6 &mdash; EXISTING PROCESS</div>
+                    <h3>FIU Investigation</h3>
+                    <p>FIU-Nederland receives separate SARs from multiple banks about the same entity. The FIU can now see the complete picture: money entered through Bank A, fragmented through Bank B, and reconsolidated through Bank C. This is the pattern that no single bank could see but that TMNL was designed to reveal.</p>
+                    <p style="margin-top: 0.75rem;">The FIU investigates using its existing powers and processes. Nothing changes for the FIU except that they receive more &mdash; and more accurate &mdash; intelligence.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 4: PRIVACY TABLE -->
+<section>
+    <div class="container">
+        <div class="section-label">Privacy by Design</div>
+        <h2 class="section-title">Who knows what</h2>
+
+        <div class="analysis-body">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Information</th>
+                        <th>Bank A</th>
+                        <th>Bank B</th>
+                        <th>Bank C</th>
+                        <th>FIU</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Own transactions</strong></td>
+                        <td style="color: var(--success);">Yes</td>
+                        <td style="color: var(--success);">Yes</td>
+                        <td style="color: var(--success);">Yes</td>
+                        <td>Via SAR</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Own risk scores</strong></td>
+                        <td style="color: var(--success);">Yes</td>
+                        <td style="color: var(--success);">Yes</td>
+                        <td style="color: var(--success);">Yes</td>
+                        <td>Via SAR</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Other bank's transactions</strong></td>
+                        <td style="color: #ef4444;">No</td>
+                        <td style="color: #ef4444;">No</td>
+                        <td style="color: #ef4444;">No</td>
+                        <td>Via combined SARs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Other bank's risk scores</strong></td>
+                        <td style="color: #ef4444;">No</td>
+                        <td style="color: #ef4444;">No</td>
+                        <td style="color: #ef4444;">No</td>
+                        <td style="color: #ef4444;">No</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Which entities are shared</strong></td>
+                        <td style="color: var(--success);">Yes (from PSI)</td>
+                        <td style="color: var(--success);">Yes (from PSI)</td>
+                        <td style="color: var(--success);">Yes (from PSI)</td>
+                        <td>Via combined SARs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Combined risk exceeds threshold</strong></td>
+                        <td style="color: var(--success);">Yes (boolean)</td>
+                        <td style="color: var(--success);">Yes (boolean)</td>
+                        <td style="color: var(--success);">Yes (boolean)</td>
+                        <td>Inferred from SARs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cryptographic attestation</strong></td>
+                        <td style="color: var(--success);">Yes</td>
+                        <td style="color: var(--success);">Yes</td>
+                        <td style="color: var(--success);">Yes</td>
+                        <td>Can verify</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="callout" style="margin-top: 2rem;">
+            <p>The MPC protocol ensures that each bank learns exactly one new fact about a shared entity: whether the combined risk exceeds the agreed threshold. Not the other bank's score. Not their transactions. One bit of information &mdash; enough to trigger investigation, not enough to compromise privacy.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 5: DEPLOYMENT MODEL -->
+<section style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+        <div class="section-label">Deployment</div>
+        <h2 class="section-title">What each bank needs</h2>
+
+        <div class="analysis-body" style="margin-bottom: 2rem;">
+            <h3>Per Bank</h3>
+            <ul style="padding-left: 1.5rem; color: var(--text-secondary); margin-bottom: 2rem;">
+                <li>One server (on-premise or in the bank's own cloud environment)</li>
+                <li>ZQUAS node software installed</li>
+                <li>Connection to existing TM system (API or file-based risk score export)</li>
+                <li>Connection to existing case management (API or file-based alert import)</li>
+                <li>Network connection to other participating banks (private VPN or dedicated link)</li>
+            </ul>
+
+            <h3>Network Options</h3>
+            <p>From most to least isolated:</p>
+        </div>
+
+        <div class="arch-grid" style="margin-bottom: 3rem;">
+            <div class="arch-card">
+                <div class="arch-tag">OPTION 1</div>
+                <h3>Dedicated Private Network</h3>
+                <p>Physical or logical private network between participating banks. Highest security isolation. Suitable for production deployment.</p>
+            </div>
+            <div class="arch-card">
+                <div class="arch-tag">OPTION 2</div>
+                <h3>Point-to-Point VPN</h3>
+                <p>VPN tunnels between bank pairs. Practical for pilot programmes. Each bank controls their own tunnel endpoint.</p>
+            </div>
+            <div class="arch-card">
+                <div class="arch-tag">OPTION 3</div>
+                <h3>Private Cloud Peering</h3>
+                <p>AWS PrivateLink, Azure Private Endpoint. Each bank in their own VPC. Traffic never traverses the public internet.</p>
+            </div>
+        </div>
+
+        <div class="analysis-body">
+            <p>No central server. No central database. No central operator. The only shared infrastructure is the network connection between nodes, and even that carries only encrypted protocol messages that are computationally indistinguishable from random data.</p>
+
+            <h3 style="margin-top: 2rem;">Trust Registry</h3>
+            <p>Each bank's ZQUAS node is configured with the public keys of all participating banks. This can be managed by an industry body (such as NVB in the Netherlands) or configured bilaterally between participating banks. The trust registry contains only public keys and network addresses &mdash; no transaction data, no risk scores, no entity information.</p>
+
+            <h3 style="margin-top: 2rem;">Entity Identification</h3>
+            <p>Participating banks agree on a common entity identifier. For Dutch entities, the KvK (Chamber of Commerce) number is the natural choice. For international entities, the LEI (Legal Entity Identifier). The protocol hashes these identifiers before comparison &mdash; the raw identifiers never cross the network.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 6: PROVEN PERFORMANCE -->
+<section>
+    <div class="container">
+        <div class="section-label">Validation</div>
+        <h2 class="section-title">Tested with three simulated Dutch banks</h2>
+
+        <div class="analysis-body" style="margin-bottom: 2.5rem;">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Banks</strong></td>
+                        <td>3 (5,000 + 5,000 + 2,000 accounts)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total entities</strong></td>
+                        <td>12,017</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Shared entities</strong></td>
+                        <td>6 (4 criminal, 2 legitimate)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Criminal entities detected</strong></td>
+                        <td style="color: var(--success);">4/4 (100%)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Legitimate entities cleared</strong></td>
+                        <td style="color: var(--success);">2/2 (0% false positives)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total federation time</strong></td>
+                        <td>~2.4 seconds</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data shared between banks</strong></td>
+                        <td>Zero bytes of raw transaction data</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cryptographic attestation</strong></td>
+                        <td>Ed25519 dual-signature per round</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Privacy protocol</strong></td>
+                        <td>ECDH-PSI + Garbled Circuits + Oblivious Transfer</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="analysis-body">
+            <p>The test reproduced four real-world money laundering typologies: layering across three banks, real estate laundering with unexplained cash deposits, sanctions evasion through indirect connections, and coordinated structuring below reporting thresholds. All four were detected. Both legitimate businesses were correctly cleared.</p>
+            <p style="margin-top: 1rem;">Independently audited. The test suite, protocol execution, privacy guarantees, and cryptographic attestation have been verified through multiple layers of independent review.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 7: REGULATORY ALIGNMENT -->
+<section style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+        <div class="section-label">Regulatory Framework</div>
+        <h2 class="section-title">Built for the regulatory framework</h2>
+
+        <div class="fw-mini-grid">
+            <div class="fw-mini-card">
+                <h3>AMLR Article 12</h3>
+                <p>Effective July 2027. Cross-institutional monitoring capability &mdash; delivered. Privacy-preserving federation that enables detection without data centralisation.</p>
+            </div>
+            <div class="fw-mini-card">
+                <h3>GDPR Article 6</h3>
+                <p>No personal data shared between institutions &mdash; by cryptographic construction. The protocol is designed so that privacy compliance is a mathematical property, not a policy promise.</p>
+            </div>
+            <div class="fw-mini-card">
+                <h3>DORA Article 9</h3>
+                <p>Cryptographic attestation of all compliance decisions. Ed25519 signed proof bundles for every federation round. Digital operational resilience by design.</p>
+            </div>
+            <div class="fw-mini-card">
+                <h3>EU AI Act</h3>
+                <p>Deterministic, auditable policy evaluation. GPU-native processing with cryptographic proof bundles. Full traceability of every automated decision.</p>
+            </div>
+            <div class="fw-mini-card">
+                <h3>Wwft</h3>
+                <p>Dutch AML law. Enhanced due diligence triggers via cross-institutional escalation alerts. Integrates with existing reporting obligations to FIU-Nederland.</p>
+            </div>
+        </div>
+
+        <div class="callout" style="margin-top: 2rem;">
+            <p>Every compliance decision is cryptographically attested. Every federation round produces verifiable proofs. Regulators can independently verify the correctness of the protocol using standard cryptographic tools.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 8: PILOT DESIGN -->
+<section>
+    <div class="container">
+        <div class="section-label">Pilot Programme</div>
+        <h2 class="section-title">20-week pilot &mdash; from proof to production</h2>
+
+        <div class="layer-stack">
+            <div class="layer-card">
+                <div class="layer-card-inner">
+                    <div class="arch-tag">PHASE 0 &mdash; 4 WEEKS</div>
+                    <h3>Preparation</h3>
+                    <p>Bank selection, scope agreement, legal framework. Define entity identifiers, risk score format, and escalation alert schema. Establish network connectivity between pilot participants.</p>
+                </div>
+            </div>
+            <div class="layer-card">
+                <div class="layer-card-inner">
+                    <div class="arch-tag">PHASE 1 &mdash; 4 WEEKS</div>
+                    <h3>Sandbox</h3>
+                    <p>Synthetic data, verify protocol on real infrastructure. Confirm federation rounds execute correctly, privacy guarantees hold, and escalation alerts integrate with existing case management.</p>
+                </div>
+            </div>
+            <div class="layer-card">
+                <div class="layer-card-inner">
+                    <div class="arch-tag">PHASE 2 &mdash; 8 WEEKS</div>
+                    <h3>Controlled Pilot</h3>
+                    <p>Historical data, measure against known outcomes. Run federation rounds on real (anonymised) risk scores. Compare detection against known cases to validate detection lift and false positive rate.</p>
+                </div>
+            </div>
+            <div class="layer-card">
+                <div class="layer-card-inner">
+                    <div class="arch-tag">PHASE 3 &mdash; 4 WEEKS</div>
+                    <h3>Evaluation</h3>
+                    <p>Results analysis, DNB review, expansion decision. Produce regulatory evidence package. Determine go/no-go for production deployment and network expansion.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="callout" style="margin-top: 2rem;">
+            <p>ZQUAS is currently engaged with DNB InnovationHub and the FCA Digital Sandbox. The technology has been tested. The pilot design is ready. The AMLR compliance deadline is July 2027. The window for pilot initiation is now.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 9: FAQ -->
+<section style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Frequently asked questions</h2>
+
+        <div class="analysis-body">
+            <h3>Do we need to replace our existing transaction monitoring system?</h3>
+            <p>No. ZQUAS sits alongside your existing system. It reads risk scores your system already produces. Your monitoring continues unchanged.</p>
+
+            <h3 style="margin-top: 2.5rem;">What data leaves our bank?</h3>
+            <p>Zero transaction data. The only data that crosses the network are cryptographic protocol messages: elliptic curve points, garbled circuit tables, and encrypted values. These are computationally indistinguishable from random data.</p>
+
+            <h3 style="margin-top: 2.5rem;">Who operates the central system?</h3>
+            <p>There is no central system. Each bank operates its own node. The nodes communicate peer-to-peer over a private network.</p>
+
+            <h3 style="margin-top: 2.5rem;">How often do federation rounds run?</h3>
+            <p>Configurable. Nightly batches align with existing monitoring cycles. More frequent rounds (hourly, real-time) are technically possible.</p>
+
+            <h3 style="margin-top: 2.5rem;">What if a bank joins or leaves the network?</h3>
+            <p>Adding a bank: install a node, register public keys with existing participants, begin federation rounds. Removing a bank: decommission the node, remove public keys. No impact on remaining participants.</p>
+
+            <h3 style="margin-top: 2.5rem;">Can criminals detect they are being monitored cross-institutionally?</h3>
+            <p>No. The federation runs between bank nodes. No information about the federation reaches the customer or their transactions. From the customer's perspective, nothing changes.</p>
+
+            <h3 style="margin-top: 2.5rem;">What about false positives?</h3>
+            <p>The federation layer inherits the risk scores from each bank's existing system. If the local scores are well-calibrated, the combined scores will be too. In our three-bank test, zero legitimate businesses were incorrectly flagged.</p>
+
+            <h3 style="margin-top: 2.5rem;">Is this what TMNL was trying to do?</h3>
+            <p>TMNL proved that cross-institutional detection catches criminals that single-bank monitoring misses. The project was shut down because centralising the data violated privacy law. ZQUAS achieves the same detection without centralisation &mdash; using cryptographic multi-party computation instead of data pooling. <a href="tmnl.html" style="color: var(--accent);">Read the full TMNL analysis.</a></p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="contact-section">
+    <div class="container">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Discuss a pilot</h2>
+        <p class="section-desc" style="margin-left: auto; margin-right: auto;">
+            If your institution is exploring cross-institutional AML detection, or if you're a regulator evaluating privacy-preserving approaches, I'd like to hear from you.
+        </p>
+        <div class="contact-actions">
+            <a href="mailto:danny@zquas.ai?subject=Cross-Institutional%20Detection%20/%20Pilot%20Inquiry" class="contact-btn-primary">danny@zquas.ai</a>
+            <a href="https://www.linkedin.com/in/danny-de-gier-prof-pgdip-fcc/" class="contact-btn-secondary" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+        <div class="contact-details">Zwolle, Netherlands</div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 ZQUAS &middot; Sovereign Compliance Infrastructure</p>
+</footer>
+
+</body>
+</html>
