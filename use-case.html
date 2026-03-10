@@ -149,12 +149,12 @@
         <div class="section-label">Architecture</div>
         <h2 class="section-title">Federation without centralisation</h2>
         <div class="analysis-body" style="margin-bottom: 3rem;">
-            <p>Each participating bank installs a ZQUAS node on their own infrastructure. The node sits alongside the bank's existing transaction monitoring system &mdash; NICE Actimize, Oracle, SAS, or any other. It reads risk scores that the existing system already produces. No replacement. No migration.</p>
+            <p>Each participating bank installs ZQUAS on their own infrastructure. The installation sits alongside the bank's existing transaction monitoring system &mdash; NICE Actimize, Oracle, SAS, or any other. It reads risk scores that the existing system already produces. No replacement. No migration.</p>
         </div>
 
         <!-- Architecture diagram -->
         <div class="arch-diagram" style="margin-bottom: 2.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 520" fill="none" role="img" aria-label="Architecture diagram showing three banks, each with their existing TM system feeding risk scores to a ZQUAS node, which communicates peer-to-peer over a private network and delivers escalation alerts to existing case management">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 520" fill="none" role="img" aria-label="Architecture diagram showing three banks, each with their existing TM system feeding risk scores to a ZQUAS installation, which communicates peer-to-peer over a private connection and delivers escalation alerts to existing case management">
                 <rect width="880" height="520" rx="12" fill="#0d0e14"/>
                 <rect width="880" height="520" rx="12" stroke="#1e2030" stroke-width="1"/>
 
@@ -176,7 +176,7 @@
                 <polygon points="156,200 164,200 160,208" fill="#565c72"/>
 
                 <rect x="70" y="208" width="180" height="56" rx="6" fill="rgba(74,125,255,0.06)" stroke="#4a7dff" stroke-width="1.5"/>
-                <text x="160" y="232" text-anchor="middle" fill="#4a7dff" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600">ZQUAS NODE</text>
+                <text x="160" y="232" text-anchor="middle" fill="#4a7dff" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600">ZQUAS</text>
                 <text x="160" y="252" text-anchor="middle" fill="#565c72" font-family="JetBrains Mono,monospace" font-size="7">On-premise</text>
 
                 <line x1="160" y1="264" x2="160" y2="300" stroke="#565c72" stroke-width="1"/>
@@ -211,7 +211,7 @@
                 <polygon points="436,200 444,200 440,208" fill="#565c72"/>
 
                 <rect x="350" y="208" width="180" height="56" rx="6" fill="rgba(74,125,255,0.06)" stroke="#4a7dff" stroke-width="1.5"/>
-                <text x="440" y="232" text-anchor="middle" fill="#4a7dff" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600">ZQUAS NODE</text>
+                <text x="440" y="232" text-anchor="middle" fill="#4a7dff" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600">ZQUAS</text>
                 <text x="440" y="252" text-anchor="middle" fill="#565c72" font-family="JetBrains Mono,monospace" font-size="7">On-premise</text>
 
                 <line x1="440" y1="264" x2="440" y2="300" stroke="#565c72" stroke-width="1"/>
@@ -246,7 +246,7 @@
                 <polygon points="716,200 724,200 720,208" fill="#565c72"/>
 
                 <rect x="630" y="208" width="180" height="56" rx="6" fill="rgba(74,125,255,0.06)" stroke="#4a7dff" stroke-width="1.5"/>
-                <text x="720" y="232" text-anchor="middle" fill="#4a7dff" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600">ZQUAS NODE</text>
+                <text x="720" y="232" text-anchor="middle" fill="#4a7dff" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600">ZQUAS</text>
                 <text x="720" y="252" text-anchor="middle" fill="#565c72" font-family="JetBrains Mono,monospace" font-size="7">On-premise</text>
 
                 <line x1="720" y1="264" x2="720" y2="300" stroke="#565c72" stroke-width="1"/>
@@ -263,7 +263,7 @@
                 <text x="720" y="412" text-anchor="middle" fill="#565c72" font-family="DM Sans,sans-serif" font-size="9">Existing Case</text>
                 <text x="720" y="426" text-anchor="middle" fill="#565c72" font-family="DM Sans,sans-serif" font-size="9">Management</text>
 
-                <!-- P2P connections between ZQUAS nodes -->
+                <!-- P2P connections between ZQUAS installations -->
                 <line x1="250" y1="236" x2="350" y2="236" stroke="#4a7dff" stroke-width="1.5" stroke-dasharray="4,3"/>
                 <line x1="530" y1="236" x2="630" y2="236" stroke="#4a7dff" stroke-width="1.5" stroke-dasharray="4,3"/>
                 <path d="M250,240 Q440,290 630,240" stroke="#4a7dff" stroke-width="1" stroke-dasharray="4,3" fill="none"/>
@@ -280,19 +280,19 @@
 
         <div class="arch-grid">
             <div class="arch-card">
-                <div class="arch-tag">DECENTRALISED</div>
+                <div class="arch-tag">PEER-TO-PEER</div>
                 <h3>No central system</h3>
                 <p>Peer-to-peer federation. No central database, no central operator, no single point of failure or breach.</p>
             </div>
             <div class="arch-card">
                 <div class="arch-tag">SOVEREIGN</div>
                 <h3>No data leaves any bank</h3>
-                <p>Only cryptographic protocol messages cross the network. Transaction data, risk scores, and entity information stay on-premise.</p>
+                <p>Only cryptographic protocol messages cross the private connection. Transaction data, risk scores, and entity information stay on-premise.</p>
             </div>
             <div class="arch-card">
                 <div class="arch-tag">NON-INVASIVE</div>
                 <h3>Existing monitoring continues</h3>
-                <p>The ZQUAS node reads risk scores and produces alerts. The bank's existing TM system and case management workflow are unchanged.</p>
+                <p>The ZQUAS installation reads risk scores and produces alerts. The bank's existing TM system and case management workflow are unchanged.</p>
             </div>
         </div>
     </div>
@@ -317,7 +317,7 @@
                 <div class="layer-card-inner">
                     <div class="arch-tag" style="color: var(--accent);">STEP 2 &mdash; NEW: THE ZQUAS LAYER</div>
                     <h3>Federation Round</h3>
-                    <p>On a scheduled basis (nightly, or more frequently), the ZQUAS nodes execute bilateral federation rounds. For three banks, this means three rounds: A&harr;B, A&harr;C, B&harr;C.</p>
+                    <p>On a scheduled basis (nightly, or more frequently), the ZQUAS installations execute bilateral federation rounds. For three banks, this means three rounds: A&harr;B, A&harr;C, B&harr;C.</p>
                     <p style="margin-top: 1rem;">Each round has three phases:</p>
                     <p style="margin-top: 0.75rem;"><strong style="color: var(--text-primary);">a) Private Set Intersection:</strong> discovers which entities have accounts at both banks. Neither bank learns which entities the other bank has &mdash; only the overlap is revealed.</p>
                     <p style="margin-top: 0.5rem;"><strong style="color: var(--text-primary);">b) Secure Risk Comparison:</strong> for each shared entity, securely compares the combined risk score against a threshold using standard, peer-reviewed cryptographic techniques. Neither bank learns the other's individual score. The only output is a boolean: combined risk exceeds threshold, or it doesn't.</p>
@@ -465,7 +465,7 @@
             <h3>Per Bank</h3>
             <ul style="padding-left: 1.5rem; color: var(--text-secondary); margin-bottom: 2rem;">
                 <li>One server (on-premise or in the bank's own cloud environment)</li>
-                <li>ZQUAS node software installed</li>
+                <li>ZQUAS software installed</li>
                 <li>Connection to existing TM system (API or file-based risk score export)</li>
                 <li>Connection to existing case management (API or file-based alert import)</li>
                 <li>Network connection to other participating banks (private VPN or dedicated link)</li>
@@ -494,10 +494,10 @@
         </div>
 
         <div class="analysis-body">
-            <p>No central server. No central database. No central operator. The only shared infrastructure is the network connection between nodes, and even that carries only encrypted protocol messages that are computationally indistinguishable from random data.</p>
+            <p>No central server. No central database. No central operator. The only shared infrastructure is the private connection between banks, and even that carries only encrypted protocol messages that are computationally indistinguishable from random data.</p>
 
             <h3 style="margin-top: 2rem;">Trust Registry</h3>
-            <p>Each bank's ZQUAS node is configured with the public keys of all participating banks. This can be managed by an industry body (such as NVB in the Netherlands) or configured bilaterally between participating banks. The trust registry contains only public keys and network addresses &mdash; no transaction data, no risk scores, no entity information.</p>
+            <p>Each bank's ZQUAS installation is configured with the public keys of all participating banks. This can be managed by an industry body (such as NVB in the Netherlands) or configured bilaterally between participating banks. The trust registry contains only public keys and connection addresses &mdash; no transaction data, no risk scores, no entity information.</p>
 
             <h3 style="margin-top: 2rem;">Entity Identification</h3>
             <p>Participating banks agree on a common entity identifier. For Dutch entities, the KvK (Chamber of Commerce) number is the natural choice. For international entities, the LEI (Legal Entity Identifier). The protocol hashes these identifiers before comparison &mdash; the raw identifiers never cross the network.</p>
@@ -659,16 +659,16 @@
             <p>Zero transaction data. The only data that crosses the network are cryptographic protocol messages: elliptic curve points, garbled circuit tables, and encrypted values. These are computationally indistinguishable from random data.</p>
 
             <h3 style="margin-top: 2.5rem;">Who operates the central system?</h3>
-            <p>There is no central system. Each bank operates its own node. The nodes communicate peer-to-peer over a private network.</p>
+            <p>There is no central system. Each bank runs its own ZQUAS installation on its own infrastructure. The installations communicate peer-to-peer over a private connection.</p>
 
             <h3 style="margin-top: 2.5rem;">How often do federation rounds run?</h3>
             <p>Configurable. Nightly batches align with existing monitoring cycles. More frequent rounds (hourly, real-time) are technically possible.</p>
 
             <h3 style="margin-top: 2.5rem;">What if a bank joins or leaves the network?</h3>
-            <p>Adding a bank: install a node, register public keys with existing participants, begin federation rounds. Removing a bank: decommission the node, remove public keys. No impact on remaining participants.</p>
+            <p>Adding a bank: install ZQUAS, register public keys with existing participants, begin federation rounds. Removing a bank: decommission the installation, remove public keys. No impact on remaining participants.</p>
 
             <h3 style="margin-top: 2.5rem;">Can criminals detect they are being monitored cross-institutionally?</h3>
-            <p>No. The federation runs between bank nodes. No information about the federation reaches the customer or their transactions. From the customer's perspective, nothing changes.</p>
+            <p>No. The federation runs between bank installations on private connections. No information about the federation reaches the customer or their transactions. From the customer's perspective, nothing changes.</p>
 
             <h3 style="margin-top: 2.5rem;">What about false positives?</h3>
             <p>The federation layer inherits the risk scores from each bank's existing system. If the local scores are well-calibrated, the combined scores will be too. In our three-bank test, zero legitimate businesses were incorrectly flagged.</p>
