@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How Cross-Institutional Detection Works — ZQUAS</title>
+    <title>How Cross-Institutional Detection Works | ZQUAS</title>
     <meta name="description" content="Complete end-to-end operational flow for cross-institutional transaction monitoring using privacy-preserving multi-party computation. From transaction to SAR.">
     <meta name="keywords" content="cross-institutional AML, transaction monitoring, privacy-preserving detection, MPC, multi-party computation, TMNL alternative, AMLR compliance, federation">
-    <meta property="og:title" content="How Cross-Institutional Detection Works — ZQUAS">
+    <meta property="og:title" content="How Cross-Institutional Detection Works | ZQUAS">
     <meta property="og:description" content="Complete end-to-end operational flow for cross-institutional transaction monitoring. Privacy-preserving federation that detects what single-bank monitoring misses.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://zquas.ai/use-case.html">
@@ -74,7 +74,7 @@
     <div class="container">
         <div class="section-label">Use Case</div>
         <h1 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.6rem); max-width: 800px; margin-bottom: 1.5rem;">How Cross-Institutional Detection Works</h1>
-        <p class="hero-sub" style="text-align: left; max-width: 760px; margin: 0 0 1.5rem;">From transaction to SAR &mdash; the complete operational flow</p>
+        <p class="hero-sub" style="text-align: left; max-width: 760px; margin: 0 0 1.5rem;">From transaction to SAR. The complete operational flow.</p>
         <p class="section-desc" style="max-width: 760px;">
             Banks already monitor transactions. Criminals exploit the gaps between banks. ZQUAS adds a privacy-preserving federation layer that makes cross-institutional patterns visible without sharing any data. Each bank keeps its existing systems and processes. The federation layer adds one new capability: the ability to detect patterns that span institutional boundaries.
         </p>
@@ -87,7 +87,7 @@
         <div class="section-label">The Problem</div>
         <h2 class="section-title">What single-bank monitoring misses</h2>
         <div class="analysis-body" style="margin-bottom: 3rem;">
-            <p>A criminal entity &mdash; say, a trading company &mdash; has accounts at three banks. At each bank, the transaction pattern looks normal. Across all three, the pattern is classic money laundering: money enters through one bank, fragments through a second, and reconsolidates through a third.</p>
+            <p>A criminal entity (say, a trading company) has accounts at three banks. At each bank, the transaction pattern looks normal. Across all three, the pattern is classic money laundering: money enters through one bank, fragments through a second, and reconsolidates through a third.</p>
             <p>No single bank can see this. Each bank's monitoring system scores the entity as low-risk because the local transactions are individually unremarkable.</p>
         </div>
 
@@ -149,7 +149,7 @@
         <div class="section-label">Architecture</div>
         <h2 class="section-title">Federation without centralisation</h2>
         <div class="analysis-body" style="margin-bottom: 3rem;">
-            <p>Each participating bank installs ZQUAS on their own infrastructure. The installation sits alongside the bank's existing transaction monitoring system &mdash; NICE Actimize, Oracle, SAS, or any other. It reads risk scores that the existing system already produces. No replacement. No migration.</p>
+            <p>Each participating bank installs ZQUAS on their own infrastructure. The installation sits alongside the bank's existing transaction monitoring system: NICE Actimize, Oracle, SAS, or any other. It reads risk scores that the existing system already produces. No replacement. No migration.</p>
         </div>
 
         <!-- Architecture diagram -->
@@ -302,24 +302,24 @@
 <section style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
     <div class="container">
         <div class="section-label">Operational Flow</div>
-        <h2 class="section-title">From transaction to SAR &mdash; six steps</h2>
+        <h2 class="section-title">From transaction to SAR in six steps</h2>
 
         <div class="layer-stack">
             <div class="layer-card">
                 <div class="layer-card-inner">
-                    <div class="arch-tag">STEP 1 &mdash; EXISTING PROCESS</div>
+                    <div class="arch-tag">STEP 1 / EXISTING PROCESS</div>
                     <h3>Local Monitoring</h3>
-                    <p>Banks monitor transactions using their existing systems. Each bank's system produces risk scores per entity based on local transaction patterns. This step is unchanged &mdash; banks already do this.</p>
+                    <p>Banks monitor transactions using their existing systems. Each bank's system produces risk scores per entity based on local transaction patterns. Banks already do this. Nothing changes.</p>
                 </div>
             </div>
 
             <div class="layer-card">
                 <div class="layer-card-inner">
-                    <div class="arch-tag" style="color: var(--accent);">STEP 2 &mdash; NEW: THE ZQUAS LAYER</div>
+                    <div class="arch-tag" style="color: var(--accent);">STEP 2 / NEW: THE ZQUAS LAYER</div>
                     <h3>Federation Round</h3>
                     <p>On a scheduled basis (nightly, or more frequently), the ZQUAS installations execute bilateral federation rounds. For three banks, this means three rounds: A&harr;B, A&harr;C, B&harr;C.</p>
                     <p style="margin-top: 1rem;">Each round has three phases:</p>
-                    <p style="margin-top: 0.75rem;"><strong style="color: var(--text-primary);">a) Private Set Intersection:</strong> discovers which entities have accounts at both banks. Neither bank learns which entities the other bank has &mdash; only the overlap is revealed.</p>
+                    <p style="margin-top: 0.75rem;"><strong style="color: var(--text-primary);">a) Private Set Intersection:</strong> discovers which entities have accounts at both banks. Neither bank learns which entities the other bank has. Only the overlap is revealed.</p>
                     <p style="margin-top: 0.5rem;"><strong style="color: var(--text-primary);">b) Secure Risk Comparison:</strong> for each shared entity, securely compares the combined risk score against a threshold using standard, peer-reviewed cryptographic techniques. Neither bank learns the other's individual score. The only output is a boolean: combined risk exceeds threshold, or it doesn't.</p>
                     <p style="margin-top: 0.5rem;"><strong style="color: var(--text-primary);">c) Cryptographic Attestation:</strong> both banks cryptographically sign the result. This creates an unforgeable proof that the computation happened correctly.</p>
                 </div>
@@ -327,7 +327,7 @@
 
             <div class="layer-card">
                 <div class="layer-card-inner">
-                    <div class="arch-tag" style="color: var(--accent);">STEP 3 &mdash; NEW: DELIVERED TO EXISTING SYSTEMS</div>
+                    <div class="arch-tag" style="color: var(--accent);">STEP 3 / NEW: DELIVERED TO EXISTING SYSTEMS</div>
                     <h3>Escalation Alert</h3>
                     <p>If an entity's combined risk exceeds the threshold in any bilateral round, both participating banks receive an escalation alert.</p>
                     <p style="margin-top: 1rem;"><strong style="color: var(--text-primary);">The alert contains:</strong></p>
@@ -349,16 +349,16 @@
 
             <div class="layer-card">
                 <div class="layer-card-inner">
-                    <div class="arch-tag">STEP 4 &mdash; EXISTING PROCESS</div>
+                    <div class="arch-tag">STEP 4 / EXISTING PROCESS</div>
                     <h3>Enhanced Due Diligence</h3>
-                    <p>The bank's compliance analyst receives the alert in their normal workflow. They open the entity's dossier and review their own transactions &mdash; the same data they already have access to. The difference: they now know this entity has elevated cross-institutional risk. This context changes the analysis.</p>
+                    <p>The bank's compliance analyst receives the alert in their normal workflow. They open the entity's dossier and review their own transactions, the same data they already have access to. The difference: they now know this entity has elevated cross-institutional risk.</p>
                     <p style="margin-top: 0.75rem;">Transactions that looked normal in isolation are now suspicious in the cross-institutional context. The analyst applies Enhanced Due Diligence using the bank's existing procedures.</p>
                 </div>
             </div>
 
             <div class="layer-card">
                 <div class="layer-card-inner">
-                    <div class="arch-tag">STEP 5 &mdash; EXISTING PROCESS</div>
+                    <div class="arch-tag">STEP 5 / EXISTING PROCESS</div>
                     <h3>SAR Decision</h3>
                     <p>Each bank independently decides whether to file a Suspicious Activity Report with FIU-Nederland. The bank uses only its own transaction data in the SAR. The cross-institutional escalation is the trigger, not the content.</p>
                     <p style="margin-top: 0.75rem;">The SAR references the cross-institutional detection: <em>"This entity was identified through privacy-preserving cross-institutional analysis. The combined risk score at multiple institutions exceeded the monitoring threshold. Cryptographic attestation of the analysis is available."</em></p>
@@ -368,10 +368,10 @@
 
             <div class="layer-card">
                 <div class="layer-card-inner">
-                    <div class="arch-tag">STEP 6 &mdash; EXISTING PROCESS</div>
+                    <div class="arch-tag">STEP 6 / EXISTING PROCESS</div>
                     <h3>FIU Investigation</h3>
                     <p>FIU-Nederland receives separate SARs from multiple banks about the same entity. The FIU can now see the complete picture: money entered through Bank A, fragmented through Bank B, and reconsolidated through Bank C. This is the pattern that no single bank could see but that TMNL was designed to reveal.</p>
-                    <p style="margin-top: 0.75rem;">The FIU investigates using its existing powers and processes. Nothing changes for the FIU except that they receive more &mdash; and more accurate &mdash; intelligence.</p>
+                    <p style="margin-top: 0.75rem;">The FIU investigates using its existing powers and processes. Nothing changes except that they receive more, and more accurate, intelligence.</p>
                 </div>
             </div>
         </div>
@@ -450,7 +450,7 @@
         </div>
 
         <div class="callout" style="margin-top: 2rem;">
-            <p>The MPC protocol ensures that each bank learns exactly one new fact about a shared entity: whether the combined risk exceeds the agreed threshold. Not the other bank's score. Not their transactions. One bit of information &mdash; enough to trigger investigation, not enough to compromise privacy.</p>
+            <p>The MPC protocol ensures that each bank learns exactly one new fact about a shared entity: whether the combined risk exceeds the agreed threshold. Not the other bank's score. Not their transactions. One bit of information. Enough to trigger investigation, not enough to compromise privacy.</p>
         </div>
     </div>
 </section>
@@ -497,10 +497,10 @@
             <p>No central server. No central database. No central operator. The only shared infrastructure is the private connection between banks, and even that carries only encrypted protocol messages that are computationally indistinguishable from random data.</p>
 
             <h3 style="margin-top: 2rem;">Trust Registry</h3>
-            <p>Each bank's ZQUAS installation is configured with the public keys of all participating banks. This can be managed by an industry body (such as NVB in the Netherlands) or configured bilaterally between participating banks. The trust registry contains only public keys and connection addresses &mdash; no transaction data, no risk scores, no entity information.</p>
+            <p>Each bank's ZQUAS installation is configured with the public keys of all participating banks. An industry body (such as NVB in the Netherlands) can manage the registry, or banks can configure it bilaterally. The trust registry contains only public keys and connection addresses. No transaction data, no risk scores, no entity information.</p>
 
             <h3 style="margin-top: 2rem;">Entity Identification</h3>
-            <p>Participating banks agree on a common entity identifier. For Dutch entities, the KvK (Chamber of Commerce) number is the natural choice. For international entities, the LEI (Legal Entity Identifier). The protocol hashes these identifiers before comparison &mdash; the raw identifiers never cross the network.</p>
+            <p>Participating banks agree on a common entity identifier. For Dutch entities, the KvK (Chamber of Commerce) number is the natural choice. For international entities, the LEI (Legal Entity Identifier). The protocol hashes these identifiers before comparison. The raw identifiers never cross the connection.</p>
         </div>
     </div>
 </section>
@@ -576,11 +576,11 @@
         <div class="fw-mini-grid">
             <div class="fw-mini-card">
                 <h3>AMLR Article 12</h3>
-                <p>Effective July 2027. Cross-institutional monitoring capability &mdash; delivered. Privacy-preserving federation that enables detection without data centralisation.</p>
+                <p>Effective July 2027. Cross-institutional monitoring capability: delivered. Privacy-preserving federation enables detection without data centralisation.</p>
             </div>
             <div class="fw-mini-card">
                 <h3>GDPR Article 6</h3>
-                <p>No personal data shared between institutions &mdash; by cryptographic construction. The protocol is designed so that privacy compliance is a mathematical property, not a policy promise.</p>
+                <p>No personal data shared between institutions. By cryptographic construction. Privacy compliance is a mathematical property, not a policy promise.</p>
             </div>
             <div class="fw-mini-card">
                 <h3>DORA Article 9</h3>
@@ -606,33 +606,33 @@
 <section>
     <div class="container">
         <div class="section-label">Pilot Programme</div>
-        <h2 class="section-title">20-week pilot &mdash; from proof to production</h2>
+        <h2 class="section-title">20-week pilot. From proof to production.</h2>
 
         <div class="layer-stack">
             <div class="layer-card">
                 <div class="layer-card-inner">
-                    <div class="arch-tag">PHASE 0 &mdash; 4 WEEKS</div>
+                    <div class="arch-tag">PHASE 0 / 4 WEEKS</div>
                     <h3>Preparation</h3>
                     <p>Bank selection, scope agreement, legal framework. Define entity identifiers, risk score format, and escalation alert schema. Establish network connectivity between pilot participants.</p>
                 </div>
             </div>
             <div class="layer-card">
                 <div class="layer-card-inner">
-                    <div class="arch-tag">PHASE 1 &mdash; 4 WEEKS</div>
+                    <div class="arch-tag">PHASE 1 / 4 WEEKS</div>
                     <h3>Sandbox</h3>
                     <p>Synthetic data, verify protocol on real infrastructure. Confirm federation rounds execute correctly, privacy guarantees hold, and escalation alerts integrate with existing case management.</p>
                 </div>
             </div>
             <div class="layer-card">
                 <div class="layer-card-inner">
-                    <div class="arch-tag">PHASE 2 &mdash; 8 WEEKS</div>
+                    <div class="arch-tag">PHASE 2 / 8 WEEKS</div>
                     <h3>Controlled Pilot</h3>
                     <p>Historical data, measure against known outcomes. Run federation rounds on real (anonymised) risk scores. Compare detection against known cases to validate detection lift and false positive rate.</p>
                 </div>
             </div>
             <div class="layer-card">
                 <div class="layer-card-inner">
-                    <div class="arch-tag">PHASE 3 &mdash; 4 WEEKS</div>
+                    <div class="arch-tag">PHASE 3 / 4 WEEKS</div>
                     <h3>Evaluation</h3>
                     <p>Results analysis, DNB review, expansion decision. Produce regulatory evidence package. Determine go/no-go for production deployment and network expansion.</p>
                 </div>
@@ -674,7 +674,7 @@
             <p>The federation layer inherits the risk scores from each bank's existing system. If the local scores are well-calibrated, the combined scores will be too. In our three-bank test, zero legitimate businesses were incorrectly flagged.</p>
 
             <h3 style="margin-top: 2.5rem;">Is this what TMNL was trying to do?</h3>
-            <p>TMNL proved that cross-institutional detection catches criminals that single-bank monitoring misses. The project was shut down because centralising the data violated privacy law. ZQUAS achieves the same detection without centralisation &mdash; using cryptographic multi-party computation instead of data pooling. <a href="tmnl.html" style="color: var(--accent);">Read the full TMNL analysis.</a></p>
+            <p>TMNL proved that cross-institutional detection catches criminals that single-bank monitoring misses. The project was shut down because centralising the data violated privacy law. ZQUAS achieves the same detection without centralisation, using cryptographic multi-party computation instead of data pooling. <a href="tmnl.html" style="color: var(--accent);">Read the full TMNL analysis.</a></p>
         </div>
     </div>
 </section>
