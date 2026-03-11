@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EU AI Act and AML: Is Your Transaction Monitoring System High-Risk? — ZQUAS</title>
+    <meta name="description" content="The EU AI Act is the first comprehensive AI regulation in the world. For banks running AI-based transaction monitoring, the critical question is classification. Most AML systems are excluded, but the profiling exception creates an important grey area.">
+    <meta property="og:title" content="EU AI Act and AML: Is Your Transaction Monitoring System High-Risk? — ZQUAS">
+    <meta property="og:description" content="The EU AI Act is the first comprehensive AI regulation in the world. For banks running AI-based transaction monitoring, the critical question is classification. Most AML systems are excluded, but the profiling exception creates an important grey area.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://zquas.ai/article-ai-act-aml-classification.html">
+    <meta property="og:image" content="https://zquas.ai/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://zquas.ai/og-image.png">
+    <meta name="author" content="Danny de Gier">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://zquas.ai/article-ai-act-aml-classification.html">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "EU AI Act and AML: Is Your Transaction Monitoring System High-Risk?",
+        "description": "The EU AI Act is the first comprehensive AI regulation in the world. For banks running AI-based transaction monitoring, the critical question is classification. Most AML systems are excluded, but the profiling exception creates an important grey area.",
+        "datePublished": "2026-06-15",
+        "author": {
+            "@type": "Person",
+            "name": "Danny de Gier"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ZQUAS",
+            "url": "https://zquas.ai"
+        },
+        "mainEntityOfPage": "https://zquas.ai/article-ai-act-aml-classification.html"
+    }
+    </script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="technology.html">Technology</a>
+            <a href="/#architecture">Architecture</a>
+            <a href="regulators.html">Regulators</a>
+            <a href="use-case.html">Use Case</a>
+            <a href="/#for-banks">Banks</a>
+            <a href="/#for-investors">Investors</a>
+            <a href="about.html">About</a>
+            <a href="articles.html">Articles</a>
+            <a href="compare.html">Compare</a>
+            <a href="benchmark.html">Benchmark</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+
+<article>
+    <div class="article-header">
+        <a href="articles.html" class="article-back">&larr; Articles</a>
+        <div class="article-meta">June 2026 &middot; Regulation &middot; 8 min read</div>
+        <h1>EU AI Act and AML: Is Your Transaction Monitoring System High-Risk?</h1>
+        <p class="lead">The EU AI Act (Regulation 2024/1689) is the first comprehensive AI regulation in the world. For banks running AI-based transaction monitoring, the critical question is classification. A high-risk classification triggers data governance, documentation, transparency, human oversight, and cybersecurity requirements. Most AML systems are excluded. The profiling exception creates an important grey area.</p>
+    </div>
+
+    <div class="article-body">
+
+        <h2>The General Exclusion</h2>
+        <p>
+            Recital 58 of Regulation 2024/1689 explicitly states that AI systems used for detecting financial fraud and for prudential purposes should not be considered high-risk AI systems. The recital is designed to exclude standard transaction monitoring from the high-risk classification framework. Most rule-based and machine-learning-based transaction monitoring systems, those that detect patterns in payment data to identify potentially suspicious activity, fall within this exclusion.
+        </p>
+        <p>
+            The rationale is that financial fraud detection and prudential supervision serve legitimate public interest purposes and are already subject to sector-specific regulation. The AI Act's high-risk classification is reserved for AI systems that create significant risks of harm to individuals. A transaction monitoring system that flags a payment for review does not, in itself, create the kind of individual impact that warrants high-risk classification.
+        </p>
+
+        <h2>The Profiling Exception</h2>
+        <p>
+            Article 6(3) and Annex III, Point 5(b) of Regulation 2024/1689 create an exception to the general exclusion. AI systems that perform profiling of natural persons are high-risk, regardless of the domain in which they operate. Profiling means automated processing of personal data to evaluate, analyse, or predict aspects of a natural person's economic situation, behaviour, reliability, or movements.
+        </p>
+        <p>
+            Customer risk scoring based on behavioural analysis of an individual customer's transaction history is likely to constitute profiling under this definition. The system processes personal data, specifically transaction behaviour, to assess reliability, specifically the likelihood that the customer is engaged in money laundering or financial crime. This assessment is about the person, not just the transaction.
+        </p>
+        <p>
+            The profiling exception applies regardless of Recital 58. A bank whose AML system generates individual customer risk scores based on AI analysis of transaction behaviour should assume, until the Commission publishes classification guidelines, that those scores constitute profiling within the meaning of Article 6(3) and Annex III, Point 5(b).
+        </p>
+
+        <h2>Where the Boundary Lies</h2>
+        <p>
+            The classification question turns on what the AI system is doing. Three categories illustrate the distinction.
+        </p>
+        <p>
+            Transaction monitoring, meaning pattern detection applied to transaction data without generating individual customer assessments, is likely excluded under Recital 58. The system identifies suspicious transactions, not suspicious people. The output is an alert about a specific payment, not an assessment of the customer behind it.
+        </p>
+        <p>
+            Customer risk scoring, meaning AI-generated assessments of individual customers' AML risk based on analysis of their behaviour, is likely high-risk under Article 6(3) and Annex III, Point 5(b). The output is an assessment of a person. That assessment affects decisions about the customer relationship: enhanced due diligence, account restrictions, exit decisions.
+        </p>
+        <p>
+            Cross-institutional risk comparison, meaning mathematical comparison of pre-computed risk scores across banks without generating new individual assessments, is likely excluded. The comparison is between scores. It does not involve automated processing of personal data to generate a new assessment of a natural person. The risk scores were generated upstream, within each institution's own monitoring. The comparison layer adds a cross-institutional dimension to an existing assessment without creating a new one.
+        </p>
+        <p>
+            The Commission is expected to publish classification guidelines in 2026. Until those guidelines are available, banks should document their classification analysis and the reasoning behind it.
+        </p>
+
+        <h2>High-Risk Requirements</h2>
+        <p>
+            Banks that determine their AML AI system is high-risk under Article 6(3) must meet five categories of obligation from August 2, 2026.
+        </p>
+        <p>
+            Data governance requirements under Article 10 require that training, validation, and testing data sets be representative, complete, and free of significant errors. Banks using machine-learning-based customer risk scoring must document their training data, the steps taken to address bias, and the validation results. Regulators will ask for this documentation.
+        </p>
+        <p>
+            Technical documentation under Article 11 requires a full record of the system's development, including the general logic, the training data characteristics, the performance metrics, and the risk management measures applied. The documentation must be available to national supervisors on request.
+        </p>
+        <p>
+            Transparency and explainability under Article 13 requires that the system provide sufficient information to allow users to interpret its outputs. For AML risk scores, this means compliance analysts must be able to understand what drove a specific score. Black-box scores that cannot be explained at the case level do not satisfy Article 13.
+        </p>
+        <p>
+            Human oversight under Article 14 requires that effective human intervention remain possible. Automated risk scoring must not produce final decisions about customers without human review. The compliance analyst must be able to override, adjust, or reject the AI-generated assessment.
+        </p>
+        <p>
+            Cybersecurity and robustness under Article 15 requires resilience against adversarial attacks and performance degradation. Banks must test how their AML AI systems respond to inputs designed to evade detection, and must maintain accuracy metrics within defined tolerances.
+        </p>
+
+        <h2>Explainability and Encrypted Computation</h2>
+        <p>
+            A specific question arises for MPC-based cross-institutional monitoring. The computation involves cryptographic operations on encrypted inputs. Some commentators have argued that encrypted computation is incompatible with AI Act explainability requirements because the computation cannot be inspected.
+        </p>
+        <p>
+            The ACPR, the French banking supervisor, has acknowledged in published guidance that AI models for AML do not always require full algorithmic transparency. Level 1 and Level 2 explanation, meaning observation of inputs and outputs with justification of the logic applied, may be sufficient. For MPC-based systems, the logic can be documented and explained: two banks' risk scores are compared; if both exceed a threshold, a cross-institutional alert is generated. The computation is encrypted to protect each bank's input from the other bank. The logic is not hidden. The encryption protects competitive and privacy-sensitive data, not the compliance methodology.
+        </p>
+        <p>
+            Regulators and banks should understand this distinction. MPC encryption is by design, applied to preserve privacy between institutions. It does not make the system opaque to supervisors or compliance analysts.
+        </p>
+
+        <h2>The Timeline</h2>
+        <p>
+            Three AI Act dates are relevant for AML compliance teams. Prohibited AI practices have applied since February 2, 2025. High-risk AI requirements under Annex III, including those applicable to profiling-based AML systems, apply from August 2, 2026. Requirements for AI systems embedded in product safety legislation apply from August 2, 2027.
+        </p>
+        <p>
+            Banks using AI for customer risk scoring have until August 2, 2026 to complete their classification analysis, prepare technical documentation, implement human oversight procedures, and validate explainability mechanisms. That is 14 months from today. For institutions that have not yet begun their AI Act assessment, that deadline is tighter than it appears.
+        </p>
+
+        <h2>What Banks Should Do Now</h2>
+        <p>
+            Most AML transaction monitoring systems will not be classified as high-risk under the AI Act. Banks using standard rule-based or ML-based monitoring that flags transactions rather than scoring individuals can document the Recital 58 exclusion and move on.
+        </p>
+        <p>
+            Banks using AI for individual customer risk scoring should assume a high-risk classification applies until the Commission provides guidance. AI Act compliance documentation, data governance records, explainability mechanisms, and human oversight procedures should be prepared now. Banks that build these capabilities before the August 2026 deadline will be better positioned when classification guidelines are published. Those guidelines will either confirm the high-risk classification, validating the preparation work, or confirm the exclusion, in which case the documentation effort is modest and the risk of having been under-prepared is avoided.
+        </p>
+
+        <div class="article-author">
+            <div class="name">Danny de Gier</div>
+            <div class="bio">
+                Founder, ZQUAS. 18+ years in financial crime compliance at Tier-1 banks and fintechs.
+                Professional Postgraduate Diploma in Financial Crime Compliance (ICA / University of Manchester).
+            </div>
+        </div>
+    </div>
+</article>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 ZQUAS &middot; Sovereign Compliance Infrastructure</p>
+</footer>
+
+</body>
+</html>

@@ -56,93 +56,123 @@
         <priority>0.5</priority>
     </url>
     <url>
+        <loc>https://zquas.ai/article-ai-act-aml-classification.html</loc>
+        <lastmod>2026-06-15</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://zquas.ai/article-july-2027-aml-infrastructure-deadline.html</loc>
+        <lastmod>2026-05-26</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://zquas.ai/article-eccta-uk-aml-data-sharing.html</loc>
+        <lastmod>2026-05-05</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://zquas.ai/article-tmnl-to-article-75-netherlands.html</loc>
+        <lastmod>2026-04-14</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://zquas.ai/article-edpb-mpc-gdpr-accountability.html</loc>
+        <lastmod>2026-03-31</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://zquas.ai/article-amlr-article-75-dutch-banks.html</loc>
+        <lastmod>2026-03-17</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://zquas.ai/article-cross-institutional-detection.html</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-02-01</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-interbank-operations.html</loc>
-        <lastmod>2026-02-15</lastmod>
+        <lastmod>2026-01-15</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-false-positives.html</loc>
-        <lastmod>2026-02-15</lastmod>
+        <lastmod>2026-01-15</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-batch-processing.html</loc>
-        <lastmod>2026-02-15</lastmod>
+        <lastmod>2026-01-15</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-privacy-preserving-amlr.html</loc>
-        <lastmod>2026-02-15</lastmod>
+        <lastmod>2026-01-15</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-200b-market.html</loc>
-        <lastmod>2026-02-15</lastmod>
+        <lastmod>2026-01-15</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-cryptographic-verification.html</loc>
-        <lastmod>2026-01-15</lastmod>
+        <lastmod>2025-12-15</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-eu-ai-act-article12.html</loc>
-        <lastmod>2026-01-15</lastmod>
+        <lastmod>2025-12-15</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-vendor-proof-gap.html</loc>
-        <lastmod>2026-01-15</lastmod>
+        <lastmod>2025-12-15</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-determinism-problem.html</loc>
-        <lastmod>2026-01-15</lastmod>
+        <lastmod>2025-12-15</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-amlr-forcing-function.html</loc>
-        <lastmod>2025-12-15</lastmod>
+        <lastmod>2025-11-15</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-gpu-moat.html</loc>
-        <lastmod>2025-12-15</lastmod>
+        <lastmod>2025-11-15</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-business-model.html</loc>
-        <lastmod>2025-12-15</lastmod>
+        <lastmod>2025-11-15</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-why-now.html</loc>
-        <lastmod>2025-12-15</lastmod>
+        <lastmod>2025-11-15</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-adversarial-testing.html</loc>
-        <lastmod>2025-10-15</lastmod>
+        <lastmod>2025-09-15</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-predictive-compliance.html</loc>
-        <lastmod>2025-10-15</lastmod>
+        <lastmod>2025-09-15</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-governance-runtime.html</loc>
-        <lastmod>2025-10-15</lastmod>
+        <lastmod>2025-09-15</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-integration-reality.html</loc>
-        <lastmod>2025-10-15</lastmod>
+        <lastmod>2025-09-15</lastmod>
         <priority>0.7</priority>
     </url>
 </urlset>
