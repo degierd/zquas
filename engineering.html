@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Standards | ZQUAS</title>
+    <meta name="description" content="Engineering standards behind the ZQUAS compliance engine. 4,900 tests, defence-grade build hardening, reproducible binaries, proven cryptography.">
+    <meta property="og:title" content="Engineering Standards | ZQUAS">
+    <meta property="og:description" content="Engineering standards behind the ZQUAS compliance engine. 4,900 tests, defence-grade build hardening, reproducible binaries, proven cryptography.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zquas.ai/engineering.html">
+    <meta property="og:image" content="https://zquas.ai/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://zquas.ai/og-image.png">
+    <meta name="author" content="Danny de Gier">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://zquas.ai/engineering.html">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Engineering Standards | ZQUAS",
+        "description": "Engineering standards behind the ZQUAS compliance engine. 4,900 tests, defence-grade build hardening, reproducible binaries, proven cryptography.",
+        "url": "https://zquas.ai/engineering.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "ZQUAS",
+            "url": "https://zquas.ai"
+        }
+    }
+    </script>
+    <style>
+        .eng-section {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .eng-section:last-child {
+            border-bottom: none;
+        }
+        .eng-section h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+        .eng-section p {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            max-width: 720px;
+        }
+        .eng-stats-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.25rem;
+            margin-top: 1rem;
+        }
+        .eng-stat-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.75rem 1rem;
+            text-align: center;
+        }
+        .eng-stat-box .stat-val {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1.1;
+            margin-bottom: 0.4rem;
+        }
+        .eng-stat-box .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+        @media (max-width: 768px) {
+            .eng-stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .eng-stats-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <div class="nav-dropdown">
+                <a href="technology.html" class="nav-dropdown-toggle">Technology <span class="nav-arrow">&#x25BE;</span></a>
+                <div class="nav-dropdown-menu">
+                    <a href="technology.html">Overview</a>
+                    <a href="compare.html">Compare</a>
+                    <a href="benchmark.html">Benchmark</a>
+                    <a href="engineering.html">Engineering</a>
+                </div>
+            </div>
+            <a href="regulators.html">Regulators</a>
+            <a href="use-case.html">Use Case</a>
+            <a href="about.html">About</a>
+            <a href="articles.html">Articles</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+
+<!-- Header -->
+<section class="compare-header">
+    <div class="container">
+        <div class="section-label">Engineering</div>
+        <h1 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.6rem); max-width: 600px; margin-bottom: 1.5rem;">Engineering Standards</h1>
+        <p class="section-desc">How we build matters as much as what we build.</p>
+    </div>
+</section>
+
+<!-- Content -->
+<section>
+    <div class="container">
+
+        <div class="eng-section">
+            <h2>4,900 Tests</h2>
+            <p>The engine is verified by 4,900 automated tests spanning cryptographic correctness, GPU compute validation, governance logic, compliance rules, privacy-preserving protocols, rendering, and infrastructure. Every test runs on every build. Zero tolerance for failures. Test categories include known-answer tests against published cryptographic vectors, cross-validation between independent implementations (GPU vs CPU), boundary value analysis, adversarial input testing, determinism verification across repeated runs, and multi-institution federation integration tests with realistic data distributions.</p>
+        </div>
+
+        <div class="eng-section">
+            <h2>Defence-Grade Build</h2>
+            <p>The engine is compiled with memory protection (buffer overflow detection, address space randomisation, data execution prevention), control flow integrity (preventing return-oriented programming attacks), side-channel mitigations (Spectre variant protection), and runtime memory corruption detection. These protections are enabled for every build configuration, not just release builds. The security posture exceeds typical financial services software requirements and aligns with standards expected in critical national infrastructure.</p>
+        </div>
+
+        <div class="eng-section">
+            <h2>Reproducible Binaries</h2>
+            <p>Every compilation of the same source code produces a byte-identical binary. No timestamps, no random seeds, no build environment leakage. A regulator or auditor can independently verify that the deployed binary matches the audited source code. Supply-chain integrity is a build property, not an afterthought.</p>
+        </div>
+
+        <div class="eng-section">
+            <h2>Maximum Strictness</h2>
+            <p>The codebase compiles at the highest available warning level with warnings treated as errors. Static analysis runs on every build. The engine enforces C++23 standard conformance with no compiler-specific extensions. Build-time contract enforcement ensures that GPU compute kernels and CPU data structures remain aligned. ABI mismatches between components are detected at compile time, not at runtime.</p>
+        </div>
+
+        <div class="eng-section">
+            <h2>Proven Cryptography</h2>
+            <p>All cryptographic operations use published, peer-reviewed algorithms. Ed25519 for digital signatures. X25519 for key agreement. NIST P-256 for oblivious transfer base operations. Blake3 for hashing with domain separation. No custom cryptography. No proprietary ciphers. Every implementation is validated against known-answer test vectors from the relevant specification documents.</p>
+        </div>
+
+        <div class="eng-section">
+            <h2>Exact Arithmetic</h2>
+            <p>Financial computations use fixed-point arithmetic with explicit precision guarantees. No floating-point rounding errors in risk score comparisons or threshold evaluations. GPU compute kernels enforce the same precision constraints as CPU reference implementations, verified by cross-validation tests.</p>
+        </div>
+
+        <div class="eng-section" style="border-bottom: none;">
+            <div class="eng-stats-row">
+                <div class="eng-stat-box">
+                    <div class="stat-val">4,900</div>
+                    <div class="stat-label">tests</div>
+                </div>
+                <div class="eng-stat-box">
+                    <div class="stat-val">C++23</div>
+                    <div class="stat-label">standard</div>
+                </div>
+                <div class="eng-stat-box">
+                    <div class="stat-val">0</div>
+                    <div class="stat-label">custom crypto</div>
+                </div>
+                <div class="eng-stat-box">
+                    <div class="stat-val">Byte-identical</div>
+                    <div class="stat-label">builds</div>
+                </div>
+                <div class="eng-stat-box">
+                    <div class="stat-val">0</div>
+                    <div class="stat-label">floating-point in risk logic</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 ZQUAS &middot; Sovereign Compliance Infrastructure</p>
+</footer>
+
+</body>
+</html>
