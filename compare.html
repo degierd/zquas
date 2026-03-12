@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How ZQUAS Compares — Compliance Technology Comparison</title>
-    <meta name="description" content="Architectural comparison of GPU-native compliance with legacy incumbents and AI-native challengers. Honest assessment including where ZQUAS is behind.">
-    <meta property="og:title" content="How ZQUAS Compares — Compliance Technology Comparison">
-    <meta property="og:description" content="Architectural comparison of GPU-native compliance with legacy incumbents and AI-native challengers. Honest assessment including where ZQUAS is behind.">
+    <title>A Different Architecture | ZQUAS Technology Comparison</title>
+    <meta name="description" content="Architectural comparison of traditional, AI-augmented, and AI-native compliance approaches. Measured benchmarks on GPU-native governance.">
+    <meta property="og:title" content="A Different Architecture | ZQUAS Technology Comparison">
+    <meta property="og:description" content="Architectural comparison of traditional, AI-augmented, and AI-native compliance approaches. Measured benchmarks on GPU-native governance.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zquas.ai/compare.html">
     <meta property="og:image" content="https://zquas.ai/og-image.png">
@@ -21,6 +21,141 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=3">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "A Different Architecture | ZQUAS Technology Comparison",
+        "description": "Architectural comparison of traditional, AI-augmented, and AI-native compliance approaches. Measured benchmarks on GPU-native governance.",
+        "url": "https://zquas.ai/compare.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "ZQUAS",
+            "url": "https://zquas.ai"
+        }
+    }
+    </script>
+    <style>
+        /* ── APPROACH CARDS ── */
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .approach-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 2rem;
+            border-top: 3px solid var(--border);
+        }
+        .approach-card.approach-traditional {
+            border-top-color: var(--text-muted);
+        }
+        .approach-card.approach-augmented {
+            border-top-color: var(--warn);
+        }
+        .approach-card.approach-native {
+            border-top-color: var(--accent);
+            background: rgba(74, 125, 255, 0.04);
+        }
+        .approach-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .approach-card.approach-native h3 {
+            color: var(--accent);
+        }
+        .approach-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        .approach-card.approach-native .approach-tag {
+            color: var(--accent);
+        }
+        .approach-card p {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ── STATS ROW ── */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .stat-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+        .stat-box .stat-val {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+        .stat-box .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+        .stat-box .stat-detail {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 0.35rem;
+        }
+        .stats-note {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* ── CLOSING ── */
+        .closing-section {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .closing-section p {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .approach-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -48,136 +183,125 @@
 
 <main>
 
+<!-- SECTION 1: Header -->
 <section class="compare-header">
     <div class="container">
-        <div class="section-label">Comparison</div>
-        <h1 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.6rem); max-width: 600px; margin-bottom: 1.5rem;">How ZQUAS compares</h1>
+        <div class="section-label">Technology Comparison</div>
+        <h1 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.6rem); max-width: 600px; margin-bottom: 1.5rem;">A Different Architecture</h1>
         <p class="section-desc">
-            An honest architectural comparison. Not every vendor is bad at everything. The differences are structural, not incremental. This table shows where existing architectures hit limits that GPU-native, privacy-preserving compliance does not.
+            Most compliance platforms add AI to existing software. We built a governance engine where AI is the foundation.
         </p>
     </div>
 </section>
 
+<!-- SECTION 2: The Three Approaches -->
 <section>
+    <div class="container">
+        <div class="approach-grid">
+            <div class="approach-card approach-traditional">
+                <span class="approach-tag">2000s Architecture</span>
+                <h3>Traditional</h3>
+                <p>Rule-based engines built in the 2000s. Process transactions in batches. Flag based on static thresholds. Manual investigation.</p>
+            </div>
+            <div class="approach-card approach-augmented">
+                <span class="approach-tag">Bolt-on AI</span>
+                <h3>AI-Augmented</h3>
+                <p>Machine learning models added to existing platforms. Better pattern detection, but the same batch architecture underneath. AI assists humans.</p>
+            </div>
+            <div class="approach-card approach-native">
+                <span class="approach-tag">ZQUAS</span>
+                <h3>AI-Native</h3>
+                <p>Built from the ground up as a GPU-native runtime where every entity is an autonomous agent. AI does not assist the system. AI is the system. Governance decisions are computed, verified, and proven at GPU speed.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 3: The Comparison Table -->
+<section style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
     <div class="container">
         <div class="compare-table-wrap">
             <table class="compare-table">
                 <thead>
                     <tr>
-                        <th class="col-capability">Capability</th>
-                        <th class="col-vendor">Legacy Incumbents</th>
-                        <th class="col-vendor">AI-Native Challengers</th>
+                        <th class="col-capability">Category</th>
+                        <th class="col-vendor">Traditional</th>
+                        <th class="col-vendor">AI-Augmented</th>
                         <th class="col-vendor col-zquas">ZQUAS</th>
-                    </tr>
-                    <tr class="compare-subheader">
-                        <td></td>
-                        <td>NICE Actimize, Oracle, SAS</td>
-                        <td>Sardine, Hawk AI, Featurespace</td>
-                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td class="cap-label">Architecture</td>
-                        <td>CPU batch processing</td>
-                        <td>CPU cloud, API-first</td>
-                        <td class="zquas-val">GPU-native, on-premise</td>
+                        <td>Database and rules engine. SQL queries on stored transactions.</td>
+                        <td>Database with ML models. Batch scoring added to existing pipeline.</td>
+                        <td class="zquas-val">GPU-native entity system. Every account is an autonomous agent with its own state, risk profile, and decision history. 2.58 million governance decisions per second.</td>
                     </tr>
                     <tr>
-                        <td class="cap-label">Processing model</td>
-                        <td>Overnight/periodic batch</td>
-                        <td>Near real-time</td>
-                        <td class="zquas-val">Real-time: 2.58M decisions/sec</td>
+                        <td class="cap-label">AI Integration</td>
+                        <td>None. Rules are manually authored and maintained.</td>
+                        <td>ML models flag transactions for human review. Models are trained offline, deployed as scoring services.</td>
+                        <td class="zquas-val">AI is the runtime. Every entity operates as an agent that perceives, evaluates, and acts within a governed framework. Agents propose actions. A governance validation layer verifies every proposal against certified rules before execution.</td>
                     </tr>
                     <tr>
-                        <td class="cap-label">Rule engine</td>
-                        <td>Static rules, manual thresholds</td>
-                        <td>Rules + ML scoring</td>
-                        <td class="zquas-val">Policy language compiled to GPU bytecode</td>
+                        <td class="cap-label">Cross-Institutional Detection</td>
+                        <td class="val-no">Not possible. Each institution operates in isolation.</td>
+                        <td class="val-no">Not possible. Same data silo, better algorithms.</td>
+                        <td class="zquas-val">Multi-party computation federation. Banks jointly detect suspicious entities without sharing data. Cryptographic proof of every round. 5 banks, 1.48 million entities, 30 seconds.</td>
                     </tr>
                     <tr>
-                        <td class="cap-label">Determinism</td>
-                        <td>Non-deterministic (model drift, eval order)</td>
-                        <td>Non-deterministic (continuous ML updates)</td>
-                        <td class="zquas-val">Deterministic: same input + same policy = same verdict</td>
+                        <td class="cap-label">Processing Speed</td>
+                        <td>Batch. Overnight or hourly. Thousands of decisions per second.</td>
+                        <td>Near-real-time. Minutes to hours. Tens of thousands per second.</td>
+                        <td class="zquas-val">Real-time. Sub-second. 2.58 million decisions per second on a single GPU. 3.7 million transactions per second processing capacity.</td>
                     </tr>
                     <tr>
-                        <td class="cap-label">Cross-institutional detection</td>
-                        <td class="val-no">No</td>
-                        <td class="val-no">No</td>
-                        <td class="zquas-val val-yes">Yes, validated in testing</td>
+                        <td class="cap-label">Governance Model</td>
+                        <td>Configuration files. Change management committees. Months to update a rule.</td>
+                        <td>Model governance. Bias testing, validation reports. Weeks to retrain and deploy.</td>
+                        <td class="zquas-val">Three-layer governance. Layer 1: formally verified execution core (immutable at runtime). Layer 2: certified rule schemas (versioned, validated). Layer 3: AI-generated content (every decision audited with reasoning). A governance validation layer sits between the rules and the AI, rejecting any proposal that violates the certified schema.</td>
                     </tr>
                     <tr>
-                        <td class="cap-label">Data sovereignty</td>
-                        <td>Vendor cloud or on-premise</td>
-                        <td>Vendor cloud</td>
-                        <td class="zquas-val">On-premise only. Data never leaves the bank</td>
+                        <td class="cap-label">Audit Trail</td>
+                        <td>Log files. Database records. Manually reviewed during examinations.</td>
+                        <td>Log files plus model cards. Feature importance scores.</td>
+                        <td class="zquas-val">Cryptographic audit ledger. Every governance decision is recorded in a tamper-proof, cryptographically chained log. Ed25519 signatures. Blake3 integrity hashing. The audit trail is mathematically verifiable, not just reviewable.</td>
                     </tr>
                     <tr>
-                        <td class="cap-label">Privacy-preserving computation</td>
-                        <td class="val-no">No</td>
-                        <td class="val-no">No</td>
-                        <td class="zquas-val val-yes">ABY3 secret sharing, garbled circuits, ECDH-PSI (protocol validated, multi-bank deployment pending)</td>
+                        <td class="cap-label">Explainability</td>
+                        <td>Rule X matched. Human analyst explains the context.</td>
+                        <td>SHAP values. Feature importance. Partial dependence plots. Requires data science expertise to interpret.</td>
+                        <td class="zquas-val">Glass Box. Every decision carries a structured explanation of why it was made, what alternatives were considered, and which rules applied. Readable by compliance officers, not just data scientists.</td>
                     </tr>
                     <tr>
-                        <td class="cap-label">Cryptographic decision proof</td>
-                        <td class="val-no">No</td>
-                        <td class="val-no">No</td>
-                        <td class="zquas-val val-yes">Ed25519-signed proof bundles with Merkle roots</td>
+                        <td class="cap-label">Temporal Control</td>
+                        <td>Replay from database snapshots. Hours to reconstruct a scenario.</td>
+                        <td>Limited replay. Model inference on historical data.</td>
+                        <td class="zquas-val">Full temporal control. Pause any entity. Step forward one decision at a time. Rewind to any point. Launch parallel scenarios to test what-if hypotheses on live state. Inject simulated threats and measure system response.</td>
                     </tr>
                     <tr>
-                        <td class="cap-label">Independent regulator verification</td>
-                        <td class="val-no">No. Trust-based audit trails</td>
-                        <td class="val-no">No. Trust-based audit trails</td>
-                        <td class="zquas-val val-yes">Yes. Standalone CLI, no vendor software needed</td>
+                        <td class="cap-label">Spatial Awareness</td>
+                        <td class="val-no">None. Transactions are flat records.</td>
+                        <td>Graph analytics on stored relationships.</td>
+                        <td class="zquas-val">Volumetric spatial perception. Each entity has ambient awareness of risk, activity, and density in its neighbourhood of the entity graph. Entities surrounded by high-risk neighbours behave differently. Emergent intelligence, not just pattern matching.</td>
                     </tr>
                     <tr>
-                        <td class="cap-label">Zero-knowledge governance proofs</td>
-                        <td class="val-no">No</td>
-                        <td class="val-no">No</td>
-                        <td class="zquas-val val-yes">GPU-accelerated PLONK + IPA</td>
+                        <td class="cap-label">Scalability</td>
+                        <td>Add servers. Add databases. Linear cost scaling.</td>
+                        <td>Add GPU instances for model inference. Separate from core platform.</td>
+                        <td class="zquas-val">Single GPU: 8 million accounts, 3.7 million transactions per second. Federation scales with parallel execution: adding banks does not increase processing time.</td>
                     </tr>
                     <tr>
-                        <td class="cap-label">Entity resolution</td>
-                        <td>Batch entity matching</td>
-                        <td>ML-based, cloud</td>
-                        <td class="zquas-val">GPU-resident graph with GNN risk propagation</td>
+                        <td class="cap-label">Multi-Industry</td>
+                        <td>Financial services only. Separate products for each regulation.</td>
+                        <td>Financial services only. Domain-specific models.</td>
+                        <td class="zquas-val">Industry-agnostic governance engine. Financial crime is the first application. The same engine governs any domain where autonomous entities must operate under verifiable rules.</td>
                     </tr>
                     <tr>
-                        <td class="cap-label">Adversarial self-testing</td>
-                        <td class="val-no">No</td>
-                        <td class="val-no">No</td>
-                        <td class="zquas-val val-yes">Continuous GPU-accelerated fuzzing and cartography</td>
-                    </tr>
-                    <tr>
-                        <td class="cap-label">Predictive governance</td>
-                        <td class="val-no">No</td>
-                        <td class="val-no">No</td>
-                        <td class="zquas-val val-yes">Forward simulation of compliance state</td>
-                    </tr>
-                    <tr>
-                        <td class="cap-label">Policy coverage gap detection</td>
-                        <td>Manual mapping</td>
-                        <td class="val-no">No</td>
-                        <td class="zquas-val">Real-time automated gap analysis across frameworks</td>
-                    </tr>
-                    <tr>
-                        <td class="cap-label">Build attestation / binary integrity</td>
-                        <td class="val-no">No</td>
-                        <td class="val-no">No</td>
-                        <td class="zquas-val val-yes">BLAKE3 + SHA-256 + Ed25519 embedded in binary</td>
-                    </tr>
-                    <tr>
-                        <td class="cap-label">EU AI Act readiness</td>
-                        <td>Retrofit required</td>
-                        <td>Partial (explainability tools)</td>
-                        <td class="zquas-val">Native: Articles 9, 11, 12, 14 addressed architecturally</td>
-                    </tr>
-                    <tr>
-                        <td class="cap-label">AMLR 2027 readiness</td>
-                        <td>Significant re-architecture needed</td>
-                        <td>Partial</td>
-                        <td class="zquas-val">Designed for AMLR from the start</td>
+                        <td class="cap-label">Privacy</td>
+                        <td>Data centralisation. Access controls. Pseudonymisation.</td>
+                        <td>Same as traditional, plus model access controls.</td>
+                        <td class="zquas-val">Multi-party computation. Zero raw data exposure between institutions. Mathematical privacy guarantees endorsed by the European Data Protection Board.</td>
                     </tr>
                 </tbody>
             </table>
@@ -185,69 +309,38 @@
     </div>
 </section>
 
-<section style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-    <div class="container">
-        <div class="analysis-body">
-            <h2>Reading this table</h2>
-
-            <p>This comparison reflects architectural capabilities, not product quality. Legacy incumbents have deep integration with bank infrastructure, decades of regulatory familiarity, and thousands of production deployments. AI-native challengers have modern interfaces, strong ML capabilities, and significant venture funding. These are real advantages.</p>
-
-            <p>The differences shown above are structural. They reflect what each architecture can and cannot do, not what each company chooses to prioritise. A CPU-based cloud platform cannot offer GPU-native processing through a software update. A centralised SaaS platform cannot offer privacy-preserving MPC without fundamental re-architecture. A system without cryptographic attestation cannot produce independently verifiable proof bundles by adding a feature.</p>
-
-            <p>These are not criticisms. They are architectural facts. The question for each institution is which architectural properties matter for their specific compliance requirements, regulatory jurisdiction, and risk appetite.</p>
-        </div>
-    </div>
-</section>
-
+<!-- SECTION 4: The Numbers -->
 <section>
     <div class="container">
-        <div class="compare-vendor-grid">
-            <div class="compare-vendor-card compare-vendor-legacy">
-                <h3>Legacy Incumbents</h3>
-                <div class="compare-vendor-names">NICE Actimize &middot; Oracle Financial Crime &middot; SAS</div>
-                <p>These vendors own the installed base at most Tier-1 and Tier-2 banks globally. Their systems are deeply integrated into bank infrastructure with 15 to 20 integration points per deployment. They have extensive regulatory familiarity across multiple jurisdictions. Switching away from them is expensive and risky, which is their primary competitive advantage. Their architectural limitation is that they were designed for batch processing on CPU infrastructure. Retrofitting GPU compute, MPC, or cryptographic attestation onto these platforms would require multi-year re-engineering efforts that conflict with the needs of their existing production customers.</p>
+        <div class="section-label">Measured, Not Projected</div>
+        <h2 class="section-title">The Numbers</h2>
+        <div class="stats-row">
+            <div class="stat-box">
+                <div class="stat-val">2.58M</div>
+                <div class="stat-label">governance decisions per second</div>
             </div>
-            <div class="compare-vendor-card compare-vendor-challenger">
-                <h3>AI-Native Challengers</h3>
-                <div class="compare-vendor-names">Sardine ($145M raised) &middot; Hawk AI ($56M raised) &middot; Featurespace &middot; ComplyAdvantage</div>
-                <p>These companies represent the modern wave of compliance technology. Cloud-first, API-driven, with machine learning for alert scoring and increasingly, agentic AI for alert triage. They are winning fintech and mid-market bank customers and are beginning to penetrate Tier-1 institutions. Their architectural limitation is that they are better versions of the existing paradigm: CPU-based cloud processing with ML models. They do not offer GPU-native processing, privacy-preserving cross-institutional detection, or cryptographic decision proofs. They compete on features and UX within the existing architectural framework.</p>
+            <div class="stat-box">
+                <div class="stat-val">3.7M</div>
+                <div class="stat-label">transactions processed per second</div>
             </div>
-            <div class="compare-vendor-card compare-vendor-zquas">
-                <h3>ZQUAS</h3>
-                <div class="compare-vendor-names">Pre-revenue &middot; DNB InnovationHub &middot; FCA Sandbox</div>
-                <p>ZQUAS is architecturally different, not incrementally better. The engine runs on GPU, processes 2.58 million governance decisions per second, enforces policies deterministically via compiled bytecode, and produces cryptographic proof bundles for every decision. Cross-institutional detection is architected via GPU-accelerated MPC with zero raw data disclosure, validated in controlled testing. The trade-off is maturity: ZQUAS is pre-revenue with no production deployments. It has regulatory sandbox engagement but not production-scale validation. The architecture is proven in benchmark environments but not yet in a live bank. This page does not hide that fact.</p>
+            <div class="stat-box">
+                <div class="stat-val">30s</div>
+                <div class="stat-label">5 banks, 1.48M entities</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-val">55+</div>
+                <div class="stat-label">tests, zero failures</div>
             </div>
         </div>
+        <p class="stats-note">All numbers measured on a single GPU. Federation benchmarks use realistic Dutch banking entity distributions.</p>
     </div>
 </section>
 
+<!-- SECTION 5: Closing -->
 <section style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
     <div class="container">
-        <div class="analysis-body">
-            <h2>Where ZQUAS is behind</h2>
-
-            <p>Transparency matters. Here is where existing vendors have clear advantages over ZQUAS today:</p>
-
-            <div class="compare-gaps">
-                <div class="compare-gap">
-                    <h4>Production deployments</h4>
-                    <p>Legacy vendors have thousands. AI-native challengers have hundreds. ZQUAS has zero. Production validation is the single most important factor in bank procurement decisions.</p>
-                </div>
-                <div class="compare-gap">
-                    <h4>Regulatory familiarity</h4>
-                    <p>Regulators know NICE Actimize and Oracle. They have seen them in hundreds of examinations. ZQUAS is in sandbox engagement. That is early-stage credibility, not established trust.</p>
-                </div>
-                <div class="compare-gap">
-                    <h4>Professional services</h4>
-                    <p>Large vendors have implementation teams, customer success organisations, and 24/7 support. ZQUAS is a solo founder. Implementation support at scale requires a team that doesn't exist yet.</p>
-                </div>
-                <div class="compare-gap">
-                    <h4>Ecosystem integration</h4>
-                    <p>Legacy vendors have pre-built connectors to every major core banking system, payment processor, and case management platform. ZQUAS has standard format ingestion and export but not vendor-specific connectors.</p>
-                </div>
-            </div>
-
-            <p>These gaps are real. They close with time, traction, and investment. The architectural gaps in the other direction do not close with time. They require re-architecture.</p>
+        <div class="closing-section">
+            <p>The difference between adding AI to compliance software and building compliance on AI is architectural. It cannot be retrofitted. It must be built from the ground up.</p>
         </div>
     </div>
 </section>
