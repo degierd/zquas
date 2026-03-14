@@ -296,9 +296,9 @@ def page2(c):
         ["Policy language", "CPL: lexer, parser, semantic analyser, compiler to GPU bytecode"],
         ["Adjudication pipeline", "Triple-stream GPU: Load (H2D), Adjudicate (kernel), Commit (D2H + sign)"],
         ["Determinism", "Byte-identical replay guaranteed. Fixed-point arithmetic where applicable"],
-        ["Entity resolution", "GPU-resident double-buffered hash table (~1.34GB VRAM), GNN risk scoring"],
+        ["Entity resolution", "GPU-resident high-throughput hash table (~1.34GB VRAM), GNN risk scoring"],
         ["Proof generation", "ZAPB: verdict hash (SipHash-128), Merkle proof, Ed25519 signature (912 bytes)"],
-        ["ZK governance proofs", "GPU-accelerated PLONK + IPA with BabyJubJub/Poseidon primitives"],
+        ["ZK governance proofs", "GPU-accelerated zero-knowledge governance proofs"],
     ]
     y = draw_table(c, y, engine_headers, engine_rows, engine_widths, font_size=7.5, row_h=14)
 
@@ -310,11 +310,11 @@ def page2(c):
     y = section_header(c, y, "Governance & Safety")
 
     gov_items = [
-        ("ExecutionGate: ", "Zero-bypass enforcement point. No code path circumvents governance."),
-        ("WarrantAuthority: ", "Ephemeral Ed25519 keypairs. Scoped, time-limited, non-reusable action warrants."),
-        ("GasMeter: ", "Monotonic per-agent gas ledger. 16 sharded mutexes. Prevents resource exhaustion."),
-        ("Janus Prediction: ", "Forward simulation of compliance state. Predicts budget depletion, warrant "
-         "expiry, and coverage gaps before they occur. Q32.32 fixed-point deterministic projection."),
+        ("Policy execution gateway: ", "Zero-bypass enforcement point. No code path circumvents governance."),
+        ("Authorisation framework: ", "Ephemeral Ed25519 keypairs. Scoped, time-limited, non-reusable action warrants."),
+        ("Resource governor: ", "Monotonic per-agent gas ledger. Sharded concurrency. Prevents resource exhaustion."),
+        ("Predictive compliance engine: ", "Forward simulation of compliance state. Predicts budget depletion, warrant "
+         "expiry, and coverage gaps before they occur. Fixed-point deterministic projection."),
     ]
     for label, text in gov_items:
         draw_dot(c, MARGIN + 4, y)
@@ -330,8 +330,8 @@ def page2(c):
     y = section_header(c, y, "Detection Intelligence")
 
     det_items = [
-        ("Semantic Knowledge Graph: ", "7-domain ontology (Ontology, Topology, Dynamics, Epistemics, "
-         "Salience, Affordance, Projection). Contextual reasoning beyond raw transaction patterns."),
+        ("Semantic Knowledge Graph: ", "Multi-domain semantic encoding across entity existence, relationships, "
+         "behaviour, epistemic state, and temporal projections. Contextual reasoning beyond raw transaction patterns."),
         ("Multi-Timeline Evaluation: ", "Same entity evaluated under multiple policy versions simultaneously "
          "on GPU. Scenario analysis, impact assessment, and counterfactual replay at compliance speed."),
         ("Cross-Institutional MPC: ", "Federation protocol with ECDH-PSI, garbled circuits, and oblivious "
@@ -352,7 +352,7 @@ def page2(c):
     y = section_header(c, y, "Continuous Verification")
 
     ver_items = [
-        ("Sentinel Adversarial Framework: ", "13+ subsystems. GPU-accelerated fuzzing, decision surface "
+        ("Adversarial testing framework: ", "13+ subsystems. GPU-accelerated fuzzing, decision surface "
          "cartography, adversarial oracle. Two-gate deployment pipeline (pre-commit + CI/CD)."),
         ("GapDetector: ", "Real-time policy coverage mapping against registered regulatory frameworks. "
          "Gaps identified automatically, continuously."),
@@ -651,9 +651,9 @@ def page5(c):
         ["GPU targets", "sm_86, sm_89, sm_100, sm_120"],
         ["Build hardening", "/sdl, /guard:cf, /GS, /Qspectre, /CETCOMPAT, /HIGHENTROPYVA"],
         ["Testing", "4,808 GTest units + standalone benchmark harnesses"],
-        ["Cryptography", "BLAKE3, SHA-256, Ed25519, Poseidon, SipHash-128"],
-        ["ECS framework", "entt-backed entity component system"],
-        ["Serialisation", "Hologram v4 binary format (64B-aligned, std140)"],
+        ["Cryptography", "BLAKE3, SHA-256, Ed25519, ZK-optimised hash functions, SipHash-128"],
+        ["Entity system", "High-performance entity component system"],
+        ["Serialisation", "Custom binary format (64B-aligned, std140-compatible)"],
         ["Build attestation", "BLAKE3 + SHA-256 + Ed25519 embedded, reproducible builds"],
     ]
     y = draw_table(c, y, eng_headers, eng_rows, eng_widths, font_size=7.5, row_h=14)
