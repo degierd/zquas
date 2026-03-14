@@ -101,6 +101,20 @@ nav {
     min-width: 150px;
     z-index: 120;
 }
+/* Invisible bridge fills the gap so moving the cursor from toggle to menu doesn't break hover */
+.nav-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: -1rem;
+    right: -1rem;
+    height: 0.6rem;
+    background: transparent;
+    display: none;
+}
+.nav-dropdown:hover::after {
+    display: block;
+}
 .nav-dropdown:hover .nav-dropdown-menu {
     display: block;
 }
