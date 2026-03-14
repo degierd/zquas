@@ -101,21 +101,21 @@
             <div class="layer-card-inner">
                 <div class="arch-tag">LAYER 3</div>
                 <h3>Identity Resolution &amp; Graph Intelligence</h3>
-                <p>A GPU-resident entity graph maintains relationships between accounts, individuals, businesses, devices, and counterparties. The graph uses a double-buffered hash table for real-time updates without read contention. Graph neural network inference propagates risk scores across entity relationships, providing full network context for every compliance decision. Entity resolution runs at GPU speed, not in overnight batch.</p>
+                <p>A GPU-resident entity graph maintains relationships between accounts, individuals, businesses, devices, and counterparties. The graph uses a high-throughput GPU-resident hash table for real-time updates without read contention. Graph neural network inference propagates risk scores across entity relationships, providing full network context for every compliance decision. Entity resolution runs at GPU speed, not in overnight batch.</p>
             </div>
         </div>
         <div class="layer-card">
             <div class="layer-card-inner">
                 <div class="arch-tag">LAYER 4</div>
                 <h3>Cryptographic Attestation</h3>
-                <p>Every batch of compliance decisions produces a sealed proof bundle. The bundle includes: a BLAKE3 hash of the policy set, a hash of the input data, individual verdict hashes, a Merkle root binding all verdicts together, and an Ed25519 signature over the complete bundle. A separate SHA-256 witness hash is produced for regulatory interfaces. Proof bundles can optionally include zero-knowledge governance proofs generated via GPU-accelerated PLONK.</p>
+                <p>Every batch of compliance decisions produces a sealed proof bundle. The bundle includes: a BLAKE3 hash of the policy set, a hash of the input data, individual verdict hashes, a Merkle root binding all verdicts together, and an Ed25519 signature over the complete bundle. A separate SHA-256 witness hash is produced for regulatory interfaces. Proof bundles can optionally include GPU-accelerated zero-knowledge governance proofs.</p>
             </div>
         </div>
         <div class="layer-card">
             <div class="layer-card-inner">
                 <div class="arch-tag">LAYER 5</div>
                 <h3>Privacy-Preserving Cross-Institutional Layer</h3>
-                <p>When multiple institutions run ZQUAS, cross-bank detection activates via secure multi-party computation. The MPC layer uses ABY3 replicated secret sharing with GPU-accelerated comparison, oblivious sorting, and secure aggregation. Each institution retains full data sovereignty. No raw transaction data crosses institutional boundaries. The output is a risk indicator, not customer data. A separate federation protocol uses ECDH-based private set intersection and garbled circuits for entity matching across institutions. The MPC protocol has been validated in controlled testing using loopback transport. Production deployment requires two separate institutional nodes connected via network transport.</p>
+                <p>When multiple institutions run ZQUAS, cross-bank detection activates via secure multi-party computation. The MPC layer uses replicated secret sharing protocol with GPU-accelerated comparison, oblivious sorting, and secure aggregation. Each institution retains full data sovereignty. No raw transaction data crosses institutional boundaries. The output is a risk indicator, not customer data. A separate federation protocol uses ECDH-based private set intersection and garbled circuits for entity matching across institutions.</p>
             </div>
         </div>
     </div>
@@ -134,7 +134,7 @@
             <div class="pipeline-stream">
                 <div class="arch-tag">STREAM A</div>
                 <h4>Load</h4>
-                <p>Transaction data serialised to GPU-native evaluation contexts. Asynchronous host-to-device copy via pinned staging buffers.</p>
+                <p>Transaction data serialised to GPU-native evaluation contexts. Asynchronous host-to-device copy via zero-copy memory transfers.</p>
             </div>
             <div class="pipeline-stream">
                 <div class="arch-tag">STREAM B</div>
@@ -197,7 +197,7 @@ Result: <span class="terminal-ok">VALID</span> (deterministic replay confirmed)<
             </div>
             <div class="eng-card">
                 <h4>Cryptography</h4>
-                <p>BLAKE3 (internal), SHA-256 (regulatory), Ed25519 (signatures), Poseidon (ZK circuits). DualHash at domain boundaries.</p>
+                <p>BLAKE3 (internal), SHA-256 (regulatory), Ed25519 (signatures), ZK-optimised hash functions (ZK circuits). DualHash at domain boundaries.</p>
             </div>
             <div class="eng-card">
                 <h4>Binary Attestation</h4>
@@ -217,22 +217,22 @@ Result: <span class="terminal-ok">VALID</span> (deterministic replay confirmed)<
         <div class="arch-grid">
             <div class="arch-card">
                 <div class="arch-tag">ENFORCEMENT</div>
-                <h3>ExecutionGate</h3>
+                <h3>policy execution gateway</h3>
                 <p>The single enforcement point through which every governed action must pass. There is no code path that bypasses the gate. If an action lacks a valid warrant, it does not execute. This is enforced architecturally, not by convention.</p>
             </div>
             <div class="arch-card">
                 <div class="arch-tag">AUTHORIZATION</div>
-                <h3>WarrantAuthority</h3>
+                <h3>authorisation framework</h3>
                 <p>Ephemeral Ed25519 keypairs mint cryptographic warrants for authorized actions. Each warrant is scoped to a specific action, agent, and time window. Warrants cannot be reused, extended, or forged. The authority rotates keys to prevent accumulation of stale credentials.</p>
             </div>
             <div class="arch-card">
                 <div class="arch-tag">METERING</div>
-                <h3>GasMeter</h3>
-                <p>Every agent has a monotonic gas ledger. Each action consumes gas. When gas is depleted, the agent cannot act until replenished by an authorized governance decision. This prevents runaway processes, resource exhaustion, and any single agent consuming unbounded compute. Sixteen sharded mutexes ensure metering doesn't become a bottleneck.</p>
+                <h3>resource governor</h3>
+                <p>Every agent has a monotonic gas ledger. Each action consumes gas. When gas is depleted, the agent cannot act until replenished by an authorized governance decision. This prevents runaway processes, resource exhaustion, and any single agent consuming unbounded compute. Sharded concurrency ensures metering does not become a bottleneck.</p>
             </div>
             <div class="arch-card">
                 <div class="arch-tag">INCLUSION PROOF</div>
-                <h3>PolicyRoot</h3>
+                <h3>policy hierarchy</h3>
                 <p>A GPU-resident Sparse Merkle Tree maintains policy inclusion proofs. Any party can verify that a specific policy was part of the active policy set at a specific time without accessing the full policy database. This enables selective disclosure during regulatory review.</p>
             </div>
         </div>
@@ -244,12 +244,12 @@ Result: <span class="terminal-ok">VALID</span> (deterministic replay confirmed)<
         <div class="section-label">Predictive Layer</div>
         <h2 class="section-title">Detect problems before they happen</h2>
         <p class="section-desc">
-            The Janus projection layer simulates governance state forward in time without executing policies. It predicts gas depletion, resource violations, cascade failures, and warrant expiry over N future frames. Compliance issues are flagged before they materialise, not after.
+            The predictive compliance engine simulates governance state forward in time without executing policies. It predicts gas depletion, resource violations, cascade failures, and warrant expiry over N future frames. Compliance issues are flagged before they materialise, not after.
         </p>
         <div class="arch-card" style="max-width: 800px;">
             <div class="arch-tag">PROJECTION</div>
             <h3>Pre-Cognition Engine</h3>
-            <p>Janus uses a discrete-time state machine with Q32.32 fixed-point arithmetic for deterministic projection. It operates on copy-on-write shadow states, meaning projections don't interfere with live governance. The projection scheduler integrates with the decision kernel, feeding predictions directly into policy evaluation. The practical result: the system warns that an agent will exhaust its gas budget in 12 evaluation cycles, or that a warrant will expire before a pending operation completes, or that a policy change will create a coverage gap in a specific compliance domain. Preemptive compliance, not reactive detection.</p>
+            <p>The predictive compliance engine uses a discrete-time state machine with fixed-point arithmetic for deterministic projection. It operates on copy-on-write shadow states, meaning projections don't interfere with live governance. The projection scheduler integrates with the decision kernel, feeding predictions directly into policy evaluation. The practical result: the system warns that an agent will exhaust its gas budget in 12 evaluation cycles, or that a warrant will expire before a pending operation completes, or that a policy change will create a coverage gap in a specific compliance domain. Preemptive compliance, not reactive detection.</p>
         </div>
     </div>
 </section>
@@ -259,7 +259,7 @@ Result: <span class="terminal-ok">VALID</span> (deterministic replay confirmed)<
         <div class="section-label">Continuous Verification</div>
         <h2 class="section-title">The engine attacks itself</h2>
         <p class="section-desc">
-            Sentinel is a built-in adversarial testing framework with 13+ subsystems. It continuously generates adversarial inputs, fuzzes policy evaluation boundaries, and maps decision surface coverage. This runs on GPU alongside production workloads.
+            The adversarial testing framework has 13+ subsystems. It continuously generates adversarial inputs, fuzzes policy evaluation boundaries, and maps decision surface coverage. This runs on GPU alongside production workloads.
         </p>
         <div class="arch-grid">
             <div class="arch-card">
@@ -288,8 +288,8 @@ Result: <span class="terminal-ok">VALID</span> (deterministic replay confirmed)<
         <div class="arch-grid">
             <div class="arch-card">
                 <div class="arch-tag">KNOWLEDGE GRAPH</div>
-                <h3>Noumenon Semantic Runtime</h3>
-                <p>A 7-domain ontology (Ontology, Topology, Dynamics, Epistemics, Salience, Affordance, Projection) provides structured contextual reasoning for agent decision-making. The graph represents not just what entities exist and how they connect, but how they behave over time, what is known about them with what confidence, and what actions they afford. This context feeds into compliance evaluation, giving the engine understanding beyond raw transaction patterns.</p>
+                <h3>AI-native semantic runtime</h3>
+                <p>A structured ontology across entity existence, relationships, behaviour, epistemic state, and temporal projections provides structured contextual reasoning for agent decision-making. The graph represents not just what entities exist and how they connect, but how they behave over time, what is known about them with what confidence, and what actions they afford. This context feeds into compliance evaluation, giving the engine understanding beyond raw transaction patterns.</p>
             </div>
             <div class="arch-card">
                 <div class="arch-tag">TEMPORAL ANALYSIS</div>
@@ -313,7 +313,7 @@ Result: <span class="terminal-ok">VALID</span> (deterministic replay confirmed)<
             <div class="arch-card">
                 <div class="arch-tag">DATA INGESTION</div>
                 <h3>High-Throughput Ingest</h3>
-                <p>256MB shared memory ring buffer with cache-line separated atomic indices for lock-free ingestion. Supports standard JSON payloads via the Synapse bridge and raw binary payloads via GPU-Direct bypass for high-frequency environments. Backpressure policies (drop newest, drop oldest, block) are configurable per deployment. The engine ingests at the speed your payment infrastructure produces, not the other way around.</p>
+                <p>256MB shared memory ring buffer with cache-line separated atomic indices for lock-free ingestion. Supports standard JSON payloads via the native language bridge and raw binary payloads via GPU-Direct bypass for high-frequency environments. Backpressure policies (drop newest, drop oldest, block) are configurable per deployment. The engine ingests at the speed your payment infrastructure produces, not the other way around.</p>
             </div>
         </div>
     </div>

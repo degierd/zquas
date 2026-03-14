@@ -252,13 +252,13 @@
         <div class="analysis-body">
             <h2>How It Was Measured</h2>
 
-            <p>The benchmark uses the Themis Governance Benchmark (TGB v1.2), a standalone harness that measures throughput, latency, determinism, and cryptographic proof generation under controlled conditions.</p>
+            <p>The benchmark uses a standalone governance benchmark harness that measures throughput, latency, determinism, and cryptographic proof generation under controlled conditions.</p>
 
             <p>Transactions are synthetically generated with realistic parameter distributions (amount, currency, jurisdiction, counterparty type, temporal spacing). The generator produces a continuous stream at a rate exceeding the engine's processing capacity to ensure the benchmark measures engine throughput, not data generation throughput.</p>
 
             <p>Timing uses CUDA events for GPU-side measurement, eliminating host-side timing noise. The measurement window excludes startup and warmdown periods. The reported figure is sustained throughput over the measurement window, not a burst or peak.</p>
 
-            <p>The benchmark harness is a standalone executable (TgbBench) that runs independently of the full engine application. It isolates the policy evaluation pipeline: GPU context packet serialisation, kernel dispatch, verdict collection, and epoch commitment. It does not include data ingestion, entity graph updates, or rendering overhead. These subsystems operate concurrently in the full engine but are excluded from the policy evaluation benchmark to measure the adjudication pipeline in isolation.</p>
+            <p>The benchmark harness is a standalone executable (benchmark runner) that runs independently of the full engine application. It isolates the policy evaluation pipeline: GPU context packet serialisation, kernel dispatch, verdict collection, and epoch commitment. It does not include data ingestion, entity graph updates, or rendering overhead. These subsystems operate concurrently in the full engine but are excluded from the policy evaluation benchmark to measure the adjudication pipeline in isolation.</p>
         </div>
     </div>
 </section>
@@ -290,7 +290,7 @@
 
             <p>The detection fidelity benchmark measures whether the policy set correctly identifies known suspicious patterns while avoiding false triggers on legitimate transaction patterns. Results are measured in precision (what percentage of alerts were genuine) and recall (what percentage of genuine suspicious patterns were detected).</p>
 
-            <p>Detailed detection fidelity results are available under NDA for qualified evaluation partners. The benchmark framework (HsbcDetectionReport) is available for inspection during technical due diligence.</p>
+            <p>Detailed detection fidelity results are available under NDA for qualified evaluation partners. The detection analytics report is available for inspection during technical due diligence.</p>
         </div>
     </div>
 </section>
@@ -300,9 +300,9 @@
         <div class="analysis-body">
             <h2>Verification</h2>
 
-            <p>The benchmark is deterministic. Running TGB v1.2 with the same policy set on the same hardware produces identical results. The benchmark executable is subject to the same build attestation as the main engine: embedded BLAKE3 and SHA-256 hashes, compiler version, git commit, and Ed25519 signature.</p>
+            <p>The benchmark is deterministic. Running benchmark suite v1.2 with the same policy set on the same hardware produces identical results. The benchmark executable is subject to the same build attestation as the main engine: embedded BLAKE3 and SHA-256 hashes, compiler version, git commit, and Ed25519 signature.</p>
 
-            <p>The benchmark can be independently verified by running the TgbBench executable with the provided policy set and comparing results against the published figures. Hardware differences will affect absolute throughput but not determinism or correctness.</p>
+            <p>The benchmark can be independently verified by running the benchmark runner executable with the provided policy set and comparing results against the published figures. Hardware differences will affect absolute throughput but not determinism or correctness.</p>
         </div>
     </div>
 </section>

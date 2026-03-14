@@ -112,7 +112,7 @@
             Implementing MPC correctly is hard. Implementing it on GPU is much harder. The cryptographic protocols need to be parallelised across thousands of GPU cores, synchronised correctly, and verified for security. This requires expertise in both GPU systems programming and cryptographic protocol design. That intersection is exceptionally rare in the talent market.
         </p>
         <p>
-            Then add the zero-knowledge proof layer on top. PLONK proofs generated on GPU. BabyJubJub curves. Poseidon hash functions. Number theoretic transforms running on CUDA. Each layer builds on the one below it, and each requires specialised knowledge to implement correctly.
+            Then add the zero-knowledge proof layer on top. GPU-accelerated zero-knowledge proofs using ZK-optimised elliptic curves and hash functions. Number-theoretic transforms running natively on GPU. Each layer builds on the one below it, and each requires specialised knowledge to implement correctly.
         </p>
         <p>
             A competitor starting from zero, with a well-funded team of strong engineers, would need 3-5 years to replicate the full stack. And they'd need to find people who understand both GPU programming and cryptographic protocols, which is a talent pool measured in hundreds globally, not thousands.
