@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bounded Compliance on an Unbounded Platform — ZQUAS</title>
+    <meta name="description" content="The architectural philosophy behind ZQUAS: a deterministic, cryptographically attestable compliance layer running on GPU-native infrastructure. Every decision provable. Every policy bounded.">
+    <meta property="og:title" content="Bounded Compliance on an Unbounded Platform — ZQUAS">
+    <meta property="og:description" content="CPL policy execution is deterministic, sandboxed, and attestable. The F1 engine underneath computes at GPU scale. That separation is the point.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zquas.ai/architecture.html">
+    <meta property="og:image" content="https://zquas.ai/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://zquas.ai/og-image.png">
+    <meta name="author" content="Danny de Gier">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://zquas.ai/architecture.html">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Bounded Compliance on an Unbounded Platform — ZQUAS",
+        "description": "Architectural philosophy behind ZQUAS: deterministic CPL policy execution on GPU-native infrastructure with cryptographic attestation for every compliance decision.",
+        "url": "https://zquas.ai/architecture.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "ZQUAS",
+            "url": "https://zquas.ai"
+        }
+    }
+    </script>
+    <style>
+        /* ── Page-specific styles ── */
+
+        .arch-hero {
+            padding: 9rem 2rem 5rem;
+            text-align: center;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .arch-hero .section-label {
+            margin-bottom: 1.5rem;
+        }
+        .arch-hero-headline {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 1.75rem;
+        }
+        .arch-hero-headline .word-bounded {
+            color: #5de8d8;
+        }
+        .arch-hero-headline .word-unbounded {
+            color: var(--accent);
+        }
+        .arch-hero-sub {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        /* ── Split section ── */
+        .split-section {
+            padding: 5rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .split-panel {
+            padding: 3rem 2.5rem;
+            position: relative;
+        }
+        .split-panel.bounded {
+            background: linear-gradient(145deg, #0d1a1f 0%, #0a1215 100%);
+            border-right: 1px solid rgba(93, 232, 216, 0.15);
+        }
+        .split-panel.unbounded {
+            background: linear-gradient(145deg, #0a0d1f 0%, #080a14 100%);
+        }
+        .split-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            padding: 0.3rem 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+        .split-label.bounded {
+            color: #5de8d8;
+            background: rgba(93, 232, 216, 0.08);
+            border: 1px solid rgba(93, 232, 216, 0.2);
+        }
+        .split-label.unbounded {
+            color: var(--accent);
+            background: var(--accent-glow);
+            border: 1px solid var(--accent-dim);
+        }
+        .split-label::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+            flex-shrink: 0;
+        }
+        .split-panel h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.35rem;
+            letter-spacing: -0.01em;
+        }
+        .split-panel.bounded h2 { color: #5de8d8; }
+        .split-panel.unbounded h2 { color: var(--accent); }
+        .split-panel-subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            letter-spacing: 0.04em;
+        }
+        .split-feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .split-feature-list li {
+            display: flex;
+            gap: 0.85rem;
+            align-items: flex-start;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .split-feature-list li strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .feat-icon {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            padding: 0.2rem 0.45rem;
+            border-radius: 3px;
+            flex-shrink: 0;
+            margin-top: 0.15rem;
+            letter-spacing: 0.05em;
+        }
+        .feat-icon.bounded {
+            color: #5de8d8;
+            background: rgba(93, 232, 216, 0.08);
+            border: 1px solid rgba(93, 232, 216, 0.18);
+        }
+        .feat-icon.unbounded {
+            color: var(--accent);
+            background: var(--accent-glow);
+            border: 1px solid var(--accent-dim);
+        }
+        .split-footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+        .split-footer strong {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+        .split-panel.bounded .split-footer strong { color: #5de8d8; }
+        .split-panel.unbounded .split-footer strong { color: var(--accent); }
+
+        /* ── Why this matters ── */
+        .matters-section {
+            padding: 5rem 2rem;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .matters-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .matters-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+        .matters-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 2rem 1.75rem;
+        }
+        .matters-card-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            margin-bottom: 0.85rem;
+        }
+        .matters-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+        .matters-card p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .matters-card p strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* ── Stack diagram ── */
+        .stack-section {
+            padding: 5rem 2rem;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .stack-diagram {
+            margin-top: 2.5rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .stack-layer {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: start;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            transition: background 0.15s;
+        }
+        .stack-layer:last-child {
+            border-bottom: none;
+        }
+        .stack-layer.is-bounded {
+            background: linear-gradient(90deg, rgba(93, 232, 216, 0.04) 0%, transparent 60%);
+        }
+        .stack-layer.is-bounded:hover {
+            background: linear-gradient(90deg, rgba(93, 232, 216, 0.08) 0%, transparent 60%);
+        }
+        .stack-layer.is-unbounded {
+            background: linear-gradient(90deg, rgba(74, 125, 255, 0.04) 0%, transparent 60%);
+        }
+        .stack-layer.is-unbounded:hover {
+            background: linear-gradient(90deg, rgba(74, 125, 255, 0.08) 0%, transparent 60%);
+        }
+        .stack-layer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .stack-layer-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+        }
+        .stack-layer-specs {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .stack-layer-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            white-space: nowrap;
+            align-self: flex-start;
+        }
+        .stack-layer-badge.bounded {
+            color: #5de8d8;
+            background: rgba(93, 232, 216, 0.1);
+            border: 1px solid rgba(93, 232, 216, 0.25);
+        }
+        .stack-layer-badge.unbounded {
+            color: var(--accent);
+            background: var(--accent-glow);
+            border: 1px solid var(--accent-dim);
+        }
+        .stack-connector {
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ── Proof statement ── */
+        .proof-statement {
+            padding: 4rem 2rem;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+        }
+        .proof-statement-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .proof-statement blockquote {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.65;
+            margin-bottom: 1.5rem;
+        }
+        .proof-statement cite {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: normal;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.04em;
+        }
+
+        /* ── CTA ── */
+        .arch-cta {
+            padding: 5rem 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .arch-cta h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        .arch-cta p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+        .arch-cta-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .cta-primary {
+            background: var(--accent);
+            color: #fff;
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .cta-primary:hover { opacity: 0.85; }
+        .cta-secondary {
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .cta-secondary:hover {
+            border-color: var(--accent-dim);
+            color: var(--text-primary);
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            .arch-hero { padding: 7rem 1.5rem 3rem; }
+            .split-grid { grid-template-columns: 1fr; }
+            .split-panel.bounded { border-right: none; border-bottom: 1px solid rgba(93, 232, 216, 0.15); }
+            .matters-grid { grid-template-columns: 1fr; }
+            .stack-section { padding: 3rem 1.5rem; }
+            .stack-layer { grid-template-columns: 1fr; gap: 0.75rem; }
+            .stack-layer-badge { align-self: flex-start; }
+            .arch-cta { padding: 3rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <div class="nav-dropdown">
+                <a href="technology.html" class="nav-dropdown-toggle">Technology <span class="nav-arrow">&#x25BE;</span></a>
+                <div class="nav-dropdown-menu">
+                    <a href="technology.html">Overview</a>
+                    <a href="architecture.html" class="active">Architecture</a>
+                    <a href="compare.html">Compare</a>
+                    <a href="benchmark.html">Benchmark</a>
+                    <a href="engineering.html">Engineering</a>
+                </div>
+            </div>
+            <a href="regulators.html">Regulators</a>
+            <a href="use-case.html">Use Case</a>
+            <a href="about.html">About</a>
+            <a href="articles.html">Articles</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+
+<!-- ── Hero ── -->
+<div class="arch-hero">
+    <div class="section-label">Architecture Philosophy</div>
+    <h1 class="arch-hero-headline">
+        <span class="word-bounded">Bounded</span> compliance<br>on an <span class="word-unbounded">unbounded</span> platform.
+    </h1>
+    <p class="arch-hero-sub">
+        The compliance layer is deliberately constrained. Deterministic execution. Guaranteed termination. Cryptographic proof for every verdict. The platform it runs on is not constrained at all. That separation is the design.
+    </p>
+</div>
+
+<!-- ── Bounded / Unbounded split ── -->
+<section class="split-section">
+    <div class="split-grid">
+
+        <!-- BOUNDED -->
+        <div class="split-panel bounded">
+            <div class="split-label bounded">BOUNDED</div>
+            <h2>CPL</h2>
+            <p class="split-panel-subtitle">Compliance Policy Language</p>
+            <ul class="split-feature-list">
+                <li>
+                    <span class="feat-icon bounded">DET</span>
+                    <span><strong>Deterministic execution.</strong> Same inputs always produce the same output. No randomness, no environment dependencies, no side effects.</span>
+                </li>
+                <li>
+                    <span class="feat-icon bounded">TERM</span>
+                    <span><strong>Guaranteed termination.</strong> Maximum 10,000 instruction steps per evaluation. The system cannot hang. The system cannot loop indefinitely.</span>
+                </li>
+                <li>
+                    <span class="feat-icon bounded">REC</span>
+                    <span><strong>No recursion.</strong> Policies cannot call themselves. Call depth is statically bounded at compile time.</span>
+                </li>
+                <li>
+                    <span class="feat-icon bounded">SBX</span>
+                    <span><strong>Sandboxed reads.</strong> A policy can only read fields it has declared in its input schema. Access to undeclared fields fails at compile time, not runtime.</span>
+                </li>
+                <li>
+                    <span class="feat-icon bounded">ATT</span>
+                    <span><strong>Cryptographically attestable.</strong> Every evaluation produces a ZAPB (Zero-Trust Adjudication Proof Bundle): the policy hash, the inputs read, the verdict produced, and an Ed25519 signature over all three.</span>
+                </li>
+            </ul>
+            <div class="split-footer">
+                <strong>29 policies. 9 domains. Every decision provable.</strong>
+                AMLR, 6AMLD, FATF R15, EU AI Act, GDPR, DORA
+            </div>
+        </div>
+
+        <!-- UNBOUNDED -->
+        <div class="split-panel unbounded">
+            <div class="split-label unbounded">UNBOUNDED</div>
+            <h2>F1 Engine</h2>
+            <p class="split-panel-subtitle">GPU-Native Governance Platform</p>
+            <ul class="split-feature-list">
+                <li>
+                    <span class="feat-icon unbounded">GPU</span>
+                    <span><strong>Full GPU compute.</strong> RTX 5090, 32GB VRAM, 170 streaming multiprocessors. No artificial compute ceiling.</span>
+                </li>
+                <li>
+                    <span class="feat-icon unbounded">FED</span>
+                    <span><strong>Real-time federation.</strong> Privacy-preserving cross-bank detection via MPC: ECDH-PSI, garbled circuits, oblivious transfer (IKNP). No raw data shared.</span>
+                </li>
+                <li>
+                    <span class="feat-icon unbounded">SCL</span>
+                    <span><strong>500,000 entities in 3.4 seconds.</strong> Bilateral AML detection at Tier-1 scale. 30 institutions in a single 36-second federation epoch.</span>
+                </li>
+                <li>
+                    <span class="feat-icon unbounded">MPC</span>
+                    <span><strong>64 concurrent MPC rounds.</strong> Zero VRAM leaks. Zero memory growth across sustained federation runs.</span>
+                </li>
+                <li>
+                    <span class="feat-icon unbounded">TLS</span>
+                    <span><strong>Authenticated encrypted transport.</strong> X25519 key exchange, AES-256-GCM data encryption, Ed25519 peer authentication per session.</span>
+                </li>
+                <li>
+                    <span class="feat-icon unbounded">AGT</span>
+                    <span><strong>Agent cognition.</strong> Prometheus AI-native decision system for adaptive monitoring. Warrants, gas metering, and cryptographic governance at the agent level.</span>
+                </li>
+            </ul>
+            <div class="split-footer">
+                <strong>The platform computes anything.</strong>
+                C++23 &middot; CUDA &middot; Vulkan &middot; 32GB VRAM
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ── Why this matters ── -->
+<section class="matters-section">
+    <div class="matters-inner">
+        <div class="section-label">Why This Matters</div>
+        <h2 class="section-title">The separation is the product.</h2>
+        <p class="section-desc">Unrestricted compute under restricted policy execution means you get performance without sacrificing provability. Neither property compromises the other.</p>
+        <div class="matters-grid">
+            <div class="matters-card">
+                <div class="matters-card-label">FOR REGULATORS</div>
+                <h3>Verify. Don't trust.</h3>
+                <p>Every compliance decision has a mathematical proof. Not a log file. A cryptographic attestation that the correct policy was applied to the stated inputs. <strong>You can verify any verdict independently</strong>, with a standalone CLI tool, without accessing bank systems or trusting vendor software.</p>
+            </div>
+            <div class="matters-card">
+                <div class="matters-card-label">FOR BANKS</div>
+                <h3>Real-time. Not overnight.</h3>
+                <p>Compliance policies execute on GPU in parallel, not in sequential overnight batch cycles. Cross-bank money laundering detection that TMNL took 24 hours to attempt takes ZQUAS <strong>36 seconds with zero data shared</strong> across institutions.</p>
+            </div>
+            <div class="matters-card">
+                <div class="matters-card-label">FOR COMPLIANCE OFFICERS</div>
+                <h3>No black boxes.</h3>
+                <p>Every ESCALATE and DENY verdict carries a policy ID, the rule that fired, and the threshold that was exceeded. The EU AI Act requires explainability. <strong>ZQUAS provides it by construction</strong>, not by retrofit. The policy set is readable, auditable, and Board Risk Committee-approved before it executes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Stack diagram ── -->
+<section class="stack-section">
+    <div class="section-label">System Stack</div>
+    <h2 class="section-title">Four layers. Two modes.</h2>
+    <p class="section-desc">The top two layers are bounded. The bottom two are not. The boundary between them is the engine's core design principle.</p>
+
+    <div class="stack-diagram">
+        <div class="stack-layer is-bounded">
+            <div class="stack-layer-left">
+                <div class="stack-layer-name">CPL Policy Layer</div>
+                <div class="stack-layer-specs">
+                    29 policies &middot; 9 domains &middot; deterministic &middot; cryptographically attestable<br>
+                    Max 10,000 steps per evaluation &middot; no recursion &middot; sandboxed field access
+                </div>
+            </div>
+            <span class="stack-layer-badge bounded">BOUNDED</span>
+        </div>
+        <div class="stack-layer is-bounded">
+            <div class="stack-layer-left">
+                <div class="stack-layer-name">Themis GPU Kernel</div>
+                <div class="stack-layer-specs">
+                    Executes CPL bytecode on GPU &middot; one block per transaction, one thread per policy<br>
+                    Same determinism bounds as CPL &middot; massively parallel evaluation
+                </div>
+            </div>
+            <span class="stack-layer-badge bounded">BOUNDED</span>
+        </div>
+        <div class="stack-layer is-unbounded">
+            <div class="stack-layer-left">
+                <div class="stack-layer-name">Federation Layer</div>
+                <div class="stack-layer-specs">
+                    ECDH-PSI &middot; garbled circuits &middot; oblivious transfer &middot; IKNP<br>
+                    Cross-bank MPC &middot; X25519 + AES-256-GCM + Ed25519 &middot; 64 concurrent rounds
+                </div>
+            </div>
+            <span class="stack-layer-badge unbounded">UNBOUNDED</span>
+        </div>
+        <div class="stack-layer is-unbounded">
+            <div class="stack-layer-left">
+                <div class="stack-layer-name">F1 Engine</div>
+                <div class="stack-layer-specs">
+                    C++23 &middot; CUDA &middot; Vulkan &middot; 32GB VRAM &middot; sm_86 through sm_120<br>
+                    Agent cognition &middot; real-time streaming &middot; GPU-resident entity graph
+                </div>
+            </div>
+            <span class="stack-layer-badge unbounded">UNBOUNDED</span>
+        </div>
+    </div>
+</section>
+
+<!-- ── Proof statement ── -->
+<div class="proof-statement">
+    <div class="proof-statement-inner">
+        <blockquote>
+            "The compliance layer computes only what it is allowed to compute. The platform underneath it can compute anything. That is not a compromise. That is the architecture."
+        </blockquote>
+        <cite>ZQUAS DESIGN RATIONALE &middot; MARCH 2026</cite>
+    </div>
+</div>
+
+<!-- ── CTA ── -->
+<div class="arch-cta">
+    <h2>Read the detail behind each layer.</h2>
+    <p>The technology overview covers all five engine layers. The benchmark page has the stress test numbers. The engineering page covers the build standards and test suite.</p>
+    <div class="arch-cta-links">
+        <a href="technology.html" class="cta-primary">Technology Overview</a>
+        <a href="benchmark.html" class="cta-secondary">Benchmark Results</a>
+        <a href="engineering.html" class="cta-secondary">Engineering Standards</a>
+    </div>
+</div>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 ZQUAS &middot; Sovereign Compliance Infrastructure</p>
+</footer>
+
+</body>
+</html>
