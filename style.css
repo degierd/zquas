@@ -255,6 +255,97 @@ h1 .accent { color: var(--accent); }
 .hero-stat-link:hover { transform: translateY(-2px); }
 .hero-stat-link:hover .val { color: var(--accent); }
 
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+.hero-cta-primary {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    background: var(--accent);
+    color: #fff;
+    transition: opacity 0.2s;
+}
+.hero-cta-primary:hover { opacity: 0.88; }
+.hero-cta-secondary {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    border: 1px solid var(--border-accent);
+    color: var(--accent);
+    transition: background 0.2s;
+}
+.hero-cta-secondary:hover { background: var(--accent-glow); }
+
+/* ── PILOT CTA BLOCK ── */
+.pilot-cta {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem 2rem;
+}
+.pilot-cta-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+.pilot-cta-text strong {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+}
+.pilot-cta-text p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.pilot-cta-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+.pilot-cta-links .btn-accent {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.6rem 1.25rem;
+    border-radius: 6px;
+    text-decoration: none;
+    background: var(--accent);
+    color: #fff;
+    transition: opacity 0.2s;
+}
+.pilot-cta-links .btn-accent:hover { opacity: 0.88; }
+.pilot-cta-links .btn-ghost {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.6rem 1.25rem;
+    border-radius: 6px;
+    text-decoration: none;
+    border: 1px solid var(--border-accent);
+    color: var(--accent);
+    transition: background 0.2s;
+}
+.pilot-cta-links .btn-ghost:hover { background: var(--accent-glow); }
+
 .hero-download {
     display: inline-block;
     margin-top: 2rem;
@@ -1769,12 +1860,80 @@ h1 .accent { color: var(--accent); }
 /* ── FOOTER ── */
 footer {
     border-top: 1px solid var(--border);
-    padding: 2rem;
-    text-align: center;
+    padding: 3rem 2rem 2rem;
+    background: var(--bg-secondary);
 }
-footer p {
-    font-size: 0.75rem;
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2.5rem;
+    align-items: start;
+    margin-bottom: 2.5rem;
+}
+.footer-brand .footer-logo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+.footer-brand .footer-logo span { color: var(--accent); }
+.footer-brand p {
+    font-size: 0.78rem;
     color: var(--text-muted);
+    line-height: 1.5;
+    max-width: 280px;
+}
+.footer-links {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+.footer-col h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.9rem;
+}
+.footer-col a {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--text-primary); }
+.footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+.footer-bottom p {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+.footer-bottom a {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-decoration: none;
+}
+.footer-bottom a:hover { color: var(--text-secondary); }
+@media (max-width: 640px) {
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-links { gap: 2rem; }
 }
 
 /* ── MOBILE ── */
