@@ -61,6 +61,16 @@
         <priority>0.5</priority>
     </url>
     <url>
+        <loc>https://zquas.ai/founding-partner.html</loc>
+        <lastmod>2026-03-15</lastmod>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://zquas.ai/article-75.html</loc>
+        <lastmod>2026-03-15</lastmod>
+        <priority>0.9</priority>
+    </url>
+    <url>
         <loc>https://zquas.ai/article-ai-act-aml-classification.html</loc>
         <lastmod>2026-03-11</lastmod>
         <priority>0.7</priority>

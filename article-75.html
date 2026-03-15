@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Article 75 Was Afraid to Permit — ZQUAS Position Paper</title>
+    <meta name="description" content="How Multi-Party Computation enables full customer base federation for AML detection without sharing personal data. ZQUAS position paper on AMLR Article 75 and GDPR.">
+    <meta property="og:title" content="What Article 75 Was Afraid to Permit — ZQUAS">
+    <meta property="og:description" content="How Multi-Party Computation enables full customer base federation for AML detection without sharing personal data. ZQUAS position paper on AMLR Article 75 and GDPR.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://zquas.ai/article-75.html">
+    <meta property="og:image" content="https://zquas.ai/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://zquas.ai/og-image.png">
+    <meta name="author" content="Danny de Gier">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://zquas.ai/article-75.html">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "What Article 75 Was Afraid to Permit",
+        "description": "How Multi-Party Computation enables full customer base federation for AML detection without sharing personal data.",
+        "datePublished": "2026-03-15",
+        "author": {
+            "@type": "Person",
+            "name": "Danny de Gier"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ZQUAS",
+            "url": "https://zquas.ai"
+        },
+        "mainEntityOfPage": "https://zquas.ai/article-75.html"
+    }
+    </script>
+    <style>
+        /* ── POSITION PAPER SPECIFIC ── */
+        .paper-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            padding: 0.25rem 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+        .article-header h1 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+        }
+        .paper-subtitle {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+        .paper-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        .paper-meta-item {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .paper-meta-item span {
+            color: var(--text-secondary);
+            display: block;
+            margin-top: 0.2rem;
+        }
+
+        /* Quote block */
+        .paper-quote {
+            border-left: 3px solid var(--accent);
+            background: var(--accent-glow);
+            border-radius: 0 8px 8px 0;
+            padding: 1.5rem 1.75rem;
+            margin: 2.5rem 0;
+        }
+        .paper-quote blockquote {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin: 0 0 0.75rem 0;
+        }
+        .paper-quote cite {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            font-style: normal;
+            text-transform: uppercase;
+        }
+
+        /* Stat highlights */
+        .stat-highlight {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--accent);
+            background: var(--accent-glow);
+            border-radius: 4px;
+            padding: 0.15rem 0.4rem;
+        }
+
+        /* Bold paragraph variant */
+        .article-body .p-bold {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Numbered argument */
+        .argument-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        .paper-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+            min-width: 500px;
+        }
+        .paper-table th {
+            text-align: left;
+            padding: 0.75rem 1rem;
+            background: var(--bg-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+        .paper-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+            line-height: 1.5;
+            vertical-align: top;
+        }
+        .paper-table tr:last-child td { border-bottom: none; }
+        .paper-table tr:nth-child(even) td { background: var(--bg-secondary); }
+        .paper-table .td-label {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        .paper-table .td-accent {
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+        }
+        .paper-table .td-strong {
+            color: var(--text-primary);
+        }
+
+        /* Wide layout for tables */
+        .article-body .table-wide {
+            max-width: 900px;
+            margin-left: calc((900px - 720px) / -2);
+        }
+        @media (max-width: 1000px) {
+            .article-body .table-wide { margin-left: 0; }
+        }
+
+        /* Section divider */
+        .section-rule {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 3.5rem 0;
+        }
+
+        /* CTA bar */
+        .paper-cta {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 3rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.25rem;
+        }
+        .paper-cta-text p {
+            font-family: 'DM Sans', sans-serif !important;
+            font-size: 0.9rem !important;
+            color: var(--text-secondary) !important;
+            margin-bottom: 0.25rem !important;
+            line-height: 1.5 !important;
+        }
+        .paper-cta-text strong {
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+        .paper-cta-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .cta-btn {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .cta-btn-primary {
+            background: var(--accent);
+            color: #fff;
+        }
+        .cta-btn-primary:hover { opacity: 0.88; }
+        .cta-btn-secondary {
+            border: 1px solid var(--border-accent);
+            color: var(--accent);
+        }
+        .cta-btn-secondary:hover { background: var(--accent-glow); }
+
+        /* Disclaimer */
+        .paper-disclaimer {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        /* Print */
+        @media print {
+            nav, footer, .paper-cta, .article-back { display: none; }
+            body { background: #fff; color: #000; }
+            .article-header, .article-body { max-width: 100%; padding: 1rem; }
+            .paper-quote { border-color: #000; background: #f5f5f5; }
+            .paper-table th { background: #e0e0e0; }
+            .stat-highlight { background: #e8e8e8; color: #000; }
+            a { color: inherit; text-decoration: none; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <div class="nav-dropdown">
+                <a href="technology.html" class="nav-dropdown-toggle">Technology <span class="nav-arrow">&#x25BE;</span></a>
+                <div class="nav-dropdown-menu">
+                    <a href="technology.html">Overview</a>
+                    <a href="architecture.html">Architecture</a>
+                    <a href="compare.html">Compare</a>
+                    <a href="benchmark.html">Benchmark</a>
+                    <a href="engineering.html">Engineering</a>
+                </div>
+            </div>
+            <a href="regulators.html">Regulators</a>
+            <a href="use-case.html">Use Case</a>
+            <a href="about.html">About</a>
+            <a href="articles.html">Articles</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+
+<article>
+    <div class="article-header">
+        <a href="articles.html" class="article-back">&larr; Articles</a>
+        <div class="paper-badge">Position Paper</div>
+        <h1>What Article 75 Was Afraid to Permit</h1>
+        <p class="paper-subtitle">How Multi-Party Computation Makes Full Customer Base Federation Legal Under GDPR</p>
+        <div class="paper-meta">
+            <div class="paper-meta-item">Date<span>March 2026</span></div>
+            <div class="paper-meta-item">Audience<span>Regulators, MLROs, Compliance Leaders, Privacy Officers</span></div>
+            <div class="paper-meta-item">Reading time<span>12 min</span></div>
+        </div>
+    </div>
+
+    <div class="article-body">
+
+        <!-- ══ SECTION 1 ══ -->
+        <h2>The Twenty-Year Deadlock</h2>
+
+        <p>
+            For two decades, the fight against money laundering has been trapped in a paradox. Criminals exploit the gaps between institutions: structuring funds across banks, layering transactions through correspondent networks, building shell company webs that span multiple banking relationships. No single bank sees the complete picture. The pattern is only visible when information from multiple institutions is combined.
+        </p>
+        <p>
+            Everyone knows this. The Financial Action Task Force has said it. The European Commission has said it. Every MLRO at every bank in Europe knows that their institution's transaction monitoring system is blind to the majority of laundering activity that occurs across institutional boundaries.
+        </p>
+        <p>
+            For twenty years, every attempt to solve this problem has failed. The detection works. The data sharing violates privacy law.
+        </p>
+
+        <h2>TMNL: The Proof That Detection Works</h2>
+
+        <p>
+            The Netherlands came closest. Transaction Monitoring Netherlands (TMNL), a joint initiative of the five largest Dutch banks, demonstrated that cross-institutional transaction analysis could identify laundering patterns invisible to individual institutions. The detection worked.
+        </p>
+        <p>
+            Then the Dutch Data Protection Authority intervened. TMNL required centralising pseudonymised transaction data from all participating banks. The DPA ruled that pseudonymised data is still personal data under GDPR. A correct legal interpretation. The processing lacked an adequate legal basis. TMNL was effectively suspended.
+        </p>
+        <p>
+            The lesson was clear: centralising data, even pseudonymised data, is not a viable path to cross-institutional AML detection in Europe.
+        </p>
+
+        <h2>Article 75: A Door Half-Opened</h2>
+
+        <p>
+            The EU Anti-Money Laundering Regulation (AMLR), adopted in May 2024 and applicable from 10 July 2027, attempts to break this deadlock. Article 75 creates, for the first time, a formal legal framework for "partnerships for information sharing" between obliged entities.
+        </p>
+        <p>
+            This is genuine progress. Article 75 establishes supervisory oversight, requires Data Protection Impact Assessments, provides a civil liability safe harbour for good-faith sharing, and permits the exchange of customer identification data, transaction information, risk factors, and suspicion reports, with FIU consent.
+        </p>
+        <p>
+            But Article 75 has a constraint that significantly limits its effectiveness:
+        </p>
+
+        <div class="paper-quote">
+            <blockquote>"Article 75 doesn't appear to go as far as many financial crime fighters would have hoped, and focuses essentially on higher risk customers and/or post-suspicion sharing and is less permissive on sharing information on lower risk customers."</blockquote>
+            <cite>Financial Crime News, June 2024</cite>
+        </div>
+
+        <p>
+            This constraint is not arbitrary. It exists because sharing customer data, even within a supervised partnership, is a GDPR processing operation. Under Article 5(1)(c) of the GDPR (data minimisation) and Article 5(1)(b) (purpose limitation), personal data processing must be proportionate. Blanket sharing of all customers' data across multiple institutions, including the vast majority who present no AML risk, would be disproportionate.
+        </p>
+        <p>
+            The result: Article 75 permits sharing on higher-risk customers and post-suspicion cases. The criminals who are most dangerous are the ones who deliberately maintain a low-risk profile at each individual institution. They are precisely the ones excluded from cross-institutional scrutiny.
+        </p>
+        <p class="p-bold">
+            The paradox remains: the customers you most need to see across banks are the ones you are least permitted to share data about.
+        </p>
+
+        <hr class="section-rule">
+
+        <!-- ══ SECTION 2 ══ -->
+        <h2>The Resolution: Compute Without Sharing</h2>
+
+        <p>
+            There is a class of technologies that resolves this paradox. It does not argue for broader data sharing permissions. It eliminates the need for data sharing entirely.
+        </p>
+        <p>
+            Multi-Party Computation (MPC) is a cryptographic technique that allows two or more parties to jointly compute a function over their combined data without any party revealing its individual inputs to any other party. The output of the computation is shared. The inputs are not.
+        </p>
+        <p>
+            In the context of cross-institutional AML detection, the operation works as follows. Bank A and Bank B each hold risk scores for their customers. They wish to determine whether any customer's combined cross-bank risk exceeds a defined threshold. Using MPC, they compute this comparison without Bank A learning Bank B's risk score, without Bank B learning Bank A's risk score, and without either bank learning anything about the other's non-shared customers. The output is a binary signal: this entity's combined risk exceeds the threshold, or it does not. Nothing else is revealed.
+        </p>
+
+        <h2>Why This Changes the Article 75 Equation</h2>
+
+        <p>
+            The Article 75 restriction on low-risk customer sharing exists because sharing means exposing personal data. MPC does not share data. The question is whether MPC computation falls within the scope of "information sharing" as Article 75 defines it, or whether it constitutes a fundamentally different operation. We argue it is fundamentally different, for three reasons.
+        </p>
+
+        <div class="argument-label">Argument 1</div>
+        <p class="p-bold">What crosses between institutions is not personal data.</p>
+        <p>
+            During an MPC federation round, the data transmitted between institutions consists of elliptic curve points (blinded cryptographic values), garbled circuit ciphertexts (encrypted gate evaluations), and oblivious transfer labels (randomly masked keys). None of these values can be attributed to an identified or identifiable natural person. They are computationally indistinguishable from random byte sequences.
+        </p>
+        <p>
+            GDPR Article 4(1) defines personal data as "any information relating to an identified or identifiable natural person." GDPR Recital 26 clarifies that the principles of data protection should not apply to anonymous information: information which does not relate to an identified or identifiable natural person, or personal data rendered anonymous in such a manner that the data subject is not or no longer identifiable.
+        </p>
+        <p>
+            MPC protocol messages are not pseudonymised data, which remains personal data under GDPR. They are cryptographic material that cannot, even in principle, be de-anonymised by the receiving party without the cooperation of the sending party. The protocol is specifically designed to prevent that cooperation.
+        </p>
+
+        <div class="argument-label">Argument 2</div>
+        <p class="p-bold">No institution gains access to any other institution's customer data.</p>
+        <p>
+            After a complete MPC federation round, each bank learns exactly one thing about each shared customer: whether the combined cross-institutional risk exceeds the threshold. This is a binary signal derived from a computation, not a data transfer. The bank does not learn the other institution's risk score, transaction history, or even which other institution holds the customer.
+        </p>
+        <p>
+            This is materially different from the "exchange of information" that Article 75 regulates. Article 75 governs the sharing of customer identification and beneficial ownership information, details of the purpose and nature of business relationships and transactions, customer transactions information, and risk factors associated with customers. In an MPC federation, none of this information is shared.
+        </p>
+
+        <div class="argument-label">Argument 3</div>
+        <p class="p-bold">The privacy guarantee is mathematical, not administrative.</p>
+        <p>
+            Traditional data sharing partnerships rely on contractual obligations, access controls, and supervisory oversight to prevent misuse of shared data. These are administrative safeguards. They work when everyone complies and fail when someone does not.
+        </p>
+        <p>
+            MPC privacy is a property of the mathematics. A party cannot extract the other party's input from the protocol messages even if it deviates from the protocol, colludes with external parties, or has unlimited computational resources, in the information-theoretic security model. It is a theorem, not a policy promise.
+        </p>
+
+        <hr class="section-rule">
+
+        <!-- ══ SECTION 3 ══ -->
+        <h2>The Implication: Full Customer Base Federation</h2>
+
+        <p>
+            If MPC federation does not constitute personal data sharing under GDPR, then the Article 75 restriction to higher-risk customers has no basis to apply. The restriction exists to limit disproportionate personal data processing. Where no personal data processing occurs, the proportionality analysis is moot.
+        </p>
+        <p>
+            MPC-based cross-institutional AML detection can, in principle, cover the entire customer base. Not just the customers already identified as higher risk. Article 75 was afraid to permit this. Effective AML detection requires it.
+        </p>
+        <p>
+            The practical difference between the two approaches:
+        </p>
+
+        <div class="table-wrapper table-wide">
+            <table class="paper-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Article 75 Sharing</th>
+                        <th>MPC Federation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-label">Scope</td>
+                        <td>Higher-risk customers and post-suspicion only</td>
+                        <td class="td-strong">Entire customer base</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">Data exposed</td>
+                        <td>Customer IDs, transactions, risk factors, beneficial ownership</td>
+                        <td class="td-strong">Nothing. Cryptographic material only.</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">Privacy model</td>
+                        <td>Administrative: contracts, access controls, supervision</td>
+                        <td class="td-strong">Mathematical: cryptographic guarantee</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">GDPR basis required</td>
+                        <td>Yes: proportionality analysis, DPIA, supervisory approval</td>
+                        <td class="td-strong">Arguable that GDPR does not apply to non-personal data</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">Detects low-risk profile criminals</td>
+                        <td>No. Excluded from sharing scope.</td>
+                        <td class="td-strong">Yes. All customers are federated.</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">DPA risk</td>
+                        <td>Moderate. TMNL precedent shows DPA will scrutinise.</td>
+                        <td class="td-strong">Low. No personal data leaves the institution.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>
+            The criminals Article 75 cannot reach are those who deliberately maintain low-risk profiles at each institution and distribute their laundering across the banking system. MPC federation is designed to detect them. Their combined risk is computed without any institution revealing its individual assessment.
+        </p>
+
+        <hr class="section-rule">
+
+        <!-- ══ SECTION 4 ══ -->
+        <h2>The Evidence: Measured, Not Theoretical</h2>
+
+        <p>
+            The ZQUAS platform has been built, tested, and stress-tested. The following results are from actual execution on production hardware (NVIDIA RTX 5090, 32 GB VRAM), not projections or simulations.
+        </p>
+
+        <div class="table-wrapper table-wide">
+            <table class="paper-table">
+                <thead>
+                    <tr>
+                        <th>Capability</th>
+                        <th>Measured result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-label">Full pipeline: 500,000 entities per bank, 3 banks</td>
+                        <td class="td-accent">7.5 seconds (policy evaluation + encrypted MPC federation)</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">97-bank federation (entire Dutch banking sector)</td>
+                        <td class="td-accent">72.7 seconds (4,656 bilateral rounds, 1,000 entities per bank)</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">Peak throughput</td>
+                        <td class="td-accent">243,261 entities per second (at 500,000 scale)</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">Detection accuracy</td>
+                        <td>4/4 typologies detected at every scale, per-entity verified</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">False positive rate</td>
+                        <td>0.00% on realistic moderate-risk population (4.1% non-zero risk scores from real policy evaluation)</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">Memory stability (50-epoch endurance test)</td>
+                        <td>0 MB VRAM leak, 0 MB RSS growth</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">Transport security</td>
+                        <td>AES-256-GCM encryption, Ed25519 authentication, active on every round</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">Policy framework</td>
+                        <td>29 policies, 100 CPL rules, 9 domains, audited line-by-line against 38-page manual, 0 critical discrepancies</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>
+            Four real-world money laundering typologies were tested: trade-based money laundering (over-invoicing across three banks), correspondent banking wire stripping, shell company layering networks, and funnel account structuring with cryptocurrency exit. In each case, no individual bank's monitoring system would have escalated the entity. Only cross-institutional federation detected the pattern.
+        </p>
+        <p>
+            Every policy evaluation produces a Zero-Trust Adjudication Proof Bundle (ZAPB): a cryptographic attestation of the policy that fired, the inputs it read, and the verdict it produced. A regulator can independently verify, years after the fact, that the system correctly applied the approved policy to the available data.
+        </p>
+
+        <hr class="section-rule">
+
+        <!-- ══ SECTION 5 ══ -->
+        <h2>Why Seconds, Not Hours</h2>
+
+        <p>
+            Readers accustomed to traditional AML batch processing, where transaction monitoring runs overnight and results are available the next morning, will reasonably question whether the performance figures above contain an error. They do not. The speed difference is not incremental improvement. It is a fundamental architectural shift.
+        </p>
+
+        <h2>Why traditional systems are slow</h2>
+
+        <p>
+            Conventional AML platforms were designed in the early 2000s. They run on CPU-based architectures, process transactions sequentially or in small batches, and evaluate rules one at a time against each transaction. When a bank processes 10 million daily transactions through 200 monitoring scenarios, the computation is: 10,000,000 transactions multiplied by 200 rules multiplied by CPU evaluation time per rule. On a 32-core server, this takes 4 to 12 hours depending on rule complexity.
+        </p>
+        <p>
+            Cross-institutional detection adds another layer. If five banks want to compare customer risk, the traditional approach requires extracting data, pseudonymising it, transferring it to a central facility, loading it into a shared database, and running comparison queries. Each step takes hours. The total cycle is measured in days.
+        </p>
+
+        <h2>Why ZQUAS is fundamentally different</h2>
+
+        <p class="p-bold">1. GPU parallelism, not CPU sequential processing.</p>
+        <p>
+            The NVIDIA RTX 5090 has 170 streaming multiprocessors, each capable of running 2,048 concurrent threads. That is 348,160 simultaneous computation units. When ZQUAS evaluates 500,000 entities, it does not process them one at a time. It evaluates thousands simultaneously in a single GPU kernel launch. The 29 compliance policies are compiled to deterministic bytecode that executes directly on the GPU. The comparison is not 500,000 sequential evaluations. It is approximately 1,500 batched parallel launches, each processing hundreds of entities at once.
+        </p>
+
+        <p class="p-bold">2. The MPC protocol is computationally lightweight.</p>
+        <p>
+            The cryptographic operations in a bilateral MPC round are: elliptic curve scalar multiplication for Private Set Intersection, symmetric-key encryption of garbled circuit gates (AES), and oblivious transfer key derivation. These are not expensive operations. For 5,000 entities, the entire PSI phase, which identifies shared customers without revealing non-shared ones, completes in under 20 milliseconds. The garbled circuit that compares risk scores evaluates in microseconds per entity.
+        </p>
+        <p>
+            A common misconception is that "cryptographic" means "slow." Fully homomorphic encryption is slow: roughly 10,000-times overhead. MPC using garbled circuits and oblivious transfer is not. The overhead compared to plaintext computation is approximately 100 to 500 times for the comparison operation. The comparison itself is trivial, so 500-times overhead on a microsecond operation is still sub-millisecond.
+        </p>
+
+        <p class="p-bold">3. No data extraction, no transfer, no central database.</p>
+        <p>
+            There is no ETL pipeline. There is no data warehouse. Each bank runs the ZQUAS installation alongside its existing infrastructure. The installation reads risk scores from the bank's own transaction monitoring system, encrypts them using the MPC protocol, and exchanges messages directly with peer banks over encrypted TCP. A binary escalation signal per shared entity is available in milliseconds. The entire overnight batch cycle is eliminated because the computation that justified it is replaced by a distributed cryptographic computation that runs in real time.
+        </p>
+
+        <h2>Scaling behaviour</h2>
+
+        <div class="table-wrapper">
+            <table class="paper-table">
+                <thead>
+                    <tr>
+                        <th>Entities per bank</th>
+                        <th>Pipeline time</th>
+                        <th>Throughput</th>
+                        <th>Detection</th>
+                        <th>Policies</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-label">1,000</td>
+                        <td class="td-accent">228 ms</td>
+                        <td>177K ent/sec</td>
+                        <td>4/4</td>
+                        <td>29 (100 rules)</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">5,000</td>
+                        <td class="td-accent">344 ms</td>
+                        <td>215K ent/sec</td>
+                        <td>4/4</td>
+                        <td>29 (100 rules)</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">10,000</td>
+                        <td class="td-accent">492 ms</td>
+                        <td>240K ent/sec</td>
+                        <td>4/4</td>
+                        <td>29 (100 rules)</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">50,000</td>
+                        <td class="td-accent">1.4 seconds</td>
+                        <td>234K ent/sec</td>
+                        <td>4/4</td>
+                        <td>29 (100 rules)</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">100,000</td>
+                        <td class="td-accent">2.1 seconds</td>
+                        <td>239K ent/sec</td>
+                        <td>4/4</td>
+                        <td>29 (100 rules)</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">500,000</td>
+                        <td class="td-accent">7.5 seconds</td>
+                        <td>243K ent/sec</td>
+                        <td>4/4</td>
+                        <td>29 (100 rules)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>
+            Three things to note. Throughput increases with entity count (from 177K to 243K entities per second) because larger batches amortise the fixed cost of network round-trips and encryption handshakes. The system becomes more efficient at scale. These times include the full pipeline: policy evaluation (100 CPL rules through the real interpreter, including 5 cross-domain chains) plus encrypted MPC federation over TCP with AES-256-GCM. The 29 policies are not simplified test rules. They are the complete policy set spanning sanctions screening, PEP/EDD, transaction monitoring, fraud, KYC, crypto, and conduct, audited line-by-line with zero critical discrepancies.
+        </p>
+
+        <h2>Multi-bank federation times</h2>
+
+        <div class="table-wrapper">
+            <table class="paper-table">
+                <thead>
+                    <tr>
+                        <th>Banks</th>
+                        <th>Bilateral rounds</th>
+                        <th>Total time</th>
+                        <th>Per-round avg</th>
+                        <th>Detection</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-label">3</td>
+                        <td>3</td>
+                        <td class="td-accent">192 ms</td>
+                        <td>64 ms</td>
+                        <td>4/4</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">5</td>
+                        <td>10</td>
+                        <td class="td-accent">193 ms</td>
+                        <td>19.3 ms</td>
+                        <td>4/4</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">10</td>
+                        <td>45</td>
+                        <td class="td-accent">797 ms</td>
+                        <td>17.7 ms</td>
+                        <td>4/4</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">20</td>
+                        <td>190</td>
+                        <td class="td-accent">3,308 ms</td>
+                        <td>17.4 ms</td>
+                        <td>4/4</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">97 (entire Dutch sector)</td>
+                        <td>4,656</td>
+                        <td class="td-accent">72.7 seconds</td>
+                        <td>29.2 ms</td>
+                        <td>4/4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Comparison with batch processing</h2>
+
+        <div class="table-wrapper">
+            <table class="paper-table">
+                <thead>
+                    <tr>
+                        <th>Daily volume</th>
+                        <th>ZQUAS time</th>
+                        <th>Traditional batch cycle</th>
+                        <th>Speedup</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-label">1 million transactions</td>
+                        <td class="td-accent">15.0 seconds</td>
+                        <td>24 hours</td>
+                        <td class="td-strong">5,764x</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">5 million transactions</td>
+                        <td class="td-accent">74.9 seconds</td>
+                        <td>24 hours</td>
+                        <td class="td-strong">1,152x</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">10 million transactions</td>
+                        <td class="td-accent">149.9 seconds</td>
+                        <td>24 hours</td>
+                        <td class="td-strong">576x</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">50 million transactions</td>
+                        <td class="td-accent">749.4 seconds</td>
+                        <td>24 hours</td>
+                        <td class="td-strong">115x</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>
+            For comparison: a conventional CPU-based system evaluating 29 policies against 100,000 entities in a cross-bank comparison would require extracting the data, transferring it, and running the comparison on a central server. Conservative estimate: 2 to 4 hours. ZQUAS completes the same comparison in 2.1 seconds.
+        </p>
+
+        <hr class="section-rule">
+
+        <!-- ══ SECTION 6 ══ -->
+        <h2>Anticipating Challenges</h2>
+
+        <p>
+            A claim this significant invites scrutiny. We welcome it. Below are the objections we expect, and our responses.
+        </p>
+
+        <h2>"The MPC protocol hasn't been independently audited."</h2>
+        <p>
+            Correct. The ZQUAS MPC implementation (ECDH-PSI with Chou-Orlandi oblivious transfer, Yao's garbled circuits with Free-XOR optimisation, and OT extension) has been internally audited against a hostile threat model covering transport authentication, encryption, replay protection, deserialisation bounds, GPU memory safety, and timing side channels. 37 findings were identified and remediated. No independent third-party cryptographic audit has been conducted.
+        </p>
+        <p>
+            An independent audit is a prerequisite for production deployment, not for sandbox engagement. The sandbox is precisely the environment in which to conduct such an audit under regulatory supervision.
+        </p>
+
+        <h2>"The DPA hasn't confirmed MPC outputs aren't personal data."</h2>
+        <p>
+            Also correct. Our position is that MPC protocol messages are not personal data under GDPR, because they are computationally indistinguishable from random values. This is a legal argument, not settled law. No EU Data Protection Authority has issued a formal ruling on this question.
+        </p>
+        <p>
+            This is one of the three objectives of our sandbox proposal: to engage the Autoriteit Persoonsgegevens or the European Data Protection Board and obtain a formal assessment. If the DPA concludes that MPC protocol messages do constitute personal data, the Article 75 framework would apply and the scope would be limited to higher-risk customers. That is still a significant improvement over the current state (no cross-institutional detection at all), but it would not achieve full customer base federation.
+        </p>
+
+        <h2>"The performance numbers can't be real with production-grade policies."</h2>
+        <p>
+            This is the most important objection to address. The 29 policies used in the benchmark are not toy rules. They are the complete policy set from a 38-page compliance policy manual: 100 individual rules across 9 regulatory domains, 5 cross-domain chains, regulatory traceability to FATF 40, EU AMLD5/6, Wwft, BSA, FCA Handbook, OFAC, and MiCA, and decision logic that includes multi-threshold scoring, temporal aggregation, counterparty risk assessment, and composite EDD weighting. The policies have been audited line-by-line. Zero critical discrepancies remain.
+        </p>
+        <p>
+            The performance is real because the bottleneck in cross-institutional detection is not policy evaluation. It is the cryptographic protocol. The 29 policies evaluate in microseconds per entity on GPU. The MPC round (PSI, garbled circuit, oblivious transfer) takes milliseconds. Even if policies were 100 times more complex, the round time would increase only marginally, because the policy evaluation component is already the smaller term.
+        </p>
+
+        <h2>"What about false positives at scale?"</h2>
+        <p>
+            In the production benchmark, 4.1% of background entities produced non-zero risk scores through real policy evaluation. Zero of these entities were falsely escalated through federation, because individual risk scores remained below the combined threshold. The cross-bank correlation acts as a natural filter. Moderate risk at one bank is not suspicious unless corroborated by risk at another bank.
+        </p>
+        <p>
+            The relevant question is whether the false positive rate will remain this low with real customer data. We expect it to increase. Real customer bases have sanctions name collisions, PEPs with legitimate business, and cash-intensive entities with ambiguous profiles. Industry-standard AML false positive rates are 90 to 95 percent. A production rate of 1 to 5 percent would be a significant operational improvement. Quantifying this requires a pilot with real or representative data, which is one of the objectives of the sandbox engagement.
+        </p>
+
+        <h2>"How does this integrate with our existing Actimize, Oracle, or SAS stack?"</h2>
+        <p>
+            ZQUAS does not replace a bank's existing transaction monitoring system. It sits alongside it. The bank's existing system produces risk scores for its customers. ZQUAS consumes those scores and federates them across institutions. The integration point is a single data feed: entity identifier plus risk score. No changes to the bank's existing alert workflow, case management, or SAR filing process are required.
+        </p>
+        <p>
+            For banks that wish to use ZQUAS for single-institution monitoring as well, the 29 CPL policies can replace or supplement existing rules. This is optional. The cross-institutional detection, the capability no existing system provides, requires only a risk score per entity.
+        </p>
+
+        <h2>"What infrastructure does each bank need?"</h2>
+        <p>
+            For a pilot with 3 to 5 banks, each bank deploys a ZQUAS installation (one server or VM) and opens outbound TCP connections directly to the other participants. A 3-bank pilot requires 2 outbound connections per bank. A 5-bank pilot requires 4. No relay server. No neutral third party. No additional infrastructure beyond the installation itself. All connections are encrypted with AES-256-GCM and authenticated with Ed25519.
+        </p>
+        <p>
+            As the network grows beyond 10 to 15 institutions, an optional relay server simplifies the network topology. Each bank then maintains a single outbound connection to the relay instead of N-1 connections to individual peers. The relay is a stateless encrypted message router. It cannot read, modify, or store any message content. The transition from direct to relay mode is a configuration change, not a code change.
+        </p>
+        <p>
+            At production scale (50 or more banks), the relay operator should be a regulated AML utility, analogous to CLS Bank in foreign exchange settlement. Jointly owned by participating institutions, independently audited, regulated by the relevant financial authority. That governance discussion follows after the pilot proves the detection works.
+        </p>
+
+        <h2>"What if a participating bank is compromised?"</h2>
+        <p>
+            The MPC protocol is secure against a semi-honest adversary: a bank that follows the protocol correctly but attempts to extract additional information from the messages it receives. Under this model, a compromised bank learns nothing beyond the binary escalation signal.
+        </p>
+        <p>
+            Against a fully malicious adversary (a bank that deviates from the protocol), the current bilateral implementation provides limited protection. The mitigation is operational: the ZAPB attestation provides a cryptographic record of every input to every round. If a bank submits anomalous risk scores to probe the other bank's data, this pattern is detectable in the attestation log.
+        </p>
+        <p>
+            Stronger malicious-adversary guarantees are architecturally designed for networks exceeding 30 institutions, based on 4-party MPC with guaranteed output delivery. This is not yet implemented. It is the natural evolution for large-scale production deployment.
+        </p>
+
+        <hr class="section-rule">
+
+        <!-- ══ SECTION 7 ══ -->
+        <h2>The Path Forward</h2>
+
+        <p>
+            We are not asking regulators to take our word for it. We are asking for the opportunity to demonstrate, in a supervised environment, that MPC federation achieves the detection capability that Article 75 partnerships seek, without the privacy trade-off that Article 75 was forced to accept.
+        </p>
+
+        <p class="p-bold">1. Regulatory sandbox engagement (DNB InnovationHub / FCA Digital Sandbox)</p>
+        <p>
+            Deploy the ZQUAS federation platform in a sandbox environment with synthetic or historical data from participating banks. Demonstrate cross-institutional detection of known laundering typologies. Measure false positive rates. Validate the ZAPB attestation mechanism. Establish whether MPC protocol messages constitute personal data under GDPR.
+        </p>
+
+        <p class="p-bold">2. Data Protection Authority consultation</p>
+        <p>
+            Engage the Dutch Autoriteit Persoonsgegevens and the European Data Protection Board to obtain a formal assessment of whether MPC federation falls within the scope of personal data processing under GDPR. If it does not, the Article 75 restrictions on customer scope are inapplicable, and full customer base federation is legally permissible.
+        </p>
+
+        <p class="p-bold">3. Pilot with participating institutions</p>
+        <p>
+            Conduct a live pilot with 3 to 5 Dutch or UK banks, using the bilateral MPC protocol over direct encrypted peer-to-peer connections. No relay infrastructure required. The pilot would federate real or representative customer risk data across institutions, detect cross-bank patterns, and produce auditable results. No institution accesses any other institution's customer data.
+        </p>
+
+        <p>
+            The technology exists. The regulatory framework exists. The criminal activity that both were designed to address continues at an estimated $3.1 trillion annually. What remains is the willingness to test whether mathematics can solve what policy could not.
+        </p>
+
+        <div class="paper-cta">
+            <div class="paper-cta-text">
+                <p><strong>Ready to discuss a pilot?</strong></p>
+                <p>Three Founding Partner slots available. Direct engagement with your regulator included.</p>
+            </div>
+            <div class="paper-cta-links">
+                <a href="contact.html" class="cta-btn cta-btn-primary">Contact us</a>
+                <a href="founding-partner.html" class="cta-btn cta-btn-secondary">Founding Partner Programme</a>
+            </div>
+        </div>
+
+        <div class="paper-disclaimer">
+            This document does not constitute legal advice. The legal position regarding MPC and GDPR should be validated through formal engagement with the relevant Data Protection Authority. Performance figures are from testing on production hardware with synthetic data. False positive rates on live customer data may differ and should be established through a supervised pilot.
+        </div>
+
+        <div class="article-author">
+            <div class="name">Danny de Gier</div>
+            <div class="bio">
+                Founder, ZQUAS. 18+ years in financial crime compliance at Tier-1 banks and fintechs.
+                Professional Postgraduate Diploma in Financial Crime Compliance (ICA / University of Manchester).
+            </div>
+        </div>
+
+    </div>
+</article>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 ZQUAS &middot; Bounded Compliance on an Unbounded Platform</p>
+</footer>
+
+</body>
+</html>

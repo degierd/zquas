@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founding Partner Programme — ZQUAS</title>
+    <meta name="description" content="Three pilot slots for institutions ready to lead cross-institutional AML detection. 12 weeks from signature to results. No data leaves your infrastructure.">
+    <meta property="og:title" content="ZQUAS Founding Partner Programme">
+    <meta property="og:description" content="Three pilot slots for institutions ready to lead cross-institutional AML detection. 12 weeks from signature to results.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zquas.ai/founding-partner.html">
+    <meta property="og:image" content="https://zquas.ai/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://zquas.ai/og-image.png">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://zquas.ai/founding-partner.html">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "ZQUAS Founding Partner Programme",
+        "description": "Three pilot slots for institutions ready to lead cross-institutional AML detection without sharing customer data.",
+        "url": "https://zquas.ai/founding-partner.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "ZQUAS",
+            "url": "https://zquas.ai"
+        }
+    }
+    </script>
+    <style>
+        /* ── FOUNDING PARTNER PAGE ── */
+        .fp-hero {
+            padding: 9rem 2rem 5rem;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .fp-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            padding: 0.25rem 0.6rem;
+            margin-bottom: 1.75rem;
+        }
+        .fp-hero h1 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+        }
+        .fp-hero .fp-tagline {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+        .fp-slots {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+        .fp-slot {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .fp-slot-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+        .fp-slot-dot.taken {
+            background: var(--text-muted);
+        }
+        .fp-slot-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+        }
+        .fp-hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+        }
+        .btn-primary {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            background: var(--accent);
+            color: #fff;
+            transition: opacity 0.2s;
+        }
+        .btn-primary:hover { opacity: 0.88; }
+        .btn-ghost {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            border: 1px solid var(--border-accent);
+            color: var(--accent);
+            transition: background 0.2s;
+        }
+        .btn-ghost:hover { background: var(--accent-glow); }
+
+        /* Body content */
+        .fp-body {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 2rem 6rem;
+        }
+        .fp-body p {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        .fp-body p strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .fp-body h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 3.5rem 0 1rem;
+            letter-spacing: -0.01em;
+        }
+        .fp-body h3 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin: 2.5rem 0 0.75rem;
+        }
+
+        /* Benefits grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+        .benefit-card {
+            background: var(--bg-primary);
+            padding: 1.75rem;
+            transition: background 0.2s;
+        }
+        .benefit-card:hover { background: var(--bg-card); }
+        .benefit-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.6rem;
+        }
+        .benefit-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
+        }
+        .benefit-desc {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        .fp-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+            min-width: 480px;
+        }
+        .fp-table th {
+            text-align: left;
+            padding: 0.75rem 1rem;
+            background: var(--bg-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+        .fp-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+            line-height: 1.55;
+            vertical-align: top;
+        }
+        .fp-table tr:last-child td { border-bottom: none; }
+        .fp-table tr:nth-child(even) td { background: var(--bg-secondary); }
+        .fp-table .td-label {
+            color: var(--text-primary);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .fp-table .td-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+
+        /* Timeline */
+        .timeline {
+            margin: 2rem 0;
+        }
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 5rem 1fr;
+            gap: 1.25rem;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .timeline-item:last-child { border-bottom: none; }
+        .timeline-week {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--accent);
+            padding-top: 0.2rem;
+        }
+        .timeline-content strong {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+        .timeline-content p {
+            font-family: 'DM Sans', sans-serif !important;
+            font-size: 0.875rem !important;
+            color: var(--text-secondary) !important;
+            line-height: 1.55 !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* Steps */
+        .steps {
+            margin: 2rem 0;
+            counter-reset: step;
+        }
+        .step {
+            display: grid;
+            grid-template-columns: 2.5rem 1fr;
+            gap: 1.25rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+            align-items: start;
+        }
+        .step:last-child { border-bottom: none; }
+        .step-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            padding-top: 0.2rem;
+        }
+        .step-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+        }
+        .step-desc {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Metrics */
+        .metrics-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+        .metric-box {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+        }
+        .metric-box .val {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        .metric-box .lbl {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Section rule */
+        .section-rule {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 3.5rem 0;
+        }
+
+        /* Final CTA */
+        .fp-contact {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        .fp-contact h2 {
+            margin-top: 0 !important;
+            margin-bottom: 0.75rem;
+        }
+        .fp-contact p {
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+        .fp-contact .contact-email {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--accent);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+        .fp-contact .contact-email:hover { text-decoration: underline; }
+
+        /* Disclaimer */
+        .fp-disclaimer {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        @media print {
+            nav, footer, .fp-hero-cta, .fp-contact .btn-primary { display: none; }
+            body { background: #fff; color: #000; }
+            .fp-hero, .fp-body { max-width: 100%; padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <div class="nav-dropdown">
+                <a href="technology.html" class="nav-dropdown-toggle">Technology <span class="nav-arrow">&#x25BE;</span></a>
+                <div class="nav-dropdown-menu">
+                    <a href="technology.html">Overview</a>
+                    <a href="architecture.html">Architecture</a>
+                    <a href="compare.html">Compare</a>
+                    <a href="benchmark.html">Benchmark</a>
+                    <a href="engineering.html">Engineering</a>
+                </div>
+            </div>
+            <a href="regulators.html">Regulators</a>
+            <a href="use-case.html">Use Case</a>
+            <a href="about.html">About</a>
+            <a href="articles.html">Articles</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+
+    <div class="fp-hero">
+        <div class="fp-badge">Founding Partner Programme</div>
+        <h1>Three institutions.<br>Three pilot slots.<br>One question answered.</h1>
+        <p class="fp-tagline">Can cross-institutional AML detection work without sharing a single byte of customer data? We have built the platform. Now we need three banks to prove it under regulatory supervision.</p>
+
+        <div class="fp-slots">
+            <div class="fp-slot">
+                <div class="fp-slot-dot"></div>
+                <span class="fp-slot-label">Slot 1 &mdash; Available</span>
+            </div>
+            <div class="fp-slot">
+                <div class="fp-slot-dot"></div>
+                <span class="fp-slot-label">Slot 2 &mdash; Available</span>
+            </div>
+            <div class="fp-slot">
+                <div class="fp-slot-dot"></div>
+                <span class="fp-slot-label">Slot 3 &mdash; Available</span>
+            </div>
+        </div>
+
+        <div class="fp-hero-cta">
+            <a href="contact.html" class="btn-primary">Express interest</a>
+            <a href="article-75.html" class="btn-ghost">Read the position paper</a>
+        </div>
+    </div>
+
+    <div class="fp-body">
+
+        <!-- ══ THE OPPORTUNITY ══ -->
+        <h2>The Opportunity</h2>
+
+        <p>
+            The EU Anti-Money Laundering Regulation takes effect on 10 July 2027. For the first time, Article 75 creates a legal framework for cross-institutional AML information sharing. Every bank in Europe is evaluating how to comply.
+        </p>
+        <p>
+            ZQUAS has built the only platform that enables cross-institutional AML detection without sharing any customer data. Using Multi-Party Computation, banks jointly identify cross-bank laundering patterns while each institution's data remains entirely within its own infrastructure. No data extraction. No central database. No GDPR conflict.
+        </p>
+        <p>
+            The platform is built, tested, and stress-tested. 29 compliance policies across 9 regulatory domains. GPU-accelerated. Real-time. Cryptographically attestable. The Founding Partner Programme is how three institutions join first.
+        </p>
+
+        <hr class="section-rule">
+
+        <!-- ══ WHAT FOUNDING PARTNERS RECEIVE ══ -->
+        <h2>What Founding Partners Receive</h2>
+
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-num">Benefit 01</div>
+                <div class="benefit-title">Founding Partner Pricing</div>
+                <div class="benefit-desc">50% reduction on all ZQUAS licence fees for 24 months from production go-live. Not a trial discount. A two-year commercial agreement at half the standard rate, in recognition of the early commitment.</div>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-num">Benefit 02</div>
+                <div class="benefit-title">Policy Advisory Board Seat</div>
+                <div class="benefit-desc">Permanent seat on the ZQUAS Policy Advisory Board. Quarterly input on policy development, threshold calibration, and product roadmap. Membership persists beyond the 24-month pricing period.</div>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-num">Benefit 03</div>
+                <div class="benefit-title">Joint Regulatory Sandbox</div>
+                <div class="benefit-desc">ZQUAS co-presents with the Founding Partner at the relevant sandbox: DNB InnovationHub, FCA Digital Sandbox, or national FSA. Joint sandbox participation gives the bank innovation credit with their regulator.</div>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-num">Benefit 04</div>
+                <div class="benefit-title">Co-Authored Case Study</div>
+                <div class="benefit-desc">Published on both parties' websites. Submitted to ACAMS, BAFT, and Sibos. A published credential for the compliance team: the MLRO can present it at industry events and reference it in regulatory submissions.</div>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-num">Benefit 05</div>
+                <div class="benefit-title">Dedicated Integration Engineer</div>
+                <div class="benefit-desc">One ZQUAS engineer assigned to the bank for the full pilot duration. Handles deployment, data feed configuration, and results compilation. Part-time from the bank: one IT contact, one compliance contact.</div>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-num">Benefit 06</div>
+                <div class="benefit-title">Data Sovereignty Guarantee</div>
+                <div class="benefit-desc">Contractually guaranteed: no customer data leaves the bank's infrastructure at any point. Not a policy. A property of the cryptographic protocol. Independently verifiable by technical audit.</div>
+            </div>
+        </div>
+
+        <hr class="section-rule">
+
+        <!-- ══ THE PILOT ══ -->
+        <h2>The Pilot</h2>
+
+        <p>
+            The pilot validates one capability: cross-institutional AML detection using MPC federation, with real compliance policies, against realistic data, under regulatory observation.
+        </p>
+
+        <h3>Scope</h3>
+
+        <div class="table-wrapper">
+            <table class="fp-table">
+                <thead>
+                    <tr>
+                        <th>Dimension</th>
+                        <th>Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-label">Entities</td>
+                        <td>Minimum 5,000 per institution, up to 500,000. Synthetic data with planted typologies, or representative data from the bank's existing monitoring system.</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">Policies</td>
+                        <td>The full 29-policy compliance framework, adapted to each institution's regulatory perimeter if needed.</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">Federation</td>
+                        <td>Direct peer-to-peer MPC rounds between all Founding Partners. End-to-end encrypted (AES-256-GCM), authenticated (Ed25519), with cryptographic attestation on every verdict.</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">Detection targets</td>
+                        <td>Four planted laundering typologies: trade-based money laundering, wire stripping, shell company layering, and funnel account structuring. Plus a legitimate control population. Measured outputs: detection rate, false positive rate, federation time.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Timeline: 12 weeks from signature to results</h3>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-week">Weeks 1&ndash;2</div>
+                <div class="timeline-content">
+                    <strong>Onboarding</strong>
+                    <p>Legal agreements signed. ZQUAS installation deployed. Data feed configured. Integration engineer assigned on-site or remote.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-week">Weeks 3&ndash;4</div>
+                <div class="timeline-content">
+                    <strong>Validation</strong>
+                    <p>Single-institution policy evaluation. Verify 29 policies produce correct results against the bank's entity data. Calibrate thresholds to the bank's risk appetite.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-week">Weeks 5&ndash;8</div>
+                <div class="timeline-content">
+                    <strong>Federation</strong>
+                    <p>Cross-institutional MPC rounds between Founding Partners. Bilateral detection. Measure results. Resolve any integration issues.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-week">Weeks 9&ndash;10</div>
+                <div class="timeline-content">
+                    <strong>Results</strong>
+                    <p>Compile detection results. Benchmark report. Case study draft. Regulatory sandbox submission prepared.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-week">Weeks 11&ndash;12</div>
+                <div class="timeline-content">
+                    <strong>Sandbox</strong>
+                    <p>Joint presentation to regulator. Demonstrate detection. Discuss GDPR position on MPC protocol messages. Obtain regulatory feedback.</p>
+                </div>
+            </div>
+        </div>
+
+        <h3>What the bank needs to provide</h3>
+
+        <div class="table-wrapper">
+            <table class="fp-table">
+                <thead>
+                    <tr>
+                        <th>Requirement</th>
+                        <th>Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-label">Entity risk data</td>
+                        <td>Entity identifier plus risk score per entity. Synthetic or representative. No raw transaction data required.</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">Infrastructure</td>
+                        <td>One server or VM for the ZQUAS installation. Minimum: 16 GB RAM, 4 cores. GPU optional (CPU fallback available). One outbound TCP connection to peer banks.</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">People</td>
+                        <td>One IT contact for deployment. One compliance contact for policy calibration and results review. Part-time commitment, not full-time.</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">Regulatory relationship</td>
+                        <td>Willingness to participate in a joint sandbox submission to the relevant regulator (DNB, FCA, or national FSA).</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">Legal</td>
+                        <td>Standard NDA plus pilot agreement. ZQUAS provides templates. Typical legal review: 2 to 4 weeks. No procurement RFP required.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr class="section-rule">
+
+        <!-- ══ WHY NOW ══ -->
+        <h2>Why Now</h2>
+
+        <p>
+            AMLR applies directly from 10 July 2027. Unlike previous directives, there is no national transposition period. The regulation is directly applicable in all EU member states from that date. AMLA begins direct supervision of high-risk cross-border institutions in 2028.
+        </p>
+        <p>
+            Banks that can demonstrate cross-institutional detection capability before July 2027 are ahead of the compliance curve. Banks that cannot will be responding to regulatory requests after the deadline.
+        </p>
+        <p>
+            Cross-institutional detection is a network. It becomes more valuable with each institution that joins. The first three banks to deploy MPC federation establish the network. Every subsequent bank that joins benefits from the detection capability the founders built. Founding Partners are not just early customers. They are the initial participants in a network that will ultimately span the entire banking sector.
+        </p>
+        <p>
+            The window in which Founding Partners can shape the platform, the policies, and the market is measured in months, not years.
+        </p>
+
+        <hr class="section-rule">
+
+        <!-- ══ ABOUT ZQUAS ══ -->
+        <h2>About ZQUAS</h2>
+
+        <p>
+            ZQUAS is a GPU-native governance and financial crime compliance platform. The core engine executes deterministic compliance policies in real time on GPU, producing cryptographically attestable decisions for every verdict. Each decision produces a Zero-Trust Adjudication Proof Bundle (ZAPB): a cryptographic record of the policy that fired, the inputs it read, and the verdict it produced. A regulator can verify this independently, years after the fact.
+        </p>
+        <p>
+            The federation layer enables privacy-preserving cross-institutional detection using Multi-Party Computation: ECDH-PSI for entity matching, Yao's Garbled Circuits for risk comparison, and Oblivious Transfer for secure key exchange. Banks detect cross-bank laundering patterns without any institution accessing any other institution's data.
+        </p>
+
+        <h3>Key metrics (measured, not projected)</h3>
+
+        <div class="metrics-row">
+            <div class="metric-box">
+                <span class="val">7.5s</span>
+                <span class="lbl">500,000 entities per bank, full pipeline</span>
+            </div>
+            <div class="metric-box">
+                <span class="val">72.7s</span>
+                <span class="lbl">97-bank federation, entire Dutch banking sector</span>
+            </div>
+            <div class="metric-box">
+                <span class="val">4/4</span>
+                <span class="lbl">Real-world typologies detected, per-entity verified at every scale</span>
+            </div>
+            <div class="metric-box">
+                <span class="val">0.00%</span>
+                <span class="lbl">False positive rate on realistic moderate-risk population</span>
+            </div>
+            <div class="metric-box">
+                <span class="val">29</span>
+                <span class="lbl">Compliance policies, 100 rules, 9 domains, 0 discrepancies</span>
+            </div>
+            <div class="metric-box">
+                <span class="val">0 MB</span>
+                <span class="lbl">Memory leak over 50-epoch endurance test</span>
+            </div>
+        </div>
+
+        <h3>Leadership</h3>
+        <p>
+            Founded by Danny de Gier. 18+ years of financial crime compliance across Deutsche Bank, HSBC, RBS, and ABN AMRO. ICA Postgraduate Diploma in Financial Crime (University of Manchester). Former CRO at Vivid Money. Direct regulatory experience across FCA, DNB, BaFin, and ECB supervised institutions.
+        </p>
+
+        <hr class="section-rule">
+
+        <!-- ══ NEXT STEPS ══ -->
+        <h2>Next Steps</h2>
+
+        <p>Three slots. When they are committed, the programme closes.</p>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">01</div>
+                <div>
+                    <div class="step-title">Expression of Interest</div>
+                    <div class="step-desc">Email info@zquas.ai with your institution name, jurisdiction, and primary contact. No commitment required at this stage.</div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">02</div>
+                <div>
+                    <div class="step-title">Technical Briefing</div>
+                    <div class="step-desc">90-minute session, remote or in-person, with ZQUAS engineering and your compliance and IT teams. Live demonstration of the platform. Full Q&amp;A.</div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">03</div>
+                <div>
+                    <div class="step-title">NDA and Pilot Agreement</div>
+                    <div class="step-desc">ZQUAS provides template agreements. Typical legal review: 2 to 4 weeks. No procurement RFP required. This is a pilot, not a full deployment.</div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">04</div>
+                <div>
+                    <div class="step-title">Kick-off</div>
+                    <div class="step-desc">Installation deployment. Data feed configuration. Integration engineer assigned. The 12-week clock starts.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fp-contact">
+            <h2>Ready to discuss?</h2>
+            <p>Contact us directly. No sales process. A conversation with the founder.</p>
+            <a href="mailto:info@zquas.ai" class="contact-email">info@zquas.ai</a>
+            <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
+                <a href="contact.html" class="btn-primary">Get in touch</a>
+                <a href="article-75.html" class="btn-ghost">Read the position paper</a>
+            </div>
+        </div>
+
+        <div class="fp-disclaimer">
+            The Founding Partner Programme is limited to three institutions. Terms are subject to formal agreement. Performance figures are from testing on production hardware with synthetic data. False positive rates on live customer data should be established through the pilot. This page does not constitute a contractual offer.
+            &copy; 2026 ZQUAS. All rights reserved.
+        </div>
+
+    </div>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 ZQUAS &middot; Bounded Compliance on an Unbounded Platform</p>
+</footer>
+
+</body>
+</html>
