@@ -205,6 +205,10 @@ section { padding: 6rem 2rem; }
     margin-bottom: 2.5rem;
     letter-spacing: 0.05em;
 }
+.hero-badge-below {
+    margin-bottom: 1.75rem;
+    margin-top: 2rem;
+}
 .hero-badge .dot {
     width: 6px; height: 6px;
     background: var(--success);
