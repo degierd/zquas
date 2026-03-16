@@ -240,7 +240,7 @@
                         <td class="cap-label">Architecture</td>
                         <td>Database and rules engine. SQL queries on stored transactions.</td>
                         <td>Database with ML models. Batch scoring added to existing pipeline.</td>
-                        <td class="zquas-val">GPU-native entity system. Every account is an autonomous agent with its own state, risk profile, and decision history. 2.58 million governance decisions per second.</td>
+                        <td class="zquas-val">GPU-native entity system. Every account is an autonomous agent with its own state, risk profile, and decision history. 190 million compliance policy evaluations per second. Alert lifecycle 4.93ms.</td>
                     </tr>
                     <tr>
                         <td class="cap-label">AI Integration</td>
@@ -252,13 +252,13 @@
                         <td class="cap-label">Cross-Institutional Detection</td>
                         <td class="val-no">Not possible. Each institution operates in isolation.</td>
                         <td class="val-no">Not possible. Same data silo, better algorithms.</td>
-                        <td class="zquas-val">Multi-party computation federation. Banks jointly detect suspicious entities without sharing data. Cryptographic proof of every round. 5 banks, 1.48 million entities, 30 seconds.</td>
+                        <td class="zquas-val">Privacy-preserving federation: ECDH-PSI + Garbled Circuits + OT. Banks jointly detect suspicious entities without sharing data. ~15 seconds per bilateral round at 100K entities. Dual Ed25519 attestation per round.</td>
                     </tr>
                     <tr>
                         <td class="cap-label">Processing Speed</td>
                         <td>Batch. Overnight or hourly. Thousands of decisions per second.</td>
                         <td>Near-real-time. Minutes to hours. Tens of thousands per second.</td>
-                        <td class="zquas-val">Real-time. Sub-second. 2.58 million decisions per second on a single GPU. 3.7 million transactions per second processing capacity.</td>
+                        <td class="zquas-val">Sub-5ms alert lifecycle. 500K entities evaluated in 1.2 seconds on a single GPU. 190M compliance policy evaluations per second sustained.</td>
                     </tr>
                     <tr>
                         <td class="cap-label">Governance Model</td>
@@ -294,7 +294,7 @@
                         <td class="cap-label">Scalability</td>
                         <td>Add servers. Add databases. Linear cost scaling.</td>
                         <td>Add GPU instances for model inference. Separate from core platform.</td>
-                        <td class="zquas-val">Single GPU: 8 million accounts, 3.7 million transactions per second. Federation scales with parallel execution: adding banks does not increase processing time.</td>
+                        <td class="zquas-val">Single GPU: 500K entities, 100 policies in 1.2 seconds. 76MB VRAM at production scale (0.2% of 32GB). Headroom for larger populations and concurrent federation.</td>
                     </tr>
                     <tr>
                         <td class="cap-label">Multi-Industry</td>
@@ -321,23 +321,23 @@
         <h2 class="section-title">The Numbers</h2>
         <div class="stats-row">
             <div class="stat-box">
-                <div class="stat-val">2.58M</div>
-                <div class="stat-label">governance decisions per second</div>
+                <div class="stat-val">190M</div>
+                <div class="stat-label">compliance policy evaluations per second</div>
             </div>
             <div class="stat-box">
-                <div class="stat-val">3.7M</div>
-                <div class="stat-label">transactions processed per second</div>
+                <div class="stat-val">4.93ms</div>
+                <div class="stat-label">alert lifecycle, ingestion to triage</div>
             </div>
             <div class="stat-box">
-                <div class="stat-val">30s</div>
-                <div class="stat-label">5 banks, 1.48M entities</div>
+                <div class="stat-val">1.2s</div>
+                <div class="stat-label">500K entities, 100 policies</div>
             </div>
             <div class="stat-box">
-                <div class="stat-val">4,900</div>
-                <div class="stat-label">tests across the full engine</div>
+                <div class="stat-val">5,000+</div>
+                <div class="stat-label">tests across 10 audited subsystems</div>
             </div>
         </div>
-        <p class="stats-note">All numbers measured on a single GPU. Federation benchmarks use realistic Dutch banking entity distributions.</p>
+        <p class="stats-note">All numbers measured on NVIDIA RTX 5090. Medians of 3 runs, 10 warmup iterations. Every result signed.</p>
     </div>
 </section>
 

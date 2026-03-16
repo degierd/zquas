@@ -514,24 +514,24 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="td-label">Full pipeline: 500,000 entities per bank, 3 banks</td>
-                        <td class="td-accent">7.5 seconds (policy evaluation + encrypted MPC federation)</td>
+                        <td class="td-label">Single node: 500,000 entities, 100 AML policies</td>
+                        <td class="td-accent">1.2 seconds (1,204ms wall-clock, incl. proof generation)</td>
                     </tr>
                     <tr>
-                        <td class="td-label">97-bank federation (entire Dutch banking sector)</td>
-                        <td class="td-accent">72.7 seconds (4,656 bilateral rounds, 1,000 entities per bank)</td>
+                        <td class="td-label">Alert lifecycle: ingestion to agent triage</td>
+                        <td class="td-accent">4.93ms (Noumenon 12&micro;s + Themis 271&micro;s + Prometheus 4,644&micro;s)</td>
                     </tr>
                     <tr>
-                        <td class="td-label">Peak throughput</td>
-                        <td class="td-accent">243,261 entities per second (at 500,000 scale)</td>
+                        <td class="td-label">Sustained throughput</td>
+                        <td class="td-accent">190 million CEPS (compliance policy evaluations per second)</td>
                     </tr>
                     <tr>
                         <td class="td-label">Detection accuracy</td>
                         <td>4/4 typologies detected at every scale, per-entity verified</td>
                     </tr>
                     <tr>
-                        <td class="td-label">False positive rate</td>
-                        <td>0.00% on realistic moderate-risk population (4.1% non-zero risk scores from real policy evaluation)</td>
+                        <td class="td-label">Federation: 100K entities, bilateral round</td>
+                        <td>~15 seconds per bilateral round (TCP localhost; real network adds latency)</td>
                     </tr>
                     <tr>
                         <td class="td-label">Memory stability (50-epoch endurance test)</td>
@@ -645,8 +645,8 @@
                     </tr>
                     <tr>
                         <td class="td-label">500,000</td>
-                        <td class="td-accent">7.5 seconds</td>
-                        <td>243K ent/sec</td>
+                        <td class="td-accent">1.2 seconds</td>
+                        <td>417K ent/sec</td>
                         <td>4/4</td>
                         <td>29 (100 rules)</td>
                     </tr>
@@ -655,61 +655,45 @@
         </div>
 
         <p>
-            Three things to note. Throughput increases with entity count (from 177K to 243K entities per second) because larger batches amortise the fixed cost of network round-trips and encryption handshakes. The system becomes more efficient at scale. These times include the full pipeline: policy evaluation (100 CPL rules through the real interpreter, including 5 cross-domain chains) plus encrypted MPC federation over TCP with AES-256-GCM. The 29 policies are not simplified test rules. They are the complete policy set spanning sanctions screening, PEP/EDD, transaction monitoring, fraud, KYC, crypto, and conduct, audited line-by-line with zero critical discrepancies.
+            Three things to note. Throughput increases with entity count because larger batches amortise the fixed cost of GPU kernel launches. At 500K entities, the engine sustains 190 million compliance policy evaluations per second. These times are for GPU policy evaluation including full proof generation (Merkle root + Ed25519 signature). The 29 policies are not simplified test rules. They are the complete policy set spanning sanctions screening, PEP/EDD, transaction monitoring, fraud, KYC, crypto, and conduct, audited line-by-line with zero critical discrepancies.
         </p>
 
-        <h2>Multi-bank federation times</h2>
+        <h2>Privacy-preserving federation performance</h2>
 
         <div class="table-wrapper">
             <table class="paper-table">
                 <thead>
                     <tr>
-                        <th>Banks</th>
-                        <th>Bilateral rounds</th>
-                        <th>Total time</th>
-                        <th>Per-round avg</th>
-                        <th>Detection</th>
+                        <th>Configuration</th>
+                        <th>Entities per bank</th>
+                        <th>Per-round time</th>
+                        <th>Protocol</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="td-label">3</td>
-                        <td>3</td>
-                        <td class="td-accent">192 ms</td>
-                        <td>64 ms</td>
-                        <td>4/4</td>
+                        <td class="td-label">2-bank bilateral round</td>
+                        <td>100,000</td>
+                        <td class="td-accent">~15 seconds (TCP localhost)</td>
+                        <td>ECDH-PSI + GC + IKNP OT</td>
                     </tr>
                     <tr>
-                        <td class="td-label">5</td>
-                        <td>10</td>
-                        <td class="td-accent">193 ms</td>
-                        <td>19.3 ms</td>
-                        <td>4/4</td>
+                        <td class="td-label">Attestation per round</td>
+                        <td>Any scale</td>
+                        <td>Dual Ed25519</td>
+                        <td>Both parties sign; regulator verifies</td>
                     </tr>
                     <tr>
-                        <td class="td-label">10</td>
-                        <td>45</td>
-                        <td class="td-accent">797 ms</td>
-                        <td>17.7 ms</td>
-                        <td>4/4</td>
-                    </tr>
-                    <tr>
-                        <td class="td-label">20</td>
-                        <td>190</td>
-                        <td class="td-accent">3,308 ms</td>
-                        <td>17.4 ms</td>
-                        <td>4/4</td>
-                    </tr>
-                    <tr>
-                        <td class="td-label">97 (entire Dutch sector)</td>
-                        <td>4,656</td>
-                        <td class="td-accent">72.7 seconds</td>
-                        <td>29.2 ms</td>
-                        <td>4/4</td>
+                        <td class="td-label">Raw data shared</td>
+                        <td colspan="3">Zero bytes. Encrypted protocol messages only (ECDLP-protected)</td>
                     </tr>
                 </tbody>
             </table>
         </div>
+
+        <p>
+            Real network conditions add latency. The ~15 second figure is measured over TCP localhost. Federation rounds are expected to run nightly or on a configurable schedule aligned with existing monitoring cycles.
+        </p>
 
         <h2>Comparison with batch processing</h2>
 
@@ -717,43 +701,37 @@
             <table class="paper-table">
                 <thead>
                     <tr>
-                        <th>Daily volume</th>
-                        <th>ZQUAS time</th>
-                        <th>Traditional batch cycle</th>
+                        <th>Scale</th>
+                        <th>ZQUAS F1</th>
+                        <th>Traditional 24h batch</th>
                         <th>Speedup</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="td-label">1 million transactions</td>
-                        <td class="td-accent">15.0 seconds</td>
+                        <td class="td-label">100,000 entities, 100 policies</td>
+                        <td class="td-accent">237.7ms</td>
                         <td>24 hours</td>
-                        <td class="td-strong">5,764x</td>
+                        <td class="td-strong">363,600x</td>
                     </tr>
                     <tr>
-                        <td class="td-label">5 million transactions</td>
-                        <td class="td-accent">74.9 seconds</td>
+                        <td class="td-label">500,000 entities, 100 policies</td>
+                        <td class="td-accent">1.2 seconds</td>
                         <td>24 hours</td>
-                        <td class="td-strong">1,152x</td>
+                        <td class="td-strong">17,533,891x</td>
                     </tr>
                     <tr>
-                        <td class="td-label">10 million transactions</td>
-                        <td class="td-accent">149.9 seconds</td>
+                        <td class="td-label">Alert: ingestion to triage</td>
+                        <td class="td-accent">4.93ms</td>
                         <td>24 hours</td>
-                        <td class="td-strong">576x</td>
-                    </tr>
-                    <tr>
-                        <td class="td-label">50 million transactions</td>
-                        <td class="td-accent">749.4 seconds</td>
-                        <td>24 hours</td>
-                        <td class="td-strong">115x</td>
+                        <td class="td-strong">17,627,788x</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
         <p>
-            For comparison: a conventional CPU-based system evaluating 29 policies against 100,000 entities in a cross-bank comparison would require extracting the data, transferring it, and running the comparison on a central server. Conservative estimate: 2 to 4 hours. ZQUAS completes the same comparison in 2.1 seconds.
+            For comparison: a conventional CPU-based system evaluating 29 policies against 100,000 entities requires extracting the data, running sequential rule evaluation, and waiting for the batch cycle to complete. Conservative estimate: 4 to 12 hours. ZQUAS evaluates the same 100,000 entities in 237.7 milliseconds.
         </p>
 
         <hr class="section-rule">

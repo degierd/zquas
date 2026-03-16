@@ -95,7 +95,7 @@
             <div class="layer-card-inner">
                 <div class="arch-tag">LAYER 2</div>
                 <h3>GPU Adjudication Engine</h3>
-                <p>The compiled policy bytecode executes on GPU. Each transaction is evaluated against the full policy set in parallel. One GPU block per transaction, one thread per policy. The engine processes 2.58 million governance decisions per second per installation with a 29-policy Tier-1 bank configuration. Results are deterministic: same policy version plus same input data always produces the same verdict.</p>
+                <p>The compiled policy bytecode executes on GPU. Each entity is evaluated against the full policy set in parallel. The F1 engine processes 500,000 entities across 100 AML policies in 1.2 seconds, sustaining 190 million compliance policy evaluations per second on NVIDIA RTX 5090. Alert lifecycle from ingestion to triage: 4.93ms. Results are deterministic: same policy version, same input data, same verdict.</p>
             </div>
         </div>
         <div class="layer-card">
@@ -116,7 +116,7 @@
             <div class="layer-card-inner">
                 <div class="arch-tag">LAYER 5</div>
                 <h3>Privacy-Preserving Cross-Institutional Layer</h3>
-                <p>When multiple institutions run ZQUAS, cross-bank detection activates via secure multi-party computation. The MPC layer uses replicated secret sharing protocol with GPU-accelerated comparison, oblivious sorting, and secure aggregation. Each institution retains full data sovereignty. No raw transaction data crosses institutional boundaries. The output is a risk indicator, not customer data. A separate federation protocol uses ECDH-based private set intersection and garbled circuits for entity matching across institutions.</p>
+                <p>When multiple institutions run ZQUAS, cross-bank detection activates via privacy-preserving federation. The protocol combines ECDH-PSI (X25519) for entity matching, Yao's Garbled Circuits (Free-XOR) for risk comparison, and IKNP OT Extension (Chou-Orlandi base OT on P-256) for oblivious transfer. Security model: semi-honest. Transport: AES-256-GCM with X25519 key exchange. Each institution retains full data sovereignty. No raw entity data crosses institutional boundaries. At 100,000 entities, a bilateral round completes in approximately 15 seconds. Both parties sign the result with Ed25519. A regulator verifies the attestation with a public key alone. 361 tests, zero critical findings.</p>
             </div>
         </div>
     </div>
@@ -194,7 +194,7 @@ Result: <span class="terminal-ok">VALID</span> (deterministic replay confirmed)<
             </div>
             <div class="eng-card">
                 <h4>Testing</h4>
-                <p>~3,869 unit tests (GTest). Standalone benchmark harnesses for throughput, latency, determinism, and detection fidelity.</p>
+                <p>5,000+ automated tests across 10 independently audited subsystems (GTest). CPL engine: 288 tests. Federation: 361 tests. Crypto KAT tests: Ed25519 (RFC 8032), SHA-256 (FIPS 180-4), Blake3 (official vectors).</p>
             </div>
             <div class="eng-card">
                 <h4>Cryptography</h4>

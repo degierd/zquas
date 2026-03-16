@@ -65,7 +65,7 @@
         "name": "ZQUAS Compliance Engine",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "Windows, Linux",
-        "description": "GPU-native compliance engine processing 2.58M governance decisions per second. Privacy-preserving cross-institutional detection via MPC. Cryptographic proof bundles for every decision.",
+        "description": "GPU-native compliance engine. 500K entities × 100 AML policies in 1.2 seconds. Alert lifecycle 4.93ms. Privacy-preserving cross-institutional detection via MPC. Cryptographic proof bundle for every decision.",
         "author": {
             "@type": "Organization",
             "name": "ZQUAS"
@@ -121,17 +121,17 @@
         <div class="hero-stats">
             <a href="benchmark.html" class="hero-stat-link">
                 <div class="hero-stat">
-                    <div class="val">7.5s</div>
-                    <div class="label">500K entities, full pipeline &#x2197;</div>
+                    <div class="val">1.2s</div>
+                    <div class="label">500K entities, 100 policies &#x2197;</div>
                 </div>
             </a>
             <div class="hero-stat">
-                <div class="val">100%</div>
-                <div class="label">Known typologies detected</div>
+                <div class="val">4.93ms</div>
+                <div class="label">Alert lifecycle, ingestion to triage</div>
             </div>
             <div class="hero-stat">
-                <div class="val">0.00%</div>
-                <div class="label">False positives in pilot data</div>
+                <div class="val">5,000+</div>
+                <div class="label">Automated tests, 10 subsystems audited</div>
             </div>
         </div>
         <div class="hero-badge hero-badge-below">
@@ -164,7 +164,7 @@
                     <span class="doc-format">HTML &middot; Verified results</span>
                 </div>
                 <div class="doc-title">Federation Performance Across the Full Dutch Banking Sector</div>
-                <div class="doc-desc">500,000 entities in 7.5 seconds. 97-bank federation in 72.7 seconds. 29 compliance policies, 100 rules, audited line-by-line. Production hardware. No simulations.</div>
+                <div class="doc-desc">500,000 entities × 100 policies in 1.2 seconds. Alert lifecycle 4.93ms. 190M CEPS sustained. NVIDIA RTX 5090. Medians of 3 runs, 10 warmup iterations. Every result signed.</div>
             </a>
             <a href="engineering.html" class="doc-item">
                 <div class="doc-meta">
@@ -304,7 +304,7 @@
             <div class="arch-card">
                 <div class="arch-tag">GPU-NATIVE</div>
                 <h3>Real-Time Adjudication</h3>
-                <p>Full policy sets evaluated against every transaction simultaneously on GPU. No sampling, no batching, no sequential rule execution. 2.58 million governance decisions per second per installation.</p>
+                <p>Full policy sets evaluated against every entity simultaneously on GPU. No sampling, no sequential rule execution. 190 million compliance policy evaluations per second. Alert lifecycle 4.93ms from ingestion to triage.</p>
             </div>
             <div class="arch-card">
                 <div class="arch-tag">PRIVACY-PRESERVING</div>
