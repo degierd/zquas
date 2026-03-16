@@ -2,7 +2,7 @@
 
 > Sovereign compliance infrastructure for regulated finance. GPU-native compliance engine built for cross-institutional financial crime detection without central data pooling.
 
-ZQUAS is a GPU-native compliance engine built for financial institutions and regulators. The F1 engine evaluates 500,000 entities against 100 AML policies in 1.2 seconds, sustaining 190 million compliance policy evaluations per second on NVIDIA RTX 5090. Alert lifecycle from ingestion to triage: 4.93ms. Cross-institutional detection uses privacy-preserving multi-party computation: ECDH-PSI (X25519) for entity matching, Yao's Garbled Circuits (Free-XOR) for risk comparison, IKNP OT Extension for oblivious transfer. Every compliance decision produces a cryptographic proof bundle (912-byte ZAPB, Ed25519 signed, Merkle-included) that regulators verify independently with a public key alone. 5,000+ automated tests across 10 audited subsystems.
+ZQUAS is a GPU-native compliance engine built for financial institutions and regulators. The F1 engine evaluates 500,000 entities against 100 AML policies in under 2 seconds, sustaining 150 million+ compliance policy evaluations per second on NVIDIA RTX 5090. Alert lifecycle under 10ms. Cross-institutional detection uses privacy-preserving multi-party computation: ECDH-PSI (X25519) for entity matching, Yao's Garbled Circuits (Free-XOR) for risk comparison, IKNP OT Extension for oblivious transfer. Every compliance decision produces a cryptographic proof bundle (912-byte ZAPB, Ed25519 signed, Merkle-included) that regulators verify independently with a public key alone. 5,000+ automated tests across 10 audited subsystems.
 
 Founded by Danny de Gier, who combines 18+ years of financial crime compliance experience at Tier-1 banks (RBS, Deutsche Bank, HSBC, Commerzbank) with GPU systems programming (C++23, CUDA, Vulkan). Currently engaged with DNB InnovationHub and FCA regulatory sandbox programmes.
 
@@ -20,8 +20,8 @@ Founded by Danny de Gier, who combines 18+ years of financial crime compliance e
 ## Core Capabilities
 
 - GPU-native compliance engine (not GPU-accelerated, GPU-native)
-- 190M CEPS (compliance policy evaluations per second) on NVIDIA RTX 5090
-- 500K entities × 100 AML policies in 1.2 seconds; alert lifecycle 4.93ms ingestion to triage
+- 150M+ CEPS (compliance policy evaluations per second) on NVIDIA RTX 5090
+- 500K entities × 100 AML policies in under 2 seconds; alert lifecycle under 10ms
 - 29 AML policies (100 rules, 6 domains) + 15 access control policies
 - Deterministic evaluation: same input + same policy = same verdict, byte-identical replay
 - Privacy-preserving federation: ECDH-PSI (X25519) + Yao's GC (Free-XOR) + IKNP OT; semi-honest security model

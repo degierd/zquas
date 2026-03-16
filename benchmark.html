@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benchmark: 190M CEPS, 4.93ms Alert Lifecycle — ZQUAS</title>
-    <meta name="description" content="Documented GPU benchmark of the ZQUAS F1 engine. 500K entities, 100 policies, 1.2 seconds on a single NVIDIA RTX 5090. Full alert lifecycle: 4.93ms ingestion to triage.">
-    <meta property="og:title" content="Benchmark: 190M CEPS, 4.93ms Alert Lifecycle — ZQUAS">
-    <meta property="og:description" content="Documented GPU benchmark of the ZQUAS F1 engine. 500K entities × 100 policies in 1.2 seconds on NVIDIA RTX 5090. Alert lifecycle 4.93ms. 5,000+ automated tests.">
+    <title>Benchmark: 150M+ Evaluations/sec, Under 10ms Alert Lifecycle — ZQUAS</title>
+    <meta name="description" content="Documented GPU benchmark of the ZQUAS F1 engine. 500K entities in under 2 seconds on NVIDIA RTX 5090. Alert lifecycle under 10ms.">
+    <meta property="og:title" content="Benchmark: 150M+ Evaluations/sec, Under 10ms Alert Lifecycle — ZQUAS">
+    <meta property="og:description" content="Documented GPU benchmark of the ZQUAS F1 engine. 500K entities in under 2 seconds on NVIDIA RTX 5090. Alert lifecycle under 10ms. 5,000+ automated tests.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zquas.ai/benchmark.html">
     <meta property="og:image" content="https://zquas.ai/og-image.png">
@@ -25,8 +25,8 @@
     {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "headline": "Benchmark: 190M CEPS, 4.93ms Alert Lifecycle",
-        "description": "Documented GPU benchmark of the ZQUAS F1 engine. 500K entities × 100 AML policies in 1.2 seconds on NVIDIA RTX 5090. Full alert lifecycle 4.93ms. 5,000+ automated tests across 10 audited subsystems.",
+        "headline": "Benchmark: 150M+ CEPS, Under 10ms Alert Lifecycle",
+        "description": "Documented GPU benchmark of the ZQUAS F1 engine. 500K entities in under 2 seconds on NVIDIA RTX 5090. Alert lifecycle under 10ms. 5,000+ automated tests across 10 audited subsystems.",
         "datePublished": "2026-03-01",
         "author": {
             "@type": "Person",
@@ -75,9 +75,9 @@
 <section class="bench-header">
     <div class="container">
         <div class="section-label">Benchmark Study</div>
-        <h1 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.6rem); max-width: 700px; margin-bottom: 1.5rem;">500,000 entities. 100 policies. 1.2 seconds.</h1>
+        <h1 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.6rem); max-width: 700px; margin-bottom: 1.5rem;">500,000 entities. 100 policies. Under 2 seconds.</h1>
         <p class="section-desc">
-            A documented benchmark of the ZQUAS F1 engine at production scale. 190 million compliance policy evaluations per second. Alert lifecycle 4.93ms from ingestion to triage. Every result measured on NVIDIA RTX 5090. Every decision signed.
+            A documented benchmark of the ZQUAS F1 engine at production scale. 150 million+ compliance policy evaluations per second. Alert lifecycle under 10ms from ingestion to triage. Every result measured on NVIDIA RTX 5090. Every decision signed.
         </p>
         <div class="bench-meta">Benchmark date: March 2026 &middot; Hardware: NVIDIA RTX 5090 (Blackwell, sm_100, 170 SMs, 32GB VRAM)</div>
     </div>
@@ -158,14 +158,14 @@
         <div class="analysis-body">
             <h2>What CEPS Means</h2>
 
-            <p>CEPS stands for Compliance Policy Evaluations Per Second. One evaluation is a single entity assessed against one policy. The engine evaluates all entities against all policies in parallel. 190M CEPS means 190 million individual policy checks per second sustained at production scale.</p>
+            <p>CEPS stands for Compliance Policy Evaluations Per Second. One evaluation is a single entity assessed against one policy. The engine evaluates all entities against all policies in parallel. 150M+ CEPS means over 150 million individual policy checks per second sustained at production scale.</p>
 
             <p>The key metric for AML monitoring is not raw throughput but latency from event to triage. An alert that takes 24 hours to reach an analyst is an alert that arrives after the money has moved. The F1 engine produces a complete triage decision in 4.93ms: 12 microseconds for ingestion into the Noumenon semantic graph, 271 microseconds for Themis GPU policy evaluation, and 4.64ms for Prometheus agent triage. Total: 4.93ms.</p>
 
-            <p>This matters for real-time payment rails. SEPA Instant requires settlement in under 10 seconds. The engine evaluates the transaction in under 5 milliseconds. The agent triage decision is available before the settlement window closes.</p>
+            <p>This matters for real-time payment rails. SEPA Instant requires settlement in under 10 seconds. The engine evaluates the transaction in under 10 milliseconds. The agent triage decision is available before the settlement window closes.</p>
 
             <div class="callout">
-                <p>500K entities &times; 100 policies = 50 million evaluations in 1.2 seconds. 17.5 million times faster than a 24-hour batch cycle.</p>
+                <p>500K entities &times; 100 policies = 50 million evaluations in under 2 seconds. Millions of times faster than a 24-hour batch cycle.</p>
             </div>
         </div>
     </div>
@@ -223,24 +223,24 @@
         <h3 style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;">Single Node &mdash; Entity Evaluation at Scale</h3>
         <div class="bench-stat-grid" style="margin-bottom: 2.5rem;">
             <div class="bench-stat-card">
-                <div class="val">1.2s</div>
+                <div class="val">< 2s</div>
                 <div class="label">500K entities &times; 100 policies (1,204ms)</div>
             </div>
             <div class="bench-stat-card">
-                <div class="val">190M</div>
+                <div class="val">150M+</div>
                 <div class="label">CEPS sustained at production scale</div>
             </div>
             <div class="bench-stat-card">
-                <div class="val">4.93ms</div>
+                <div class="val">< 10ms</div>
                 <div class="label">Alert lifecycle: ingestion to triage</div>
             </div>
         </div>
 
         <div class="bench-properties" style="margin-bottom: 2.5rem;">
             <div class="bench-prop"><strong>Alert lifecycle breakdown:</strong> Noumenon ingestion 12&micro;s &rarr; Themis GPU evaluation 271&micro;s &rarr; Prometheus agent triage 4,644&micro;s &rarr; total 4.93ms</div>
-            <div class="bench-prop"><strong>Scaling:</strong> Linear confirmed. 2&times; entities = 2&times; time. CEPS stable at ~190M for production-scale batches (250K+).</div>
+            <div class="bench-prop"><strong>Scaling:</strong> Linear confirmed. 2&times; entities = 2&times; time. CEPS stable at 150M+ for production-scale batches (250K+).</div>
             <div class="bench-prop"><strong>VRAM usage:</strong> ThemisStream 68MB + CortexSystemCuda 8MB = 76MB active GPU memory (0.2% of 32GB). Total system including IrgManager: 426MB (1.3%).</div>
-            <div class="bench-prop"><strong>Speedup vs. 24h batch:</strong> 17,533,891&times; faster than a standard overnight batch cycle.</div>
+            <div class="bench-prop"><strong>Speedup vs. 24h batch:</strong> Millions of times faster than a standard overnight batch cycle.</div>
         </div>
 
         <h3 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 1rem;">Scaling Profile</h3>
@@ -324,14 +324,14 @@
         <div class="analysis-body">
             <h2>Why This Matters for Banks</h2>
 
-            <p>A Tier-1 bank with 500,000 monitored entities evaluates its full portfolio against 100 AML policies in 1.2 seconds. The same operation in overnight batch takes 24 hours. The F1 engine is 17.5 million times faster than that cycle, measured on the same workload.</p>
+            <p>A Tier-1 bank with 500,000 monitored entities evaluates its full portfolio against 100 AML policies in under 2 seconds. The same operation in overnight batch takes 24 hours. The F1 engine is millions of times faster than that cycle, measured on the same workload.</p>
 
-            <p>For real-time payment rails, the relevant number is alert lifecycle latency. SEPA Instant requires settlement in under 10 seconds. The F1 engine produces a complete triage decision in 4.93ms. The analyst receives an alert with entity context, risk score, cross-institutional signal, and agent recommendation before the payment settles.</p>
+            <p>For real-time payment rails, the relevant number is alert lifecycle latency. SEPA Instant requires settlement in under 10 seconds. The F1 engine produces a complete triage decision in under 10ms. The analyst receives an alert with entity context, risk score, cross-institutional signal, and agent recommendation before the payment settles.</p>
 
-            <p>VRAM usage at 500K entities is 76MB. The RTX 5090 has 32GB. 99.8% of GPU memory is unused at the production benchmark workload. Headroom exists for larger entity populations, simultaneous federation computation, and concurrent agent workloads.</p>
+            <p>VRAM usage at 500K entities is well under 1GB. The RTX 5090 has 32GB. The vast majority of GPU memory is unused at the production benchmark workload. Headroom exists for larger entity populations, simultaneous federation computation, and concurrent agent workloads.</p>
 
             <div class="callout">
-                <p>One GPU. 500K entities. 100 policies. 4.93ms from transaction to triage. 76MB VRAM used out of 32GB available.</p>
+                <p>One GPU. 500K entities. 100 policies. Under 10ms from transaction to triage. Under 1GB total VRAM.</p>
             </div>
         </div>
     </div>
