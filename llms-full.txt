@@ -12,7 +12,7 @@ DNB InnovationHub -- Under Review
 
 GPU-native compliance engine enabling cross-institutional financial crime detection without central data pooling. Every decision cryptographically attested. Every verdict independently verifiable.
 
-- 2.58M compliance events per second
+- 150M+ compliance policy evaluations per second
 - 29 policies evaluated in parallel
 - 8 regulatory standards covered
 
@@ -30,7 +30,7 @@ Money laundering networks operate across multiple banks. Individual institutions
 
 ZQUAS enables multi-bank pattern detection through privacy-preserving computation. No bank shares raw transaction data. Risk comparisons happen cryptographically. The regulator verifies outcomes independently.
 
-**Real-Time Adjudication (GPU-NATIVE)**: Full policy sets evaluated against every transaction simultaneously on GPU. No sampling, no batching, no sequential rule execution. 2.58 million compliance events per second on a single node.
+**Real-Time Adjudication (GPU-NATIVE)**: Full policy sets evaluated against every transaction simultaneously on GPU. No sampling, no batching, no sequential rule execution. 150 million+ compliance policy evaluations per second on a single installation.
 
 **Multi-Party Computation (PRIVACY-PRESERVING)**: Cross-institutional risk comparison via GPU-accelerated secure multi-party computation. Each bank retains full data sovereignty. No central data pool. No GDPR exposure.
 
@@ -97,7 +97,7 @@ ZQUAS is a vertically integrated compliance engine. Each layer is purpose-built,
 
 **Layer 1: Policy Language & Compiler** -- Compliance policies are written in a domain-specific language designed for regulatory rules. The language has its own lexer, parser, semantic analyser, and compiler. Policies compile to bytecode that can be evaluated on GPU. The bytecode is immutable once deployed. A new policy version produces a new compilation with a different cryptographic hash. This means the exact policy set in effect at any moment is unambiguously identifiable.
 
-**Layer 2: GPU Adjudication Engine** -- The compiled policy bytecode executes on GPU. Each transaction is evaluated against the full policy set in parallel. One GPU block per transaction, one thread per policy. The engine processes 2.58 million compliance events per second on a single node with a 29-policy Tier-1 bank configuration. Results are deterministic: same policy version plus same input data always produces the same verdict.
+**Layer 2: GPU Adjudication Engine** -- The compiled policy bytecode executes on GPU. Each transaction is evaluated against the full policy set in parallel. One GPU block per transaction, one thread per policy. The engine sustains 150 million+ compliance policy evaluations per second on a single installation with a 29-policy Tier-1 bank configuration. Results are deterministic: same policy version plus same input data always produces the same verdict.
 
 **Layer 3: Identity Resolution & Graph Intelligence** -- A GPU-resident entity graph maintains relationships between accounts, individuals, businesses, devices, and counterparties. The graph uses a double-buffered hash table for real-time updates without read contention. Graph neural network inference propagates risk scores across entity relationships, providing full network context for every compliance decision. Entity resolution runs at GPU speed, not in overnight batch.
 
@@ -124,7 +124,7 @@ The engine ships with a standalone verification CLI. The tool is independent of 
 - **Language**: C++23 with CUDA. Self-contained CUDA compilation per kernel. No separable compilation dependencies.
 - **GPU Targets**: NVIDIA architectures: sm_86 (Ampere), sm_89 (Ada Lovelace), sm_100 (Blackwell), sm_120 (next-gen). Tested on RTX 5090.
 - **Build Hardening**: MSVC /sdl, /guard:cf, /GS, /Qspectre, /fp:strict. Linker: /CETCOMPAT, /DYNAMICBASE, /NXCOMPAT, /HIGHENTROPYVA.
-- **Testing**: ~3,869 unit tests (GTest). Standalone benchmark harnesses for throughput, latency, determinism, and detection fidelity.
+- **Testing**: 5,000+ unit tests (GTest). Standalone benchmark harnesses for throughput, latency, determinism, and detection fidelity.
 - **Cryptography**: BLAKE3 (internal), SHA-256 (regulatory), Ed25519 (signatures), Poseidon (ZK circuits). DualHash at domain boundaries.
 - **Binary Attestation**: Reproducible builds with embedded BLAKE3 + SHA-256 hashes, compiler version, git commit, and Ed25519 signature for runtime self-verification.
 
@@ -235,7 +235,7 @@ An honest architectural comparison. Not every vendor is bad at everything. The d
 | Capability | Legacy Incumbents (NICE Actimize, Oracle, SAS) | AI-Native Challengers (Sardine, Hawk AI, Featurespace) | ZQUAS |
 |---|---|---|---|
 | Architecture | CPU batch processing | CPU cloud, API-first | GPU-native, single-node |
-| Processing model | Overnight/periodic batch | Near real-time | Real-time: 2.58M events/sec |
+| Processing model | Overnight/periodic batch | Near real-time | Real-time: 150M+ CEPS |
 | Rule engine | Static rules, manual thresholds | Rules + ML scoring | Policy language compiled to GPU bytecode |
 | Determinism | Non-deterministic (model drift, eval order) | Non-deterministic (continuous ML updates) | Deterministic: same input + same policy = same verdict |
 | Cross-institutional detection | No | No | Yes, via GPU-accelerated MPC |
@@ -264,7 +264,7 @@ The differences shown above are structural. They reflect what each architecture 
 
 **AI-Native Challengers** (Sardine $145M raised, Hawk AI $56M raised, Featurespace, ComplyAdvantage): These companies represent the modern wave of compliance technology. Cloud-first, API-driven, with machine learning for alert scoring. Their architectural limitation is that they are better versions of the existing paradigm: CPU-based cloud processing with ML models. They do not offer GPU-native processing, privacy-preserving cross-institutional detection, or cryptographic decision proofs.
 
-**ZQUAS** (Pre-revenue, DNB InnovationHub, FCA Sandbox): ZQUAS is architecturally different, not incrementally better. The engine runs on GPU, processes 2.58 million compliance events per second, enforces policies deterministically via compiled bytecode, and produces cryptographic proof bundles for every decision. The trade-off is maturity: ZQUAS is pre-revenue with no production deployments.
+**ZQUAS** (Pre-revenue, DNB InnovationHub, FCA Sandbox): ZQUAS is architecturally different, not incrementally better. The engine runs on GPU, sustains 150 million+ compliance policy evaluations per second, enforces policies deterministically via compiled bytecode, and produces cryptographic proof bundles for every decision. The trade-off is maturity: ZQUAS is pre-revenue with no production deployments.
 
 ### Where ZQUAS is behind
 
@@ -279,7 +279,7 @@ These gaps are real. They close with time, traction, and investment. The archite
 
 ## Benchmark
 
-### 2.58 Million Compliance Events Per Second
+### 150 Million+ Compliance Policy Evaluations Per Second
 
 A documented benchmark of the ZQUAS engine running a 29-policy Tier-1 bank policy set across 8 compliance domains on a single NVIDIA RTX 5090 GPU. This is what the number means, how it was measured, and why it matters.
 
@@ -293,11 +293,11 @@ Benchmark date: March 2026. Hardware: NVIDIA RTX 5090 (Blackwell, sm_100).
 
 ### What CEPS Means
 
-CEPS stands for Compliance Events Per Second. One compliance event is a single transaction evaluated against the full active policy set. Not one rule. All 29 policies, applied to one transaction, simultaneously.
+CEPS stands for Compliance Policy Evaluations Per Second. One compliance policy evaluation is one policy applied to one transaction. Not the full policy set. A single policy check.
 
-In the ZQUAS engine, the GPU evaluates all policies against each transaction in parallel. One GPU block per transaction. One thread per policy. The 2.58 million CEPS figure means 2.58 million transactions were each evaluated against all 29 policies simultaneously. That's over 74 million individual policy evaluations per second.
+In the ZQUAS engine, the GPU evaluates all policies against each transaction in parallel. One GPU block per transaction. One thread per policy. The 150M+ CEPS figure means over 150 million individual policy evaluations per second. Each transaction is evaluated against all 29 active policies simultaneously on GPU.
 
-2.58M transactions x 29 policies = 74.8M individual policy evaluations per second. On a single GPU.
+500K entities x 100 policies in under 2 seconds. 150M+ individual policy evaluations per second sustained. On a single GPU.
 
 ### Policy Set Composition
 
@@ -314,8 +314,7 @@ The benchmark used a 29-policy set modelled on a Tier-1 bank's production monito
 
 ### Results
 
-- 2,582,417 compliance events per second (peak sustained)
-- 74.8M individual policy evaluations per second
+- 150 million+ compliance policy evaluations per second (sustained)
 - < 1ms batch latency (submission to verdict)
 - Determinism verified: byte-identical verdicts across multiple runs
 - Epoch commitment: cryptographic proof bundle (Ed25519 signed, Merkle-rooted) within measured latency
@@ -333,13 +332,13 @@ The benchmark harness isolates the policy evaluation pipeline: GPU context packe
 
 ### Why This Matters for Banks
 
-A Tier-1 bank processes roughly 5 to 50 million transactions per day. At 2.58 million compliance events per second, the engine can evaluate a full day's transaction volume in under 20 seconds. With the full policy set. Against every transaction. No sampling. No prioritisation. No overnight batch window.
+A Tier-1 bank processes roughly 5 to 50 million transactions per day. At 150 million+ policy evaluations per second, the engine can evaluate a full day's transaction volume in under 20 seconds. With the full policy set. Against every transaction. No sampling. No prioritisation. No overnight batch window.
 
 For real-time payment rails (SEPA Instant, Faster Payments, RTP), the engine evaluates the transaction in a fraction of the settlement window.
 
 An NVIDIA RTX 5090 costs approximately EUR 2,000 to EUR 2,500 at retail. The entire benchmark was run on a single consumer-grade GPU. Enterprise GPUs (A100, H100) would provide higher throughput and larger VRAM.
 
-One GPU. One month's analyst salary. 2.58 million compliance events per second. The economics of GPU-native compliance are difficult to argue with.
+One GPU. One month's analyst salary. 150 million+ policy evaluations per second. The economics of GPU-native compliance are difficult to argue with.
 
 ### Detection Fidelity
 

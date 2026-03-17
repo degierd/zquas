@@ -190,9 +190,9 @@ def page1(c):
     # Stats row
     stat_w = CW / 3
     stats = [
-        ("2.58M", "GOVERNANCE DECISIONS / SEC"),
-        ("3.7M", "TRANSACTIONS PROCESSED / SEC"),
-        ("4,900", "TESTS, ZERO FAILURES"),
+        ("150M+", "POLICY EVALUATIONS / SEC"),
+        ("29", "POLICIES IN PARALLEL"),
+        ("6", "AML DOMAINS"),
     ]
     for i, (val, label) in enumerate(stats):
         sx = MARGIN + i * stat_w
@@ -248,10 +248,10 @@ def page1(c):
     left_items = [
         ("GPU-Native Processing",
          "Full policy sets evaluated against every transaction simultaneously on GPU. "
-         "Real-time, not batch. 2.58 million governance decisions per second per installation."),
+         "Real-time, not batch. 150 million+ policy evaluations per second per installation."),
         ("Privacy-Preserving MPC",
          "Cross-institutional detection via secure multi-party computation, validated in "
-         "controlled testing with five banks and 1.48 million entities. No central data pool. No GDPR "
+         "controlled testing with three simulated banks. No central data pool. No GDPR "
          "exposure. Each bank retains full data sovereignty."),
         ("Cryptographic Attestation",
          "Every compliance decision produces an Ed25519-signed proof bundle with Merkle "
@@ -292,7 +292,7 @@ def page2(c):
     engine_headers = ["Capability", "Detail"]
     engine_widths = [140, CW - 140]
     engine_rows = [
-        ["Processing speed", "2.58M governance decisions/sec. 3.7M transactions/sec. Federation: 5 banks, 1.48M entities, 30 seconds."],
+        ["Processing speed", "150M+ CEPS. 500K entities in under 2 seconds. Alert lifecycle under 10ms."],
         ["Policy language", "CPL: lexer, parser, semantic analyser, compiler to GPU bytecode"],
         ["Adjudication pipeline", "Triple-stream GPU: Load (H2D), Adjudicate (kernel), Commit (D2H + sign)"],
         ["Determinism", "Byte-identical replay guaranteed. Fixed-point arithmetic where applicable"],
@@ -336,7 +336,7 @@ def page2(c):
          "on GPU. Scenario analysis, impact assessment, and counterfactual replay at compliance speed."),
         ("Cross-Institutional MPC: ", "Federation protocol: ECDH-PSI (X25519) for entity matching, "
          "Yao's Garbled Circuits (Free-XOR) for risk comparison, IKNP OT for oblivious transfer. "
-         "Semi-honest security model. 5 banks, 1.48M entities in 30 seconds. Dual Ed25519 attestation. "
+         "Semi-honest security model. Under 10 seconds per bilateral round. Dual Ed25519 attestation. "
          "AES-256-GCM encrypted transport. Zero bytes of customer data shared."),
     ]
     for label, text in det_items:
@@ -427,7 +427,7 @@ def page3(c):
         ["Cross-bank detection", "No", "No", "Yes (validated, pilot-ready)"],
         ["Cryptographic proof", "No", "No", "Yes (Ed25519, Merkle)"],
         ["Deterministic eval", "No", "No", "Yes (byte-identical)"],
-        ["Real-time at scale", "Limited", "Partial", "2.58M decisions/sec. 3.7M TPS."],
+        ["Real-time at scale", "Limited", "Partial", "150M+ CEPS. Under 2s at 500K entities."],
         ["Adversarial self-testing", "No", "No", "Continuous (GPU)"],
         ["Regulator verification", "Trust-based", "Trust-based", "Independent CLI"],
         ["Replication timeline", "N/A", "N/A", "3-5 years minimum"],
@@ -444,9 +444,9 @@ def page3(c):
     traction = [
         "DNB InnovationHub: Submission under review",
         "FCA Sandbox: Regulatory sandbox programme engaged",
-        "Benchmark: 2.58M governance decisions/sec. 3.7M transactions/sec on RTX 5090.",
-        "Cross-institutional detection: 5 banks, 1.48M entities, 30 seconds. 4/4 typologies detected.",
-        "Test coverage: 4,900 automated tests across 10 audited subsystems",
+        "Benchmark: 150M+ CEPS on RTX 5090. 500,000 entities in under 2 seconds. Alert lifecycle under 10ms.",
+        "Cross-institutional detection: under 10 seconds per bilateral round. 4/4 typologies detected.",
+        "Test coverage: 5,000+ automated tests across 10 audited subsystems",
         "Regulatory frameworks: EU AI Act, AMLR, FATF R15, NIST AI RMF, ISO 42001, MAS TRM, GDPR, DORA",
     ]
     for text in traction:
@@ -557,9 +557,9 @@ def page4(c):
     result_headers = ["Metric", "Result"]
     result_widths = [180, CW - 180]
     result_rows = [
-        ["Governance throughput", "2.58M decisions/sec"],
-        ["Transaction throughput", "3.7M transactions/sec"],
-        ["Federation (5 banks, 1.48M entities)", "30 seconds"],
+        ["Single-bank pipeline (500K entities, 100 policies)", "Under 2 seconds"],
+        ["Bilateral federation round (100K entities per bank)", "Under 10 seconds"],
+        ["Peak throughput", "150M+ CEPS (compliance policy evaluations/sec)"],
         ["Typologies detected", "4/4 at every scale, per-entity verified"],
         ["Transport security", "AES-256-GCM + Ed25519 on every round"],
         ["Data shared between banks", "Zero bytes of customer data"],
@@ -650,7 +650,7 @@ def page5(c):
         ["Language", "C++23 with CUDA"],
         ["GPU targets", "sm_86, sm_89, sm_100, sm_120"],
         ["Build hardening", "/sdl, /guard:cf, /GS, /Qspectre, /CETCOMPAT, /HIGHENTROPYVA"],
-        ["Testing", "4,900 automated tests across 10 audited subsystems"],
+        ["Testing", "5,000+ automated tests across 10 audited subsystems"],
         ["Cryptography", "BLAKE3, SHA-256, Ed25519, ZK-optimised hash functions, SipHash-128"],
         ["Entity system", "High-performance entity component system"],
         ["Serialisation", "Custom binary format (64B-aligned, std140-compatible)"],
