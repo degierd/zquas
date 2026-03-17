@@ -59,7 +59,8 @@ nav {
     transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--text-primary); }
-.nav-links a.active { color: var(--text-primary); }
+.nav-links a.active { color: var(--accent); }
+.nav-dropdown-toggle.active { color: var(--accent) !important; }
 .nav-contact {
     color: var(--accent) !important;
     border: 1px solid var(--accent-dim);
