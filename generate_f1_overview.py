@@ -208,17 +208,17 @@ def page1(c):
         ["Transaction monitoring", "Actimize, Norkom, SAS, Sentinels",
          "Real-time GPU evaluation (not batch, under 10ms alert lifecycle)"],
         ["Name / entity matching", "Fircosoft, Quantexa",
-         "GPU identity resolution (Blake3 canonical IDs, diacritic-aware)"],
+         "GPU identity resolution (canonical IDs, diacritic-aware)"],
         ["Case management", "Actimize, custom",
          "Operator Console (6 roles, investigation workspace, SAR filing)"],
         ["Suspicious Activity Reporting", "Manual / custom",
          "Constitutional governance (agents recommend, MLRO approves)"],
         ["Network analytics", "Quantexa, SynapseGrid",
-         "GPU graph propagation (7 kernels, cross-bank contagion)"],
+         "GPU graph propagation (cross-bank contagion detection)"],
         ["Cross-bank detection", "TMNL (shut down)",
          "Privacy-preserving federation (ECDH-PSI + Garbled Circuits)"],
         ["Regulatory reporting", "Custom / Excel",
-         "Cryptographic proof per decision (Ed25519 ZAPB, regulator verifies offline)"],
+         "Cryptographic proof per decision (Ed25519-signed, regulator verifies offline)"],
     ]
     y = draw_table(c, y, headers, rows, widths, font_size=7, row_h=24, wrap_cols={1, 2})
 
@@ -250,13 +250,13 @@ def page2(c):
     rows = [
         ["1. Ingestion",
          "CSV, API, or real-time feed. Multilingual column mapping (Dutch, German, French, English).",
-         "Entities in Noumenon semantic graph"],
+         "Entities in semantic knowledge graph"],
         ["2. Evaluation",
          "Every entity evaluated against 100 AML policies on GPU. 150 million+ evaluations/second.",
          "Risk score + verdict per entity per policy"],
         ["3. Proof",
-         "Every evaluation produces an Ed25519-signed cryptographic proof. 912 bytes, independently verifiable.",
-         "ZAPB proof bundle (Merkle + signature)"],
+         "Every evaluation produces an Ed25519-signed cryptographic proof. Independently verifiable.",
+         "Proof bundle (Merkle root + signature)"],
         ["4. Triage",
          "50,000 GPU-resident agents assess every entity in under 10ms. Constitutional gate: no autonomous SARs.",
          "Clear / Monitor / Investigate / Escalate"],
@@ -278,22 +278,17 @@ def page2(c):
 
     diffs = [
         ("Compliance Policy Language (CPL): ",
-         "Domain-specific language for AML policy definition. 59-opcode register-based VM with "
-         "guaranteed termination (forward-only jumps, instruction budget). 29 AML policies across "
-         "sanctions, PEP screening, transaction monitoring, fraud detection, KYC/KYB, crypto/VASP, "
-         "proliferation financing, and AI agent governance. Identical results on CPU and GPU. "
-         "Hot-reloadable: policy amendments take effect immediately without restart."),
-        ("Semantic Knowledge Graph (Noumenon): ",
-         "Seven-domain entity model: Ontology, Topology, Dynamics, Epistemics, Salience, Affordance, "
-         "Projection. Per-field provenance tracking across 9 source types. EnTT component pools for "
-         "cache-aligned GPU-friendly entity storage. Every fact about every entity has a tracked origin, "
-         "confidence score, and timestamp."),
+         "Domain-specific language for AML policy definition. Compiled to GPU bytecode with guaranteed "
+         "termination. 29 AML policies across sanctions, PEP screening, transaction monitoring, fraud "
+         "detection, KYC/KYB, crypto/VASP, proliferation financing, and AI agent governance. Identical "
+         "results on CPU and GPU. Hot-reloadable: policy amendments take effect immediately without restart."),
+        ("Semantic Knowledge Graph: ",
+         "Multi-domain entity model with per-field provenance tracking. GPU-optimised entity storage. "
+         "Every fact about every entity has a tracked origin, confidence score, and timestamp."),
         ("Constitutional Agent Governance: ",
-         "50,000 autonomous AML agents on GPU, each with per-agent gas budgets, Ed25519-signed warrants, "
-         "and a constitutional gate. Agents assess risk using utility scoring across five signals: risk "
-         "score, transaction velocity, network centrality, federation signal, and dormancy. Agents "
-         "recommend actions but cannot file SARs. A human MLRO must approve every SAR. Three independent "
-         "defence layers prevent autonomous SAR filing."),
+         "50,000 autonomous AML agents on GPU, each with per-agent resource budgets, Ed25519-signed "
+         "warrants, and a constitutional gate. Agents recommend actions but cannot file SARs. A human "
+         "MLRO must approve every SAR. Multiple independent defence layers prevent autonomous SAR filing."),
     ]
     for label, text in diffs:
         draw_dot(c, MARGIN + 4, y)
@@ -315,12 +310,12 @@ def page3(c):
     y = section_header(c, y, "Privacy-Preserving Federation")
 
     y = wrap_text(c, MARGIN, y,
-                  "Real multi-party computation: ECDH Private Set Intersection on Curve25519 with "
-                  "Yao's Garbled Circuits and IKNP OT Extension. Semi-honest security model (appropriate "
-                  "for regulated consortiums). AES-256-GCM transport encryption mandatory. Entity count "
-                  "padding hides set sizes. Dual Ed25519 attestation: both parties sign, regulator verifies. "
-                  "GPU-accelerated: PSI, GC, and OT all run on GPU. Scales from 5 banks to 500+ without "
-                  "code changes.",
+                  "Real multi-party computation using established cryptographic protocols: Private Set "
+                  "Intersection for entity matching, Garbled Circuits for secure comparison, Oblivious "
+                  "Transfer for key exchange. Semi-honest security model (appropriate for regulated "
+                  "consortiums). AES-256-GCM transport encryption mandatory. Entity count padding hides "
+                  "set sizes. Dual Ed25519 attestation: both parties sign, regulator verifies. "
+                  "GPU-accelerated. Scales from 5 banks to 500+ without code changes.",
                   size=8.5, leading=12)
 
     y -= 14
@@ -331,11 +326,11 @@ def page3(c):
     y = section_header(c, y, "Cross-Institutional Graph Propagation")
 
     y = wrap_text(c, MARGIN, y,
-                  "When federation identifies shared entities, the GPU Identity Resolution Graph creates "
-                  "cross-bank identity edges. Unified interleaved propagation traverses both transaction "
-                  "and identity edges in a single GPU pass. Risk flows from one bank's transaction network, "
-                  "across the identity bridge, into the other bank's network. Detects layering chains, mule "
-                  "networks, and circular flows that are invisible to any individual bank.",
+                  "When federation identifies shared entities, the engine creates cross-bank identity "
+                  "edges. Risk propagation traverses both transaction and identity edges in a single GPU "
+                  "pass. Risk flows from one bank's transaction network, across the identity bridge, into "
+                  "the other bank's network. Detects layering chains, mule networks, and circular flows "
+                  "that are invisible to any individual bank.",
                   size=8.5, leading=12)
 
     y -= 14
@@ -376,13 +371,13 @@ def page3(c):
     widths = [160, CW - 160]
     rows = [
         ["Cryptographic proof per decision",
-         "912-byte Ed25519-signed ZAPB bundle. Regulator verifies offline with public key only."],
+         "Ed25519-signed proof bundle with Merkle root. Regulator verifies offline with public key only."],
         ["Every primitive RFC/NIST verified",
-         "Ed25519: RFC 8032. SHA-256: FIPS 180-4. Blake3: official reference. SipHash: internal consistency."],
-        ["Safety verification (SENTINEL)",
-         "4,998 C++ functions with 10,255 invariants. Pre-commit gate: removing a null check blocks commit."],
+         "Ed25519: RFC 8032. SHA-256: FIPS 180-4. Blake3: official reference vectors."],
+        ["Continuous safety verification",
+         "Static analysis across entire codebase. Pre-commit gate enforces invariants on every change."],
         ["Semi-honest MPC security",
-         "Based on ECDLP. Transport: AES-256-GCM. Relay authentication: Ed25519 challenge-response."],
+         "Based on ECDLP. Transport: AES-256-GCM. Mutual authentication on every federation round."],
         ["Regulatory submissions",
          "DNB InnovationHub: under review. FCA Digital Sandbox: submitted."],
     ]
@@ -413,8 +408,8 @@ def page4(c):
         ["Intelligence Surface", "Real-time KPIs, risk distribution, alert feed"],
         ["Alert Queue", "Keyboard navigable (J/K/Enter), ranked by composite risk"],
         ["Investigation Workspace",
-         "Entity profile, counterparty graph (D3), risk timeline, AI-generated narrative, "
-         "ZAPB proof panel, provenance badges"],
+         "Entity profile, counterparty graph, risk timeline, AI-generated narrative, "
+         "proof panel, provenance badges"],
         ["SAR Filing",
          "Viewport attestation, typology selection, proof hash. Constitutional gate: MLRO-only."],
         ["Federation Demo", "Configure peers, run MPC round, view escalations"],
