@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why the Current Approach Fails | ZQUAS</title>
+    <meta name="description" content="Banks spend billions on compliance. Detection rates remain below 2%. The architecture is the problem. ZQUAS replaces isolated monitoring with cross-institutional detection.">
+    <meta property="og:title" content="Why the Current Approach Fails | ZQUAS">
+    <meta property="og:description" content="Banks spend billions on compliance. Detection rates remain below 2%. The architecture is the problem. ZQUAS replaces isolated monitoring with cross-institutional detection.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zquas.ai/why-different.html">
+    <meta property="og:image" content="https://zquas.ai/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://zquas.ai/og-image.png">
+    <meta name="author" content="Danny de Gier">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://zquas.ai/why-different.html">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Why the Current Approach Fails | ZQUAS",
+        "description": "Banks spend billions on compliance. Detection rates remain below 2%. The architecture is the problem. ZQUAS replaces isolated monitoring with cross-institutional detection.",
+        "url": "https://zquas.ai/why-different.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "ZQUAS",
+            "url": "https://zquas.ai"
+        }
+    }
+    </script>
+    <style>
+        /* ── WHY DIFFERENT: PROBLEM PROSE ── */
+        .wd-prose {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .wd-prose p {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 1.75rem;
+        }
+
+        /* ── WHY DIFFERENT: COMPARISON TABLE ── */
+        .wd-table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-bottom: 1rem;
+        }
+        .wd-table {
+            width: 100%;
+            min-width: 800px;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        .wd-table thead th {
+            text-align: left;
+            padding: 1rem 1.25rem;
+            border-bottom: 2px solid var(--border-accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+        .wd-table thead th.wd-col-cap { width: 15%; }
+        .wd-table thead th.wd-col-trad { width: 28%; color: var(--text-muted); }
+        .wd-table thead th.wd-col-zquas { width: 28%; color: var(--accent); }
+        .wd-table tbody tr {
+            transition: background 0.15s;
+        }
+        .wd-table tbody tr:hover {
+            background: var(--bg-card-hover);
+        }
+        .wd-table tbody td {
+            padding: 0.85rem 1.25rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+            line-height: 1.5;
+            vertical-align: top;
+        }
+        .wd-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .wd-cap {
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: 0.82rem;
+        }
+        .wd-trad {
+            color: var(--text-muted);
+        }
+        .wd-zquas {
+            color: var(--text-primary);
+        }
+        .wd-why {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-style: italic;
+            padding-top: 0.5rem;
+            line-height: 1.5;
+        }
+
+        /* ── Alternating row backgrounds ── */
+        .wd-row-group:nth-child(odd) .wd-main-row {
+            background: var(--bg-card);
+        }
+        .wd-row-group:nth-child(odd) .wd-why-row {
+            background: var(--bg-card);
+        }
+        .wd-why-row td {
+            padding-top: 0;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .wd-main-row td {
+            border-bottom: none;
+            padding-bottom: 0.25rem;
+        }
+        .wd-row-group:last-child .wd-why-row td {
+            border-bottom: none;
+        }
+
+        /* ── STATS ROW ── */
+        .wd-stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .wd-stat-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+        .wd-stat-box .wd-stat-val {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+        .wd-stat-box .wd-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+        .wd-stat-box .wd-stat-detail {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 0.35rem;
+        }
+        .wd-stats-note {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* ── REGULATORY MOMENT ── */
+        .wd-regulatory {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .wd-regulatory p {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+        }
+
+        /* ── CLOSING ── */
+        .wd-closing {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .wd-closing p {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .wd-stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .wd-stats-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <div class="nav-dropdown">
+                <a href="technology.html" class="nav-dropdown-toggle">Technology <span class="nav-arrow">&#x25BE;</span></a>
+                <div class="nav-dropdown-menu">
+                    <a href="technology.html">Overview</a>
+                    <a href="architecture.html">Architecture</a>
+                    <a href="compare.html">Compare</a>
+                    <a href="why-different.html">Why Different</a>
+                    <a href="benchmark.html">Benchmark</a>
+                    <a href="engineering.html">Engineering</a>
+                </div>
+            </div>
+            <a href="regulators.html">Regulators</a>
+            <a href="use-case.html">Use Case</a>
+            <a href="about.html">About</a>
+            <a href="articles.html">Articles</a>
+            <a href="founding-partner.html">Partner</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+
+<!-- SECTION 1: Header -->
+<section class="compare-header">
+    <div class="container">
+        <div class="section-label">The Architecture Problem</div>
+        <h1 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.6rem); max-width: 700px; margin-bottom: 1.5rem;">Why the Current Approach Fails</h1>
+        <p class="section-desc" style="max-width: 700px;">
+            Financial crime costs the global economy trillions per year. Banks spend billions on compliance. Detection rates remain below 2%. The architecture is the problem.
+        </p>
+    </div>
+</section>
+
+<!-- SECTION 2: The Problem -->
+<section>
+    <div class="container">
+        <div class="wd-prose">
+            <p>Today, every bank fights financial crime alone. Each institution monitors its own transactions, flags its own alerts, and files its own reports. Criminals exploit this by spreading activity across multiple banks. The transfer that looks normal at one bank is part of a laundering chain visible only when you combine the picture across institutions. But combining that picture means sharing customer data, which privacy law prohibits.</p>
+
+            <p>This is not a new problem. Attempts to solve it have failed. In the Netherlands, five major banks created TMNL to pool transaction data for joint monitoring. It was shut down after the Data Protection Authority ruled that mass data sharing without a specific legal basis violated privacy law. The technology concept was sound. The architecture was wrong. Centralising data creates the very privacy problem it tries to solve.</p>
+
+            <p>The EU has now created the legal basis. AMLR Article 75 (applicable July 2027) explicitly permits cross-institutional information sharing for AML purposes, with mandatory pseudonymisation as a technical safeguard. The legal barrier is removed. The question is now purely technical: how do institutions cooperate without sharing data? The answer is privacy-preserving computation, specifically multi-party computation, where institutions jointly compute over their combined data without any institution revealing its raw information to another.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 3: The Comparison Table -->
+<section style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+        <div class="section-label">Capability Comparison</div>
+        <h2 class="section-title" style="font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 2rem;">What Changes</h2>
+        <div class="wd-table-wrap">
+            <table class="wd-table">
+                <thead>
+                    <tr>
+                        <th class="wd-col-cap">Capability</th>
+                        <th class="wd-col-trad">Traditional AML Systems</th>
+                        <th class="wd-col-zquas">ZQUAS</th>
+                    </tr>
+                </thead>
+                    <tbody class="wd-row-group">
+                        <tr class="wd-main-row">
+                            <td class="wd-cap">Visibility</td>
+                            <td class="wd-trad">Each bank monitors only its own transactions.</td>
+                            <td class="wd-zquas">Detection runs across all participating institutions.</td>
+                        </tr>
+                        <tr class="wd-why-row">
+                            <td></td>
+                            <td colspan="2"><div class="wd-why">Criminal networks move money between banks. Monitoring one bank means missing the pattern that spans three.</div></td>
+                        </tr>
+                    </tbody>
+                    <tbody class="wd-row-group">
+                        <tr class="wd-main-row">
+                            <td class="wd-cap">Data Sharing</td>
+                            <td class="wd-trad">Collaboration requires sharing customer data.</td>
+                            <td class="wd-zquas">Banks collaborate without sharing any customer data.</td>
+                        </tr>
+                        <tr class="wd-why-row">
+                            <td></td>
+                            <td colspan="2"><div class="wd-why">Multi-party computation allows joint detection with mathematical privacy guarantees. No raw data leaves any institution.</div></td>
+                        </tr>
+                    </tbody>
+                    <tbody class="wd-row-group">
+                        <tr class="wd-main-row">
+                            <td class="wd-cap">Detection Model</td>
+                            <td class="wd-trad">Static rules tested against historical transactions.</td>
+                            <td class="wd-zquas">Real-time federated analysis across the network.</td>
+                        </tr>
+                        <tr class="wd-why-row">
+                            <td></td>
+                            <td colspan="2"><div class="wd-why">Suspicious patterns are detected as they form, not months later during a manual investigation.</div></td>
+                        </tr>
+                    </tbody>
+                    <tbody class="wd-row-group">
+                        <tr class="wd-main-row">
+                            <td class="wd-cap">Processing Speed</td>
+                            <td class="wd-trad">Batch processing. Overnight or hourly cycles.</td>
+                            <td class="wd-zquas">2.58 million governance decisions per second.</td>
+                        </tr>
+                        <tr class="wd-why-row">
+                            <td></td>
+                            <td colspan="2"><div class="wd-why">GPU-native computation evaluates the entire entity population continuously. There is no queue. There is no overnight batch.</div></td>
+                        </tr>
+                    </tbody>
+                    <tbody class="wd-row-group">
+                        <tr class="wd-main-row">
+                            <td class="wd-cap">Compliance Assurance</td>
+                            <td class="wd-trad">Systems produce logs and reports for auditors.</td>
+                            <td class="wd-zquas">Every decision is cryptographically signed and independently verifiable.</td>
+                        </tr>
+                        <tr class="wd-why-row">
+                            <td></td>
+                            <td colspan="2"><div class="wd-why">Regulators can mathematically verify that a compliance decision was made correctly, not just trust the documentation.</div></td>
+                        </tr>
+                    </tbody>
+                    <tbody class="wd-row-group">
+                        <tr class="wd-main-row">
+                            <td class="wd-cap">Security Testing</td>
+                            <td class="wd-trad">Periodic penetration testing and vulnerability scans.</td>
+                            <td class="wd-zquas">Continuous adversarial self-testing built into the engine.</td>
+                        </tr>
+                        <tr class="wd-why-row">
+                            <td></td>
+                            <td colspan="2"><div class="wd-why">The system attacks its own detection logic continuously, finding weaknesses before criminals do.</div></td>
+                        </tr>
+                    </tbody>
+                    <tbody class="wd-row-group">
+                        <tr class="wd-main-row">
+                            <td class="wd-cap">Knowledge Sharing</td>
+                            <td class="wd-trad">Laundering typologies shared slowly via industry reports.</td>
+                            <td class="wd-zquas">New patterns propagate across the network automatically.</td>
+                        </tr>
+                        <tr class="wd-why-row">
+                            <td></td>
+                            <td colspan="2"><div class="wd-why">When one institution discovers a new laundering tactic, every participating institution benefits immediately.</div></td>
+                        </tr>
+                    </tbody>
+                    <tbody class="wd-row-group">
+                        <tr class="wd-main-row">
+                            <td class="wd-cap">Regulatory Audits</td>
+                            <td class="wd-trad">Audits rely on documentation and sampling.</td>
+                            <td class="wd-zquas">Audit evidence is machine-verifiable.</td>
+                        </tr>
+                        <tr class="wd-why-row">
+                            <td></td>
+                            <td colspan="2"><div class="wd-why">Compliance examinations become faster and more reliable because every decision carries a cryptographic proof chain.</div></td>
+                        </tr>
+                    </tbody>
+                    <tbody class="wd-row-group">
+                        <tr class="wd-main-row">
+                            <td class="wd-cap">AI Integration</td>
+                            <td class="wd-trad">ML models bolted onto existing rule engines.</td>
+                            <td class="wd-zquas">Every entity is an autonomous agent within a governed AI runtime.</td>
+                        </tr>
+                        <tr class="wd-why-row">
+                            <td></td>
+                            <td colspan="2"><div class="wd-why">AI is not an add-on. It is the foundation. Every account perceives, evaluates, and acts within verified governance rules.</div></td>
+                        </tr>
+                    </tbody>
+                    <tbody class="wd-row-group">
+                        <tr class="wd-main-row">
+                            <td class="wd-cap">Scalability</td>
+                            <td class="wd-trad">Scale by adding servers and databases.</td>
+                            <td class="wd-zquas">Single GPU: 8 million accounts. Adding banks does not increase processing time.</td>
+                        </tr>
+                        <tr class="wd-why-row">
+                            <td></td>
+                            <td colspan="2"><div class="wd-why">Parallel execution means the system processes 5 banks as fast as 2 banks. Scale is a hardware property, not an infrastructure project.</div></td>
+                        </tr>
+                    </tbody>
+                    <tbody class="wd-row-group">
+                        <tr class="wd-main-row">
+                            <td class="wd-cap">Multi-Industry</td>
+                            <td class="wd-trad">Separate products for each regulation and sector.</td>
+                            <td class="wd-zquas">Industry-agnostic governance engine. Financial crime is the first application.</td>
+                        </tr>
+                        <tr class="wd-why-row">
+                            <td></td>
+                            <td colspan="2"><div class="wd-why">The same engine governs any domain where autonomous entities must operate under verifiable rules.</div></td>
+                        </tr>
+                    </tbody>
+                    <tbody class="wd-row-group">
+                        <tr class="wd-main-row">
+                            <td class="wd-cap">Philosophy</td>
+                            <td class="wd-trad">Each bank fights financial crime alone.</td>
+                            <td class="wd-zquas">Collective defence across institutions.</td>
+                        </tr>
+                        <tr class="wd-why-row">
+                            <td></td>
+                            <td colspan="2"><div class="wd-why">Criminal networks cooperate globally. The financial system must do the same, without sacrificing privacy.</div></td>
+                        </tr>
+                    </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 4: The Numbers -->
+<section>
+    <div class="container">
+        <div class="section-label">Measured, Not Projected</div>
+        <h2 class="section-title" style="font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 2rem;">The Numbers</h2>
+        <div class="wd-stats-row">
+            <div class="wd-stat-box">
+                <div class="wd-stat-val">2.58M</div>
+                <div class="wd-stat-label">governance decisions per second</div>
+            </div>
+            <div class="wd-stat-box">
+                <div class="wd-stat-val">3.7M</div>
+                <div class="wd-stat-label">transactions processed per second</div>
+            </div>
+            <div class="wd-stat-box">
+                <div class="wd-stat-val">30s</div>
+                <div class="wd-stat-label">5 banks, 1.48M entities</div>
+            </div>
+            <div class="wd-stat-box">
+                <div class="wd-stat-val">4,900</div>
+                <div class="wd-stat-label">tests, zero failures</div>
+            </div>
+        </div>
+        <p class="wd-stats-note">All numbers measured. Federation benchmarks use realistic Dutch banking entity distributions.</p>
+    </div>
+</section>
+
+<!-- SECTION 5: The Regulatory Moment -->
+<section style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+        <div class="section-label">The Regulatory Moment</div>
+        <h2 class="section-title" style="font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 2rem;">July 2027</h2>
+        <div class="wd-regulatory">
+            <p>AMLR Article 75 applies on July 10, 2027. Banks that want to participate in cross-institutional detection must have the infrastructure in place by that date. The European Data Protection Board has identified multi-party computation as an accountability tool for privacy-preserving data processing. The Netherlands Court of Audit (Algemene Rekenkamer) found that current AML controls involve 13,000 FTE and 530,000 annual reports with no measurable insight into effectiveness. The technology to change this exists today.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 6: Closing -->
+<section>
+    <div class="container">
+        <div class="wd-closing">
+            <p>The difference between monitoring transactions and governing entities is architectural. It cannot be retrofitted.</p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <a href="/" class="footer-logo">ZQUAS<span>.</span></a>
+            <p>Bounded Compliance on an Unbounded Platform.<br>Cross-institutional AML detection without sharing customer data.</p>
+        </div>
+        <div class="footer-links">
+            <div class="footer-col">
+                <h4>Technology</h4>
+                <a href="technology.html">Overview</a>
+                <a href="architecture.html">Architecture</a>
+                <a href="compare.html">Compare</a>
+                <a href="why-different.html">Why Different</a>
+                <a href="benchmark.html">Benchmark</a>
+                <a href="engineering.html">Engineering</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="regulators.html">Regulators</a>
+                <a href="use-case.html">Use Case</a>
+                <a href="about.html">About</a>
+                <a href="articles.html">Articles</a>
+            </div>
+            <div class="footer-col">
+                <h4>Get Involved</h4>
+                <a href="founding-partner.html">Founding Partner Programme</a>
+                <a href="article-75.html">Position Paper</a>
+                <a href="contact.html">Contact</a>
+                <a href="zquas-onepager.pdf" target="_blank">Download One-Pager</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 ZQUAS &middot; Bounded Compliance on an Unbounded Platform</p>
+        <a href="mailto:info@zquas.ai">info@zquas.ai</a>
+    </div>
+</footer>
+
+</body>
+</html>
