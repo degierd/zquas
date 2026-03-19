@@ -338,6 +338,10 @@ def page2(c):
          "Yao's Garbled Circuits (Free-XOR) for risk comparison, IKNP OT for oblivious transfer. "
          "Semi-honest security model. Under 10 seconds per bilateral round. Dual Ed25519 attestation. "
          "AES-256-GCM encrypted transport. Zero bytes of customer data shared."),
+        ("Financial Crime Network Simulator: ", "GPU-native simulation of complete financial ecosystems "
+         "with embedded criminal networks across 8 FATF-documented typologies. CBS-calibrated legitimate "
+         "economy. Falsifiable, reproducible detection measurement. The industry benchmark that does not "
+         "exist anywhere else."),
     ]
     for label, text in det_items:
         draw_dot(c, MARGIN + 4, y)
