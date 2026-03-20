@@ -6,7 +6,7 @@
     <title>Benchmark: 150M+ Evaluations/sec, Under 10ms Alert Lifecycle — ZQUAS</title>
     <meta name="description" content="Documented GPU benchmark of the ZQUAS F1 engine. 500K entities in under 2 seconds on NVIDIA RTX 5090. Alert lifecycle under 10ms.">
     <meta property="og:title" content="Benchmark: 150M+ Evaluations/sec, Under 10ms Alert Lifecycle — ZQUAS">
-    <meta property="og:description" content="Documented GPU benchmark of the ZQUAS F1 engine. 500K entities in under 2 seconds on NVIDIA RTX 5090. Alert lifecycle under 10ms. 5,000+ automated tests.">
+    <meta property="og:description" content="Documented GPU benchmark of the ZQUAS F1 engine. 500K entities in under 2 seconds on NVIDIA RTX 5090. Alert lifecycle under 10ms. 7,200+ automated tests.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zquas.ai/benchmark.html">
     <meta property="og:image" content="https://zquas.ai/og-image.png">
@@ -26,7 +26,7 @@
         "@context": "https://schema.org",
         "@type": "TechArticle",
         "headline": "Benchmark: 150M+ CEPS, Under 10ms Alert Lifecycle",
-        "description": "Documented GPU benchmark of the ZQUAS F1 engine. 500K entities in under 2 seconds on NVIDIA RTX 5090. Alert lifecycle under 10ms. 5,000+ automated tests across 10 audited subsystems.",
+        "description": "Documented GPU benchmark of the ZQUAS F1 engine. 500K entities in under 2 seconds on NVIDIA RTX 5090. Alert lifecycle under 10ms. 7,200+ automated tests across 12 audited subsystems.",
         "datePublished": "2026-03-01",
         "author": {
             "@type": "Person",
@@ -361,7 +361,7 @@
 
             <p>The benchmark is deterministic. Running the benchmark suite with the same policy set on the same hardware produces identical results. The benchmark executable is subject to the same build attestation as the main engine: embedded BLAKE3 and SHA-256 hashes, compiler version, git commit, and Ed25519 signature.</p>
 
-            <p>Every benchmark result is covered by 5,000+ automated tests across 10 independently audited subsystems: SENTINEL, Noumenon, CPL, Themis, Prometheus, Federation, UI, IrgManager, Crypto, and Decision. Crypto KAT tests cover Ed25519 (RFC 8032), SHA-256 (FIPS 180-4), and Blake3 (official vectors). Hardware differences will affect absolute throughput but not determinism or correctness.</p>
+            <p>Every benchmark result is covered by 7,200+ automated tests across 12 independently audited subsystems: SENTINEL, Noumenon, CPL, Themis, Prometheus, Federation, UI, IrgManager, Crypto, and Decision. Crypto KAT tests cover Ed25519 (RFC 8032), SHA-256 (FIPS 180-4), and Blake3 (official vectors). Hardware differences will affect absolute throughput but not determinism or correctness.</p>
 
             <p>ZAPB proof bundles (912 bytes per evaluation) are independently verifiable. A regulator with the public key can verify any proof bundle offline without engine access. The Merkle inclusion proof supports trees up to depth 20. 14 field-level tamper detection tests confirm that any modification to the proof bundle is detectable.</p>
         </div>

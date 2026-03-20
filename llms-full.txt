@@ -124,7 +124,7 @@ The engine ships with a standalone verification CLI. The tool is independent of 
 - **Language**: C++23 with CUDA. Self-contained CUDA compilation per kernel. No separable compilation dependencies.
 - **GPU Targets**: NVIDIA architectures: sm_86 (Ampere), sm_89 (Ada Lovelace), sm_100 (Blackwell), sm_120 (next-gen). Tested on RTX 5090.
 - **Build Hardening**: MSVC /sdl, /guard:cf, /GS, /Qspectre, /fp:strict. Linker: /CETCOMPAT, /DYNAMICBASE, /NXCOMPAT, /HIGHENTROPYVA.
-- **Testing**: 5,000+ unit tests (GTest). Standalone benchmark harnesses for throughput, latency, determinism, and detection fidelity.
+- **Testing**: 7,200+ unit tests (GTest). Standalone benchmark harnesses for throughput, latency, determinism, and detection fidelity.
 - **Cryptography**: BLAKE3 (internal), SHA-256 (regulatory), Ed25519 (signatures), Poseidon (ZK circuits). DualHash at domain boundaries.
 - **Binary Attestation**: Reproducible builds with embedded BLAKE3 + SHA-256 hashes, compiler version, git commit, and Ed25519 signature for runtime self-verification.
 

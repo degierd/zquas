@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Engineering Standards | ZQUAS</title>
-    <meta name="description" content="Engineering standards behind the ZQUAS compliance engine. 5,000+ automated tests, 10 audited subsystems, defence-grade build hardening, reproducible binaries, proven cryptography.">
+    <meta name="description" content="Engineering standards behind the ZQUAS compliance engine. 7,200+ automated tests, 12 audited subsystems, CHIMERA detection benchmark, defence-grade build hardening, reproducible binaries, proven cryptography.">
     <meta property="og:title" content="Engineering Standards | ZQUAS">
-    <meta property="og:description" content="Engineering standards behind the ZQUAS compliance engine. 5,000+ automated tests, 10 audited subsystems, defence-grade build hardening, reproducible binaries, proven cryptography.">
+    <meta property="og:description" content="Engineering standards behind the ZQUAS compliance engine. 7,200+ automated tests, 12 audited subsystems, CHIMERA detection benchmark, defence-grade build hardening, reproducible binaries, proven cryptography.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zquas.ai/engineering.html">
     <meta property="og:image" content="https://zquas.ai/og-image.png">
@@ -26,7 +26,7 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "Engineering Standards | ZQUAS",
-        "description": "Engineering standards behind the ZQUAS compliance engine. 5,000+ automated tests, 10 audited subsystems, defence-grade build hardening, reproducible binaries, proven cryptography.",
+        "description": "Engineering standards behind the ZQUAS compliance engine. 7,200+ automated tests, 12 audited subsystems, CHIMERA detection benchmark, defence-grade build hardening, reproducible binaries, proven cryptography.",
         "url": "https://zquas.ai/engineering.html",
         "publisher": {
             "@type": "Organization",
@@ -58,7 +58,7 @@
         }
         .eng-stats-row {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.25rem;
             margin-top: 1rem;
         }
@@ -140,8 +140,23 @@
     <div class="container">
 
         <div class="eng-section">
-            <h2>5,000+ Tests</h2>
-            <p>The engine is verified by 5,000+ automated tests across 10 independently audited subsystems spanning cryptographic correctness, GPU compute validation, governance logic, compliance rules, privacy-preserving protocols, rendering, and infrastructure. Every test runs on every build. Zero tolerance for failures. Test categories include known-answer tests against published cryptographic vectors, cross-validation between independent implementations (GPU vs CPU), boundary value analysis, adversarial input testing, determinism verification across repeated runs, and multi-institution federation integration tests with realistic data distributions.</p>
+            <h2>7,200+ Tests</h2>
+            <p>The engine is verified by over 7,200 automated tests across 12 independently audited subsystems spanning cryptographic correctness, GPU compute validation, governance logic, compliance rules, privacy-preserving federation protocols, financial crime detection, synthetic benchmarking, and infrastructure. Every test runs on every build. Zero tolerance for failures. Test categories include known-answer tests against published cryptographic vectors, cross-validation between independent implementations (GPU vs CPU), boundary value analysis, adversarial input testing, determinism verification across repeated runs, multi-institution federation integration tests with realistic data distributions, and end-to-end browser tests verifying that the Operator Console renders real data from real detection pipelines.</p>
+        </div>
+
+        <div class="eng-section">
+            <h2>CHIMERA: Falsifiable Detection</h2>
+            <p>The engine includes the Financial Crime Network Simulator (CHIMERA): the first synthetic benchmark that measures AML detection accuracy against realistic criminal behaviour. Eight FATF typologies. Three jurisdiction packs (NL, UK, DE) calibrated against national statistics. Adversarial criminals that adapt when caught. Systemic noise from real banking infrastructure quirks. Macro-economic shocks. 16 formally defined scoring metrics. Every detection claim is testable, reproducible, and falsifiable. No other vendor can prove their detection works. We publish the proof.</p>
+        </div>
+
+        <div class="eng-section">
+            <h2>GPU-Native Computation</h2>
+            <p>All detection, scoring, federation, and simulation runs on GPU. Over 150 million policy evaluations per second. 500,000 entities evaluated in under 2 seconds. Zero CPU fallback paths in the detection pipeline. Every kernel is a CUDA global function in a dedicated compute file. Tests call GPU kernels directly with device memory. No CPU wrappers hiding GPU execution. The engine does not use GPU as an accelerator. GPU is the only execution path.</p>
+        </div>
+
+        <div class="eng-section">
+            <h2>Privacy-Preserving Federation</h2>
+            <p>Cross-bank detection uses Multi-Party Computation: the data never leaves the bank. Private Set Intersection for identity matching. Arithmetic Secret Sharing and Garbled Circuits for joint risk computation. Oblivious Transfer Extension for efficient protocol execution. The federation protocol runs over the open internet. The security is in the cryptography, not the network. Same elliptic curve foundations as Bitcoin, stronger privacy guarantees. Benchmarked at 602 milliseconds for three-bank federation with zero false positives.</p>
         </div>
 
         <div class="eng-section">
@@ -161,7 +176,7 @@
 
         <div class="eng-section">
             <h2>Proven Cryptography</h2>
-            <p>All cryptographic operations use published, peer-reviewed algorithms. Ed25519 for digital signatures. X25519 for key agreement. standard elliptic curve cryptography for oblivious transfer base operations. Blake3 for hashing with domain separation. No custom cryptography. No proprietary ciphers. Every implementation is validated against known-answer test vectors from the relevant specification documents.</p>
+            <p>All cryptographic operations use published, peer-reviewed algorithms. Ed25519 for digital signatures. X25519 for key agreement. Elliptic curve Diffie-Hellman for oblivious transfer base operations. Blake3 for hashing with domain separation. No custom cryptography. No proprietary ciphers. Every implementation is validated against known-answer test vectors from the relevant specification documents.</p>
         </div>
 
         <div class="eng-section">
@@ -172,7 +187,7 @@
         <div class="eng-section" style="border-bottom: none;">
             <div class="eng-stats-row">
                 <div class="eng-stat-box">
-                    <div class="stat-val">5,000+</div>
+                    <div class="stat-val">7,200+</div>
                     <div class="stat-label">tests</div>
                 </div>
                 <div class="eng-stat-box">
@@ -190,6 +205,22 @@
                 <div class="eng-stat-box">
                     <div class="stat-val">0</div>
                     <div class="stat-label">floating-point in risk logic</div>
+                </div>
+                <div class="eng-stat-box">
+                    <div class="stat-val">150M+</div>
+                    <div class="stat-label">policy evaluations per second</div>
+                </div>
+                <div class="eng-stat-box">
+                    <div class="stat-val">3</div>
+                    <div class="stat-label">jurisdiction packs</div>
+                </div>
+                <div class="eng-stat-box">
+                    <div class="stat-val">16</div>
+                    <div class="stat-label">detection metrics</div>
+                </div>
+                <div class="eng-stat-box">
+                    <div class="stat-val">602ms</div>
+                    <div class="stat-label">three-bank federation</div>
                 </div>
             </div>
         </div>

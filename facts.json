@@ -122,7 +122,7 @@
     "Deterministic evaluation (byte-identical replay)",
     "Constitutional governance: agents cannot file SARs autonomously",
     "Adversarial self-testing: SENTINEL with 84% mutation kill rate",
-    "5,000+ automated tests across 10 audited subsystems",
+    "7,200+ automated tests across 12 audited subsystems",
     "3-5 year estimated replication timeline for competitors"
   ],
   "business_model": {
