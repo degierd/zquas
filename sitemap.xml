@@ -61,11 +61,6 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://zquas.ai/tmnl.html</loc>
-        <lastmod>2026-03-08</lastmod>
-        <priority>0.8</priority>
-    </url>
-    <url>
         <loc>https://zquas.ai/demo.html</loc>
         <lastmod>2026-03-08</lastmod>
         <priority>0.7</priority>
@@ -79,6 +74,11 @@
         <loc>https://zquas.ai/facts.json</loc>
         <lastmod>2026-03-08</lastmod>
         <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://zquas.ai/engineering.html</loc>
+        <lastmod>2026-03-08</lastmod>
+        <priority>0.8</priority>
     </url>
     <url>
         <loc>https://zquas.ai/founding-partner.html</loc>

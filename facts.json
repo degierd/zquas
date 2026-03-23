@@ -26,7 +26,7 @@
     "published_ceps": "150M+",
     "published_single_node_500k": "under 2 seconds",
     "published_alert_lifecycle": "under 10ms",
-    "published_federation_bilateral": "under 10 seconds",
+    "published_federation_bilateral": "under 10 seconds (measured: 7.8s at 100K entities)",
     "published_vram_total": "under 1GB",
     "measured_ceps_note": "Actual: 189-215M CEPS — published figure is conservative",
     "measured_single_node_500k_ms": 1204,
@@ -51,7 +51,7 @@
     "protocol": "ECDH-PSI (X25519) + Yao's GC (Free-XOR) + IKNP OT (Chou-Orlandi P-256)",
     "security_model": "semi-honest",
     "transport": "AES-256-GCM + X25519",
-    "bilateral_round_100k_entities_seconds": 15,
+    "bilateral_round_100k_entities_seconds": 7.8,
     "attestation": "dual Ed25519 (both parties sign)",
     "raw_data_shared": "zero",
     "tests": 361
@@ -65,9 +65,9 @@
     "independent_verification": "public key + proof bundle only; no engine access required"
   },
   "testing": {
-    "total_automated_tests": "5000+",
-    "audited_subsystems": 10,
-    "subsystems": ["SENTINEL", "Noumenon", "CPL", "Themis", "Prometheus", "Federation", "UI", "IrgManager", "Crypto", "Decision"],
+    "total_automated_tests": "7200+",
+    "audited_subsystems": 12,
+    "subsystems": ["SENTINEL", "Noumenon", "CPL", "Themis", "Prometheus", "Federation", "UI", "IrgManager", "Crypto", "Decision", "Synapse", "Janus"],
     "cpl_tests": 288,
     "federation_tests": 361,
     "crypto_kat": ["Ed25519 (RFC 8032)", "SHA-256 (FIPS 180-4)", "Blake3 (official vectors)"]
@@ -136,5 +136,5 @@
     "secondary": "Fintechs, payment service providers",
     "geographic_focus": "EU (AMLR compliance deadline mid-2027)"
   },
-  "last_updated": "2026-03-16"
+  "last_updated": "2026-03-23"
 }

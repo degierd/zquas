@@ -25,7 +25,7 @@ Founded by Danny de Gier, who combines 18+ years of financial crime compliance e
 - 29 AML policies (100 rules, 6 domains) + 15 access control policies
 - Deterministic evaluation: same input + same policy = same verdict, byte-identical replay
 - Privacy-preserving federation: ECDH-PSI (X25519) + Yao's GC (Free-XOR) + IKNP OT; semi-honest security model
-- ~15 seconds per bilateral round at 100K entities (TCP localhost); dual Ed25519 attestation per round
+- Under 10 seconds per bilateral round at 100K entities (measured: 7.8s, TCP localhost); dual Ed25519 attestation per round
 - Cryptographic proof bundles for every compliance decision (Ed25519, Merkle roots, BLAKE3)
 - Independent regulator verification via standalone CLI (no vendor software needed)
 - Zero-knowledge governance proofs (GPU-accelerated PLONK)
@@ -62,6 +62,16 @@ Founded by Danny de Gier, who combines 18+ years of financial crime compliance e
 
 ## Articles
 
+- [What Article 75 Was Afraid to Permit](https://zquas.ai/article-75.html)
+- [From Edge to Federation: A Unified Architecture for Real-Time Financial Crime Detection](https://zquas.ai/article-edge-to-federation.html)
+- [The AML Industry Has Never Proven Detection Works. We Built a Way to Measure It.](https://zquas.ai/article-fcns.html)
+- [What Does Real-Time Actually Mean?](https://zquas.ai/article-real-time-monitoring-defined.html)
+- [EU AI Act and AML: Is Your Transaction Monitoring System High-Risk?](https://zquas.ai/article-ai-act-aml-classification.html)
+- [The 16-Month Window: Why Banks Must Act Before July 2027](https://zquas.ai/article-july-2027-aml-infrastructure-deadline.html)
+- [UK Banks Can Share AML Data Today: ECCTA Sections 188-189](https://zquas.ai/article-eccta-uk-aml-data-sharing.html)
+- [From TMNL to Article 75: The Netherlands' Path to Collaborative AML](https://zquas.ai/article-tmnl-to-article-75-netherlands.html)
+- [MPC and GDPR: What the EDPB Actually Says](https://zquas.ai/article-edpb-mpc-gdpr-accountability.html)
+- [What AMLR Article 75 Means for Dutch Banks](https://zquas.ai/article-amlr-article-75-dutch-banks.html)
 - [Why Cross-Institutional AML Detection Requires a New Architecture](https://zquas.ai/article-cross-institutional-detection.html)
 - [What Running a Multi-Bank Monitoring Network Actually Looks Like](https://zquas.ai/article-interbank-operations.html)
 - [The 200 Billion Compliance Market Nobody Has Disrupted](https://zquas.ai/article-200b-market.html)
