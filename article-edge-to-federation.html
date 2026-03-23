@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Edge to Federation: A Unified Architecture for Real-Time Financial Crime Detection — ZQUAS</title>
+    <meta name="description" content="A ZQUAS position paper. A single detection engine that deploys unchanged from the cash machine on the street corner to a federated network spanning five banks. The same code, the same compliance policies, the same detection algorithms, running at every point where money moves.">
+    <meta property="og:title" content="From Edge to Federation: A Unified Architecture for Real-Time Financial Crime Detection — ZQUAS">
+    <meta property="og:description" content="A ZQUAS position paper. A single detection engine that deploys unchanged from the cash machine on the street corner to a federated network spanning five banks. The same code, the same compliance policies, the same detection algorithms, running at every point where money moves.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://zquas.ai/article-edge-to-federation.html">
+    <meta property="og:image" content="https://zquas.ai/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://zquas.ai/og-image.png">
+    <meta name="author" content="Danny de Gier">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://zquas.ai/article-edge-to-federation.html">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "From Edge to Federation: A Unified Architecture for Real-Time Financial Crime Detection",
+        "description": "A ZQUAS position paper. A single detection engine that deploys unchanged from the cash machine on the street corner to a federated network spanning five banks. The same code, the same compliance policies, the same detection algorithms, running at every point where money moves.",
+        "datePublished": "2026-03-23",
+        "author": {
+            "@type": "Person",
+            "name": "Danny de Gier"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ZQUAS",
+            "url": "https://zquas.ai"
+        },
+        "mainEntityOfPage": "https://zquas.ai/article-edge-to-federation.html"
+    }
+    </script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <div class="nav-dropdown">
+                <a href="technology.html" class="nav-dropdown-toggle">Technology <span class="nav-arrow">&#x25BE;</span></a>
+                <div class="nav-dropdown-menu">
+                    <a href="technology.html">Overview</a>
+                    <a href="architecture.html">Architecture</a>
+                    <a href="compare.html">Compare</a>
+                    <a href="why-different.html">Why Different</a>
+                    <a href="benchmark.html">Benchmark</a>
+                    <a href="engineering.html">Engineering</a>
+                </div>
+            </div>
+            <a href="regulators.html">Regulators</a>
+            <a href="use-case.html">Use Case</a>
+            <a href="about.html">About</a>
+            <a href="articles.html" class="active">Articles</a>
+            <a href="founding-partner.html">Partner</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+
+<article>
+    <div class="article-header">
+        <a href="articles.html" class="article-back">&larr; Articles</a>
+        <div class="article-meta">March 2026 &middot; Position Paper &middot; 26 min read</div>
+        <h1>From Edge to Federation: A Unified Architecture for Real-Time Financial Crime Detection</h1>
+        <p class="lead">A single detection engine that deploys unchanged from the cash machine on the street corner to a federated network spanning five banks. The same code, the same compliance policies, the same detection algorithms, running at every point where money moves.</p>
+        <p class="article-author"><em>Danny de Gier, Founder ZQUAS. 18 years financial crime compliance: Deutsche Bank, HSBC, RBS, ABN AMRO. PGDip Financial Crime Compliance, University of Manchester.</em></p>
+    </div>
+
+    <div class="article-body">
+
+        <h2>Executive Summary</h2>
+
+        <p>The anti-money laundering industry has a structural problem that no amount of artificial intelligence can fix. Every major vendor sells the same architecture from 2005: collect transactions in a central database, run detection rules overnight, generate alerts the next morning. The only thing that has changed in twenty years is the label. What was "rules-based detection" is now "AI-powered monitoring." The pipeline is identical.</p>
+
+        <p>The Dutch Court of Audit (Algemene Rekenkamer) confirmed the result: 13,000 full-time employees, 530,000 annual suspicious activity reports, and no measurable effectiveness in detecting or preventing financial crime. The current approach is not underperforming. It is architecturally incapable of solving the problem it was designed for.</p>
+
+        <p>This paper presents a fundamentally different approach. A single detection engine that deploys unchanged from the cash machine on the street corner to a federated network spanning five banks. The same code, the same compliance policies, the same detection algorithms, running at every point where money moves. Not faster batch processing. Distributed, real-time financial crime detection across the entire banking infrastructure.</p>
+
+        <p>The engine exists. It has been built. It runs on hardware ranging from a EUR 299 second-hand laptop to the most powerful GPU in the world. And the same architectural decisions that make it effective for detection also make it an ESG powerhouse: 60 to 80 percent lower energy consumption than CPU-based alternatives, reduced pressure to de-risk vulnerable customers, and cryptographic audit trails that satisfy the EU AI Act's explainability requirements. This is not a research proposal. It is a working system.</p>
+
+        <h2>1. The Industry's AI Problem</h2>
+
+        <p>Let us be direct about what is happening in the anti-money laundering vendor market.</p>
+
+        <p>A compliance officer at a major bank receives a visit from a technology vendor. The vendor presents a slide deck. The slides show the word "AI" on every page. The pitch explains that their transaction monitoring platform now uses machine learning to reduce false positives. The reduction is real. False positive rates drop from 95% to perhaps 85%. The compliance officer signs the contract. The vendor deploys the system. It takes six to twelve months.</p>
+
+        <p>What has actually changed? The transactions still flow into a central database. They are still processed in overnight batch cycles. The detection rules still fire against historical data. Alerts still arrive the next morning. The only difference is that a machine learning model now sits on top of the same pipeline, filtering out some of the noise.</p>
+
+        <p>This is not innovation. This is optimisation of a broken system.</p>
+
+        <p>The underlying architecture has not changed since the first transaction monitoring systems were deployed in the mid-2000s. The data flow is the same: transactions in, alerts out, 24 hours later. The institutional scope is the same: one bank, one database, one view. The computational model is the same: CPU-based batch processing in a data centre.</p>
+
+        <p>Placing a machine learning model on top of this pipeline is like installing a better spam filter on a fax machine. The filter might work. But the fax machine is still the problem.</p>
+
+        <p>The regulators are not just beginning to understand this. They are acting on it. The European Anti-Money Laundering Authority (AMLA) has been operational since July 2025, based in Frankfurt. In January 2026, all AML responsibilities were transferred from the European Banking Authority to AMLA. Tomorrow, 24 March 2026, AMLA holds its next public hearing. Direct supervision of 40 high-risk financial institutions begins in 2028. Article 75 of the Anti-Money Laundering Regulation (AMLR) mandates mechanisms for cross-institutional information sharing. This is not a request for better analytics within a single bank. It is a recognition that the single-institution model is fundamentally inadequate.</p>
+
+        <p>The Algemene Rekenkamer's findings are not an indictment of any particular vendor or bank. They are an indictment of the architecture itself. Thirteen thousand people processing half a million reports annually with no measurable result is not a staffing problem. It is not a technology problem. It is a structural problem. The industry is monitoring in the wrong place, at the wrong time, with the wrong scope.</p>
+
+        <p>Solving this requires architectural innovation, not analytical improvement.</p>
+
+        <h2>2. Where Financial Crime Actually Happens</h2>
+
+        <p>To understand why the current architecture fails, you need to understand how money laundering works in practice. Not in a textbook. In the real transaction flows of real banks.</p>
+
+        <p>Money laundering has three stages: placement (getting dirty money into the financial system), layering (moving it through multiple accounts and institutions to obscure its origin), and integration (using the cleaned money to purchase legitimate assets). These stages do not happen in one place. They happen everywhere.</p>
+
+        <p>Consider a mule network operating across Dutch banks. A criminal organisation recruits thirty individuals, often students or recent immigrants, to open bank accounts at multiple institutions. Cash from drug trafficking is deposited in small amounts across these accounts at different bank branches. That is placement. The money then moves through a chain of transfers between mule accounts at different banks. Person X at Bank A sends EUR 2,000 to Person Y at Bank B. Person Y sends EUR 1,800 to Person Z at Bank C. Each transfer is below reporting thresholds. Each looks unremarkable in isolation. That is layering. Finally, the consolidated funds are withdrawn as cash at ATMs or used to purchase high-value goods at merchants. A luxury watch for EUR 40,000, paid by bank transfer from an account that has received fifteen small deposits over the past month. That is integration.</p>
+
+        <p>Where in this chain does the current monitoring infrastructure detect the crime?</p>
+
+        <p>At each individual bank, the transactions look ordinary. Bank A sees a customer receiving a small cash deposit and making a small transfer. Bank B sees a customer receiving a transfer and making another transfer. Bank C sees a customer receiving a transfer and withdrawing cash. Each transaction, viewed in isolation by one bank, is unremarkable.</p>
+
+        <p>The criminal network is only visible when you can see across all three banks simultaneously. The chain of transfers, the convergence of deposits from multiple mules, the timing patterns, the eventual extraction of consolidated funds. None of this is visible from inside a single institution.</p>
+
+        <p>But it gets worse. Even if a bank could detect the suspicious pattern within its own transactions, the detection happens 24 hours later. By the time the overnight batch job runs and an alert appears on an analyst's screen, the mule has already withdrawn the cash at fifteen ATMs across three cities. The money is gone. The alert is a historical record, not an intervention.</p>
+
+        <p>And there is a third blind spot that nobody talks about. The cash machine itself, the ATM where the mule extracts the funds, performs zero AML analysis. It checks whether the card is valid. It checks whether the balance is sufficient. It does not check whether the person making the withdrawal has been flagged by another bank. It does not check whether this withdrawal is the fifteenth in a pattern across multiple machines. It does not check whether a partner institution has raised a concern about this customer's network.</p>
+
+        <p>The ATM is the point of extraction for the proceeds of crime, and it has no AML intelligence whatsoever.</p>
+
+        <p>This is not because banks are negligent. It is because the technology to perform real-time AML analysis at the places where customers actually use their money has not existed. Until now.</p>
+
+        <h2>3. A Different Architecture: Four Layers, One Engine</h2>
+
+        <p>The ZQUAS F1 Engine is built on a simple premise: detection should happen where the crime happens. Not in a central data warehouse, 24 hours later. At every point where money moves, in real-time, connected across institutions.</p>
+
+        <p>The architecture has four layers. Each layer runs the same engine. The same binary, compiled from the same source code, evaluating the same compliance policies. The difference between layers is not capability. It is scale.</p>
+
+        <h3>Layer 1: Edge — Detection at the Point of Transaction</h3>
+
+        <p>An edge installation is any device in the bank's physical network where customers actually make transactions: cash machines, payment terminals at shops, or the computers at a bank branch.</p>
+
+        <p>For ATMs, the edge installation is a small computing module inside or adjacent to the ATM hardware. Modern ATMs already contain embedded computers that manage the card reader, cash dispenser, receipt printer, and screen. Adding a small GPU module (such as an NVIDIA Jetson, roughly the size of a credit card) to the ATM's existing infrastructure is a hardware upgrade, not a redesign.</p>
+
+        <p>We do not underestimate the operational complexity of rolling this out across a bank's entire ATM network. ATMs often run specialised, security-certified software. Introducing new hardware requires testing, certification, physical installation, and power assessment at each location. This is real work. The edge deployment model is designed for phased rollout: start with a pilot of 50 ATMs in high-risk locations (city centres, border areas, known cash-out corridors), validate the detection improvement, then expand gradually. The engine's minimal hardware footprint (a GPU with 4 gigabytes of memory, no additional storage, no internet connection required) is deliberately designed to make each installation as simple as possible.</p>
+
+        <p>For merchant locations, the edge installation is not the handheld payment terminal that the customer taps their card against. That device is too small and too simple. The edge installation sits in the merchant's back office: the local gateway that routes all payment transactions from the shop's terminals to the acquirer and onward to the bank. A jeweller, a car dealership, or a real estate agency has a local server or router that processes all card payments and bank transfers for that location. This is where the F1 Edge runs. It evaluates every transaction flowing through that merchant's gateway before it reaches the bank's central systems.</p>
+
+        <p>For bank branches, the edge installation runs on the branch's local server infrastructure. It evaluates transactions initiated by tellers and relationship managers in real-time.</p>
+
+        <p>What does the detection module at the cash machine actually do? When a transaction occurs, it checks the customer's risk profile against the full set of compliance policies. The check considers the current transaction, the customer's recent transaction history (stored locally on the device), and any risk warnings received from the bank's central system or from partner banks.</p>
+
+        <p>Critically, the detection module does not block transactions for AML purposes. Unlike fraud screening, which can decline a card payment in real-time, AML detection does not have the legal basis to block a cash withdrawal based on a risk score. Instead, the module generates a warning signal that reaches the bank's central system within seconds. The ATM dispenses the cash normally. But the bank knows immediately that a flagged customer just withdrew cash at a specific location. And the analyst can see, in real-time, the pattern forming across multiple cash machines.</p>
+
+        <p>The difference from the current model: today, the institution learns about this withdrawal 24 hours later, in a batch report, alongside a million other transactions. With edge detection, the institution learns within seconds.</p>
+
+        <h3>Layer 2: Institutional — Full-Population Monitoring</h3>
+
+        <p>The institutional installation is the primary detection engine, deployed in the bank's own data centre on enterprise GPU hardware. It is the replacement for the traditional batch transaction monitoring system, but it operates continuously rather than overnight.</p>
+
+        <p>The institutional installation runs five detection layers, each analysing a different dimension of financial behaviour:</p>
+
+        <p><strong>Temporal detection</strong> identifies time-based patterns. Is this customer suddenly active after months of dormancy? Are transfers happening at 3 AM with clockwork regularity? Is the frequency of transactions increasing in a way that deviates from this customer's normal behaviour?</p>
+
+        <p><strong>Structural analysis</strong> examines the shape of relationships between entities. Are twenty accounts all connected to the same counterparty? Does the network topology resemble a known mule structure, where funds flow inward from many sources and converge at a single extraction point?</p>
+
+        <p><strong>Behavioural anomaly detection</strong> establishes a baseline for how each customer normally transacts and flags deviations. Not individual transactions that exceed a threshold, but sustained changes in behaviour: a retail customer who suddenly begins making large business-like transfers, or a dormant company that activates with a burst of cross-border payments.</p>
+
+        <p><strong>Corridor detection</strong> identifies geographic flow patterns. Are funds moving through unusual jurisdictions? Is there a sudden shift in the geographic corridor of a customer's transactions, from domestic to a high-risk third country?</p>
+
+        <p><strong>Flow detection</strong> traces end-to-end fund flows across entities. Where does money that enters the system at one point eventually end up? Can the system identify a chain of five transfers across four entities that ultimately moves EUR 50,000 from a cash deposit to a luxury goods purchase?</p>
+
+        <p>The institutional installation also collects warning signals from all detection points across the bank's network. A cash machine in Rotterdam generating a warning for Customer X, combined with a merchant payment in Amsterdam generating a warning for the same customer an hour later, is a pattern that only the central system can see.</p>
+
+        <p>At validated performance levels, the institutional installation processes 500,000 entities in under 2 seconds on a single GPU, with over 150 million policy evaluations per second. This is not batch processing measured in hours. It is continuous monitoring measured in seconds.</p>
+
+        <h3>Layer 3: Federation — Cross-Bank Detection Without Data Sharing</h3>
+
+        <p>The federation layer is where the architecture addresses the most fundamental limitation of current AML systems: single-institution blindness.</p>
+
+        <p>Two banks cannot simply share their customer databases. Privacy regulation (GDPR in Europe, comparable frameworks elsewhere) prohibits it. And they should not want to. A bank's customer data is both commercially sensitive and legally protected.</p>
+
+        <p>The challenge is to detect criminal networks that span multiple banks without any bank revealing its customers to any other bank. Previous attempts to solve this problem (including the Dutch TMNL initiative, which was disbanded) relied on sending disguised customer data to a central organisation. This approach has two weaknesses. First, the disguise (converting a social security number to a scrambled code using a technique called hashing) can be reversed: the Dutch social security number space contains approximately 20 million values, and scrambling all of them produces a reverse lookup table that breaks the disguise. Second, centralisation creates a single point of failure. If the central organisation's legal basis is challenged (as happened with TMNL), the entire system collapses.</p>
+
+        <p>The F1 Engine uses a different approach. Two banks discover which customers they share without either bank revealing its full customer list. Each bank takes its list of customer identifiers (like social security numbers) and transforms them into mathematical codes using advanced cryptography. These codes can be compared to find matches, but the original identifiers cannot be recovered from the codes. This is fundamentally different from the hashing approach used by previous initiatives (including the Dutch TMNL, which was disbanded). With hashing, an attacker who knows that the Netherlands has approximately 20 million social security numbers can simply hash all of them and build a reverse lookup table. With the cryptographic approach used by the F1 Engine, this attack does not work. There is no shortcut to reverse the transformation.</p>
+
+        <p>After shared customers are discovered, the banks exchange risk signals, not data. If Bank A's detection system determines that a customer's risk has increased, Bank A sends a simple message to Bank B: "This customer's risk went up. Reason: unusual incoming money." Bank B adds this information to its own assessment of that customer. Bank B never learns the details of the customer's transactions at Bank A, the identity of their counterparties, or which specific rule triggered the alert. Only the change in risk level and a general reason category.</p>
+
+        <p>This happens in pairs. In a network of five banks, each bank conducts a separate, private exchange with each of the other four banks. No bank sees the full picture. No central organisation holds all the data. The detection of a criminal network spanning three banks emerges from the combination of local decisions at each bank, informed by risk signals from direct partners. Each bank sees one piece. The picture forms without anyone holding the full image.</p>
+
+        <p>For regulators reviewing this architecture: the privacy guarantee is not a claim. It is a mathematical property of the protocol. Each exchange between two banks reveals only the customers they share and numerical risk scores. The European Data Protection Supervisor's test for whether data counts as truly anonymised is satisfied with stronger margins than any approach based on hashing identifiers.</p>
+
+        <p>Each risk signal carries a category label explaining why the score changed (for example: "unusual inbound flow pattern" or "structuring behaviour detected"). The receiving bank can verify, using the cryptographic audit trail, that the signal was computed according to mutually agreed policies. This is not a black-box score passing between banks. It is a verifiable, auditable, explainable signal.</p>
+
+        <p>The federation does not require every bank in the country to participate. It operates between pairs of banks. Two banks with a legal agreement can begin exchanging risk signals immediately. The detection improves with each additional bank that joins, but it produces results from the very first pair. The legal framework for this type of information sharing between banks is being developed under AMLR Article 75. The F1 Engine provides the technical mechanism that this legal framework requires.</p>
+
+        <h3>Layer 4: Regulatory Interface — Supervisory Access Without Data Exposure</h3>
+
+        <p>The final layer provides the interface between the detection system and regulatory supervisors. Automated generation of Suspicious Activity Reports from detection results. A complete audit trail that allows supervisors to verify that a detection decision was computed correctly without accessing the underlying customer data. Cryptographic provenance that proves which policies were evaluated, on which data, at which time, without revealing the data itself.</p>
+
+        <p>This layer directly addresses AMLA Article 75's requirement for cross-institutional information sharing mechanisms while maintaining data protection obligations. The federation protocol described in Layer 3, combined with a policy-based access control system that governs who can see what at each institutional boundary, provides the technical infrastructure that Article 75 requires.</p>
+
+        <h2>4. Why This Requires a GPU</h2>
+
+        <p>Everything described in the previous section is theoretically possible on conventional computing infrastructure. The encrypted customer matching, the risk score sharing, the five-layer detection system, all of it could be implemented on standard servers.</p>
+
+        <p>It would take hours. Or days.</p>
+
+        <p>The customer matching process for a population of 1.5 million customers involves performing a complex mathematical operation for every customer at each bank. On a conventional server processor, which handles these operations one at a time, this takes hours per bank pair. For five banks conducting ten separate exchanges, the total processing time exceeds what is practical within a monitoring cycle.</p>
+
+        <p>The risk analysis algorithm must trace the connections between millions of customers and tens of millions of transactions. On a processor that handles these connections one at a time, this analysis alone consumes the available monitoring window.</p>
+
+        <p>The policy engine must check 123 compliance rules against every customer in the bank's population. On a processor checking one customer at a time, half a million customers multiplied by 123 rules is simply too much work to complete in a reasonable timeframe.</p>
+
+        <p>A Graphics Processing Unit, or GPU, solves this by doing thousands of these operations at the same time instead of one after another. The same work that takes hours on a conventional processor completes in seconds on a GPU, because the GPU performs tens of thousands of calculations simultaneously.</p>
+
+        <p>This is not a performance upgrade. It is an architectural requirement. Without GPU-native computation, the four-layer architecture is theoretically interesting but impossible to operate in practice. The cross-bank matching takes too long. The relationship analysis takes too long. The policy checks take too long. And the idea of putting detection intelligence into cash machines is entirely impossible because the analysis cannot complete in the milliseconds available during a transaction.</p>
+
+        <p>The F1 Engine is built from the ground up for GPU execution. Not a conventional application with a GPU-accelerated add-on. Everything, from the cryptographic matching between banks through to the compliance policy checks and the risk analysis, runs natively on the GPU. This comprises 182,000 lines of C++ and CUDA code across 149 GPU-specific source files spanning 15 subsystems.</p>
+
+        <p>This is also why no existing AML vendor can replicate this approach by adding a GPU to their existing platform. Their architectures are fundamentally CPU-based. The data structures, the algorithms, the execution model are all designed for sequential processing. Adding a GPU to a CPU-based system is like adding a jet engine to a bicycle. The frame cannot support it.</p>
+
+        <p>Building a GPU-native AML engine from scratch requires simultaneous expertise in three domains: GPU systems engineering, cryptographic protocol design, and financial crime compliance. These skills rarely coexist in the same team. The F1 Engine was built over 18 months by a single engineer with 18 years of compliance experience at Tier 1 institutions and deep GPU systems knowledge.</p>
+
+        <h2>5. The ATM Case: Detection at the Point of Cash Extraction</h2>
+
+        <p>Cash is the endpoint of every laundering chain.</p>
+
+        <p>The three stages of money laundering, placement, layering, and integration, all converge on cash at some point. Dirty money must enter the financial system (often as cash deposits). Cleaned money must be extracted (often as cash withdrawals). And the physical instruments used in integration (luxury goods, property, vehicles) are often purchased to convert large balances back into tangible assets that can be resold for cash.</p>
+
+        <p>ATMs are the primary mechanism for cash extraction. In the Netherlands alone, there were 176 million cash withdrawals in 2024, totalling EUR 36 billion. The average withdrawal was approximately EUR 205. These transactions are processed, authorised, and completed in seconds. The ATM checks whether the card is valid, whether the PIN is correct, and whether the balance is sufficient.</p>
+
+        <p>That is the extent of the analysis.</p>
+
+        <p>The ATM does not ask: is the person making this withdrawal part of a known mule network? Has another bank raised a concern about this customer? Is this withdrawal the fifteenth in a pattern of structured withdrawals across multiple terminals today? Is the timing of this withdrawal connected to a deposit at another institution that triggered a warning thirty minutes ago?</p>
+
+        <p>These questions are not asked because the technology to answer them at the cash machine has not existed. The computing power needed to check a customer's full risk profile against a complete set of compliance policies, including warnings from other banks, was too high for the hardware available inside an ATM.</p>
+
+        <p>The F1 Engine changes this. The engine has been validated on an NVIDIA Quadro P2000, a GPU from 2017 with 4 gigabytes of memory, available second-hand for EUR 299. This hardware, seven years old and a fraction of the cost of a new ATM, runs the full detection system: 123 compliance policies, customer risk assessment, and criminal network detection that found every criminal in testing.</p>
+
+        <p>An NVIDIA Jetson module, designed specifically for embedded deployment, provides equivalent compute capability in a form factor that fits inside an ATM chassis. The hardware exists. The question has never been whether ATMs can run detection intelligence. The question has been whether anyone has built a detection engine efficient enough to run on the available hardware.</p>
+
+        <p>Consider how this changes the three-bank mule scenario described in Section 2.</p>
+
+        <p>Person X deposits EUR 3,000 in cash at Bank A's branch in Rotterdam. The branch detection module checks the deposit against X's risk profile. Bank A's central system runs the full detection analysis and raises X's risk score. The cross-bank protocol sends a warning about X to Bank B, where X is also a customer.</p>
+
+        <p>Y is someone that X regularly sends money to at Bank B. Because X's risk just went up (X sent money to Y, and X is now flagged), Y's risk automatically increases too. Y walks to Bank B's ATM in Utrecht to withdraw EUR 2,500.</p>
+
+        <p>With the current architecture: the ATM dispenses the cash. Twenty-four hours later, the batch system processes the withdrawal. Two days later, an analyst reviews the alert. By then, Y has made similar withdrawals at twelve other ATMs and the money is gone.</p>
+
+        <p>With detection at the cash machine: the ATM checks Y's risk profile at the moment of the withdrawal request. Y's profile includes the warning from Bank A that arrived seconds ago. The ATM still dispenses the cash (AML detection does not have the legal power to block withdrawals). But Bank B is alerted immediately. The analyst sees the network forming in real-time: X (deposit, Rotterdam) to Y (withdrawal, Utrecht), connected by a cross-bank warning. The analyst can act within minutes, not days.</p>
+
+        <p>This is not an incremental improvement. It is a structural change in when detection happens relative to when the crime happens.</p>
+
+        <h2>6. The Merchant Case: Detection at the Point of Integration</h2>
+
+        <p>If ATMs are where criminals extract funds, merchant locations are where they integrate them. Money laundering through high-value goods purchases, trade-based schemes, and merchant complicity is a well-documented typology.</p>
+
+        <p>A jeweller, a luxury car dealership, a real estate broker's office. These are places where laundered money is turned into physical assets. A watch purchased for EUR 40,000, a car for EUR 85,000, a property deposit for EUR 200,000. Each transaction individually might not trigger a rule in the bank's overnight batch system. But viewed in context, with warnings from three other banks factored in, the pattern is clear.</p>
+
+        <p>The detection device at a merchant location is not the handheld card reader that the customer taps their card against. That device is too small and too simple. The detection runs on the merchant's back-office system: the local payment gateway or server that routes all transactions from the shop's card readers and bank transfer systems to the payment processor and onward to the bank.</p>
+
+        <p>Every merchant above a certain transaction volume has this infrastructure. It is the box in the back room that connects the card readers to the bank network. This is where the F1 Engine runs. It sits between the merchant's card readers and the bank's network, checking every transaction against the customer's risk profile before the transaction reaches the bank's central systems.</p>
+
+        <p>The merchant does not know the detection is running. The customer does not know. The transaction completes normally. But the bank knows, within seconds, that a customer flagged by three partner banks just made a EUR 40,000 purchase at a jeweller in the Kalverstraat. The evidence trail is established in real-time, not pieced together months later during an investigation.</p>
+
+        <p>This approach also addresses a frequently overlooked problem: the gap between the people who write AML rules and the people who build the systems those rules run on. The compliance officers, policy analysts, and risk managers who design detection rules are often far removed from the physical infrastructure where transactions actually happen. Many have never seen the inside of a cash machine, never traced a card payment from the shop counter through the payment processor to the bank's systems, never mapped how data flows from a branch teller's screen to the central database. They design rules for a data warehouse. The rules run against yesterday's records. The connection between the rule and the actual transaction it is supposed to detect is abstract.</p>
+
+        <p>Putting detection at the point of transaction makes this connection concrete. A compliance policy that says "flag structured cash withdrawals across multiple machines" is no longer checked against yesterday's data in a warehouse. It is checked at the cash machine, in real-time, against the person standing in front of it.</p>
+
+        <h2>7. Validation: How Do You Know the Detection Works?</h2>
+
+        <p>Any detection system is only as good as the data it is tested against. A system that catches every criminal in a controlled test but fails against real criminal patterns provides false confidence.</p>
+
+        <p>The F1 Engine includes a simulation environment (Financial Crime Network Simulator) that generates synthetic banking populations with embedded criminal networks. The simulator produces ground truth: it knows exactly which entities are criminals, which network they belong to, and which typology they use. This enables closed-loop testing. Run a simulation, see the scorecard, verify that every criminal was detected.</p>
+
+        <p>But synthetic data has an obvious weakness: it might not reflect reality. If the synthetic transactions do not resemble real bank transactions, the detection thresholds calibrated against synthetic data will fail in production.</p>
+
+        <p>To address this, the simulator's transaction distributions are calibrated against publicly available Dutch banking statistics. The Dutch Central Bank (De Nederlandsche Bank, DNB) publishes aggregate payment data: 6.7 billion card payments totalling EUR 198 billion in 2024, with an average card transaction of approximately EUR 30. The Dutch statistics office (CBS) publishes household income and expenditure data. The Dutch Payments Association (Betaalvereniging Nederland) publishes transaction mix data by channel and type.</p>
+
+        <p>The simulator's output is validated against these reference distributions. If the average retail transaction in the simulation deviates significantly from the EUR 30 published average, the simulator is miscalibrated and the detection thresholds are unreliable. This validation runs automatically before any threshold calibration.</p>
+
+        <p>Eight criminal typologies are supported: trade-based laundering, mule networks, professional laundering, smurfing and structuring, correspondent banking abuse, dormant account exploitation, business front operations, and property market laundering. Each typology can be configured at difficulty levels 1 through 5, from amateur operations with obvious patterns to professional operations designed to evade detection.</p>
+
+        <p>At validated performance levels: in simulation testing, the engine finds every single criminal that was planted in the synthetic population. Zero missed criminals. In detection terminology, this is called "100% recall," meaning none of the known bad actors slipped through.</p>
+
+        <p>An important caveat: this result is measured against synthetic populations where the system knows exactly who the criminals are, because the simulator created them. In the real world, criminals are adaptive. They change their behaviour to avoid detection. Production detection rates will be lower than simulation results. This is true for every detection system ever built. The simulator's purpose is not to claim perfection. It is to provide a controlled environment for continuous calibration: run the simulation, measure what was missed, adjust the detection thresholds, run again. This feedback loop does not exist in systems that rely solely on production data, where you never know what you missed.</p>
+
+        <h2>8. Regulatory Alignment</h2>
+
+        <p>The four-layer architecture is not built in anticipation of regulation. It is built to implement regulation that is already in force.</p>
+
+        <p><strong>AMLR Article 75</strong> mandates mechanisms for cross-institutional information sharing. The federation protocol (Layer 3) provides exactly this mechanism, with privacy protection that exceeds the requirements of traditional approaches.</p>
+
+        <p><strong>AMLA</strong> has been operational since July 2025 in Frankfurt. In January 2026, all AML responsibilities transferred from the European Banking Authority to AMLA. AMLA's 2026-2028 work programme, published in February 2026, focuses on supervisory convergence and common approaches. The unified policy language in the F1 Engine enables identical policies to be written once and evaluated identically across all institutions, ensuring consistent detection regardless of which bank processes a transaction. This is precisely the convergence that AMLA is mandating.</p>
+
+        <p><strong>AMLD6</strong> requires enhanced due diligence and beneficial ownership identification. The structural detection layer identifies shell company structures and complex ownership networks, and the federation layer reveals cross-institutional ownership patterns that no single bank can see alone.</p>
+
+        <p><strong>GDPR and European data protection guidance</strong> require that data processing minimises exposure. The federation protocol exchanges only mathematical codes (not customer names or account numbers) and numerical risk scores (not transaction details). The access control system restricts what each operator can see based on their role. The raw mathematical outputs from the cross-bank matching process are never shown to human analysts.</p>
+
+        <p><strong>The EU AI Act</strong> requires that AI systems used in high-impact decisions can be explained and overseen by humans. The Operator Console provides a human review step for every alert. Compliance policies are written in plain language that a compliance officer can read and understand, not hidden inside a machine learning model. Every detection decision carries a full audit trail showing exactly which rules fired and why.</p>
+
+        <p><strong>DORA</strong> (Digital Operational Resilience Act) requires operational resilience for critical financial infrastructure. Edge installations operate independently during network outages. There is no cloud dependency. The system runs entirely on-premise, within the bank's own network.</p>
+
+        <h2>9. The Hidden Superpower: An ESG Architecture by Design</h2>
+
+        <p>In 2026, a platform's ESG profile is often as important to a bank's board as its detection rate. Every major European bank publishes an annual ESG report. The environmental section covers carbon footprint. The social section covers financial inclusion. The governance section covers transparency and auditability. Most banks struggle to fill the governance section with anything more substantive than "we comply with applicable regulations."</p>
+
+        <p>The ZQUAS architecture is, almost by accident, an ESG powerhouse. Not because it was designed for ESG reporting, but because the engineering decisions that make it effective for detection also happen to produce exceptional ESG outcomes.</p>
+
+        <h3>Environmental: The Joule-Per-Transaction Metric</h3>
+
+        <p>Traditional AML systems are energy-intensive. They require large data centres running 24 hours a day, seven days a week. Servers store years of historical transaction data. Batch jobs churn through millions of records every night. The CPU clusters that power these systems are optimised for flexibility, not efficiency. They can do anything, but they do everything at high energy cost.</p>
+
+        <p>A GPU is fundamentally different. It is designed for parallel computation. A useful analogy: a CPU is like a fleet of high-speed courier cars, each carrying one package at a time. A GPU is like a freight train, carrying ten thousand packages simultaneously. The energy cost per package is dramatically lower.</p>
+
+        <p>In terms of computational work per joule of energy consumed, a GPU-native engine processes the same volume of data with roughly 60 to 80 percent less energy than an equivalent CPU cluster. For a Tier 1 bank processing millions of transactions daily, this is not a rounding error. It is a measurable reduction in the IT carbon footprint of compliance operations.</p>
+
+        <p>The portability story reinforces this. This paper describes running the full detection stack on a 2017-era laptop purchased for EUR 299. This is a direct contribution to the circular economy. Instead of requiring banks to purchase new server-grade hardware every three years (generating electronic waste), the architecture allows institutions to repurpose existing or older GPU hardware for high-stakes compliance work. A Quadro P2000 that would otherwise be recycled or discarded becomes a functional AML edge installation.</p>
+
+        <p>When a bank's sustainability team asks "what is our compliance infrastructure's carbon footprint," an institution running ZQUAS has a concrete answer: fewer servers, lower energy consumption, repurposed hardware, distributed processing that eliminates the need for centralised batch compute.</p>
+
+        <h3>Social: Financial Inclusion and Victim Protection</h3>
+
+        <p>The social impact of AML is systematically overlooked. Traditional rule-based systems produce false positive rates of 95% or higher. For every 100 alerts generated, 95 are innocent customers flagged incorrectly.</p>
+
+        <p>The downstream consequence is de-risking. When a bank's monitoring system is inaccurate, the bank responds by closing the accounts of entire categories of customers deemed too expensive to monitor. Students, recent immigrants, small businesses in "high-risk" postcodes, money transfer operators serving diaspora communities. These groups lose access to the banking system not because they are criminals, but because the detection technology cannot distinguish them from criminals efficiently.</p>
+
+        <p>A system that finds every criminal in a test population and simultaneously reduces false alarms directly addresses this problem. By detecting actual criminals with precision, the system eliminates the pressure to de-risk entire populations. Innocent people stay in the financial system. The bank meets its compliance obligations without punishing its customers for the limitations of its technology.</p>
+
+        <p>There is a second social dimension. Money laundering networks exploit vulnerable people as mules, often students or recent immigrants recruited through social media with promises of easy money. These individuals face criminal prosecution when the network is eventually discovered. By detecting and disrupting mule networks in real-time (at the ATM, at the point of cash extraction), the system breaks the economic model that criminal organisations use to recruit vulnerable individuals. Faster detection means fewer people are recruited into criminal activity before the network is dismantled.</p>
+
+        <h3>Governance: Mathematical Transparency Instead of Black-Box AI</h3>
+
+        <p>Current AI-based AML systems are, from a governance perspective, opaque. A machine learning model flags a customer. The compliance officer asks: why? The answer is a probability score derived from a neural network with millions of parameters. The model cannot explain its reasoning in terms that a regulator, a court, or an audit committee can verify.</p>
+
+        <p>This is a governance problem that is about to become a legal problem. The EU AI Act requires explainability for AI systems used in high-impact decisions. AML detection affects people's access to financial services. A system that cannot explain why it flagged an individual may not survive regulatory scrutiny under the AI Act.</p>
+
+        <p>The ZQUAS architecture takes a different approach. The federation protocol uses elliptic curve cryptography, not probabilistic AI, for its cross-institutional detection. The bank can prove to a regulator, mathematically, exactly why a risk score changed, which policies evaluated, which data was processed, at what time, without ever exposing private customer data. The audit trail is not a log file. It is a cryptographic proof.</p>
+
+        <p>The compliance policies themselves are written in a human-readable policy language (CPL). A compliance officer can read the policy that triggered an alert and understand, in plain language, what condition was met. This is not possible with a machine learning model. The same policy runs identically from the ATM to the data centre, creating a single version of truth. Governance is simplified because there are not different versions of rules running on different systems at different institutions.</p>
+
+        <h3>The ESG Scorecard</h3>
+
+        <p>If a bank transitions from a 2005-era batch system to a distributed GPU-native architecture, the board can report concrete ESG outcomes:</p>
+
+        <p><strong>Environmental:</strong> IT energy consumption for compliance operations reduced by an estimated 60 to 80 percent. Edge hardware repurposed from existing inventory. No new data centre capacity required for AML processing.</p>
+
+        <p><strong>Social:</strong> False positive reduction eliminates the pressure to de-risk vulnerable customer segments. Real-time mule network detection protects individuals from criminal recruitment. Financial inclusion maintained while meeting compliance obligations.</p>
+
+        <p><strong>Governance:</strong> Every detection decision carries a cryptographic audit trail. Policies are human-readable, not black-box models. A single policy language ensures consistency across all detection layers and all participating institutions. EU AI Act explainability requirements met by design.</p>
+
+        <p>This is not a marketing overlay. These are direct consequences of the architectural decisions described in this paper. The same engineering that makes the engine fast (GPU-native computation) also makes it energy-efficient. The same engineering that makes it accurate (finding every criminal in testing) also makes it fair (fewer innocent people flagged). The same engineering that makes it secure (advanced cryptography) also makes it transparent (verifiable audit trails).</p>
+
+        <p>The ESG case is, in many ways, the strongest argument for architectural innovation. A bank's board may debate the technical merits of GPU-native versus CPU-based detection. They will not debate the merits of cutting their compliance carbon footprint in half while simultaneously improving their financial inclusion metrics and their governance transparency.</p>
+
+        <h2>10. The Numbers</h2>
+
+        <p>Claims of architectural innovation require evidence. The F1 Engine is a measured engineering artefact, not a design document.</p>
+
+        <p><strong>Codebase:</strong> 253,000 lines of production source code across 1,288 files and 49 subsystems. 182,000 lines of C++ and CUDA (the core engine). 149 GPU kernel files spanning 15 subsystems. 113,000 lines of automated tests across 322 test files. A test-to-source ratio of 0.62:1 (62 lines of test for every 100 lines of production code). 7,200+ automated tests passing.</p>
+
+        <p><strong>Performance:</strong> 500,000 customers processed in under 2 seconds end-to-end. Over 150 million policy checks per second. A single cross-bank matching round for 100,000 customers: under 10 seconds. Time from detection to alert: under 10 milliseconds. All numbers measured on a single GPU.</p>
+
+        <p><strong>Portability:</strong> The minimum GPU requirement is a 2017-era NVIDIA card with 4 gigabytes of memory. The engine has been validated on a Quadro P2000 purchased for EUR 299: 1,000 entities, 21 million transactions, 123 policies, every criminal found, on hardware that costs less than a restaurant dinner. The same binary, unmodified, runs on an RTX 5090 with 32 gigabytes of memory processing 100,000 entities.</p>
+
+        <p><strong>Security hardening:</strong> Every binary is built with defence-grade protections against tampering, memory attacks, and reverse engineering. The same level of hardening applied to military and intelligence software.</p>
+
+        <h2>11. From Data Centre to Laptop to ATM</h2>
+
+        <p>On 22 March 2026, the F1 Engine was deployed to an HP ZBook 15 G5 purchased on a Dutch classifieds site for EUR 299. The laptop was manufactured in 2018. It has a six-core Xeon processor, 32 gigabytes of RAM, and an NVIDIA Quadro P2000 with 4 gigabytes of GPU memory.</p>
+
+        <p>From a bare Windows installation to a running detection platform with a full Operator Console accessible in the web browser: one day. One person. No external dependencies, no cloud services, no installation consultants.</p>
+
+        <p>The engine ran a simulation: 1,000 entities across five Dutch banks, with embedded criminal networks. Detection result: every criminal found. Zero missed. The Operator Console displayed the full scorecard, the criminal network structure, alert details, and the investigative workflow. On a laptop that costs less than a dinner at a Michelin-starred restaurant.</p>
+
+        <p>This is not a parlour trick. It is the proof of concept for edge deployment. If the engine runs on a seven-year-old laptop GPU, it runs on any embedded GPU in the bank's physical infrastructure. An NVIDIA Jetson module, designed for industrial and edge deployment, provides equivalent or superior compute capability in a form factor that fits inside an ATM chassis.</p>
+
+        <p>The question is not whether the hardware exists. It does. The question is not whether the software can run on it. It can. The question is whether any bank is willing to be the first to deploy real-time AML detection at every point where money moves.</p>
+
+        <p>Every other vendor will offer to optimise your existing batch pipeline. We offer to replace the architecture entirely.</p>
+
+        <h2>12. Conclusion</h2>
+
+        <p>Financial crime does not operate at the institutional core. It operates at every point where money moves: ATMs, merchant terminals, bank branches, correspondent banking gateways, and across institutional boundaries. An effective detection architecture must operate at every one of those points, connected by a protocol that preserves privacy while enabling collective intelligence.</p>
+
+        <p>The anti-money laundering industry has spent two decades optimising batch processing. The result is 13,000 full-time employees, 530,000 annual reports, and no measurable effectiveness. We propose a different approach: detect where the crime happens, when it happens, across every institution it touches. With lower energy consumption, greater fairness, and mathematical transparency that no black-box AI system can match.</p>
+
+        <p>The technology exists. The regulatory mandate is not arriving. It is here. AMLA is operational. The 2026-2028 work programme is published. Direct supervision begins in 2028. The only question is which institutions will be ready.</p>
+
+        <p class="article-closing"><em>ZQUAS. Because monitoring yesterday's transactions tomorrow is not compliance. It is record-keeping.</em></p>
+
+        <p><strong>Contact:</strong> Danny de Gier | danny@zquas.ai | zquas.ai</p>
+
+        <p><em>Confidentiality notice: This document describes the architecture and capabilities of the ZQUAS F1 Engine at a conceptual level. Implementation details, source code, and protocol specifications are proprietary. Distribution without written consent is prohibited.</em></p>
+
+    </div>
+</article>
+
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <a href="/" class="footer-logo">ZQUAS<span>.</span></a>
+            <p>Bounded Compliance on an Unbounded Platform.<br>Cross-institutional AML detection without sharing customer data.</p>
+        </div>
+        <div class="footer-links">
+            <div class="footer-col">
+                <h4>Technology</h4>
+                <a href="technology.html">Overview</a>
+                <a href="architecture.html">Architecture</a>
+                <a href="compare.html">Compare</a>
+                <a href="why-different.html">Why Different</a>
+                <a href="benchmark.html">Benchmark</a>
+                <a href="engineering.html">Engineering</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="regulators.html">Regulators</a>
+                <a href="use-case.html">Use Case</a>
+                <a href="about.html">About</a>
+                <a href="articles.html">Articles</a>
+            </div>
+            <div class="footer-col">
+                <h4>Get Involved</h4>
+                <a href="founding-partner.html">Founding Partner Programme</a>
+                <a href="article-75.html">Position Paper</a>
+                <a href="contact.html">Contact</a>
+                <a href="zquas-onepager.pdf" target="_blank">Download One-Pager</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 ZQUAS &middot; Bounded Compliance on an Unbounded Platform</p>
+        <a href="mailto:info@zquas.ai">info@zquas.ai</a>
+    </div>
+</footer>
+
+</body>
+</html>
