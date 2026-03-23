@@ -142,6 +142,142 @@
 
         <p>The architecture has four layers. Each layer runs the same engine. The same binary, compiled from the same source code, evaluating the same compliance policies. The difference between layers is not capability. It is scale.</p>
 
+        <div class="diagram-container" style="max-width: 800px; margin: 2rem auto;">
+          <svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four-layer architecture diagram showing Edge, Institutional, Federation, and Regulatory layers">
+            <title>Four-Layer Architecture: Edge to Federation</title>
+            <defs>
+              <marker id="arrow-blue" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#58A6FF"/></marker>
+              <marker id="arrow-green" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#3FB950"/></marker>
+            </defs>
+
+            <!-- Layer 1: Edge (bottom) -->
+            <g aria-label="Layer 1: Edge">
+              <rect x="20" y="390" width="580" height="120" rx="6" fill="#0D1117" stroke="#30363D" stroke-width="1.5"/>
+              <text x="40" y="415" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#58A6FF">LAYER 1: EDGE</text>
+              <text x="40" y="432" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">Where customers transact</text>
+              <!-- ATM Rotterdam -->
+              <rect x="40" y="444" width="90" height="52" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="85" y="465" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#C9D1D9" text-anchor="middle">ATM</text>
+              <text x="85" y="482" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Rotterdam</text>
+              <!-- ATM Utrecht -->
+              <rect x="145" y="444" width="90" height="52" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="190" y="465" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#C9D1D9" text-anchor="middle">ATM</text>
+              <text x="190" y="482" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Utrecht</text>
+              <!-- POS Jeweller -->
+              <rect x="250" y="444" width="90" height="52" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="295" y="465" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Merchant</text>
+              <text x="295" y="482" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Jeweller</text>
+              <!-- POS Car -->
+              <rect x="355" y="444" width="90" height="52" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="400" y="465" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Merchant</text>
+              <text x="400" y="482" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Car dealer</text>
+              <!-- Branch -->
+              <rect x="460" y="444" width="90" height="52" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="505" y="465" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Branch</text>
+              <text x="505" y="482" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Amsterdam</text>
+              <!-- Person icon -->
+              <circle cx="575" cy="468" r="8" fill="none" stroke="#8B949E" stroke-width="1.5"/>
+              <path d="M562 496 C562 485 575 480 575 480 C575 480 588 485 588 496" fill="none" stroke="#8B949E" stroke-width="1.5"/>
+              <text x="575" y="508" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#8B949E" text-anchor="middle">Customer</text>
+            </g>
+
+            <!-- Arrow: Edge to Institutional -->
+            <line x1="310" y1="388" x2="310" y2="372" stroke="#58A6FF" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+            <text x="328" y="383" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#58A6FF">signals</text>
+
+            <!-- Layer 2: Institutional -->
+            <g aria-label="Layer 2: Institutional">
+              <rect x="20" y="260" width="580" height="108" rx="6" fill="#101820" stroke="#30363D" stroke-width="1.5"/>
+              <text x="40" y="283" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#58A6FF">LAYER 2: INSTITUTIONAL</text>
+              <text x="40" y="300" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">Full-population monitoring, 500K entities in under 2 seconds</text>
+              <!-- Five detection dimensions -->
+              <rect x="40" y="310" width="90" height="44" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="85" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Temporal</text>
+              <text x="85" y="345" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Time patterns</text>
+              <rect x="145" y="310" width="90" height="44" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="190" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Structural</text>
+              <text x="190" y="345" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Relationships</text>
+              <rect x="250" y="310" width="90" height="44" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="295" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Behavioural</text>
+              <text x="295" y="345" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Anomalies</text>
+              <rect x="355" y="310" width="90" height="44" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="400" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Corridor</text>
+              <text x="400" y="345" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Geography</text>
+              <rect x="460" y="310" width="90" height="44" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="505" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Flow</text>
+              <text x="505" y="345" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Fund tracing</text>
+            </g>
+
+            <!-- Arrow: Institutional to Federation -->
+            <line x1="310" y1="258" x2="310" y2="242" stroke="#58A6FF" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+            <!-- Layer 3: Federation -->
+            <g aria-label="Layer 3: Federation">
+              <rect x="20" y="140" width="580" height="100" rx="6" fill="#131D28" stroke="#30363D" stroke-width="1.5"/>
+              <text x="40" y="163" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#3FB950">LAYER 3: FEDERATION</text>
+              <text x="40" y="180" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">Cross-bank detection, no data shared</text>
+              <!-- Bank A -->
+              <rect x="80" y="190" width="120" height="38" rx="4" fill="#161B22" stroke="#3FB950" stroke-width="1"/>
+              <text x="140" y="214" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Bank A</text>
+              <!-- Bank B -->
+              <rect x="300" y="190" width="120" height="38" rx="4" fill="#161B22" stroke="#3FB950" stroke-width="1"/>
+              <text x="360" y="214" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Bank B</text>
+              <!-- Risk signal arrows between banks -->
+              <line x1="202" y1="203" x2="296" y2="203" stroke="#3FB950" stroke-width="1.5" stroke-dasharray="6 3" marker-end="url(#arrow-green)"/>
+              <line x1="298" y1="215" x2="204" y2="215" stroke="#3FB950" stroke-width="1.5" stroke-dasharray="6 3" marker-end="url(#arrow-green)"/>
+              <text x="250" y="198" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#3FB950" text-anchor="middle">risk signals</text>
+              <!-- Bank C -->
+              <rect x="470" y="190" width="100" height="38" rx="4" fill="#161B22" stroke="#3FB950" stroke-width="1"/>
+              <text x="520" y="214" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Bank C</text>
+              <!-- Risk signal to C -->
+              <line x1="422" y1="209" x2="466" y2="209" stroke="#3FB950" stroke-width="1.5" stroke-dasharray="6 3" marker-end="url(#arrow-green)"/>
+            </g>
+
+            <!-- Arrow: Federation to Regulatory -->
+            <line x1="310" y1="138" x2="310" y2="122" stroke="#58A6FF" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+            <!-- Layer 4: Regulatory Interface (top) -->
+            <g aria-label="Layer 4: Regulatory Interface">
+              <rect x="20" y="20" width="580" height="100" rx="6" fill="#161D26" stroke="#30363D" stroke-width="1.5"/>
+              <text x="40" y="43" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#BC8CFF">LAYER 4: REGULATORY INTERFACE</text>
+              <text x="40" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">Supervisory access without data exposure</text>
+              <!-- SAR Gen -->
+              <rect x="40" y="70" width="130" height="38" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="105" y="94" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#C9D1D9" text-anchor="middle">SAR Generation</text>
+              <!-- Audit Trail -->
+              <rect x="185" y="70" width="130" height="38" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="250" y="94" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Audit Trail</text>
+              <!-- AMLA Reporting -->
+              <rect x="330" y="70" width="130" height="38" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="395" y="94" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#C9D1D9" text-anchor="middle">AMLA Reporting</text>
+            </g>
+
+            <!-- Right side labels -->
+            <g aria-label="Layer descriptions">
+              <rect x="620" y="20" width="168" height="100" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="704" y="50" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#BC8CFF" text-anchor="middle">Regulators</text>
+              <text x="704" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Cryptographic proof</text>
+              <text x="704" y="82" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">of compliance</text>
+
+              <rect x="620" y="140" width="168" height="100" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="704" y="170" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#3FB950" text-anchor="middle">Cross-institution</text>
+              <text x="704" y="188" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">ECDH-PSI matching</text>
+              <text x="704" y="202" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Zero raw data shared</text>
+
+              <rect x="620" y="260" width="168" height="108" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="704" y="290" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#58A6FF" text-anchor="middle">Bank data centre</text>
+              <text x="704" y="308" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">150M+ policy evals/sec</text>
+              <text x="704" y="322" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">5 detection dimensions</text>
+
+              <rect x="620" y="390" width="168" height="120" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="704" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#58A6FF" text-anchor="middle">Physical locations</text>
+              <text x="704" y="438" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">ATMs, merchants,</text>
+              <text x="704" y="452" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">branches</text>
+              <text x="704" y="472" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="middle">Same binary everywhere</text>
+            </g>
+          </svg>
+        </div>
+
         <h3>Layer 1: Edge — Detection at the Point of Transaction</h3>
 
         <p>An edge installation is any device in the bank's physical network where customers actually make transactions: cash machines, payment terminals at shops, or the computers at a bank branch.</p>
@@ -252,9 +388,238 @@
 
         <p>Y is someone that X regularly sends money to at Bank B. Because X's risk just went up (X sent money to Y, and X is now flagged), Y's risk automatically increases too. Y walks to Bank B's ATM in Utrecht to withdraw EUR 2,500.</p>
 
+        <div class="diagram-container" style="max-width: 800px; margin: 2rem auto;">
+          <svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three-bank mule scenario showing criminal money flow and federated risk signal propagation">
+            <title>Three-Bank Mule Scenario: Criminal Flow vs Risk Signal Propagation</title>
+            <defs>
+              <marker id="arrow-red" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#F85149"/></marker>
+              <marker id="arrow-green2" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#3FB950"/></marker>
+            </defs>
+
+            <!-- Title -->
+            <text x="400" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Mule Network Across Three Banks</text>
+
+            <!-- Bank A Column -->
+            <g aria-label="Bank A Rotterdam">
+              <rect x="30" y="50" width="220" height="170" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1.5"/>
+              <text x="140" y="72" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#58A6FF" text-anchor="middle">BANK A</text>
+              <text x="140" y="88" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">Rotterdam</text>
+              <!-- Person X -->
+              <circle cx="100" cy="118" r="14" fill="#1A1E24" stroke="#F85149" stroke-width="1.5"/>
+              <text x="100" y="123" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#F85149" text-anchor="middle">X</text>
+              <text x="100" y="148" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#C9D1D9" text-anchor="middle">Deposits</text>
+              <text x="100" y="163" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#D29922" text-anchor="middle">EUR 3,000</text>
+              <text x="100" y="178" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#C9D1D9" text-anchor="middle">cash</text>
+              <!-- Branch icon -->
+              <rect x="160" y="108" width="70" height="30" rx="4" fill="#0D1117" stroke="#30363D" stroke-width="1"/>
+              <text x="195" y="128" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Branch</text>
+              <text x="195" y="155" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Placement</text>
+            </g>
+
+            <!-- Bank B Column -->
+            <g aria-label="Bank B Utrecht">
+              <rect x="290" y="50" width="220" height="170" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1.5"/>
+              <text x="400" y="72" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#58A6FF" text-anchor="middle">BANK B</text>
+              <text x="400" y="88" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">Utrecht</text>
+              <!-- Person Y -->
+              <circle cx="360" cy="118" r="14" fill="#1A1E24" stroke="#F85149" stroke-width="1.5"/>
+              <text x="360" y="123" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#F85149" text-anchor="middle">Y</text>
+              <text x="360" y="148" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#C9D1D9" text-anchor="middle">Transfers</text>
+              <text x="360" y="163" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#D29922" text-anchor="middle">EUR 2,000</text>
+              <text x="420" y="155" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Layering</text>
+            </g>
+
+            <!-- Bank C Column -->
+            <g aria-label="Bank C Amsterdam">
+              <rect x="550" y="50" width="220" height="170" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1.5"/>
+              <text x="660" y="72" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#58A6FF" text-anchor="middle">BANK C</text>
+              <text x="660" y="88" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">Amsterdam</text>
+              <!-- Person Z -->
+              <circle cx="620" cy="118" r="14" fill="#1A1E24" stroke="#F85149" stroke-width="1.5"/>
+              <text x="620" y="123" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#F85149" text-anchor="middle">Z</text>
+              <text x="620" y="148" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#C9D1D9" text-anchor="middle">Withdraws</text>
+              <text x="620" y="163" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#D29922" text-anchor="middle">EUR 1,800</text>
+              <!-- ATM icon -->
+              <rect x="680" y="108" width="70" height="30" rx="4" fill="#0D1117" stroke="#F85149" stroke-width="1"/>
+              <text x="715" y="128" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#F85149" text-anchor="middle">ATM</text>
+              <text x="680" y="155" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Integration</text>
+            </g>
+
+            <!-- Criminal money flow arrows (red, dashed) -->
+            <line x1="252" y1="118" x2="286" y2="118" stroke="#F85149" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#arrow-red)"/>
+            <text x="269" y="110" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#F85149" text-anchor="middle">EUR 2K</text>
+            <line x1="512" y1="118" x2="546" y2="118" stroke="#F85149" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#arrow-red)"/>
+            <text x="529" y="110" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#F85149" text-anchor="middle">EUR 1.8K</text>
+
+            <!-- Criminal flow label -->
+            <text x="400" y="200" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#F85149" text-anchor="middle" opacity="0.7">- - - Criminal money flow - - -</text>
+
+            <!-- Divider -->
+            <line x1="30" y1="240" x2="770" y2="240" stroke="#30363D" stroke-width="1" stroke-dasharray="4 4"/>
+
+            <!-- Federation label -->
+            <rect x="310" y="250" width="180" height="24" rx="12" fill="#0D1117" stroke="#3FB950" stroke-width="1"/>
+            <text x="400" y="267" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#3FB950" text-anchor="middle">FEDERATION RESPONSE</text>
+
+            <!-- Risk signal boxes -->
+            <g aria-label="Risk signal propagation">
+              <!-- Bank A risk -->
+              <rect x="60" y="290" width="160" height="52" rx="6" fill="#0D1117" stroke="#3FB950" stroke-width="1.5"/>
+              <text x="140" y="310" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#3FB950" text-anchor="middle">Risk: X flagged</text>
+              <text x="140" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Cash deposit pattern</text>
+              <!-- Bank B risk -->
+              <rect x="320" y="290" width="160" height="52" rx="6" fill="#0D1117" stroke="#3FB950" stroke-width="1.5"/>
+              <text x="400" y="310" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#3FB950" text-anchor="middle">Risk: Y flagged</text>
+              <text x="400" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Linked to flagged X</text>
+              <!-- Bank C risk -->
+              <rect x="580" y="290" width="160" height="52" rx="6" fill="#0D1117" stroke="#3FB950" stroke-width="1.5"/>
+              <text x="660" y="310" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#3FB950" text-anchor="middle">Risk: Z warned</text>
+              <text x="660" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">ATM alert fires</text>
+              <!-- Green arrows between risk boxes -->
+              <line x1="222" y1="316" x2="316" y2="316" stroke="#3FB950" stroke-width="2" marker-end="url(#arrow-green2)"/>
+              <line x1="482" y1="316" x2="576" y2="316" stroke="#3FB950" stroke-width="2" marker-end="url(#arrow-green2)"/>
+            </g>
+
+            <!-- Time labels -->
+            <g aria-label="Response time">
+              <text x="140" y="370" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#3FB950" text-anchor="middle">SECONDS</text>
+              <text x="140" y="387" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">not days</text>
+              <text x="400" y="370" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#3FB950" text-anchor="middle">SECONDS</text>
+              <text x="400" y="387" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">not days</text>
+              <text x="660" y="370" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#3FB950" text-anchor="middle">SECONDS</text>
+              <text x="660" y="387" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">not days</text>
+            </g>
+
+            <!-- Bottom summary -->
+            <rect x="150" y="398" width="500" height="20" rx="10" fill="none" stroke="#30363D" stroke-width="1"/>
+            <text x="400" y="413" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">No bank sees the full picture. The network is detected without centralising data.</text>
+          </svg>
+        </div>
+
         <p>With the current architecture: the ATM dispenses the cash. Twenty-four hours later, the batch system processes the withdrawal. Two days later, an analyst reviews the alert. By then, Y has made similar withdrawals at twelve other ATMs and the money is gone.</p>
 
         <p>With detection at the cash machine: the ATM checks Y's risk profile at the moment of the withdrawal request. Y's profile includes the warning from Bank A that arrived seconds ago. The ATM still dispenses the cash (AML detection does not have the legal power to block withdrawals). But Bank B is alerted immediately. The analyst sees the network forming in real-time: X (deposit, Rotterdam) to Y (withdrawal, Utrecht), connected by a cross-bank warning. The analyst can act within minutes, not days.</p>
+
+        <div class="diagram-container" style="max-width: 800px; margin: 2rem auto;">
+          <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Timeline comparison: 24-hour batch processing delay versus 8-second edge detection">
+            <title>Batch Processing vs Edge Detection: The Time Gap</title>
+            <defs>
+              <marker id="arrow-orange" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#D29922"/></marker>
+              <marker id="arrow-green3" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#3FB950"/></marker>
+            </defs>
+
+            <!-- ========== TOP: BATCH PROCESSING ========== -->
+            <g aria-label="Batch processing timeline">
+              <!-- Header -->
+              <rect x="30" y="15" width="740" height="28" rx="4" fill="#F8514920" stroke="none"/>
+              <text x="50" y="35" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#F85149">TODAY: BATCH PROCESSING</text>
+
+              <!-- Timeline axis -->
+              <line x1="50" y1="80" x2="750" y2="80" stroke="#30363D" stroke-width="2"/>
+
+              <!-- Time markers -->
+              <line x1="80" y1="72" x2="80" y2="88" stroke="#30363D" stroke-width="1.5"/>
+              <text x="80" y="105" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">09:00</text>
+              <line x1="220" y1="72" x2="220" y2="88" stroke="#30363D" stroke-width="1.5"/>
+              <text x="220" y="105" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">12:00</text>
+              <line x1="360" y1="72" x2="360" y2="88" stroke="#30363D" stroke-width="1.5"/>
+              <text x="360" y="105" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">15:00</text>
+              <line x1="570" y1="72" x2="570" y2="88" stroke="#30363D" stroke-width="1.5"/>
+              <text x="570" y="105" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">02:00</text>
+              <text x="570" y="117" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#8B949E" text-anchor="middle">next day</text>
+              <line x1="710" y1="72" x2="710" y2="88" stroke="#30363D" stroke-width="1.5"/>
+              <text x="710" y="105" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">09:00</text>
+              <text x="710" y="117" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#8B949E" text-anchor="middle">next day</text>
+
+              <!-- Event: Cash deposit -->
+              <circle cx="80" cy="80" r="6" fill="#D29922"/>
+              <text x="80" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="middle">Cash deposit</text>
+              <text x="80" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">by X</text>
+
+              <!-- Event: Transfer -->
+              <circle cx="220" cy="80" r="6" fill="#D29922"/>
+              <text x="220" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="middle">Transfer to Y</text>
+
+              <!-- Event: ATM withdrawal -->
+              <circle cx="360" cy="80" r="6" fill="#F85149"/>
+              <text x="360" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#F85149" text-anchor="middle">ATM withdrawal</text>
+              <text x="360" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">by Z</text>
+
+              <!-- Event: Batch job -->
+              <circle cx="570" cy="80" r="6" fill="#8B949E"/>
+              <text x="570" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Batch job runs</text>
+
+              <!-- Event: Alert -->
+              <circle cx="710" cy="80" r="6" fill="#8B949E"/>
+              <text x="710" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Alert appears</text>
+
+              <!-- 24 HOURS gap -->
+              <rect x="120" y="130" width="550" height="44" rx="6" fill="#F8514915" stroke="#F85149" stroke-width="1.5" stroke-dasharray="6 3"/>
+              <text x="395" y="148" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="bold" fill="#F85149" text-anchor="middle">24 HOURS</text>
+              <text x="395" y="167" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#F85149" text-anchor="middle" opacity="0.8">Money is gone. Alert is a historical record.</text>
+
+              <!-- Red X -->
+              <text x="740" y="158" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="bold" fill="#F85149" text-anchor="middle">&#x2717;</text>
+            </g>
+
+            <!-- ========== DIVIDER ========== -->
+            <line x1="30" y1="205" x2="770" y2="205" stroke="#30363D" stroke-width="1" stroke-dasharray="4 4"/>
+            <text x="400" y="222" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">vs</text>
+
+            <!-- ========== BOTTOM: EDGE DETECTION ========== -->
+            <g aria-label="Edge detection timeline">
+              <!-- Header -->
+              <rect x="30" y="235" width="740" height="28" rx="4" fill="#3FB95020" stroke="none"/>
+              <text x="50" y="255" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#3FB950">WITH EDGE DETECTION: REAL-TIME</text>
+
+              <!-- Timeline axis -->
+              <line x1="50" y1="300" x2="750" y2="300" stroke="#30363D" stroke-width="2"/>
+
+              <!-- Time markers (compressed: all within seconds) -->
+              <line x1="80" y1="292" x2="80" y2="308" stroke="#30363D" stroke-width="1.5"/>
+              <text x="80" y="325" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">09:00:00</text>
+              <line x1="250" y1="292" x2="250" y2="308" stroke="#30363D" stroke-width="1.5"/>
+              <text x="250" y="325" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">09:00:03</text>
+              <line x1="420" y1="292" x2="420" y2="308" stroke="#30363D" stroke-width="1.5"/>
+              <text x="420" y="325" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">09:00:05</text>
+              <line x1="590" y1="292" x2="590" y2="308" stroke="#30363D" stroke-width="1.5"/>
+              <text x="590" y="325" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">09:00:08</text>
+
+              <!-- Event: Cash deposit -->
+              <circle cx="80" cy="300" r="6" fill="#D29922"/>
+              <text x="80" y="280" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="middle">Cash deposit</text>
+              <text x="80" y="268" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">by X</text>
+
+              <!-- Event: Risk signal sent -->
+              <circle cx="250" cy="300" r="6" fill="#3FB950"/>
+              <text x="250" y="280" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#3FB950" text-anchor="middle">Risk signal</text>
+              <text x="250" y="268" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">sent to Bank B</text>
+
+              <!-- Event: Risk reaches Bank B -->
+              <circle cx="420" cy="300" r="6" fill="#3FB950"/>
+              <text x="420" y="280" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#3FB950" text-anchor="middle">Y's risk updated</text>
+              <text x="420" y="268" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">at Bank B</text>
+
+              <!-- Event: ATM warning -->
+              <circle cx="590" cy="300" r="8" fill="#3FB950"/>
+              <text x="590" y="278" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#3FB950" text-anchor="middle">ATM: WARNING</text>
+              <text x="590" y="265" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">Z at machine</text>
+
+              <!-- 8 SECONDS gap -->
+              <rect x="120" y="345" width="430" height="44" rx="6" fill="#3FB95015" stroke="#3FB950" stroke-width="1.5"/>
+              <text x="335" y="363" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="bold" fill="#3FB950" text-anchor="middle">8 SECONDS</text>
+              <text x="335" y="382" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#3FB950" text-anchor="middle" opacity="0.8">Analyst alerted while Z is still at the machine.</text>
+
+              <!-- Green checkmark -->
+              <text x="580" y="376" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="bold" fill="#3FB950" text-anchor="middle">&#x2713;</text>
+            </g>
+
+            <!-- Bottom comparison -->
+            <rect x="100" y="410" width="600" height="38" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="400" y="430" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#C9D1D9" text-anchor="middle">Same crime. Same banks. Same people.</text>
+            <text x="400" y="445" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#58A6FF" text-anchor="middle">The only difference is the architecture.</text>
+          </svg>
+        </div>
 
         <p>This is not an incremental improvement. It is a structural change in when detection happens relative to when the crime happens.</p>
 
@@ -345,6 +710,122 @@
         <p>The ZQUAS architecture takes a different approach. The federation protocol uses elliptic curve cryptography, not probabilistic AI, for its cross-institutional detection. The bank can prove to a regulator, mathematically, exactly why a risk score changed, which policies evaluated, which data was processed, at what time, without ever exposing private customer data. The audit trail is not a log file. It is a cryptographic proof.</p>
 
         <p>The compliance policies themselves are written in a human-readable policy language (CPL). A compliance officer can read the policy that triggered an alert and understand, in plain language, what condition was met. This is not possible with a machine learning model. The same policy runs identically from the ATM to the data centre, creating a single version of truth. Governance is simplified because there are not different versions of rules running on different systems at different institutions.</p>
+
+        <div class="diagram-container" style="max-width: 800px; margin: 2rem auto;">
+          <svg viewBox="0 0 800 370" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ESG impact diagram showing environmental, social, and governance benefits">
+            <title>ESG Impact: Three Dimensions, One Architecture</title>
+
+            <!-- Title -->
+            <text x="400" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#C9D1D9" text-anchor="middle">ESG Impact of GPU-Native Architecture</text>
+
+            <!-- ========== ENVIRONMENTAL COLUMN ========== -->
+            <g aria-label="Environmental impact">
+              <rect x="20" y="48" width="240" height="265" rx="6" fill="#161B22" stroke="#3FB950" stroke-width="1.5"/>
+              <!-- Header -->
+              <rect x="20" y="48" width="240" height="40" rx="6" fill="#3FB95018" stroke="none"/>
+              <rect x="20" y="82" width="240" height="6" rx="0" fill="#161B22" stroke="none"/>
+              <!-- Leaf icon -->
+              <circle cx="52" cy="68" r="14" fill="#3FB95020" stroke="none"/>
+              <text x="52" y="74" font-family="system-ui, -apple-system, sans-serif" font-size="16" text-anchor="middle" fill="#3FB950">&#9670;</text>
+              <text x="80" y="74" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#3FB950">ENVIRONMENTAL</text>
+
+              <!-- Metric 1 -->
+              <text x="40" y="115" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="bold" fill="#3FB950">60-80%</text>
+              <text x="40" y="135" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#C9D1D9">less energy than</text>
+              <text x="40" y="150" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#C9D1D9">CPU-based systems</text>
+
+              <!-- Divider -->
+              <line x1="40" y1="165" x2="240" y2="165" stroke="#30363D" stroke-width="0.5"/>
+
+              <!-- Metric 2 -->
+              <text x="40" y="190" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#C9D1D9">Repurposed hardware</text>
+              <text x="40" y="208" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">Full detection on a 2017 GPU</text>
+              <text x="40" y="223" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">purchased for EUR 299</text>
+
+              <!-- Divider -->
+              <line x1="40" y1="238" x2="240" y2="238" stroke="#30363D" stroke-width="0.5"/>
+
+              <!-- Metric 3 -->
+              <text x="40" y="262" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#C9D1D9">No new data centres</text>
+              <text x="40" y="280" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">Distributed edge processing</text>
+              <text x="40" y="295" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">replaces batch compute</text>
+            </g>
+
+            <!-- ========== SOCIAL COLUMN ========== -->
+            <g aria-label="Social impact">
+              <rect x="280" y="48" width="240" height="265" rx="6" fill="#161B22" stroke="#58A6FF" stroke-width="1.5"/>
+              <!-- Header -->
+              <rect x="280" y="48" width="240" height="40" rx="6" fill="#58A6FF18" stroke="none"/>
+              <rect x="280" y="82" width="240" height="6" rx="0" fill="#161B22" stroke="none"/>
+              <!-- People icon -->
+              <circle cx="312" cy="68" r="14" fill="#58A6FF20" stroke="none"/>
+              <text x="312" y="74" font-family="system-ui, -apple-system, sans-serif" font-size="14" text-anchor="middle" fill="#58A6FF">&#9899;</text>
+              <text x="340" y="74" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#58A6FF">SOCIAL</text>
+
+              <!-- Metric 1 -->
+              <text x="300" y="115" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#C9D1D9">False positive reduction</text>
+              <rect x="300" y="122" width="190" height="22" rx="4" fill="#0D1117" stroke="none"/>
+              <rect x="300" y="122" width="180" height="22" rx="4" fill="#F8514930" stroke="none"/>
+              <text x="395" y="138" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#F85149" text-anchor="middle">95% false positives (legacy)</text>
+              <rect x="300" y="147" width="190" height="22" rx="4" fill="#0D1117" stroke="none"/>
+              <rect x="300" y="147" width="20" height="22" rx="4" fill="#3FB95060" stroke="none"/>
+              <text x="395" y="163" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#3FB950" text-anchor="middle">Precision detection (ZQUAS)</text>
+
+              <!-- Divider -->
+              <line x1="300" y1="183" x2="500" y2="183" stroke="#30363D" stroke-width="0.5"/>
+
+              <!-- Metric 2 -->
+              <text x="300" y="207" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#C9D1D9">Reduced de-risking</text>
+              <text x="300" y="225" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">Vulnerable customers keep</text>
+              <text x="300" y="240" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">access to banking</text>
+
+              <!-- Divider -->
+              <line x1="300" y1="255" x2="500" y2="255" stroke="#30363D" stroke-width="0.5"/>
+
+              <!-- Metric 3 -->
+              <text x="300" y="278" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#C9D1D9">Fewer mule victims</text>
+              <text x="300" y="296" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">Real-time detection breaks</text>
+              <text x="300" y="308" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">recruitment networks</text>
+            </g>
+
+            <!-- ========== GOVERNANCE COLUMN ========== -->
+            <g aria-label="Governance impact">
+              <rect x="540" y="48" width="240" height="265" rx="6" fill="#161B22" stroke="#BC8CFF" stroke-width="1.5"/>
+              <!-- Header -->
+              <rect x="540" y="48" width="240" height="40" rx="6" fill="#BC8CFF18" stroke="none"/>
+              <rect x="540" y="82" width="240" height="6" rx="0" fill="#161B22" stroke="none"/>
+              <!-- Shield icon -->
+              <circle cx="572" cy="68" r="14" fill="#BC8CFF20" stroke="none"/>
+              <text x="572" y="74" font-family="system-ui, -apple-system, sans-serif" font-size="14" text-anchor="middle" fill="#BC8CFF">&#9830;</text>
+              <text x="600" y="74" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#BC8CFF">GOVERNANCE</text>
+
+              <!-- Metric 1 -->
+              <text x="560" y="115" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#C9D1D9">Full transparency</text>
+              <text x="560" y="135" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">Cryptographic audit trail on</text>
+              <text x="560" y="150" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">every detection decision</text>
+
+              <!-- Divider -->
+              <line x1="560" y1="165" x2="760" y2="165" stroke="#30363D" stroke-width="0.5"/>
+
+              <!-- Metric 2 -->
+              <text x="560" y="190" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#C9D1D9">Human-readable policies</text>
+              <text x="560" y="208" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">CPL: compliance officers</text>
+              <text x="560" y="223" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">read and verify rules</text>
+
+              <!-- Divider -->
+              <line x1="560" y1="238" x2="760" y2="238" stroke="#30363D" stroke-width="0.5"/>
+
+              <!-- Metric 3 -->
+              <text x="560" y="262" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#C9D1D9">EU AI Act compliant</text>
+              <text x="560" y="280" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">Explainability by design,</text>
+              <text x="560" y="295" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">not retrofitted</text>
+            </g>
+
+            <!-- Bottom spanning line -->
+            <rect x="100" y="330" width="600" height="32" rx="6" fill="#0D1117" stroke="#30363D" stroke-width="1"/>
+            <text x="400" y="351" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#C9D1D9" text-anchor="middle">One architecture. Three ESG dimensions. Zero trade-offs.</text>
+          </svg>
+        </div>
 
         <h3>The ESG Scorecard</h3>
 
