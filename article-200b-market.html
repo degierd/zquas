@@ -83,10 +83,10 @@
 
     <div class="article-body">
         <p>
-            Global spending on financial crime compliance exceeds &euro;200 billion per year. That number has been growing at roughly 15-20% annually for the past decade. Banks now allocate 10-20% of their operating budgets to compliance operations.
+            Global spending on financial crime compliance exceeds $200 billion per year (LexisNexis, 2023). Growth has been significant, driven by rising regulatory expectations and enforcement actions. Banks now allocate a substantial share of their operating budgets to compliance operations.
         </p>
         <p>
-            To put that in context: the entire cybersecurity market is about $180 billion. The global CRM market is about $70 billion. Compliance spending dwarfs both.
+            To put that in context: the global cybersecurity market is estimated at $250 billion. The global CRM market is about $70 billion. Compliance spending dwarfs both.
         </p>
         <p>
             And yet, the technology serving this market is remarkably unchanged. Most banks still run transaction monitoring systems built on 1990s-era rule engines. They generate alert volumes that are 95% false positives. They process in overnight batches while payments settle in seconds. And they can't detect criminal activity that spans multiple institutions, which is how most sophisticated laundering actually works.
@@ -114,7 +114,7 @@
             The EU Anti-Money Laundering Regulation, effective mid-2027, changes the calculus. It's not a tweak to existing rules. It's a structural shift that makes certain architectural decisions mandatory.
         </p>
         <p>
-            AMLR restricts inter-bank data sharing to high-risk customers. It requires real-time monitoring capabilities. It demands explainable AI governance. And the EU AI Act, which classifies AML systems as high-risk, adds mandatory technical standards for record-keeping, risk management, and model transparency.
+            AMLR restricts inter-bank data sharing to high-risk customers. It requires real-time monitoring capabilities. It demands explainable AI governance. And the EU AI Act, which may classify AI-based AML risk profiling as high-risk under Annex III, adds technical standards for record-keeping, risk management, and model transparency.
         </p>
         <p>
             No legacy vendor's architecture satisfies all of these requirements simultaneously. Rule-based batch processing systems can't do real-time. Centralised cloud platforms can't do privacy-preserving cross-bank detection. None of them produce cryptographically verifiable audit trails.
@@ -131,7 +131,7 @@
             Legacy incumbents (NICE Actimize, Oracle, SAS) own the installed base at Tier-1 banks. They have deep integration, long contracts, and institutional inertia working for them. But their architectures are fundamentally CPU-bound, cloud-hosted, and rules-based. Retrofitting real-time GPU processing, MPC, or cryptographic attestation onto these platforms would be a multi-year re-engineering effort. They'll try to evolve, but they're constrained by their existing customers who are running in production.
         </p>
         <p>
-            Funded challengers (Sardine at $145M raised, Hawk AI at $56M, Featurespace, ComplyAdvantage) represent the AI-native wave. They're cloud-first, API-driven, and use machine learning for alert scoring. They're winning new fintech customers and some mid-market banks. But they're still architecturally conventional: CPU-based cloud processing, no GPU compute layer, no MPC capability, and no cryptographic proof generation. They're better versions of the old architecture, not a new architecture.
+            Funded challengers (Sardine at $145M raised, Hawk AI at $134M, Featurespace, ComplyAdvantage) represent the AI-native wave. They're cloud-first, API-driven, and use machine learning for alert scoring. They're winning new fintech customers and some mid-market banks. But they're still architecturally conventional: CPU-based cloud processing, no GPU compute layer, no MPC capability, and no cryptographic proof generation. They're better versions of the old architecture, not a new architecture.
         </p>
         <p>
             Nobody in either tier has GPU-native compliance with privacy-preserving multi-party computation. Nobody produces cryptographically verifiable decision proofs. Nobody has a standalone regulator verification tool. These aren't feature gaps that can be closed with a sprint. They require fundamental re-architecture.

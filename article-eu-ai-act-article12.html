@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Supervising AI in AML: What Article 12 Actually Requires — ZQUAS</title>
-    <meta name="description" content="The EU AI Act classifies AML systems as high-risk. Article 12 demands record-keeping. But what does technically adequate record-keeping look like when a system makes millions of decisions per day?">
+    <meta name="description" content="The EU AI Act may classify AI-based AML risk profiling as high-risk. Article 12 demands record-keeping. But what does technically adequate record-keeping look like when a system makes millions of decisions per day?">
     <meta property="og:title" content="Supervising AI in AML: What Article 12 Actually Requires — ZQUAS">
-    <meta property="og:description" content="The EU AI Act classifies AML systems as high-risk. Article 12 demands record-keeping. But what does technically adequate record-keeping look like when a system makes millions of decisions per day?">
+    <meta property="og:description" content="The EU AI Act may classify AI-based AML risk profiling as high-risk. Article 12 demands record-keeping. But what does technically adequate record-keeping look like when a system makes millions of decisions per day?">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://zquas.ai/article-eu-ai-act-article12.html">
     <meta property="og:image" content="https://zquas.ai/og-image.png">
@@ -26,7 +26,7 @@
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "Supervising AI in AML: What Article 12 Actually Requires",
-        "description": "The EU AI Act classifies AML systems as high-risk. Article 12 demands record-keeping. But what does technically adequate record-keeping look like when a system makes millions of decisions per day?",
+        "description": "The EU AI Act may classify AI-based AML risk profiling as high-risk. Article 12 demands record-keeping. But what does technically adequate record-keeping look like when a system makes millions of decisions per day?",
         "datePublished": "2025-12-15",
         "author": {
             "@type": "Person",
@@ -78,15 +78,15 @@
         <a href="articles.html" class="article-back">&larr; Articles</a>
         <div class="article-meta">December 2025 &middot; Regulators &middot; 8 min read</div>
         <h1>Supervising AI in AML: What Article 12 Actually Requires</h1>
-        <p class="lead">The EU AI Act classifies AML systems as high-risk. Article 12 demands record-keeping. But what does technically adequate record-keeping look like when a system makes millions of decisions per day?</p>
+        <p class="lead">The EU AI Act may classify AI-based AML risk profiling as high-risk under Annex III. Article 12 demands record-keeping. But what does technically adequate record-keeping look like when a system makes millions of decisions per day?</p>
     </div>
 
     <div class="article-body">
         <p>
-            The EU AI Act entered into force in 2024 with a phased implementation schedule. For high-risk AI systems, including those used in AML and financial crime detection, the core obligations apply from August 2026. Among these, Article 12 on record-keeping is the one most likely to create operational headaches for banks and their technology vendors.
+            The EU AI Act entered into force in 2024 with a phased implementation schedule. For high-risk AI systems, the core obligations apply from August 2026. Recital 58 excludes standard fraud and AML detection from high-risk classification, but AI-based customer risk profiling may qualify under Annex III point 5(b). Banks using AI to generate individual risk scores should assess their classification now. Among the high-risk obligations, Article 12 on record-keeping is the one most likely to create operational headaches.
         </p>
         <p>
-            Article 12 requires that high-risk AI systems have "logging capabilities" that allow for "tracing back the system's operations." The system must keep records of the operating conditions, the input data characteristics, and the outputs. These records must be sufficient to "facilitate the monitoring of the operation of the high-risk AI system" and enable "post-market monitoring."
+            Article 12 requires that high-risk AI systems have logging capabilities that ensure a level of traceability of the system's functioning appropriate to its intended purpose. The system must keep records sufficient to facilitate monitoring of the high-risk AI system's operation and enable post-market monitoring.
         </p>
         <p>
             The language sounds reasonable. The challenge is in the implementation.
@@ -108,7 +108,7 @@
 
         <h2>What "Tracing Back" Means in Practice</h2>
         <p>
-            The phrase "tracing back the system's operations" implies a specific capability: given an output, you should be able to reconstruct exactly how the system arrived at it.
+            The requirement for traceability of the system's functioning implies a specific capability: given an output, you should be able to reconstruct exactly how the system arrived at it.
         </p>
         <p>
             For a rules-based system, this is conceptually simple. The rule says "if amount > &euro;10,000 and jurisdiction = high-risk, generate alert." You can trace back by showing the transaction amount and the jurisdiction. But real monitoring systems have hundreds of rules interacting with each other, with priority ordering, exception handling, and cascading logic. Tracing back through that web is not trivial.
