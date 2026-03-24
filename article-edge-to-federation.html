@@ -700,6 +700,157 @@
 
         <p>In this future, the federated network becomes a detection fabric that spans the entire financial system. A drug trafficking organisation deposits cash at a payment processor. The cash moves through a crypto exchange. The crypto is converted to fiat at a second exchange. The fiat is used to purchase a property through a real estate broker. At every step, the entity processing the transaction runs the same detection engine. At every step, risk signals propagate through the federation. The chain is visible not because any single institution sees the full picture, but because the federation protocol connects the dots across every institution the money touches.</p>
 
+        <div class="diagram-container" style="max-width: 800px; margin: 2rem auto;">
+          <svg viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Future vision: federated detection fabric spanning payment processor, crypto exchanges, bank, and real estate broker">
+            <title>The Federated Financial Crime Network: Detection Across the Entire Financial System</title>
+            <defs>
+              <marker id="arrow-red-future" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#F85149"/></marker>
+              <marker id="arrow-green-future" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#3FB950"/></marker>
+            </defs>
+
+            <!-- Title -->
+            <text x="400" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#C9D1D9" text-anchor="middle">The Federated Financial Crime Network</text>
+            <text x="400" y="46" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">Every obliged entity runs the same engine. Risk signals propagate across every step.</text>
+
+            <!-- ========== CRIMINAL MONEY FLOW (top) ========== -->
+            <text x="30" y="78" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="bold" fill="#F85149">CRIMINAL MONEY FLOW</text>
+
+            <!-- Institution boxes (top row) -->
+            <!-- Payment Processor -->
+            <g aria-label="Payment Processor">
+              <rect x="30" y="92" width="150" height="80" rx="6" fill="#161B22" stroke="#F85149" stroke-width="1.5"/>
+              <text x="105" y="115" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Payment Processor</text>
+              <text x="105" y="133" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="middle">Cash deposit</text>
+              <text x="105" y="148" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="middle">EUR 50,000</text>
+              <text x="105" y="164" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#8B949E" text-anchor="middle">Placement</text>
+            </g>
+
+            <!-- Arrow -->
+            <line x1="182" y1="132" x2="218" y2="132" stroke="#F85149" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#arrow-red-future)"/>
+
+            <!-- Crypto Exchange 1 -->
+            <g aria-label="Crypto Exchange 1">
+              <rect x="220" y="92" width="150" height="80" rx="6" fill="#161B22" stroke="#F85149" stroke-width="1.5"/>
+              <text x="295" y="115" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Crypto Exchange</text>
+              <text x="295" y="133" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="middle">Fiat to BTC</text>
+              <text x="295" y="148" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="middle">conversion</text>
+              <text x="295" y="164" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#8B949E" text-anchor="middle">Layering</text>
+            </g>
+
+            <!-- Arrow -->
+            <line x1="372" y1="132" x2="408" y2="132" stroke="#F85149" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#arrow-red-future)"/>
+
+            <!-- Crypto Exchange 2 -->
+            <g aria-label="Crypto Exchange 2">
+              <rect x="410" y="92" width="150" height="80" rx="6" fill="#161B22" stroke="#F85149" stroke-width="1.5"/>
+              <text x="485" y="115" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Second Exchange</text>
+              <text x="485" y="133" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="middle">BTC to fiat</text>
+              <text x="485" y="148" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="middle">conversion</text>
+              <text x="485" y="164" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#8B949E" text-anchor="middle">Layering</text>
+            </g>
+
+            <!-- Arrow -->
+            <line x1="562" y1="132" x2="598" y2="132" stroke="#F85149" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#arrow-red-future)"/>
+
+            <!-- Real Estate Broker -->
+            <g aria-label="Real Estate Broker">
+              <rect x="600" y="92" width="170" height="80" rx="6" fill="#161B22" stroke="#F85149" stroke-width="1.5"/>
+              <text x="685" y="115" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Real Estate Broker</text>
+              <text x="685" y="133" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="middle">Property purchase</text>
+              <text x="685" y="148" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="middle">EUR 48,000 deposit</text>
+              <text x="685" y="164" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#8B949E" text-anchor="middle">Integration</text>
+            </g>
+
+            <!-- ========== DIVIDER ========== -->
+            <line x1="30" y1="195" x2="770" y2="195" stroke="#30363D" stroke-width="1" stroke-dasharray="4 4"/>
+
+            <!-- ========== DETECTION FABRIC (middle) ========== -->
+            <rect x="200" y="205" width="400" height="28" rx="14" fill="#0D1117" stroke="#3FB950" stroke-width="1.5"/>
+            <text x="400" y="224" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#3FB950" text-anchor="middle">ZQUAS<tspan fill="#4a7dff">.</tspan> FEDERATION DETECTION FABRIC</text>
+
+            <!-- F1 Engine boxes (bottom row) — each institution runs the same engine -->
+            <!-- PP Engine -->
+            <g aria-label="F1 Engine at Payment Processor">
+              <rect x="30" y="255" width="150" height="68" rx="6" fill="#0D1117" stroke="#3FB950" stroke-width="1.5"/>
+              <rect x="30" y="255" width="150" height="24" rx="6" fill="#3FB95015" stroke="none"/>
+              <rect x="30" y="273" width="150" height="6" rx="0" fill="#0D1117" stroke="none"/>
+              <text x="105" y="272" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="bold" fill="#3FB950" text-anchor="middle">F1 ENGINE</text>
+              <text x="105" y="295" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">Risk: flagged</text>
+              <text x="105" y="312" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#8B949E" text-anchor="middle">Cash deposit pattern</text>
+            </g>
+
+            <!-- CE1 Engine -->
+            <g aria-label="F1 Engine at Crypto Exchange 1">
+              <rect x="220" y="255" width="150" height="68" rx="6" fill="#0D1117" stroke="#3FB950" stroke-width="1.5"/>
+              <rect x="220" y="255" width="150" height="24" rx="6" fill="#3FB95015" stroke="none"/>
+              <rect x="220" y="273" width="150" height="6" rx="0" fill="#0D1117" stroke="none"/>
+              <text x="295" y="272" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="bold" fill="#3FB950" text-anchor="middle">F1 ENGINE</text>
+              <text x="295" y="295" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">Risk: elevated</text>
+              <text x="295" y="312" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#8B949E" text-anchor="middle">Flagged customer + crypto</text>
+            </g>
+
+            <!-- CE2 Engine -->
+            <g aria-label="F1 Engine at Crypto Exchange 2">
+              <rect x="410" y="255" width="150" height="68" rx="6" fill="#0D1117" stroke="#3FB950" stroke-width="1.5"/>
+              <rect x="410" y="255" width="150" height="24" rx="6" fill="#3FB95015" stroke="none"/>
+              <rect x="410" y="273" width="150" height="6" rx="0" fill="#0D1117" stroke="none"/>
+              <text x="485" y="272" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="bold" fill="#3FB950" text-anchor="middle">F1 ENGINE</text>
+              <text x="485" y="295" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">Risk: high</text>
+              <text x="485" y="312" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#8B949E" text-anchor="middle">Two prior warnings</text>
+            </g>
+
+            <!-- RE Engine -->
+            <g aria-label="F1 Engine at Real Estate Broker">
+              <rect x="600" y="255" width="170" height="68" rx="6" fill="#0D1117" stroke="#3FB950" stroke-width="1.5"/>
+              <rect x="600" y="255" width="170" height="24" rx="6" fill="#3FB95015" stroke="none"/>
+              <rect x="600" y="273" width="170" height="6" rx="0" fill="#0D1117" stroke="none"/>
+              <text x="685" y="272" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="bold" fill="#3FB950" text-anchor="middle">F1 ENGINE</text>
+              <text x="685" y="295" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#F85149" text-anchor="middle">ALERT</text>
+              <text x="685" y="312" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#8B949E" text-anchor="middle">Three prior warnings</text>
+            </g>
+
+            <!-- Federation risk signal arrows between engine boxes -->
+            <line x1="182" y1="289" x2="216" y2="289" stroke="#3FB950" stroke-width="2" marker-end="url(#arrow-green-future)"/>
+            <line x1="372" y1="289" x2="406" y2="289" stroke="#3FB950" stroke-width="2" marker-end="url(#arrow-green-future)"/>
+            <line x1="562" y1="289" x2="596" y2="289" stroke="#3FB950" stroke-width="2" marker-end="url(#arrow-green-future)"/>
+
+            <!-- Risk signal labels -->
+            <text x="199" y="282" font-family="system-ui, -apple-system, sans-serif" font-size="8" fill="#3FB950" text-anchor="middle">risk</text>
+            <text x="389" y="282" font-family="system-ui, -apple-system, sans-serif" font-size="8" fill="#3FB950" text-anchor="middle">risk</text>
+            <text x="579" y="282" font-family="system-ui, -apple-system, sans-serif" font-size="8" fill="#3FB950" text-anchor="middle">risk</text>
+
+            <!-- ========== BOTTOM: KEY INSIGHT ========== -->
+            <line x1="30" y1="345" x2="770" y2="345" stroke="#30363D" stroke-width="1" stroke-dasharray="4 4"/>
+
+            <!-- Regulation labels -->
+            <g aria-label="Regulatory frameworks">
+              <rect x="30" y="362" width="150" height="36" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="105" y="378" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#BC8CFF" text-anchor="middle">AMLR / PSD2</text>
+              <text x="105" y="392" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#8B949E" text-anchor="middle">Payment institutions</text>
+
+              <rect x="220" y="362" width="150" height="36" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="295" y="378" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#BC8CFF" text-anchor="middle">MiCA / AMLR</text>
+              <text x="295" y="392" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#8B949E" text-anchor="middle">Crypto asset providers</text>
+
+              <rect x="410" y="362" width="150" height="36" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="485" y="378" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#BC8CFF" text-anchor="middle">MiCA / AMLR</text>
+              <text x="485" y="392" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#8B949E" text-anchor="middle">Crypto asset providers</text>
+
+              <rect x="600" y="362" width="170" height="36" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+              <text x="685" y="378" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#BC8CFF" text-anchor="middle">AMLD6 / AMLR</text>
+              <text x="685" y="392" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#8B949E" text-anchor="middle">Obliged entities</text>
+            </g>
+
+            <!-- Summary box -->
+            <rect x="100" y="418" width="600" height="50" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="400" y="438" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#C9D1D9" text-anchor="middle">No institution sees the full chain. The federation connects every step.</text>
+            <text x="400" y="456" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#3FB950" text-anchor="middle">Same binary. Same protocol. Every entity that touches money.</text>
+
+            <!-- Brand -->
+            <text x="770" y="476" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#58A6FF" text-anchor="end" opacity="0.6">ZQUAS<tspan fill="#4a7dff">.</tspan> F1 Engine</text>
+          </svg>
+        </div>
+
         <p>The edge deployment capability makes this feasible. The engine runs on a EUR 299 laptop. It runs on embedded hardware. It can run at a payment terminal manufacturer's gateway, at a crypto exchange's processing node, at a property registration office's server. The hardware threshold is low enough that every obliged entity, not just the largest banks, can participate.</p>
 
         <p>And at the physical edge: ATMs, merchant terminals, and payment gateways could eventually run detection intelligence directly. Today, legal frameworks in most jurisdictions prevent ATMs from declining cash withdrawals based on AML risk (tipping-off provisions under Wwft Article 16 and AMLD Article 39 prohibit this). But the UK's Payment Services (Amendment) Regulations 2024 show that legal frameworks can evolve. As real-time intervention becomes legally permissible in more jurisdictions, the hardware and software to support it already exist. When the law catches up, the technology will be ready.</p>
