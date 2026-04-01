@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond Banking: Cross-Sector Federated Detection for Financial Crime, Telecommunications Fraud, and Digital Asset Compliance — ZQUAS</title>
+    <meta name="description" content="A ZQUAS position paper. A single detection engine that correlates risk signals across banks, telecommunications operators, and digital asset platforms without sharing raw data between institutions. The same code, the same cryptographic protocols, the same GPU-native detection pipeline, applied to every regulated sector where financial crime operates.">
+    <meta property="og:title" content="Beyond Banking: Cross-Sector Federated Detection — ZQUAS">
+    <meta property="og:description" content="A single detection engine that correlates risk signals across banks, telecommunications operators, and digital asset platforms without sharing raw data between institutions.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://zquas.ai/article-beyond-banking.html">
+    <meta property="og:image" content="https://zquas.ai/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://zquas.ai/og-image.png">
+    <meta name="author" content="Danny de Gier">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://zquas.ai/article-beyond-banking.html">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Beyond Banking: Cross-Sector Federated Detection for Financial Crime, Telecommunications Fraud, and Digital Asset Compliance",
+        "description": "A single detection engine that correlates risk signals across banks, telecommunications operators, and digital asset platforms without sharing raw data between institutions.",
+        "datePublished": "2026-04-01",
+        "author": {
+            "@type": "Person",
+            "name": "Danny de Gier"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ZQUAS",
+            "url": "https://zquas.ai"
+        },
+        "mainEntityOfPage": "https://zquas.ai/article-beyond-banking.html"
+    }
+    </script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <div class="nav-dropdown">
+                <a href="technology.html" class="nav-dropdown-toggle">Technology <span class="nav-arrow">&#x25BE;</span></a>
+                <div class="nav-dropdown-menu">
+                    <a href="technology.html">Overview</a>
+                    <a href="architecture.html">Architecture</a>
+                    <a href="compare.html">Compare</a>
+                    <a href="why-different.html">Why Different</a>
+                    <a href="benchmark.html">Benchmark</a>
+                    <a href="engineering.html">Engineering</a>
+                </div>
+            </div>
+            <a href="regulators.html">Regulators</a>
+            <a href="use-case.html">Use Case</a>
+            <a href="about.html">About</a>
+            <a href="articles.html" class="active">Articles</a>
+            <a href="founding-partner.html">Partner</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+
+<article>
+    <div class="article-header">
+        <a href="articles.html" class="article-back">&larr; Articles</a>
+        <div class="article-meta">April 2026 &middot; Position Paper &middot; 30 min read</div>
+        <h1>Beyond Banking: Cross-Sector Federated Detection for Financial Crime, Telecommunications Fraud, and Digital Asset Compliance</h1>
+        <p class="lead">A single detection engine that correlates risk signals across banks, telecommunications operators, and digital asset platforms without sharing raw data between institutions. The same code, the same cryptographic protocols, the same GPU-native detection pipeline, applied to every regulated sector where financial crime operates.</p>
+        <p class="article-author"><em>Danny de Gier, Founder ZQUAS. 18 years financial crime compliance: Deutsche Bank, HSBC, RBS, ABN AMRO, ClearBank, Vivid Money. PGDip Financial Crime Compliance, University of Manchester.</em></p>
+    </div>
+
+    <div class="article-body">
+
+        <h2>1. The Cross-Sector Problem</h2>
+
+        <p>Financial crime does not respect institutional boundaries. It does not respect sectoral boundaries either.</p>
+
+        <p>An Authorised Push Payment fraud starts with a phone call. The fraudster calls the victim, impersonating their bank. The call is routed through a telecommunications network. The victim, convinced their account is compromised, transfers funds to a "safe account" controlled by the fraudster. The money moves through two or three bank accounts within minutes. Within hours, it exits through a cryptocurrency exchange into a stablecoin, crosses a blockchain bridge, and arrives in a jurisdiction with no bilateral cooperation agreement.</p>
+
+        <p>The telecommunications operator saw the call. It came from a number that contacted 47 different people in the past week. That pattern is visible in the call detail records. The telco did not share this information with the bank.</p>
+
+        <p>The bank saw the payment. A high-value transfer to a first-time payee, initiated within two hours of an inbound call. The bank did not know about the call because it has no access to telecommunications data.</p>
+
+        <p>The cryptocurrency exchange saw the deposit. Funds arriving from a bank account that was opened three weeks ago, immediately converted to stablecoin and bridged to another chain. The exchange did not know the funds originated from an impersonation fraud because it has no access to either the banking or telecommunications data.</p>
+
+        <!-- Cross-Sector Visibility Gap Diagram -->
+        <div class="diagram-container" style="max-width: 800px; margin: 2.5rem auto;">
+          <svg viewBox="0 0 800 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three institutions each see a fragment of the same crime. None sees the full picture.">
+            <title>The Cross-Sector Visibility Gap</title>
+            <defs>
+              <marker id="arr-red" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#F85149"/></marker>
+            </defs>
+
+            <!-- Title -->
+            <text x="400" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#C9D1D9" text-anchor="middle">The Cross-Sector Visibility Gap</text>
+
+            <!-- Telco -->
+            <rect x="30" y="55" width="220" height="150" rx="6" fill="#101820" stroke="#D29922" stroke-width="1.5"/>
+            <text x="140" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#D29922" text-anchor="middle">TELECOMMUNICATIONS</text>
+            <text x="140" y="102" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">Sees: call patterns</text>
+            <text x="140" y="118" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">47 targets in one week</text>
+            <text x="140" y="134" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">SIM swap sequences</text>
+            <rect x="55" y="152" width="170" height="36" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="140" y="175" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#F85149" text-anchor="middle">Does not share with bank</text>
+
+            <!-- Bank -->
+            <rect x="290" y="55" width="220" height="150" rx="6" fill="#101820" stroke="#58A6FF" stroke-width="1.5"/>
+            <text x="400" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#58A6FF" text-anchor="middle">BANKING</text>
+            <text x="400" y="102" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">Sees: payment to new payee</text>
+            <text x="400" y="118" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">High-value transfer</text>
+            <text x="400" y="134" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">2 hours after inbound call</text>
+            <rect x="315" y="152" width="170" height="36" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="400" y="175" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#F85149" text-anchor="middle">Does not know about call</text>
+
+            <!-- Crypto -->
+            <rect x="550" y="55" width="220" height="150" rx="6" fill="#101820" stroke="#BC8CFF" stroke-width="1.5"/>
+            <text x="660" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#BC8CFF" text-anchor="middle">DIGITAL ASSETS</text>
+            <text x="660" y="102" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">Sees: deposit from new account</text>
+            <text x="660" y="118" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">Immediate stablecoin conversion</text>
+            <text x="660" y="134" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">Bridge to another chain</text>
+            <rect x="575" y="152" width="170" height="36" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="660" y="175" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#F85149" text-anchor="middle">Does not know origin</text>
+
+            <!-- Crime flow arrows -->
+            <line x1="252" y1="105" x2="286" y2="105" stroke="#F85149" stroke-width="1.5" stroke-dasharray="6 3" marker-end="url(#arr-red)"/>
+            <text x="269" y="98" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#F85149" text-anchor="middle">call</text>
+            <line x1="512" y1="105" x2="546" y2="105" stroke="#F85149" stroke-width="1.5" stroke-dasharray="6 3" marker-end="url(#arr-red)"/>
+            <text x="529" y="98" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#F85149" text-anchor="middle">funds</text>
+
+            <!-- Bottom: the full crime (invisible to any single institution) -->
+            <rect x="100" y="240" width="600" height="80" rx="6" fill="#161B22" stroke="#F85149" stroke-width="1.5" stroke-dasharray="8 4"/>
+            <text x="400" y="268" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#F85149" text-anchor="middle">THE FULL CRIME: Invisible to any single institution</text>
+            <text x="400" y="290" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">Scam call &rarr; Impersonation &rarr; Bank transfer &rarr; Mule accounts &rarr; Crypto conversion &rarr; Bridge &rarr; Exit</text>
+            <text x="400" y="308" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#C9D1D9" text-anchor="middle">Three institutions. Three data domains. Three compliance systems. Zero correlation.</text>
+
+            <!-- Stat -->
+            <rect x="140" y="350" width="520" height="70" rx="6" fill="#101820" stroke="#30363D" stroke-width="1"/>
+            <text x="400" y="376" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#D29922" text-anchor="middle">UK Finance Annual Fraud Report 2025</text>
+            <text x="400" y="396" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">GBP 1.17 billion stolen through payment fraud in 2024. GBP 450.7 million lost to APP fraud.</text>
+            <text x="400" y="412" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">70% of APP fraud cases started online. 16% originated through telecommunications networks.</text>
+
+            <!-- Brand -->
+            <text x="780" y="436" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#58A6FF" text-anchor="end" opacity="0.6">ZQUAS<tspan fill="#4a7dff">.</tspan></text>
+          </svg>
+        </div>
+
+        <p>Three institutions. Three data domains. Three independent compliance systems. Each one sees a fragment. None of them sees the crime.</p>
+
+        <p>This is not a technology failure. Current transaction monitoring systems are designed to operate within a single institution. They were never architected to correlate signals across sectors. According to the <a href="https://www.ukfinance.org.uk/news-and-insight/press-release/fraud-report-2025-press-release" target="_blank" rel="noopener">UK Finance Annual Fraud Report 2025</a>, criminals stole GBP 1.17 billion through payment fraud in 2024, of which GBP 450.7 million was lost to APP fraud alone. 70 per cent of APP fraud cases started online, while 16 per cent originated through telecommunications networks.</p>
+
+        <p>The criminals have cross-sector visibility. The compliance infrastructure does not.</p>
+
+
+        <h2>2. What Exists Today</h2>
+
+        <p>Before describing the cross-sector architecture, it is important to establish what is already built and operational. This paper describes a vision that extends from a production-ready foundation, not a theoretical concept that requires everything to be built from scratch.</p>
+
+        <p>The ZQUAS F1 Engine is a GPU-native financial crime detection engine comprising approximately 253,000 lines of C++ and CUDA code. It is not a prototype, a proof of concept, or a roadmap. The banking detection pipeline is production-ready.</p>
+
+        <h3>2.1 Banking Detection: Production-Ready</h3>
+
+        <p>The engine processes 500,000 entities in under 2 seconds with an alert lifecycle under 10 milliseconds. Total VRAM consumption is under 1 gigabyte. It runs on hardware ranging from a consumer-grade laptop GPU to data centre GPUs (A100, H100). The same binary, the same detection pipeline, different throughput.</p>
+
+        <p>The detection pipeline evaluates five layers covering temporal analysis, structural graph analysis, behavioural profiling, corridor analysis, and flow path reconstruction. All five layers execute on GPU with over 100 compiled compliance policies evaluated by the GPU-native policy engine. Transaction processing, entity resolution, policy evaluation, alert lifecycle, case management, and regulatory reporting are all implemented.</p>
+
+        <h3>2.2 Bank-to-Bank Federation: Production-Ready</h3>
+
+        <p>The federation protocol implements Elliptic Curve Diffie-Hellman Private Set Intersection (ECDH-PSI) for entity matching, bilateral escalation signal propagation, and cryptographic evidence attestation. Federation rounds complete in under 10 seconds per bilateral pair. The protocol has been validated across simulated multi-bank deployments.</p>
+
+        <p>This is not a theoretical protocol. It is compiled code that runs, produces verifiable results, and has been tested across multiple simulated banking topologies.</p>
+
+        <h3>2.3 Financial Crime Network Simulator: Production-Ready</h3>
+
+        <p>The F1 Engine includes a GPU-native simulation environment that generates synthetic banking populations with embedded criminal networks. 15 criminal typologies (8 AML, 7 APP fraud) generate realistic transaction data on GPU. The simulator is calibrated against published national statistics for three jurisdictions (Netherlands, United Kingdom, Germany). Over 300 tests pass with strict assertions.</p>
+
+        <p>The simulator enables closed-loop calibration: generate a population with known criminals, run detection, measure results against ground truth, optimise thresholds. The threshold optimisation evaluates thousands of configurations in seconds on GPU across multiple adversarial difficulty levels.</p>
+
+        <h3>2.4 FCA Digital Sandbox</h3>
+
+        <p>The engine has been accepted into the FCA Digital Sandbox, with mentor support from NatWest, the FCA, the ICO, BDO, and a fintech go-to-market advisor. Testing is being conducted against the FCA's APP Fraud synthetic dataset, which includes four banks and two telecommunications operators with linked customer identities.</p>
+
+        <h3>2.5 Maturity Summary</h3>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Capability</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Banking transaction ingestion</strong></td>
+                    <td>Production-ready. Deployed.</td>
+                </tr>
+                <tr>
+                    <td><strong>Bank-to-bank federation (ECDH-PSI, escalation propagation)</strong></td>
+                    <td>Production-ready. Tested.</td>
+                </tr>
+                <tr>
+                    <td><strong>Five-layer detection pipeline (GPU-native)</strong></td>
+                    <td>Production-ready. Over 100 policies compiled.</td>
+                </tr>
+                <tr>
+                    <td><strong>Financial Crime Network Simulator (15 typologies)</strong></td>
+                    <td>Production-ready. Over 300 tests.</td>
+                </tr>
+                <tr>
+                    <td><strong>Evidence system with blind assessment workflow</strong></td>
+                    <td>Production-ready. Implemented.</td>
+                </tr>
+                <tr>
+                    <td><strong>Deterministic entity hashing (pre-PSI)</strong></td>
+                    <td>Production-ready. Implemented.</td>
+                </tr>
+                <tr>
+                    <td><strong>Cryptographic erasure (hierarchical per-entity keys)</strong></td>
+                    <td>Production-ready. Implemented.</td>
+                </tr>
+                <tr>
+                    <td><strong>Differential privacy on federation signals</strong></td>
+                    <td>Architecture designed. Phase 2.</td>
+                </tr>
+                <tr>
+                    <td><strong>Signal velocity circuit breaker on federation</strong></td>
+                    <td>Architecture designed. Phase 2.</td>
+                </tr>
+                <tr>
+                    <td><strong>Cross-sector score calibration</strong></td>
+                    <td>Architecture designed. Calibration infrastructure exists. Phase 2.</td>
+                </tr>
+                <tr>
+                    <td><strong>Telecommunications ingestion pipeline (CDR/TMDR)</strong></td>
+                    <td>Planned. Phase 2 (Q3 2026).</td>
+                </tr>
+                <tr>
+                    <td><strong>Blockchain ingestion pipeline (EVM/UTXO)</strong></td>
+                    <td>Planned. Phase 3 (Q4 2026).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout">
+            <p>Everything in this paper that is described as "architecture" or "planned" is clearly labelled as such. Everything described without qualification is built, tested, and operational.</p>
+        </div>
+
+
+        <h2>3. The Regulatory Direction</h2>
+
+        <p>Regulators are converging on cross-sector responsibility. The evidence is unambiguous.</p>
+
+        <h3>3.1 Singapore: Shared Responsibility Framework</h3>
+
+        <p>Singapore's Monetary Authority (MAS) and Infocomm Media Development Authority (IMDA) implemented the <a href="https://www.mas.gov.sg/news/media-releases/2024/mas-and-imda-announce-implementation-of-shared-responsibility-framework-from-16-december-2024" target="_blank" rel="noopener">Shared Responsibility Framework</a> on 16 December 2024. It is the first regulatory framework in the world to hold both financial institutions and telecommunications operators jointly liable for fraud losses.</p>
+
+        <p>The framework operates on a waterfall principle. If the bank breached its duties (real-time fraud surveillance, cooling-off periods, transaction alerts), the bank bears the loss. If the bank complied but the telco breached its duties (SMS sender ID authentication, scam filtering, authorised aggregator controls), the telco bears the loss. If both complied, the consumer bears the loss.</p>
+
+        <p>MAS added a fraud surveillance duty effective 16 June 2025, requiring banks to detect and block suspicious transactions in real time. This is not batch processing with faster turnaround. It is continuous monitoring with the authority to halt transactions before settlement.</p>
+
+        <p>As MAS stated in the framework consultation: no other known jurisdiction had included telecommunications operators in a scam reimbursement framework at the time of publication. Singapore positioned itself as the global reference model.</p>
+
+        <!-- Regulatory Convergence Diagram -->
+        <div class="diagram-container" style="max-width: 800px; margin: 2.5rem auto;">
+          <svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Regulatory convergence timeline showing Singapore, UK, EU, and Australia moving toward cross-sector liability frameworks">
+            <title>Regulatory Convergence: Cross-Sector Liability Frameworks</title>
+            <defs>
+              <marker id="arr-g2" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#3FB950"/></marker>
+            </defs>
+
+            <!-- Title -->
+            <text x="400" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Regulatory Convergence: Cross-Sector Liability</text>
+
+            <!-- Timeline axis -->
+            <line x1="80" y1="70" x2="720" y2="70" stroke="#30363D" stroke-width="2"/>
+            <text x="130" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">2024</text>
+            <line x1="130" y1="64" x2="130" y2="76" stroke="#30363D" stroke-width="1.5"/>
+            <text x="330" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">2025</text>
+            <line x1="330" y1="64" x2="330" y2="76" stroke="#30363D" stroke-width="1.5"/>
+            <text x="530" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">2026</text>
+            <line x1="530" y1="64" x2="530" y2="76" stroke="#30363D" stroke-width="1.5"/>
+            <text x="690" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">2027</text>
+            <line x1="690" y1="64" x2="690" y2="76" stroke="#30363D" stroke-width="1.5"/>
+
+            <!-- Singapore -->
+            <rect x="30" y="95" width="740" height="80" rx="6" fill="#101820" stroke="#D29922" stroke-width="1"/>
+            <text x="50" y="118" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#D29922">SINGAPORE</text>
+            <circle cx="180" cy="135" r="5" fill="#3FB950"/>
+            <text x="195" y="139" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9">Dec 2024: Shared Responsibility Framework live</text>
+            <circle cx="380" cy="155" r="5" fill="#3FB950"/>
+            <text x="395" y="159" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9">Jun 2025: Fraud surveillance duty effective</text>
+
+            <!-- UK -->
+            <rect x="30" y="190" width="740" height="105" rx="6" fill="#101820" stroke="#58A6FF" stroke-width="1"/>
+            <text x="50" y="213" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#58A6FF">UNITED KINGDOM</text>
+            <circle cx="150" cy="235" r="5" fill="#3FB950"/>
+            <text x="165" y="239" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9">Oct 2024: PSR APP fraud reimbursement regime</text>
+            <circle cx="350" cy="255" r="5" fill="#3FB950"/>
+            <text x="365" y="259" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9">Nov 2025: Telecom Fraud Sector Charter</text>
+            <circle cx="490" cy="275" r="5" fill="#D29922"/>
+            <text x="505" y="279" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9">Mar 2026: Fraud Strategy 2026-2029</text>
+
+            <!-- EU -->
+            <rect x="30" y="310" width="740" height="80" rx="6" fill="#101820" stroke="#BC8CFF" stroke-width="1"/>
+            <text x="50" y="333" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#BC8CFF">EUROPEAN UNION</text>
+            <circle cx="160" cy="355" r="5" fill="#3FB950"/>
+            <text x="175" y="359" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9">Dec 2024: MiCA fully applicable</text>
+            <circle cx="690" cy="355" r="5" fill="#D29922"/>
+            <text x="610" y="375" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9">Jul 2027: AMLR Article 75</text>
+
+            <!-- Australia -->
+            <rect x="30" y="405" width="740" height="60" rx="6" fill="#101820" stroke="#34d399" stroke-width="1"/>
+            <text x="50" y="428" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#34d399">AUSTRALIA</text>
+            <circle cx="430" cy="445" r="5" fill="#D29922"/>
+            <text x="445" y="449" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9">Scam Prevention Framework: up to AUD 50M penalties</text>
+
+            <!-- Convergence arrow -->
+            <line x1="400" y1="480" x2="400" y2="500" stroke="#3FB950" stroke-width="2" marker-end="url(#arr-g2)"/>
+            <text x="400" y="516" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#3FB950" text-anchor="middle">Direction is global and irreversible</text>
+
+            <!-- Brand -->
+            <text x="780" y="516" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#58A6FF" text-anchor="end" opacity="0.6">ZQUAS<tspan fill="#4a7dff">.</tspan></text>
+          </svg>
+        </div>
+
+        <h3>3.2 United Kingdom: Converging Frameworks</h3>
+
+        <p>The UK is assembling the same structure through multiple regulatory instruments.</p>
+
+        <p>The Payment Systems Regulator's <a href="https://www.psr.org.uk/publications/policy-statements/ps247-faster-payments-app-scams-reimbursement-requirement-confirming-the-maximum-level-of-reimbursement/" target="_blank" rel="noopener">APP fraud reimbursement regime</a>, effective 7 October 2024, requires payment service providers to reimburse victims up to GBP 85,000 within five business days. The cost is split equally between sending and receiving payment firms.</p>
+
+        <p>The UK <a href="https://www.gov.uk/government/publications/fraud-sector-charter-telecommunications/fraud-sector-charter-telecommunications-accessible-version" target="_blank" rel="noopener">Telecommunications Fraud Sector Charter</a>, published 5 November 2025, commits telecommunications operators to cross-industry intelligence sharing, API-driven fraud data exchange, and AI-powered fraud prevention. The Charter establishes working groups between the Home Office, banks, and telcos.</p>
+
+        <p><a href="https://www.ofcom.org.uk/phones-and-broadband/scam-calls-and-messages/new-rules-to-protect-people-and--businesses-against-mobile-messaging-scams" target="_blank" rel="noopener">Ofcom's consultation on combatting mobile messaging scams</a>, published 29 October 2025, proposes mandatory Know Your Customer checks for business message senders, sender ID verification, and anti-scam filtering. An estimated 100 million suspicious messages were reported to operators through the 7726 service in the year to April 2025.</p>
+
+        <p>The Data (Use and Access) Act 2025 establishes crime and fraud prevention as a lawful basis for data sharing, as referenced in the <a href="https://assets.publishing.service.gov.uk/media/69aea29d917847c0a4c8999e/E03551200_Fraud_Strategy_2026__English__ELAY.pdf" target="_blank" rel="noopener">UK Government's Fraud Strategy 2026-2029</a>. The ICO has confirmed that data protection is not an excuse when tackling scams and fraud.</p>
+
+        <p>The UK Government's Fraud Strategy 2026-2029, published March 2026, explicitly calls for cross-sector collaboration between financial, telecommunications, and technology sectors, supported by the new Operational Crime Centre launching April 2026.</p>
+
+        <p>The FCA Digital Sandbox has published a synthetic dataset containing four banks and two telecommunications operators with linked customer identities, specifically designed to test cross-sector fraud detection capabilities. The FCA does not commission datasets for capabilities it does not intend to regulate.</p>
+
+        <h3>3.3 European Union: AMLR Article 75 and MiCA</h3>
+
+        <p>The Anti-Money Laundering Regulation (AMLR) Article 75 mandates mechanisms for cross-institutional information sharing. The Anti-Money Laundering Authority (AMLA) will assume oversight tasks from 2027, as confirmed by the <a href="https://english.rekenkamer.nl/latest/current-audits/consequences-of-anti-money-laundering-policy" target="_blank" rel="noopener">Netherlands Court of Audit</a>.</p>
+
+        <p>The Markets in Crypto-Assets Regulation (MiCA) became fully applicable in December 2024, following a phased rollout in which stablecoin provisions took effect from June 2024. MiCA requires crypto-asset service providers to implement transaction monitoring, suspicious activity reporting, and customer due diligence equivalent to traditional financial institutions. CASPs are now regulated entities with the same compliance obligations as banks.</p>
+
+        <p>When a stablecoin payment originates at a bank, transits through a blockchain, and settles at an exchange, every entity in the chain is a regulated institution under either AMLR or MiCA. The regulatory obligation to detect financial crime exists at every step. The technology to correlate signals across those steps does not.</p>
+
+        <h3>3.4 SWIFT: The Institutional Blockchain Transition</h3>
+
+        <p><a href="https://www.swift.com/news-events/press-releases/swift-add-blockchain-based-ledger-its-infrastructure-stack-groundbreaking-move-accelerate-and-scale-benefits-digital-finance" target="_blank" rel="noopener">SWIFT announced on 29 September 2025</a> that it will add a blockchain-based shared ledger to its technology infrastructure, developed in collaboration with over 30 financial institutions including JP Morgan, HSBC, Deutsche Bank, NatWest, and Bank of America.</p>
+
+        <p>This transition has a direct consequence for financial crime detection. Today, public blockchains provide full transaction transparency. Compliance tools like Chainalysis and Elliptic operate by analysing this public ledger. When institutional adoption moves settlement onto permissioned chains and private ledgers, that transparency disappears. A bank will not expose its stablecoin transaction flows to competitors on a public chain.</p>
+
+        <p>A permissioned ledger with 30 banks does provide shared consensus. Consensus, however, is not detection. Validator participants verify that transactions are structurally valid and properly authorised. They do not evaluate whether a circuit of individually valid transactions constitutes money laundering. Detection requires behavioural analysis across the entity graph over time, which is a fundamentally different computational task from transaction validation. Furthermore, the telecommunications operator and the cryptocurrency exchange are not participants on the bank's private ledger. The cross-sector gap remains even when the intra-sector gap narrows.</p>
+
+
+        <h2>4. The Architecture</h2>
+
+        <h3>4.1 Design Principle</h3>
+
+        <p>The ZQUAS F1 Engine operates on entities and relationships between entities. A bank customer who is also a mobile subscriber who is also a crypto exchange user is one entity with three institutional views. The detection pipeline evaluates risk based on the combined signal surface, not on any single institutional perspective.</p>
+
+        <p>At the federation layer, the engine treats all data sources uniformly: a sender, a receiver, a value, and a timestamp. This uniformity enables the same federation protocol to operate between a bank and a telco as between two banks.</p>
+
+        <p>This does not mean that all data sources are equally simple to process. Financial crime detection within a single sector depends on rich, sector-specific features. A banking installation analyses transaction narratives, merchant categories, and payment patterns. A telco installation analyses call patterns, SIM lifecycle events, and network behaviour. A crypto installation analyses wallet clustering, bridge usage, and mixer proximity. These sector-specific features produce entity-level risk assessments that are comparable across sectors through calibration (Section 4.7), even though the underlying feature sets are different.</p>
+
+        <p>The banking pipeline is production-ready today. The telecommunications and blockchain pipelines are planned engineering milestones. The detection engine, federation protocol, and scoring infrastructure are already operational and data-agnostic. What remains is building the sector-specific ingestion adapters and tuning the detection parameters per data domain.</p>
+
+        <h3>4.2 The Four-Installation Federation</h3>
+
+        <!-- Four-Node Federation Diagram -->
+        <div class="diagram-container" style="max-width: 800px; margin: 2.5rem auto;">
+          <svg viewBox="0 0 800 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four-installation cross-sector federation: Banking, Telecommunications, Digital Assets, and Regulatory Observer connected by ECDH-PSI federation protocol">
+            <title>The Four-Installation Cross-Sector Federation</title>
+            <defs>
+              <marker id="arr-b" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#58A6FF"/></marker>
+              <marker id="arr-g" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#3FB950"/></marker>
+              <marker id="arr-p" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#BC8CFF"/></marker>
+            </defs>
+
+            <!-- Title -->
+            <text x="400" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Cross-Sector Federation: Four Installation Types</text>
+
+            <!-- Banking installation -->
+            <rect x="30" y="60" width="220" height="180" rx="6" fill="#101820" stroke="#58A6FF" stroke-width="1.5"/>
+            <text x="140" y="88" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#58A6FF" text-anchor="middle">BANKING INSTITUTION</text>
+            <text x="140" y="108" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">F1 Edge Installation</text>
+            <rect x="50" y="120" width="180" height="28" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="140" y="139" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">Transaction monitoring</text>
+            <rect x="50" y="155" width="180" height="28" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="140" y="174" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">Entity risk assessment</text>
+            <rect x="50" y="190" width="180" height="28" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="140" y="209" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#3FB950" text-anchor="middle">Production-ready</text>
+
+            <!-- Telco installation -->
+            <rect x="550" y="60" width="220" height="180" rx="6" fill="#101820" stroke="#D29922" stroke-width="1.5"/>
+            <text x="660" y="88" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#D29922" text-anchor="middle">TELCO OPERATOR</text>
+            <text x="660" y="108" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">F1 Edge Installation</text>
+            <rect x="570" y="120" width="180" height="28" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="660" y="139" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">CDR/TMDR analysis</text>
+            <rect x="570" y="155" width="180" height="28" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="660" y="174" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">Scam pattern detection</text>
+            <rect x="570" y="190" width="180" height="28" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="660" y="209" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="middle">Planned: Phase 2 (Q3 2026)</text>
+
+            <!-- Digital assets installation -->
+            <rect x="30" y="340" width="220" height="180" rx="6" fill="#101820" stroke="#BC8CFF" stroke-width="1.5"/>
+            <text x="140" y="368" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#BC8CFF" text-anchor="middle">DIGITAL ASSET PLATFORM</text>
+            <text x="140" y="388" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">F1 Edge Installation</text>
+            <rect x="50" y="400" width="180" height="28" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="140" y="419" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">On-chain/off-chain analysis</text>
+            <rect x="50" y="435" width="180" height="28" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="140" y="454" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">Bridge &amp; mixer detection</text>
+            <rect x="50" y="470" width="180" height="28" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="140" y="489" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#BC8CFF" text-anchor="middle">Planned: Phase 3 (Q4 2026)</text>
+
+            <!-- Regulatory observer -->
+            <rect x="550" y="340" width="220" height="180" rx="6" fill="#101820" stroke="#34d399" stroke-width="1.5"/>
+            <text x="660" y="368" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#34d399" text-anchor="middle">REGULATORY OBSERVER</text>
+            <text x="660" y="388" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Read-only interface</text>
+            <rect x="570" y="400" width="180" height="28" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="660" y="419" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">Aggregated metrics</text>
+            <rect x="570" y="435" width="180" height="28" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="660" y="454" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">Detection + false positive rates</text>
+            <rect x="570" y="470" width="180" height="28" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="660" y="489" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">No entity-level data</text>
+
+            <!-- Centre: Federation Protocol -->
+            <rect x="290" y="220" width="220" height="140" rx="8" fill="#131D28" stroke="#3FB950" stroke-width="2"/>
+            <text x="400" y="252" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#3FB950" text-anchor="middle">FEDERATION PROTOCOL</text>
+            <text x="400" y="275" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#C9D1D9" text-anchor="middle">ECDH-PSI entity matching</text>
+            <text x="400" y="295" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#C9D1D9" text-anchor="middle">Binary escalation signals</text>
+            <text x="400" y="315" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#C9D1D9" text-anchor="middle">Cryptographic attestation</text>
+            <text x="400" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Zero raw data crosses boundaries</text>
+
+            <!-- Connection lines -->
+            <line x1="252" y1="150" x2="290" y2="260" stroke="#3FB950" stroke-width="1.5" stroke-dasharray="6 3"/>
+            <line x1="548" y1="150" x2="510" y2="260" stroke="#3FB950" stroke-width="1.5" stroke-dasharray="6 3"/>
+            <line x1="252" y1="430" x2="290" y2="320" stroke="#3FB950" stroke-width="1.5" stroke-dasharray="6 3"/>
+            <line x1="548" y1="430" x2="510" y2="320" stroke="#34d399" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.6"/>
+
+            <!-- Labels on connections -->
+            <text x="255" y="200" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#3FB950" text-anchor="middle" transform="rotate(-30, 255, 200)">escalation signals</text>
+            <text x="545" y="200" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#3FB950" text-anchor="middle" transform="rotate(30, 545, 200)">escalation signals</text>
+            <text x="255" y="380" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#3FB950" text-anchor="middle" transform="rotate(30, 255, 380)">escalation signals</text>
+            <text x="545" y="380" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#34d399" text-anchor="middle" transform="rotate(-30, 545, 380)">metrics only</text>
+
+            <!-- Brand -->
+            <text x="780" y="572" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#58A6FF" text-anchor="end" opacity="0.6">ZQUAS<tspan fill="#4a7dff">.</tspan> F1 Engine</text>
+          </svg>
+        </div>
+
+        <p>The federation protocol connects institutional installations as peers. Each installation is architecturally identical regardless of the sector it serves.</p>
+
+        <p><strong>Installation Type 1: Banking Institution.</strong> The bank runs an F1 Edge Installation in its data centre. It ingests transactions from its core banking system. The detection pipeline evaluates every transaction at the point of processing. The installation produces entity-level risk assessments based on the bank's own data.</p>
+
+        <p><strong>Installation Type 2: Telecommunications Operator.</strong> The telco runs an identical F1 Edge Installation. It ingests call detail records (CDRs), text message records (TMDRs), SIM lifecycle events, and customer onboarding data. The detection pipeline evaluates communication patterns: burst calling, SIM swap sequences, call-then-payment timing correlations, and known scam number patterns. The installation produces entity-level risk assessments based on the telco's own data.</p>
+
+        <p><strong>Installation Type 3: Digital Asset Platform.</strong> The exchange runs an identical F1 Edge Installation. It ingests on-chain transactions, deposit and withdrawal events, wallet clustering data, and KYC records. The detection pipeline evaluates patterns indicative of laundering, rapid conversion, and cross-chain obfuscation. The installation produces entity-level risk assessments based on the exchange's own data.</p>
+
+        <p><strong>Installation Type 4: Regulatory Observer.</strong> The regulator connects as a read-only observer. It receives aggregated, anonymised detection metrics without accessing any institution's raw data or entity-level identifiers. It sees: detection rates, alert volumes, federation participation rates, cross-sector signal contribution, and crucially, false positive rates alongside detection rates. This dual reporting (precision and recall, not just detection volume) prevents a "race to the top" where institutions over-calibrate their detection to avoid appearing as regulatory laggards, generating false positive explosions and wrongful de-risking of innocent customers. The observer provides the data for regulators to measure detection quality, not just quantity.</p>
+
+        <p>The observer does not receive entity-level data and cannot be used for prosecution. Evidence for law enforcement is handled through a separate mechanism described in Section 4.10.</p>
+
+        <h3>4.3 Cross-Sector Entity Matching</h3>
+
+        <p>The critical technical challenge is linking the same person across institutional boundaries without sharing personal data.</p>
+
+        <p>Banks identify customers by government-issued ID (passport number, national identity number), name, date of birth, and address. Telecommunications operators identify customers by the same government-issued ID, collected during mandatory KYC at SIM registration. Crypto exchanges identify customers by government-issued ID, collected during mandatory onboarding KYC under MiCA or national licensing requirements.</p>
+
+        <p>In the target launch jurisdictions, a single government identifier serves as the natural join key across all regulated sectors. In the Netherlands, the BSN (Burgerservicenummer) is mandatory at banks (Wwft), telcos (SIM registration), and crypto exchanges (Wwft). In the United Kingdom, the National Insurance number and passport serve equivalent functions across regulated institutions.</p>
+
+        <p>The F1 Engine uses ECDH-PSI to discover common entities without revealing the underlying identity data. Institution A blinds its set of identity hashes. Institution B blinds its set. The protocol produces the intersection: entities present in both sets. Neither institution learns anything about entities that are not in the intersection. The protocol is GPU-accelerated and provably secure under standard cryptographic assumptions.</p>
+
+        <!-- Two-Tier Entity Matching Diagram -->
+        <div class="diagram-container" style="max-width: 800px; margin: 2.5rem auto;">
+          <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two-tier entity matching: Government ID hash for AML detection, Phone number hash for APP fraud detection">
+            <title>Two-Tier Entity Matching via ECDH-PSI</title>
+
+            <!-- Title -->
+            <text x="400" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Two-Tier Entity Matching via ECDH-PSI</text>
+
+            <!-- Tier 1 -->
+            <rect x="30" y="50" width="740" height="130" rx="6" fill="#101820" stroke="#58A6FF" stroke-width="1.5"/>
+            <text x="50" y="76" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#58A6FF">TIER 1: Government ID Hash</text>
+            <text x="50" y="96" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">Primary mechanism for AML detection. Same person laundering money across institutions using the same identity.</text>
+
+            <rect x="50" y="110" width="150" height="50" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="125" y="132" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#58A6FF" text-anchor="middle">Bank: BSN / NI#</text>
+            <text x="125" y="148" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">H(BSN) = 0xa3f...</text>
+
+            <rect x="325" y="110" width="150" height="50" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="400" y="132" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="middle">Telco: BSN / NI#</text>
+            <text x="400" y="148" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">H(BSN) = 0xa3f...</text>
+
+            <rect x="600" y="110" width="150" height="50" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+            <text x="675" y="132" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#BC8CFF" text-anchor="middle">Exchange: BSN / NI#</text>
+            <text x="675" y="148" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">H(BSN) = 0xa3f...</text>
+
+            <text x="262" y="140" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#3FB950" text-anchor="middle">=</text>
+            <text x="537" y="140" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#3FB950" text-anchor="middle">=</text>
+
+            <!-- Tier 2 -->
+            <rect x="30" y="200" width="740" height="150" rx="6" fill="#101820" stroke="#D29922" stroke-width="1.5"/>
+            <text x="50" y="226" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#D29922">TIER 2: Phone Number Hash (E.164)</text>
+            <text x="50" y="246" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">Primary mechanism for APP fraud detection. Links the victim across telco and bank.</text>
+
+            <rect x="50" y="262" width="220" height="70" rx="4" fill="#161B22" stroke="#D29922" stroke-width="1"/>
+            <text x="160" y="284" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="middle">Telco: subscriber targeted</text>
+            <text x="160" y="300" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">H(+31612345678)</text>
+            <text x="160" y="318" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#F85149" text-anchor="middle">Scam pattern detected</text>
+
+            <text x="400" y="300" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#3FB950" text-anchor="middle">PSI match on victim</text>
+            <line x1="275" y1="300" x2="370" y2="300" stroke="#3FB950" stroke-width="1.5" stroke-dasharray="6 3"/>
+            <line x1="430" y1="300" x2="525" y2="300" stroke="#3FB950" stroke-width="1.5" stroke-dasharray="6 3"/>
+
+            <rect x="530" y="262" width="220" height="70" rx="4" fill="#161B22" stroke="#58A6FF" stroke-width="1"/>
+            <text x="640" y="284" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#58A6FF" text-anchor="middle">Bank: customer payment</text>
+            <text x="640" y="300" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">H(+31612345678)</text>
+            <text x="640" y="318" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#3FB950" text-anchor="middle">Signal received: hold payment</text>
+
+            <!-- Key insight -->
+            <text x="400" y="372" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#C9D1D9" text-anchor="middle">The architecture does not need to unmask the fraudster to protect the victim.</text>
+
+            <!-- Brand -->
+            <text x="780" y="378" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#58A6FF" text-anchor="end" opacity="0.6">ZQUAS<tspan fill="#4a7dff">.</tspan></text>
+          </svg>
+        </div>
+
+        <p>The matching operates on two tiers, each serving a different detection purpose:</p>
+
+        <p><strong>Tier 1: Government-issued ID hash.</strong> Exact match after normalisation. Highest confidence. Available at all regulated institutions. This is the primary matching mechanism for AML detection, where the same person launders money across institutions using the same identity.</p>
+
+        <p><strong>Tier 2: Phone number hash in E.164 format.</strong> This is the primary matching mechanism for APP fraud detection. In APP fraud, the fraudster and the mule are typically different people. The fraudster uses a burner SIM. The victim sends money to a mule account at a different bank. Government ID matching between the telco and the bank will not link them because they are different individuals. The link is the victim: the same person who is both a telco subscriber being targeted by a scam pattern and a bank customer initiating an unusual payment. Phone number matching identifies the victim across both sectors, enabling the telco's "this subscriber is being targeted" signal to reach the bank before the payment settles.</p>
+
+        <h3>4.3.1 ID Fragmentation in Multi-Document Jurisdictions</h3>
+
+        <p>Not all jurisdictions have a single universal identifier. A customer might use a passport to open a bank account and a driving licence to register a SIM card. If only one ID type is hashed, the PSI will miss the match.</p>
+
+        <p>The protocol addresses this through multi-ID hashing: each institution hashes every government ID type it holds for each entity (passport, driving licence, national ID number) into separate PSI sets. The intersection is computed across all ID-type pairs. A match on any single ID type is sufficient to establish cross-sector linkage. This increases PSI computation linearly (proportional to the number of ID types, typically 2-3), not exponentially. It is an engineering optimisation, not an architectural change.</p>
+
+        <p>In the Netherlands and the UK, where a single mandatory identifier covers all regulated sectors, multi-ID hashing is a fallback for edge cases. In jurisdictions without a universal ID, it becomes the primary matching mechanism and carries a higher false-negative rate.</p>
+
+        <h3>4.4 The Normalisation Pipeline</h3>
+
+        <p>PSI operates on exact hash matches. If Bank A records "J. van de Gier, Hoogstraat 12a, 1234AB" and Telco B records "Johannes van de Gier, Hoogstraat 12A, 1234 AB", a naive hash comparison will fail despite referring to the same person.</p>
+
+        <p>The solution is deterministic normalisation before hashing, not fuzzy matching inside the cryptographic protocol. Each institution applies the same normalisation rules to its own data before blinding. The rules include case normalisation, punctuation and whitespace stripping, abbreviation standardisation, and ISO formatting of document numbers and phone numbers (E.164). The normalised output is concatenated into a canonical string and hashed before entering the PSI protocol.</p>
+
+        <p>This pipeline runs locally at each institution before any data enters the cryptographic protocol. It is deterministic: the same input always produces the same canonical form. In jurisdictions with standardised address formats (Dutch postcode plus house number, UK postcode plus building number), this achieves near-perfect matching accuracy on the primary government ID identifier, where formatting variation is minimal (BSN is a 9-digit number, NI number follows a fixed alphanumeric pattern).</p>
+
+        <p>The current implementation applies deterministic canonical hashing to entity identifiers. The full normalisation pipeline with jurisdiction-specific abbreviation mapping and document formatting is specified and planned for Phase 2.</p>
+
+        <h3>4.5 Signal Propagation and Privacy Protection</h3>
+
+        <p>Once entities are matched, risk signals propagate through the federation.</p>
+
+        <p>Each installation computes local risk assessments for its entities based on its own data and its own detection pipeline. When an installation's detection pipeline determines that an entity warrants cross-institutional attention, an escalation signal propagates to matched peers. The receiving installation incorporates this cross-sector signal as a risk elevation in its own assessment.</p>
+
+        <p>No raw transactions, no CDRs, no blockchain addresses, no customer names cross institutional boundaries. The federation shares only the escalation decision, not the underlying data or reasoning.</p>
+
+        <div class="callout">
+            <p>In the current production architecture, federation signals are binary escalations: escalated or not escalated. Unlike quantitative risk scores, binary signals are mathematically immune to threshold drift. An escalation is either propagated or it is not. There is no intermediate value that noise, rounding, or miscalibration can degrade. This design ensures that no institution can claim a signal was "too ambiguous to act on."</p>
+        </div>
+
+        <h3>4.5.1 Batched Federation Rounds</h3>
+
+        <p>Escalation signals are not propagated per-event. They are batched into federation rounds that aggregate multiple events. If a telco detects burst messaging at 09:42, a SIM swap at 10:15, and a suspicious CDR pattern at 11:30, the receiving bank sees a single aggregated signal at the next federation round. The bank cannot determine which specific event triggered the escalation or at what time it occurred. This decoupling of signal from event timing defeats inference attacks where a receiving institution attempts to reconstruct the sender's private data from timing correlations.</p>
+
+        <h3>4.5.2 Differential Privacy (Planned)</h3>
+
+        <p>Phase 2 will introduce quantitative risk deltas alongside binary escalation signals, enabling richer cross-sector intelligence. Each delta will include calibrated noise providing formal differential privacy guarantees. The privacy budget will be configurable per federation agreement.</p>
+
+        <p>The differential privacy noise will apply to the inter-institutional signal, not to the receiving institution's internal assessment. The receiving institution will combine the noised cross-sector indicator with its own full-resolution local data. A compliance officer at the receiving bank sees their own bank's complete transaction history plus a cross-sector risk elevation. Their legal duty to act under the UK's APP regime or Singapore's SRF is assessed on this combined picture, not on any single noised input. The local action threshold remains under the sole control of the receiving institution. Privacy-preserving noise never serves as a justification for inaction.</p>
+
+        <p>Where a case requires un-noised evidence for prosecution or asset seizure, the evidence attestation mechanism (Section 4.10) produces it under judicial warrant.</p>
+
+        <h3>4.5.3 Signal Velocity Circuit Breaker (Planned)</h3>
+
+        <p>To prevent any single installation from flooding the federation with escalation signals (whether through miscalibration, adversarial intent, or mule proliferation using compromised identities), a signal velocity check will operate at the federation level. If an installation emits more than a configurable threshold of escalation signals per federation round, propagation will be paused for that installation and flagged for review.</p>
+
+        <p>A circuit breaker for alert processing already operates within the engine's case management subsystem. Extending this to federation round throttling is a planned Phase 2 enhancement.</p>
+
+        <h3>4.6 Intersection Privacy and Anti-Leakage Controls</h3>
+
+        <p>In a bilateral PSI protocol, both parties learn the intersection: which entities they share. While neither party sees the other's full customer list, the intersection itself reveals customer overlap between two specific institutions. In a competitive environment, this metadata has commercial value. This creates a potential tension with GDPR Article 5(1)(b) purpose limitation.</p>
+
+        <p>The architecture mitigates this through three controls.</p>
+
+        <p>First, the PSI is risk-filtered. Only entities that exceed a local risk threshold enter the PSI set. If a bank has 2 million customers but only 50,000 are in elevated-risk categories, the PSI operates on 50,000 entities, not 2 million. The intersection reveals overlap only within the risk population, not the full customer base.</p>
+
+        <p>Second, the intersection result is ephemeral. Matched entity identifiers are used for signal propagation during the federation round and then discarded from the federation working memory. The institution stores "Entity X has cross-sector risk elevation" with a sector label (telecommunications, digital assets), not an institution name.</p>
+
+        <p>Third, PSI query budgets limit the number of federation rounds per bilateral pair per period. This prevents an institution from running continuous PSI to incrementally map the other's customer base over time.</p>
+
+        <h3>4.7 Cross-Sector Score Calibration and Signal Quality (Planned)</h3>
+
+        <p>A risk assessment from a telecommunications operator does not carry the same evidentiary weight as one from a Tier-1 bank. Raw assessments are not directly comparable across sectors.</p>
+
+        <p>The F1 Engine's simulation environment addresses this calibration challenge. The simulator generates synthetic populations with activity across multiple sectors. Criminal networks are embedded with known ground truth labels. Each sector's installation runs detection independently. The calibration engine measures the mapping between sector-specific assessments and actual criminal activity.</p>
+
+        <p>The calibration is computed bilaterally. Both institutions run the simulator with identical synthetic populations and independently verify the mapping output. Both see the same ground truth. Both can confirm the mapping is fair. ZQUAS provides the calibration infrastructure. The institutions own the calibration outcome.</p>
+
+        <p>The bilateral calibration also establishes signal quality floors. Before live signals propagate, both installations run a calibration round using the same synthetic population. If an installation's detection precision or recall on the synthetic ground truth falls below a negotiated minimum, the counterpart installation can automatically quarantine that installation's signals until recalibration. This mechanism forces poorly calibrated installations to improve their detection before they can influence the wider federation. The signal velocity circuit breaker catches aggressive installations (too many signals). The bilateral calibration floor catches negligent installations (low quality signals). Together they bound signal quality from both directions.</p>
+
+        <p>The simulation environment currently generates banking populations. Cross-sector simulation is a Phase 2 engineering milestone.</p>
+
+        <h3>4.8 The APP Fraud Detection Example: Victim-Centric Linkage</h3>
+
+        <p>In most professional APP fraud, the fraudster and the mule are different people. The fraudster uses a burner SIM or stolen identity to make the call. The victim sends money to a mule account at a different bank. Matching the fraudster's identity across sectors will not work because the fraudster takes deliberate steps to avoid identity linkage.</p>
+
+        <p>The architecture solves this by centering the linkage on the victim.</p>
+
+        <!-- APP Fraud Detection Flow Diagram -->
+        <div class="diagram-container" style="max-width: 800px; margin: 2.5rem auto;">
+          <svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Five-step APP fraud detection flow showing how the telco's scam signal reaches the bank before the payment settles">
+            <title>APP Fraud Detection: Victim-Centric Linkage</title>
+            <defs>
+              <marker id="arr-step" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#58A6FF"/></marker>
+            </defs>
+
+            <!-- Title -->
+            <text x="400" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#C9D1D9" text-anchor="middle">APP Fraud Detection: Victim-Centric Linkage</text>
+
+            <!-- Step 1 -->
+            <rect x="30" y="50" width="740" height="68" rx="6" fill="#101820" stroke="#D29922" stroke-width="1"/>
+            <rect x="40" y="58" width="28" height="28" rx="14" fill="#D29922"/>
+            <text x="54" y="78" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#0a0b0f" text-anchor="middle">1</text>
+            <text x="80" y="76" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#D29922">Telco detects scam pattern</text>
+            <text x="80" y="96" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">Burner SIM calls 200 potential victims. Burst calling pattern detected. Each targeted subscriber flagged locally.</text>
+            <text x="740" y="76" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="end">No data leaves telco</text>
+
+            <line x1="400" y1="120" x2="400" y2="135" stroke="#58A6FF" stroke-width="1.5" marker-end="url(#arr-step)"/>
+
+            <!-- Step 2 -->
+            <rect x="30" y="140" width="740" height="68" rx="6" fill="#101820" stroke="#3FB950" stroke-width="1"/>
+            <rect x="40" y="148" width="28" height="28" rx="14" fill="#3FB950"/>
+            <text x="54" y="168" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#0a0b0f" text-anchor="middle">2</text>
+            <text x="80" y="166" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#3FB950">Federation round: PSI match on phone number</text>
+            <text x="80" y="186" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">Victim's phone number matches in both telco's risk set and bank's customer set. Match identifies the victim, not the fraudster.</text>
+
+            <line x1="400" y1="210" x2="400" y2="225" stroke="#58A6FF" stroke-width="1.5" marker-end="url(#arr-step)"/>
+
+            <!-- Step 3 -->
+            <rect x="30" y="230" width="740" height="68" rx="6" fill="#101820" stroke="#58A6FF" stroke-width="1"/>
+            <rect x="40" y="238" width="28" height="28" rx="14" fill="#58A6FF"/>
+            <text x="54" y="258" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#0a0b0f" text-anchor="middle">3</text>
+            <text x="80" y="256" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#58A6FF">Escalation signal propagates to bank</text>
+            <text x="80" y="276" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">"This customer is being targeted by a telecommunications scam pattern." No call details, no timing, no number shared.</text>
+
+            <line x1="400" y1="300" x2="400" y2="315" stroke="#58A6FF" stroke-width="1.5" marker-end="url(#arr-step)"/>
+
+            <!-- Step 4 -->
+            <rect x="30" y="320" width="740" height="68" rx="6" fill="#101820" stroke="#F85149" stroke-width="1"/>
+            <rect x="40" y="328" width="28" height="28" rx="14" fill="#F85149"/>
+            <text x="54" y="348" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#0a0b0f" text-anchor="middle">4</text>
+            <text x="80" y="346" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#F85149">Victim initiates payment to mule account</text>
+            <text x="80" y="366" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E">Bank's detection pipeline combines cross-sector signal + first-time payee + high-value transfer. Alert in under 10ms.</text>
+
+            <line x1="400" y1="390" x2="400" y2="405" stroke="#58A6FF" stroke-width="1.5" marker-end="url(#arr-step)"/>
+
+            <!-- Step 5 -->
+            <rect x="30" y="410" width="740" height="68" rx="6" fill="#131D28" stroke="#3FB950" stroke-width="2"/>
+            <rect x="40" y="418" width="28" height="28" rx="14" fill="#3FB950"/>
+            <text x="54" y="438" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#0a0b0f" text-anchor="middle">5</text>
+            <text x="80" y="436" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="bold" fill="#3FB950">Payment held. Fraud lifecycle broken.</text>
+            <text x="80" y="456" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#C9D1D9">Only the specific high-risk payment is held. Salary, direct debits, routine transactions continue uninterrupted.</text>
+
+            <!-- Comparison -->
+            <rect x="130" y="492" width="260" height="22" rx="4" fill="#161B22" stroke="#F85149" stroke-width="1"/>
+            <text x="260" y="508" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#F85149" text-anchor="middle">Without federation: payment looks normal</text>
+            <rect x="410" y="492" width="260" height="22" rx="4" fill="#161B22" stroke="#3FB950" stroke-width="1"/>
+            <text x="540" y="508" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#3FB950" text-anchor="middle">With federation: fraud stopped in real time</text>
+
+            <!-- Brand -->
+            <text x="780" y="516" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#58A6FF" text-anchor="end" opacity="0.6">ZQUAS<tspan fill="#4a7dff">.</tspan></text>
+          </svg>
+        </div>
+
+        <p><strong>Step 1:</strong> A fraudster operating from a burner SIM calls 200 potential victims. The telco's F1 installation detects that multiple subscribers are receiving calls from a number exhibiting a scam pattern (burst calling to many targets in a short window). Each targeted subscriber's entity is flagged locally: "this subscriber is being targeted by a scam cluster." No data leaves the telco.</p>
+
+        <p><strong>Step 2:</strong> At the next batched federation round, the federation protocol runs a PSI match on Tier 2 (phone number). The victim's phone number appears in both the telco's elevated-risk set and the bank's customer set (because the victim is a bank customer). The match identifies the victim, not the fraudster.</p>
+
+        <p><strong>Step 3:</strong> The telco's escalation signal propagates to the bank: "this customer is being targeted by a telecommunications scam pattern." The bank cannot determine which phone number called the victim, what was said, or when the call occurred. It knows only that its customer has been identified as a scam target by the telecommunications sector.</p>
+
+        <p><strong>Step 4:</strong> Hours later, the victim, convinced by the fraudster's call, initiates a payment to the mule's account. The bank's F1 installation evaluates the transaction in real time (under 10 milliseconds). The victim's entity has a pre-existing cross-sector signal: "targeted by telecommunications scam pattern." The bank's detection pipeline combines this with the transaction characteristics: first-time payee, high-value transfer, unusual payment pattern. Alert generated.</p>
+
+        <p><strong>Step 5:</strong> The bank holds the payment for review. The compliance officer sees: the customer's own transaction history, plus a cross-sector indicator that this customer was recently targeted by a scam pattern on the telecommunications network. The officer investigates the specific payment, not the customer's entire account. The customer's salary deposits, direct debits, and routine transactions continue uninterrupted. Only the specific high-risk payment is held.</p>
+
+        <div class="callout">
+            <p>Without federation: the bank sees a payment to a new payee. That happens thousands of times per day. It is not suspicious in isolation. With federation: the bank sees a payment to a new payee from a customer who was recently targeted by a telecommunications scam pattern. The telco's targeting signal, which the bank never sees directly, has changed the risk calculus for a transaction the bank processes.</p>
+        </div>
+
+        <p>The critical insight: the architecture does not need to unmask the fraudster to protect the victim. By correlating the targeting signal at the telco with the transfer signal at the bank, the fraud lifecycle is broken before the first payment settles.</p>
+
+        <p>A note on service continuity: the escalation signal elevates risk on the specific transaction context, not on the victim's account. The victim is a customer being protected, not a suspect being investigated. Their account remains fully functional. Only the specific payment to the suspicious counterparty is held for review. This distinction is enforced by the policy engine, which evaluates risk at the transaction level, not the entity level.</p>
+
+        <p>A note on timing: the local bank detection operates in under 10 milliseconds. The federation round (under 10 seconds per bilateral pair) pre-enriches entity risk profiles between transactions. When the payment arrives, the cross-sector signal is already present. The local installation blocks in real time. The federation enriches over rounds.</p>
+
+        <h3>4.9 The Private Blockchain Detection Example</h3>
+
+        <p><strong>Step 1:</strong> A bank customer initiates a GBP payment through SWIFT's blockchain-based ledger. The payment settles as a stablecoin transfer on a permissioned chain operated by a consortium of banks.</p>
+
+        <p><strong>Step 2:</strong> The recipient converts the stablecoin to a different token on a public chain through a regulated bridge operated by a licensed CASP.</p>
+
+        <p><strong>Step 3:</strong> The tokens are sent to a mixer on the public chain and redistributed to multiple wallets.</p>
+
+        <p>On the permissioned chain: only the participating banks see the transaction. Chain analysis tools have no access. The blockchain's consensus mechanism confirms the transaction is valid, but validity is not innocence. Every individual transaction in a laundering circuit is structurally valid.</p>
+
+        <p>On the public chain: the bridge transaction and mixer interaction are visible but there is no link back to the originating bank payment because the permissioned chain is private.</p>
+
+        <p><strong>With cross-sector federation:</strong> The bank's F1 installation assesses the originating entity based on transaction patterns. The CASP's F1 installation assesses the bridge user based on rapid conversion and mixer interaction. The PSI matches the entity across both installations (same government ID at KYC). The CASP's escalation signal propagates to the bank. The bank now knows that the entity it processed a payment for has elevated risk at a crypto-asset service provider, without knowing the specific blockchain addresses or on-chain behaviour.</p>
+
+        <p><strong>Without federation:</strong> the bank sees a settled payment. The CASP sees a bridge user heading to a mixer. Neither connects the dots.</p>
+
+        <h3>4.10 Evidence Attestation</h3>
+
+        <p>The regulatory observer receives aggregated metrics for supervisory purposes. It does not receive entity-level data.</p>
+
+        <p>When a case requires law enforcement action, the F1 Engine generates an evidence package for each cross-sector alert. The package contains: investigation items compiled from the detecting institution's own data (no cross-institutional raw data); a cryptographic attestation transcript signed by each participating installation proving that correlated risk signals were detected at Time T across N institutions; and sector attribution indicating which sectors contributed signals without revealing the specific signals or raw data.</p>
+
+        <p>When the FIU or law enforcement agency issues a warrant, each participating institution provides its own raw data under existing production order procedures. The attestation transcript proves the correlation existed and when it was detected. The prosecutor can demonstrate cross-sector criminal activity without the institutions ever having seen each other's files.</p>
+
+        <p>The evidence system includes a human assessment workflow where an investigator reviews items without ground truth labels and makes an independent judgment. This produces a documented audit trail of human decision-making, separate from algorithmic detection, essential for regulatory compliance and court proceedings.</p>
+
+        <h3>4.11 Protocol Governance</h3>
+
+        <p>A federated system raises the question: who decides the rules?</p>
+
+        <p>The answer is: nobody decides what to detect. Everybody decides how to share.</p>
+
+        <p>Each institution compiles its own detection policies into GPU-evaluable rules using the engine's policy language. Bank A can run 200 policies. Bank B can run 150. A telco can run 50 completely different policies. No institution needs to agree on what constitutes suspicious activity. They only agree on how to share the output: entity-level escalation signals.</p>
+
+        <p>The typology lives inside the installation, not inside the protocol. If the FCA publishes guidance on a new APP fraud variant tomorrow, the UK bank updates its policies and recompiles. The Dutch bank does not need to change anything. The federation protocol does not change. The bank's escalation signals for affected entities change, and those signals propagate normally.</p>
+
+        <p>ZQUAS can distribute new typology detection modules, but each institution decides whether to enable them and with what parameters. Threshold optimisation runs locally per institution.</p>
+
+        <p>The protocol governance is limited to: data format versioning, federation round timing, PSI parameters, privacy budgets, PSI query limits, and signal quality floors. These are negotiated bilaterally, the same way SWIFT governs message formats without dictating what banks do with the messages.</p>
+
+
+        <h2>5. GDPR Compliance Architecture</h2>
+
+        <h3>5.1 No Raw Data Sharing</h3>
+
+        <p>No institution shares raw customer data, transaction records, CDRs, or blockchain addresses. The federation shares binary escalation signals: derived decisions, not personal data.</p>
+
+        <h3>5.2 Cryptographic Entity Matching</h3>
+
+        <p>The ECDH-PSI protocol blinds all identity data before comparison. Neither institution reveals its customer list to the other. The intersection is computed on blinded points. The protocol is provably secure under standard cryptographic assumptions.</p>
+
+        <h3>5.3 Lawful Basis</h3>
+
+        <p>The <a href="https://assets.publishing.service.gov.uk/media/69aea29d917847c0a4c8999e/E03551200_Fraud_Strategy_2026__English__ELAY.pdf" target="_blank" rel="noopener">Data (Use and Access) Act 2025</a> establishes crime and fraud prevention as a lawful basis for data sharing, as referenced in the UK Government's Fraud Strategy 2026-2029. Under AMLR Article 75, cross-institutional information sharing for AML purposes is mandated.</p>
+
+        <h3>5.4 Cryptographic Erasure</h3>
+
+        <p>The right to erasure under GDPR Article 17 is implemented through cryptographic key deletion. Entity records are encrypted with hierarchical per-entity keys. Deleting the key renders the record unrecoverable. Erasure produces signed destruction receipts.</p>
+
+        <h3>5.5 Purpose Limitation and Minimisation</h3>
+
+        <p>Escalation signals do not reveal the underlying reason for the escalation. A bank receiving a cross-sector signal learns "elevated risk from telecommunications" but not what specific activity caused it. The intersection privacy controls (Section 4.6) further limit processing to what is necessary and proportionate.</p>
+
+        <h3>5.6 No Mass Surveillance</h3>
+
+        <p>The PSI operates on risk-filtered entity sets, not full customer bases. Only entities that exceed a local risk threshold enter the PSI. There is no central database. Each institution retains full sovereignty over its own data. The federation is a protocol, not a platform.</p>
+
+
+        <h2>6. The Telco Value Proposition</h2>
+
+        <h3>6.1 Regulatory Compliance</h3>
+
+        <p>The trajectory is clear. Singapore has implemented shared liability. The UK <a href="https://www.gov.uk/government/publications/fraud-sector-charter-telecommunications/fraud-sector-charter-telecommunications-accessible-version" target="_blank" rel="noopener">Fraud Sector Charter</a> commits telcos to cross-industry intelligence sharing. <a href="https://www.gasa.org/post/singapore-s-shared-responsibility-framework-a-global-model-for-combating-phishing-scams" target="_blank" rel="noopener">Australia's Scam Prevention Framework</a> imposes penalties up to AUD 50 million for non-compliance. The direction is global and irreversible.</p>
+
+        <h3>6.2 The Reputation and Liability Tension</h3>
+
+        <p>There is an honest tension. Joining a federation implies that an institution's network is used by criminals. Under shared liability frameworks, not participating is more damaging than participating. A telco that could have flagged risk but did not faces financial liability and regulatory enforcement. The risk of inaction exceeds the risk of admission.</p>
+
+        <p>The federation protocol shares an escalation signal, not an admission. The bank cannot determine what specific activity caused the elevation. The telco is demonstrating vigilance, not confessing failure.</p>
+
+        <p>Without a strict legal mandate in every jurisdiction, Data Protection Officers will debate the lawful basis. The Data (Use and Access) Act 2025 and AMLR Article 75 provide the foundation. Early adopters shape the interpretation.</p>
+
+        <h3>6.3 Revenue Protection</h3>
+
+        <p>According to the <a href="https://cfca.org/telecommunications-fraud-increased-12-in-2023-equating-to-an-estimated-38-95-billion-lost-to-fraud/" target="_blank" rel="noopener">CFCA's 2023 Global Fraud Loss Survey</a>, telecommunications fraud losses reached USD 38.95 billion globally in 2023, representing 2.5 per cent of industry revenues.</p>
+
+        <h3>6.4 No Additional Data Exposure</h3>
+
+        <p>The telco shares escalation signals, not CDRs. The F1 Edge Installation runs inside the telco's data centre, on the telco's hardware, under the telco's operational control.</p>
+
+
+        <h2>7. The Crypto Exchange Value Proposition</h2>
+
+        <h3>7.1 MiCA Compliance</h3>
+
+        <p>MiCA requires CASPs to implement transaction monitoring equivalent to traditional financial institutions. Most exchanges check wallet blacklists. They cannot detect novel laundering patterns or the intersection of on-chain and off-chain activity.</p>
+
+        <h3>7.2 The Private Chain Transition</h3>
+
+        <p>As institutional adoption moves settlement onto permissioned blockchains, public transparency diminishes. Exchanges that correlate risk signals across both public and private chains have a structural advantage.</p>
+
+        <h3>7.3 Travel Rule Compliance</h3>
+
+        <p>The FATF Travel Rule requires originator and beneficiary information to be transmitted with virtual asset transfers. The federation protocol can facilitate compliance by confirming entity identity matches without revealing underlying data.</p>
+
+
+        <h2>8. The Market Gap</h2>
+
+        <p>No company in the world offers a cross-sector federated detection platform.</p>
+
+        <p>Telecommunications fraud vendors (Subex, SEON, Vonage) protect telcos from fraud on their own networks. They do not share detection signals with banks.</p>
+
+        <p>Banking AML vendors (NICE Actimize, Feedzai, Tookitaki, Oracle Financial Crime) monitor transactions within a single bank. Some offer consortium models but none include telecommunications or blockchain data.</p>
+
+        <p>Blockchain analytics firms (Chainalysis, Elliptic, Merkle Science) analyse public chain data. Their model depends on public blockchain transparency, which will diminish.</p>
+
+        <!-- Market Gap Diagram -->
+        <div class="diagram-container" style="max-width: 800px; margin: 2.5rem auto;">
+          <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Market landscape showing banking AML vendors, telco fraud vendors, and blockchain analytics each covering one sector, with ZQUAS covering all three">
+            <title>Market Gap: No Cross-Sector Federated Detection Exists</title>
+
+            <!-- Title -->
+            <text x="400" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#C9D1D9" text-anchor="middle">The Market Gap: Single-Sector Vendors vs. Cross-Sector Detection</text>
+
+            <!-- Column headers -->
+            <text x="140" y="62" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#58A6FF" text-anchor="middle">Banking</text>
+            <text x="400" y="62" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#D29922" text-anchor="middle">Telecommunications</text>
+            <text x="660" y="62" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#BC8CFF" text-anchor="middle">Digital Assets</text>
+
+            <!-- Banking AML vendors -->
+            <rect x="30" y="75" width="220" height="120" rx="6" fill="#101820" stroke="#30363D" stroke-width="1"/>
+            <text x="140" y="98" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">NICE Actimize</text>
+            <text x="140" y="116" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">Feedzai</text>
+            <text x="140" y="134" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">Tookitaki</text>
+            <text x="140" y="152" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">Oracle Financial Crime</text>
+            <text x="140" y="180" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#F85149" text-anchor="middle">Single bank. No cross-sector.</text>
+
+            <!-- Telco fraud vendors -->
+            <rect x="290" y="75" width="220" height="120" rx="6" fill="#101820" stroke="#30363D" stroke-width="1"/>
+            <text x="400" y="98" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">Subex</text>
+            <text x="400" y="116" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">SEON</text>
+            <text x="400" y="134" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">Vonage</text>
+            <text x="400" y="180" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#F85149" text-anchor="middle">Own network only. No bank signals.</text>
+
+            <!-- Blockchain analytics -->
+            <rect x="550" y="75" width="220" height="120" rx="6" fill="#101820" stroke="#30363D" stroke-width="1"/>
+            <text x="660" y="98" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">Chainalysis</text>
+            <text x="660" y="116" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">Elliptic</text>
+            <text x="660" y="134" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">Merkle Science</text>
+            <text x="660" y="180" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#F85149" text-anchor="middle">Public chain only. Diminishing model.</text>
+
+            <!-- Divider -->
+            <line x1="80" y1="220" x2="720" y2="220" stroke="#30363D" stroke-width="1" stroke-dasharray="6 3"/>
+            <text x="400" y="240" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#8B949E" text-anchor="middle">No vendor bridges these sectors</text>
+
+            <!-- ZQUAS -->
+            <rect x="80" y="258" width="640" height="100" rx="8" fill="#131D28" stroke="#3FB950" stroke-width="2"/>
+            <text x="400" y="286" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#3FB950" text-anchor="middle">ZQUAS F1 Engine</text>
+            <text x="400" y="310" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#C9D1D9" text-anchor="middle">Single GPU-native detection pipeline. Privacy-preserving federation protocol. All three sectors.</text>
+            <text x="400" y="332" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#C9D1D9" text-anchor="middle">Banking: production-ready. Telecommunications: Phase 2. Digital assets: Phase 3.</text>
+            <text x="400" y="350" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">The FCA built a cross-sector synthetic dataset. 44 projects used it. None demonstrated cross-sector correlation.</text>
+
+            <!-- Brand -->
+            <text x="780" y="394" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#58A6FF" text-anchor="end" opacity="0.6">ZQUAS<tspan fill="#4a7dff">.</tspan></text>
+          </svg>
+        </div>
+
+        <p>In the Netherlands, Transactie Monitoring Nederland (TMNL) pioneered joint transaction monitoring across five banks. TMNL operated on a centralised model: banks sent pseudonymised data to a shared utility. The initiative faced sustained scrutiny from the Autoriteit Persoonsgegevens over proportionality. ZQUAS addresses a different architecture and a different scope. The architecture is peer-to-peer: no central database. The scope extends beyond banking to telecommunications and digital assets. The distinction is structural.</p>
+
+        <p>The FCA built a cross-sector synthetic dataset. 44 projects have used it. Cross-sector correlation has not been demonstrated by any participant.</p>
+
+        <p>ZQUAS is the only platform architected to process banking, telecommunications, and blockchain data in a single GPU-native detection pipeline, connected by a privacy-preserving federation protocol across all three sectors. The banking pipeline is production-ready. The federation protocol is production-ready. The cross-sector extensions are engineering milestones on an operational foundation.</p>
+
+
+        <h2>9. Honest Limitations</h2>
+
+        <h3>9.1 Federation Speed vs. Instant Payments</h3>
+
+        <p>Local detection operates in under 10 milliseconds. Federation enrichment operates in under 10 seconds per bilateral round. The architecture pre-enriches entity risk profiles between transactions. There is a window (seconds to minutes) where a newly identified signal has not yet propagated, versus hours or days in batch processing.</p>
+
+        <h3>9.2 Adoption Requires Multi-Party Agreement</h3>
+
+        <p>The network effect requires a minimum viable consortium. Initial deployment targets regulated groups rather than individual institutions.</p>
+
+        <h3>9.3 Jurisdiction-Specific Legal Work</h3>
+
+        <p>The lawful basis is established in principle but operational boundaries are still being defined. Each jurisdiction requires specific legal analysis and DPO engagement.</p>
+
+        <h3>9.4 Cross-Sector Calibration is New</h3>
+
+        <p>No cross-sector detection calibration methodology exists today. The simulation-based approach requires validation against real operational data through pilot deployments. The FCA Digital Sandbox is the first step.</p>
+
+        <h3>9.5 Multi-Hop Signal Attenuation</h3>
+
+        <p>Bilateral federation propagates signals one hop. Criminal networks spanning three or more institutions require hub-spoke topology (designed but not deployed) or transitive trust agreements.</p>
+
+        <h3>9.6 ID Fragmentation</h3>
+
+        <p>In jurisdictions without a universal identifier, customers may present different documents to different institutions. Multi-ID hashing mitigates this but does not eliminate false negatives.</p>
+
+
+        <h2>10. Timeline</h2>
+
+        <!-- Timeline Diagram -->
+        <div class="diagram-container" style="max-width: 800px; margin: 2.5rem auto;">
+          <svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four-phase timeline from current banking federation through telecommunications, digital assets, and regulatory interface">
+            <title>Implementation Timeline: Four Phases</title>
+            <defs>
+              <marker id="arr-t" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#58A6FF"/></marker>
+            </defs>
+
+            <!-- Title -->
+            <text x="400" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#C9D1D9" text-anchor="middle">Implementation Timeline</text>
+
+            <!-- Timeline axis -->
+            <line x1="60" y1="60" x2="740" y2="60" stroke="#30363D" stroke-width="2" marker-end="url(#arr-t)"/>
+
+            <!-- Phase 1 -->
+            <circle cx="120" cy="60" r="8" fill="#3FB950" stroke="#131D28" stroke-width="2"/>
+            <rect x="60" y="80" width="150" height="110" rx="6" fill="#101820" stroke="#3FB950" stroke-width="1.5"/>
+            <text x="135" y="100" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#3FB950" text-anchor="middle">PHASE 1</text>
+            <text x="135" y="116" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="middle">Current</text>
+            <text x="135" y="136" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">Banking federation</text>
+            <text x="135" y="152" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">FCA Sandbox validation</text>
+            <text x="135" y="175" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="bold" fill="#3FB950" text-anchor="middle">Production-ready</text>
+
+            <!-- Phase 2 -->
+            <circle cx="320" cy="60" r="8" fill="#D29922" stroke="#131D28" stroke-width="2"/>
+            <rect x="240" y="80" width="160" height="110" rx="6" fill="#101820" stroke="#D29922" stroke-width="1.5"/>
+            <text x="320" y="100" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#D29922" text-anchor="middle">PHASE 2</text>
+            <text x="320" y="116" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="middle">Q3 2026</text>
+            <text x="320" y="136" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">Telco integration</text>
+            <text x="320" y="152" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">CDR/TMDR ingestion</text>
+            <text x="320" y="168" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">Differential privacy</text>
+
+            <!-- Phase 3 -->
+            <circle cx="510" cy="60" r="8" fill="#BC8CFF" stroke="#131D28" stroke-width="2"/>
+            <rect x="430" y="80" width="160" height="110" rx="6" fill="#101820" stroke="#BC8CFF" stroke-width="1.5"/>
+            <text x="510" y="100" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#BC8CFF" text-anchor="middle">PHASE 3</text>
+            <text x="510" y="116" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#BC8CFF" text-anchor="middle">Q4 2026</text>
+            <text x="510" y="136" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">Digital asset integration</text>
+            <text x="510" y="152" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">Blockchain ingestion</text>
+            <text x="510" y="168" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">Wallet-to-identity linking</text>
+
+            <!-- Phase 4 -->
+            <circle cx="680" cy="60" r="8" fill="#58A6FF" stroke="#131D28" stroke-width="2"/>
+            <rect x="600" y="80" width="160" height="110" rx="6" fill="#101820" stroke="#58A6FF" stroke-width="1.5"/>
+            <text x="680" y="100" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#58A6FF" text-anchor="middle">PHASE 4</text>
+            <text x="680" y="116" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#58A6FF" text-anchor="middle">2027</text>
+            <text x="680" y="136" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">Regulatory interface</text>
+            <text x="680" y="152" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">AMLA Article 75 reporting</text>
+            <text x="680" y="168" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#C9D1D9" text-anchor="middle">Hub-spoke topology</text>
+
+            <!-- Key milestone -->
+            <rect x="200" y="218" width="400" height="40" rx="6" fill="#161B22" stroke="#F85149" stroke-width="1"/>
+            <text x="400" y="238" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#F85149" text-anchor="middle">AMLR Article 75 applies: July 10, 2027</text>
+            <text x="400" y="252" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">Cross-institutional information sharing mandated</text>
+
+            <!-- Brand -->
+            <text x="780" y="274" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#58A6FF" text-anchor="end" opacity="0.6">ZQUAS<tspan fill="#4a7dff">.</tspan></text>
+          </svg>
+        </div>
+
+        <p><strong>Phase 1 (Current):</strong> Banking federation. FCA Digital Sandbox validation. Production-ready.</p>
+
+        <p><strong>Phase 2 (Q3 2026):</strong> Telecommunications integration. CDR/TMDR ingestion. Cross-sector PSI on phone number and government ID. Quantitative risk deltas, differential privacy, signal velocity circuit breaker, full normalisation pipeline, cross-sector calibration.</p>
+
+        <p><strong>Phase 3 (Q4 2026):</strong> Digital asset integration. Blockchain event ingestion. Wallet-to-identity linking via exchange KYC.</p>
+
+        <p><strong>Phase 4 (2027):</strong> Regulatory interface. AMLA Article 75 reporting. Hub-spoke topology.</p>
+
+
+        <h2>11. Conclusion</h2>
+
+        <p>The financial crime industry has spent twenty years optimising detection within institutional silos. The criminals have spent twenty years exploiting the gaps between those silos. The gaps are now wider than ever: spanning banking, telecommunications, cryptocurrency, and private institutional blockchains.</p>
+
+        <p>The regulatory response is converging. Singapore has implemented cross-sector liability. The UK is building the framework. The EU mandates cross-institutional sharing under AMLR. MiCA brings crypto exchanges into the regulated perimeter.</p>
+
+        <p>The technology to match this regulatory direction did not exist. A detection engine that operates across banking, telecommunications, and blockchain data, connected by a federation protocol that shares escalation signals without sharing raw data, running at the speed required for real-time intervention, governed by the institutions that use it rather than a central authority.</p>
+
+        <p>We do not need to unmask the fraudster to protect the victim. By correlating the targeting signal at the telco with the transfer signal at the bank, we break the fraud lifecycle before the first payment settles.</p>
+
+        <p>The banking detection engine is built. The federation protocol is built. The simulation environment is built. The cross-sector extensions are engineering milestones on an operational foundation.</p>
+
+        <p>It exists now.</p>
+
+        <p class="article-closing"><em>ZQUAS. The criminals have cross-sector visibility. Now the compliance infrastructure does too.</em></p>
+
+        <p><strong>Contact:</strong> Danny de Gier | danny@zquas.ai | zquas.ai</p>
+
+        <p><em>&copy; 2026 ZQUAS. All rights reserved. Implementation details and protocol specifications are proprietary.</em></p>
+
+    </div>
+</article>
+
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <a href="/" class="footer-logo">ZQUAS<span>.</span></a>
+            <p>Bounded Compliance on an Unbounded Platform.<br>Cross-institutional AML detection without sharing customer data.</p>
+        </div>
+        <div class="footer-links">
+            <div class="footer-col">
+                <h4>Technology</h4>
+                <a href="technology.html">Overview</a>
+                <a href="architecture.html">Architecture</a>
+                <a href="compare.html">Compare</a>
+                <a href="why-different.html">Why Different</a>
+                <a href="benchmark.html">Benchmark</a>
+                <a href="engineering.html">Engineering</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="regulators.html">Regulators</a>
+                <a href="use-case.html">Use Case</a>
+                <a href="about.html">About</a>
+                <a href="articles.html">Articles</a>
+            </div>
+            <div class="footer-col">
+                <h4>Get Involved</h4>
+                <a href="founding-partner.html">Founding Partner Programme</a>
+                <a href="article-75.html">Position Paper</a>
+                <a href="contact.html">Contact</a>
+                <a href="zquas-onepager.pdf" target="_blank">Download One-Pager</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 ZQUAS &middot; Bounded Compliance on an Unbounded Platform</p>
+        <a href="mailto:info@zquas.ai">info@zquas.ai</a>
+    </div>
+</footer>
+
+</body>
+</html>
