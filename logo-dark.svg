@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" fill="none">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&amp;display=swap');
+    .wordmark { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 52px; letter-spacing: 0.12em; fill: #0a0b0f; }
+  </style>
+  <!-- Wordmark for light backgrounds -->
+  <text class="wordmark" x="0" y="58">ZQUAS</text>
+  <rect x="283" y="36" width="14" height="14" rx="2" fill="#4a7dff"/>
+</svg>
