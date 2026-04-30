@@ -214,24 +214,35 @@ section { padding: 6rem 2rem; }
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.6rem;
+    align-items: center;
+    gap: 0.9rem;
     margin: 2rem 0 1.75rem;
 }
 .hero-badges-row .hero-badge {
     margin: 0;
 }
-.hero-badge-nvidia {
-    border-color: rgba(118, 185, 0, 0.45);
-    color: #c0e57a;
+.hero-badge-img {
+    display: inline-flex;
+    align-items: center;
+    background: #ffffff;
+    padding: 0.4rem 0.7rem;
+    border-radius: 6px;
+    line-height: 0;
+    transition: transform 0.15s ease;
+}
+.hero-badge-img:hover {
+    transform: translateY(-1px);
+}
+.hero-badge-img img {
+    height: 38px;
+    width: auto;
+    display: block;
 }
 .hero-badge .dot {
     width: 6px; height: 6px;
     background: var(--success);
     border-radius: 50%;
     animation: pulse-dot 2s ease-in-out infinite;
-}
-.hero-badge .dot-nvidia {
-    background: #76b900;
 }
 @keyframes pulse-dot {
     0%, 100% { opacity: 1; }
@@ -2070,6 +2081,19 @@ footer {
     font-size: 0.65rem;
     color: var(--text-muted);
     line-height: 1.5;
+}
+.programme-badge {
+    display: inline-block;
+    background: #ffffff;
+    padding: 0.6rem 0.9rem;
+    border-radius: 8px;
+    margin-bottom: 1.25rem;
+    line-height: 0;
+}
+.programme-badge img {
+    height: 56px;
+    width: auto;
+    display: block;
 }
 @media (max-width: 640px) {
     .footer-inner { grid-template-columns: 1fr; }
