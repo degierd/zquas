@@ -210,11 +210,28 @@ section { padding: 6rem 2rem; }
     margin-bottom: 1.75rem;
     margin-top: 2rem;
 }
+.hero-badges-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin: 2rem 0 1.75rem;
+}
+.hero-badges-row .hero-badge {
+    margin: 0;
+}
+.hero-badge-nvidia {
+    border-color: rgba(118, 185, 0, 0.45);
+    color: #c0e57a;
+}
 .hero-badge .dot {
     width: 6px; height: 6px;
     background: var(--success);
     border-radius: 50%;
     animation: pulse-dot 2s ease-in-out infinite;
+}
+.hero-badge .dot-nvidia {
+    background: #76b900;
 }
 @keyframes pulse-dot {
     0%, 100% { opacity: 1; }
@@ -2042,6 +2059,18 @@ footer {
     text-decoration: none;
 }
 .footer-bottom a:hover { color: var(--text-secondary); }
+.footer-legal {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 1rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+.footer-legal p {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
 @media (max-width: 640px) {
     .footer-inner { grid-template-columns: 1fr; }
     .footer-links { gap: 2rem; }

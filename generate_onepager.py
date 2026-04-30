@@ -448,6 +448,7 @@ def page3(c):
     traction = [
         "DNB InnovationHub: Submission under review",
         "FCA Sandbox: Regulatory sandbox programme engaged",
+        "NVIDIA Inception program member",
         "Benchmark: 150M+ CEPS on RTX 5090. 500,000 entities in under 2 seconds. Alert lifecycle under 10ms.",
         "Cross-institutional detection: under 10 seconds per bilateral round. 4/4 typologies detected.",
         "Test coverage: 7,200+ automated tests across 12 audited subsystems",
@@ -715,6 +716,16 @@ def page5(c):
     c.setFillColor(ACCENT)
     c.drawCentredString(W / 2, y,
                         "The architecture is ready. The regulatory window is open. Let's talk.")
+
+    # NVIDIA legal attribution
+    y -= 22
+    c.setFont("Helvetica", 6.5)
+    c.setFillColor(TEXT_MUTED)
+    c.drawCentredString(W / 2, y,
+                        "(c) 2026 NVIDIA, the NVIDIA logo, CUDA, and NVIDIA Inception are trademarks and/or registered")
+    y -= 9
+    c.drawCentredString(W / 2, y,
+                        "trademarks of NVIDIA Corporation in the U.S. and other countries.")
 
 
 # ========== GENERATE ==========

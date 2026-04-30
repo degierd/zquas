@@ -4,7 +4,7 @@
 
 ZQUAS is a GPU-native compliance engine built for financial institutions and regulators. The F1 engine evaluates 500,000 entities against 100 AML policies in under 2 seconds, sustaining 150 million+ compliance policy evaluations per second on NVIDIA RTX 5090. Alert lifecycle under 10ms. Cross-institutional detection uses privacy-preserving multi-party computation: ECDH-PSI (X25519) for entity matching, Yao's Garbled Circuits (Free-XOR) for risk comparison, IKNP OT Extension for oblivious transfer. Every compliance decision produces a cryptographic proof bundle (912-byte ZAPB, Ed25519 signed, Merkle-included) that regulators verify independently with a public key alone. 7,200+ automated tests across 12 audited subsystems.
 
-Founded by Danny de Gier, who combines 18+ years of financial crime compliance experience at Tier-1 banks (RBS, Deutsche Bank, HSBC, Commerzbank) with GPU systems programming (C++23, CUDA, Vulkan). Currently engaged with DNB InnovationHub and FCA regulatory sandbox programmes.
+Founded by Danny de Gier, who combines 18+ years of financial crime compliance experience at Tier-1 banks (RBS, Deutsche Bank, HSBC, Commerzbank) with GPU systems programming (C++23, CUDA, Vulkan). Currently engaged with DNB InnovationHub and FCA regulatory sandbox programmes. ZQUAS is a member of the NVIDIA Inception program.
 
 ## Key Pages
 
