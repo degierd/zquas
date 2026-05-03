@@ -366,9 +366,10 @@ def build_pdf():
 
     w.para(
         "The ZQUAS F1 Engine is a GPU-native financial crime detection "
-        "engine comprising approximately 253,000 lines of C++ and CUDA code. "
-        "It is not a prototype, a proof of concept, or a roadmap. The "
-        "banking detection pipeline is production-ready.")
+        "engine comprising approximately 396,000 lines of C++ and CUDA "
+        "code with 493 GPU kernels. It is not a prototype, a proof of "
+        "concept, or a roadmap. The banking detection pipeline is "
+        "production-ready.")
 
     w.subsection("2.1 Banking Detection: Production-Ready")
     w.para(
