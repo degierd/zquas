@@ -653,6 +653,7 @@ def page5(c):
     eng_widths = [130, CW - 130]
     eng_rows = [
         ["Language", "C++23 with CUDA"],
+        ["Codebase", "396,000 lines of C++ and CUDA, 493 GPU kernels"],
         ["GPU targets", "sm_86, sm_89, sm_100, sm_120"],
         ["Build hardening", "/sdl, /guard:cf, /GS, /Qspectre, /CETCOMPAT, /HIGHENTROPYVA"],
         ["Testing", "7,200+ automated tests across 12 audited subsystems"],
