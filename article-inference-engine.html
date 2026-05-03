@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why We Built Our Own AI Inference Engine — ZQUAS</title>
+    <meta name="description" content="ChatGPT runs on one. Llama runs on one. We wrote our own. Why a financial crime company built its own GPU inference engine in C++23 and CUDA, and why regulated AI decisions need a different stack.">
+    <meta property="og:title" content="Why We Built Our Own AI Inference Engine — ZQUAS">
+    <meta property="og:description" content="ChatGPT runs on one. Llama runs on one. We wrote our own. Why a financial crime company built its own GPU inference engine in C++23 and CUDA, and why regulated AI decisions need a different stack.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://zquas.ai/article-inference-engine.html">
+    <meta property="og:image" content="https://zquas.ai/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://zquas.ai/og-image.png">
+    <meta name="author" content="Danny de Gier">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://zquas.ai/article-inference-engine.html">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Why We Built Our Own AI Inference Engine",
+        "description": "ChatGPT runs on one. Llama runs on one. We wrote our own. Why a financial crime company built its own GPU inference engine in C++23 and CUDA, and why regulated AI decisions need a different stack.",
+        "datePublished": "2026-05-03",
+        "author": {
+            "@type": "Person",
+            "name": "Danny de Gier"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ZQUAS",
+            "url": "https://zquas.ai"
+        },
+        "mainEntityOfPage": "https://zquas.ai/article-inference-engine.html"
+    }
+    </script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">ZQUAS<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <div class="nav-dropdown">
+                <a href="technology.html" class="nav-dropdown-toggle">Technology <span class="nav-arrow">&#x25BE;</span></a>
+                <div class="nav-dropdown-menu">
+                    <a href="technology.html">Overview</a>
+                    <a href="architecture.html">Architecture</a>
+                    <a href="compare.html">Compare</a>
+                    <a href="why-different.html">Why Different</a>
+                    <a href="benchmark.html">Benchmark</a>
+                    <a href="engineering.html">Engineering</a>
+                </div>
+            </div>
+            <a href="regulators.html">Regulators</a>
+            <a href="use-case.html">Use Case</a>
+            <a href="about.html">About</a>
+            <a href="articles.html" class="active">Articles</a>
+            <a href="founding-partner.html">Partner</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+
+<article>
+    <div class="article-header">
+        <a href="articles.html" class="article-back">&larr; Articles</a>
+        <div class="article-meta">May 2026 &middot; Engineering &middot; 9 min read</div>
+        <h1>Why We Built Our Own AI Inference Engine</h1>
+        <p class="lead">ChatGPT runs on one. Llama runs on one. We wrote our own. Financial crime detection is regulated AI decision-making, and regulated AI decision-making puts requirements on inference that general-purpose stacks were not built to meet.</p>
+    </div>
+
+    <div class="article-body">
+        <p>
+            When we tell AI engineers that ZQUAS authored its own GPU inference engine, written from scratch in C++23 and CUDA, the reaction is consistent. "Why? vLLM exists. TensorRT-LLM exists. llama.cpp exists. Whatever you're doing, someone has already shipped a better-tested version of it."
+        </p>
+        <p>
+            It is a fair question. Writing an inference engine in 2026 looks like architectural hubris.
+        </p>
+        <p>
+            The reason ZQUAS wrote its own is not that we think we are better at attention kernels than NVIDIA. We are not. The reason is that financial crime detection is regulated AI decision-making, and regulated AI decision-making puts requirements on inference that general-purpose inference stacks were not built to meet.
+        </p>
+        <p>
+            The article that follows covers those requirements, what they imply for engineering, and why the choice that looks like hubris from one angle is regulatory necessity from another.
+        </p>
+
+        <h2>First, a definition</h2>
+        <p>
+            An inference engine is the software that runs an AI model. When ChatGPT answers a question, an inference engine is doing the work. When Llama generates text on your laptop, an inference engine is doing the work. The model is the weights. The engine is the machinery that turns those weights into an answer.
+        </p>
+        <p>
+            vLLM, TensorRT-LLM, llama.cpp. These are the well-known engines. They are excellent at what they are for.
+        </p>
+        <p>
+            We did not write our own because they are bad. We wrote it because what we are for is different.
+        </p>
+
+        <h2>The audit chain runs through every byte</h2>
+        <p>
+            Every alert ZQUAS surfaces is a regulatory decision. Under the EU AI Act, financial crime detection is high-risk AI. Under AMLD6 and the upcoming AMLR, AI decisions affecting payments must be traceable. Under MiCA and PSD3, the audit chain is examinable.
+        </p>
+        <p>
+            A regulator can ask, six months after a decision: show me exactly what produced this output. Reproduce it. Byte for byte.
+        </p>
+        <p>
+            That requirement has a property most ML engineers do not think about. Every byte that affects an AI decision must be reproducible across machines, across time, across software versions.
+        </p>
+        <p>
+            In a typical inference stack, this is hard to deliver. IEEE 754 floating-point arithmetic is non-associative. <code>-ffast-math</code> reorders operations differently between compilers. CUDA reduction order depends on block scheduling. cuBLAS picks different GEMM kernels based on heuristics. FMA fusion happens or does not, depending on architecture flags. Any of these can produce numerically different outputs from numerically identical inputs.
+        </p>
+        <p>
+            For most AI applications, none of that matters. A chatbot that responds slightly differently on rerun is fine. When AI hallucinates on a chatbot, it is annoying. When AI hallucinates on a financial crime decision, it is illegal.
+        </p>
+
+        <h2>The four properties that drove the rebuild</h2>
+        <p>
+            The ZQUAS AI inference layer is built around four properties that compound.
+        </p>
+        <p>
+            <strong>Byte-exact determinism across installations.</strong> Two banks running the same AI model on the same transaction must produce the same decision. Not approximately. Byte-exact. Federation rounds depend on it. Privacy-preserving cross-bank pattern matching is meaningless if Bank A and Bank B disagree on what the model said.
+        </p>
+        <p>
+            <strong>Replay attestation.</strong> Six months after a decision, a regulator must be able to take the signed attestation, replay the inference, and verify the signature. That requires committing the full computational state to a hash. Model weights, tokenizer version, CUDA toolkit version, kernel selection, quantisation scheme, runtime kind. All of it.
+        </p>
+        <p>
+            <strong>Cryptographic erasure of model versions.</strong> GDPR Article 17 and the AI Act's data subject rights mean that when a customer requests deletion, the AI model versions trained on their data must be cryptographically inaccessible. Not deleted from disk. Erased at the per-version content key, while leaving the audit chain intact.
+        </p>
+        <p>
+            <strong>Multi-tenant isolation under shared substrate.</strong> Multiple banks share platform libraries but cannot share runtime state. Federation rounds operate via secure multi-party primitives, not shared memory. Tenant-scoped compliance policies, tenant-scoped semantic entity ranges, tenant-scoped agent memory.
+        </p>
+        <p>
+            None of these are exotic in regulated industries. All of them are inconvenient for general-purpose inference stacks designed for throughput and accuracy, not regulatory primacy.
+        </p>
+
+        <h2>What had to be rebuilt</h2>
+        <p>
+            We did not rebuild everything. The engine vendors a fork of an open-source forward pass for the Stage 1 layer. Where existing code already does the right thing, we use it.
+        </p>
+        <p>
+            What we rebuilt is what could not be patched into a general-purpose stack.
+        </p>
+        <p>
+            The kernel family runs at fixed template parameters per matmul site. No autotuning. The same input produces the same output on the same hardware, every time, regardless of which run picked which heuristic.
+        </p>
+        <p>
+            The forward-pass orchestrator commits the full computational state, model SHA, tokenizer version, runtime kind byte, deployment kind, tier, quantisation scheme, to a determinism attestation signed by a per-runtime Ed25519 key. The attestation is the audit record.
+        </p>
+        <p>
+            The KV cache lifecycle is paged and scrub-aware. Per-tenant cache isolation. Per-cycle scrub. Per-tier capacity limits. The cache does not leak between transactions or between tenants.
+        </p>
+        <p>
+            The decision pipeline runs integer arithmetic at the decision boundary. Integer reductions before any float crosses a federation boundary. Floats happen inside kernels for matrix arithmetic. Floats do not happen at the decision-commit boundary.
+        </p>
+        <p>
+            Specific CUDA toolkit versions known to introduce non-determinism are refused at configure time. Not warned about. Refused. The toolchain is part of the determinism contract. We would rather fail to build than build something that produces different bytes on different machines.
+        </p>
+
+        <h2>The architecture follows from the constraints</h2>
+        <p>
+            Most engineers miss this part. ZQUAS did not decide "let's build an AI platform" and then go looking for problems to apply it to. ZQUAS started from "we have to make AI decisions that regulators can examine in detail months after the fact" and worked backward to what that requires.
+        </p>
+        <p>
+            The platform that fell out has properties that go beyond inference. Constitutional governance. Per-version cryptographic erasure. Federation primitives that admit any pair of bank installations that share the protocol. Cognitive-agent registration boundaries that admit additional governed agents without modifying the platform. A two-axis tenancy model where bank deployments and AI agents are orthogonal.
+        </p>
+        <p>
+            Our AI inference layer is one piece of that. The piece that says: when the decision-time inference happens, it happens under a platform we can prove is reproducible.
+        </p>
+
+        <h2>The choice that looks like hubris from one angle</h2>
+        <p>
+            Most inference engines optimise for throughput, accuracy, and latency. Ours optimises for replay attestation, federation determinism, and cryptographic auditability. We pay for it in engineering time we would rather not have spent.
+        </p>
+        <p>
+            That is a worse trade for almost everyone. For ZQUAS, it is the only trade that makes the regulatory commitment honest.
+        </p>
+        <p>
+            When someone asks why we wrote our own inference engine, the answer is not that vLLM is bad. vLLM is excellent at what it is for. The answer is that what we are for is different.
+        </p>
+        <p>
+            Regulated AI decision-making at the platform level. Audit-chain primacy. Federation under cryptographic guarantees rather than shared trust. The stack we needed did not exist, so we built it. When an auditor sits down months from now and asks us to replay an AI decision from January, we will be able to.
+        </p>
+        <p>
+            That is the case. From outside it looks like hubris. From inside it is the discipline the regulation demands.
+        </p>
+
+        <h2>The numbers</h2>
+        <p>
+            The ZQUAS F1 Engine, of which the AI inference layer is one part, is 396,000 lines of C++ and CUDA across 493 GPU kernels. 222,000 lines of test code. 12,342 automated tests. One codebase, three deployment targets: the banking detection engine, the AI inference layer, and the cross-bank federation layer. Every kernel is a CUDA __global__ function in a .cu file. No CPU fallback. No #ifdef GPU_AVAILABLE. The architecture is GPU-native, not GPU-accelerated.
+        </p>
+        <p>
+            The engine has been accepted into the FCA Digital Sandbox and ZQUAS is a member of the NVIDIA Inception programme. Acceptance into the FCA Digital Sandbox is not an endorsement of any firm or product.
+        </p>
+
+        <div class="article-author">
+            <div class="name">Danny de Gier</div>
+            <div class="bio">
+                Founder, ZQUAS. 18+ years in financial crime compliance at Tier-1 banks and fintechs.
+                Self-taught GPU systems programmer (C++23, CUDA, Vulkan).
+                Professional Postgraduate Diploma in Financial Crime Compliance (ICA / University of Manchester).
+            </div>
+        </div>
+    </div>
+</article>
+
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <a href="/" class="footer-logo">ZQUAS<span>.</span></a>
+            <p>Bounded Compliance on an Unbounded Platform.<br>Cross-institutional AML detection without sharing customer data.</p>
+        </div>
+        <div class="footer-links">
+            <div class="footer-col">
+                <h4>Technology</h4>
+                <a href="technology.html">Overview</a>
+                <a href="architecture.html">Architecture</a>
+                <a href="compare.html">Compare</a>
+                <a href="why-different.html">Why Different</a>
+                <a href="benchmark.html">Benchmark</a>
+                <a href="engineering.html">Engineering</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="regulators.html">Regulators</a>
+                <a href="use-case.html">Use Case</a>
+                <a href="about.html">About</a>
+                <a href="articles.html">Articles</a>
+            </div>
+            <div class="footer-col">
+                <h4>Get Involved</h4>
+                <a href="founding-partner.html">Founding Partner Programme</a>
+                <a href="article-75.html">Position Paper</a>
+                <a href="contact.html">Contact</a>
+                <a href="zquas-onepager.pdf" target="_blank">Download One-Pager</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 ZQUAS &middot; Bounded Compliance on an Unbounded Platform</p>
+        <a href="mailto:info@zquas.ai">info@zquas.ai</a>
+    </div>
+</footer>
+
+</body>
+</html>
