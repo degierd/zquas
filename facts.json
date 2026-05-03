@@ -68,7 +68,7 @@
     "total_automated_tests": 12342,
     "lines_of_test_code": 222000,
     "audited_subsystems": 12,
-    "subsystems": ["SENTINEL", "Noumenon", "CPL", "Themis", "Prometheus", "Federation", "UI", "IrgManager", "Crypto", "Decision", "Synapse", "Janus"],
+    "subsystems": ["adversarial fuzzing framework", "semantic entity graph", "CPL compliance policy language", "GPU policy evaluator", "AI agent triage", "federation", "UI", "GPU resource manager", "cryptography", "decision pipeline", "ingest bridge", "predictive governance projection"],
     "test_breakdown": {
       "core_engine_gtest": 7218,
       "playwright_browser": 1845,
@@ -135,7 +135,7 @@
     "Independent regulator verification: public key + proof bundle, no engine access",
     "Deterministic evaluation (byte-identical replay)",
     "Constitutional governance: agents cannot file SARs autonomously",
-    "Adversarial self-testing: SENTINEL with 84% mutation kill rate",
+    "Adversarial self-testing framework with 84% mutation kill rate",
     "12,342 automated tests, 222,000 lines of test code, 396,000 lines of production C++/CUDA, 493 GPU kernels",
     "3-5 year estimated replication timeline for competitors"
   ],

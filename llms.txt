@@ -31,7 +31,7 @@ Founded by Danny de Gier, who combines 18+ years of financial crime compliance e
 - Zero-knowledge governance proofs (GPU-accelerated PLONK)
 - GPU-resident identity resolution graph with GNN risk propagation
 - Adversarial self-testing framework (13+ subsystems, GPU-accelerated fuzzing)
-- Predictive governance via Janus projection layer (forward simulation of compliance state)
+- Predictive governance via the projection layer (forward simulation of compliance state)
 - Constitutional governance model (ExecutionGate, WarrantAuthority, GasMeter, PolicyRoot)
 - Build attestation with embedded BLAKE3 + SHA-256 + Ed25519 binary integrity verification
 
