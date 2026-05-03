@@ -65,9 +65,23 @@
     "independent_verification": "public key + proof bundle only; no engine access required"
   },
   "testing": {
-    "total_automated_tests": "7200+",
+    "total_automated_tests": 12342,
+    "lines_of_test_code": 222000,
     "audited_subsystems": 12,
     "subsystems": ["SENTINEL", "Noumenon", "CPL", "Themis", "Prometheus", "Federation", "UI", "IrgManager", "Crypto", "Decision", "Synapse", "Janus"],
+    "test_breakdown": {
+      "core_engine_gtest": 7218,
+      "playwright_browser": 1845,
+      "cognitive_prometheus": 1185,
+      "tcms_case_management": 826,
+      "apex_end_to_end": 592,
+      "chimera_detection": 449,
+      "integration": 99,
+      "runner": 67,
+      "narrative": 25,
+      "config": 18,
+      "python": 18
+    },
     "cpl_tests": 288,
     "federation_tests": 361,
     "crypto_kat": ["Ed25519 (RFC 8032)", "SHA-256 (FIPS 180-4)", "Blake3 (official vectors)"]
@@ -122,7 +136,7 @@
     "Deterministic evaluation (byte-identical replay)",
     "Constitutional governance: agents cannot file SARs autonomously",
     "Adversarial self-testing: SENTINEL with 84% mutation kill rate",
-    "7,200+ automated tests across 12 audited subsystems",
+    "12,342 automated tests, 222,000 lines of test code, 396,000 lines of production C++/CUDA, 493 GPU kernels",
     "3-5 year estimated replication timeline for competitors"
   ],
   "business_model": {

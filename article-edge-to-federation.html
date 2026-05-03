@@ -672,7 +672,7 @@
 
         <p>Claims of architectural innovation require evidence. The F1 Engine is a measured engineering artefact, not a design document.</p>
 
-        <p><strong>Codebase:</strong> 396,000 lines of C++ and CUDA across 493 GPU kernels. One codebase, three deployment targets: the zquas.exe banking engine (render, mirage, vk), the Prometheus inference layer, and the EdgeNode federation layer (chimera, federation, fincrime, sentinel, tcms). Every kernel is a __global__ function in a .cu file. No CPU fallback. 7,200+ automated tests across 12 audited subsystems.</p>
+        <p><strong>Codebase:</strong> 396,000 lines of C++ and CUDA across 493 GPU kernels. 222,000 lines of test code. 618,000 lines total. One codebase, three deployment targets: the zquas.exe banking engine (render, mirage, vk), the Prometheus inference layer, and the EdgeNode federation layer (chimera, federation, fincrime, sentinel, tcms). Every kernel is a __global__ function in a .cu file. No CPU fallback. 12,342 automated tests.</p>
 
         <p><strong>Performance:</strong> 500,000 customers processed in under 2 seconds end-to-end. Over 150 million policy checks per second. A single cross-bank matching round for 100,000 customers: under 10 seconds. Time from detection to alert: under 10 milliseconds. All numbers measured on a single GPU.</p>
 

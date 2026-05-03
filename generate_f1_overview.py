@@ -355,7 +355,7 @@ def page3(c):
         ["Federation per bilateral round", "Under 10 seconds"],
         ["Agent triage (50,000 entities)", "Under 10 milliseconds"],
         ["Total GPU memory", "Under 1 GB"],
-        ["Automated tests", "7,200+"],
+        ["Automated tests", "12,342 (222K lines test code)"],
         ["Scaling", "Linear (2x entities = 2x time)"],
     ]
     y = draw_table(c, y, headers, rows, widths, font_size=7.5, row_h=14)
@@ -434,7 +434,7 @@ def page4(c):
         ("<10ms", "alert lifecycle"),
         ("<10s", "federation per round"),
         ("<1 GB", "total VRAM"),
-        ("7,200+", "automated tests"),
+        ("12,342", "automated tests"),
     ]
 
     col_w = CW / 3

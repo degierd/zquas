@@ -451,7 +451,7 @@ def page3(c):
         "NVIDIA Inception program member",
         "Benchmark: 150M+ CEPS on RTX 5090. 500,000 entities in under 2 seconds. Alert lifecycle under 10ms.",
         "Cross-institutional detection: under 10 seconds per bilateral round. 4/4 typologies detected.",
-        "Test coverage: 7,200+ automated tests across 12 audited subsystems",
+        "Test coverage: 12,342 automated tests, 222,000 lines of test code",
         "Regulatory frameworks: EU AI Act, AMLR, FATF R15, NIST AI RMF, ISO 42001, MAS TRM, GDPR, DORA",
     ]
     for text in traction:
@@ -653,10 +653,10 @@ def page5(c):
     eng_widths = [130, CW - 130]
     eng_rows = [
         ["Language", "C++23 with CUDA"],
-        ["Codebase", "396,000 lines of C++ and CUDA, 493 GPU kernels"],
+        ["Codebase", "396K lines C++/CUDA, 222K lines test code, 618K total, 493 GPU kernels"],
         ["GPU targets", "sm_86, sm_89, sm_100, sm_120"],
         ["Build hardening", "/sdl, /guard:cf, /GS, /Qspectre, /CETCOMPAT, /HIGHENTROPYVA"],
-        ["Testing", "7,200+ automated tests across 12 audited subsystems"],
+        ["Testing", "12,342 automated tests, 222,000 lines of test code, 12 audited subsystems"],
         ["Cryptography", "BLAKE3, SHA-256, Ed25519, ZK-optimised hash functions, SipHash-128"],
         ["Entity system", "High-performance entity component system"],
         ["Serialisation", "Custom binary format (64B-aligned, std140-compatible)"],
