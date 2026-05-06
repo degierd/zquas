@@ -5,7 +5,7 @@
   "description": "GPU-native compliance engine built for cross-institutional financial crime detection without central data pooling. Every decision cryptographically attested. Every verdict independently verifiable.",
   "website": "https://zquas.ai",
   "founded": "2024",
-  "stage": "pre-revenue",
+  "stage": "pilot-ready, pre-revenue",
   "location": {
     "city": "Zwolle",
     "country": "Netherlands",
@@ -28,17 +28,10 @@
     "published_alert_lifecycle": "under 10ms",
     "published_federation_bilateral": "under 10 seconds (measured: 7.8s at 100K entities)",
     "published_vram_total": "under 1GB",
-    "measured_ceps_note": "Actual: 189-215M CEPS — published figure is conservative",
-    "measured_single_node_500k_ms": 1204,
-    "measured_alert_lifecycle_ms": 4.93,
-    "alert_lifecycle_breakdown": {
-      "noumenon_ingestion_us": 12,
-      "themis_evaluation_us": 271,
-      "prometheus_triage_us": 4644
-    },
-    "vram_active_mb": 76,
-    "vram_total_mb": 426,
-    "speedup_vs_batch_note": "Millions of times faster than 24-hour batch — exact multiplier not published",
+    "measured_single_node_500k_ms": 1170,
+    "measured_alert_lifecycle_ms": 3.92,
+    "measured_vram_active_mb": 76,
+    "measured_vram_total_mb": 410,
     "scaling": "linear",
     "aml_policies": 29,
     "aml_rules": 100,
@@ -48,51 +41,32 @@
     "conditions": "RelWithDebInfo, MSVC, Windows 11, medians of 3 runs, 10 warmup iterations"
   },
   "federation": {
-    "protocol": "ECDH-PSI (X25519) + Yao's GC (Free-XOR) + IKNP OT (Chou-Orlandi P-256)",
+    "protocol": "ECDH-PSI (X25519) + Yao's Garbled Circuits (Free-XOR) + IKNP OT Extension (Chou-Orlandi base OT on P-256)",
     "security_model": "semi-honest",
-    "transport": "AES-256-GCM + X25519",
+    "transport": "AES-256-GCM with X25519 key exchange",
     "bilateral_round_100k_entities_seconds": 7.8,
     "attestation": "dual Ed25519 (both parties sign)",
-    "raw_data_shared": "zero",
-    "tests": 361
+    "raw_data_shared": "zero"
   },
   "proofs": {
-    "format": "ZAPB (Zero-Trust Adjudication Proof Bundle)",
+    "format": "Cryptographic proof bundle",
     "bytes_per_evaluation": 912,
     "signature": "Ed25519 (OpenSSL, RFC 8032 verified)",
     "merkle_depth": 20,
-    "tamper_detection_tests": 14,
-    "independent_verification": "public key + proof bundle only; no engine access required"
+    "independent_verification": "public key plus proof bundle only; no engine access required"
+  },
+  "codebase": {
+    "production_lines_cpp_cuda": 396000,
+    "lines_of_test_code": 222000,
+    "total_lines_including_tests": 618000,
+    "gpu_kernels": 493,
+    "audited_subsystems_core_engine": 12
   },
   "testing": {
     "total_automated_tests": 12342,
     "lines_of_test_code": 222000,
-    "audited_subsystems": 12,
-    "subsystems": ["adversarial fuzzing framework", "semantic entity graph", "CPL compliance policy language", "GPU policy evaluator", "AI agent triage", "federation", "UI", "GPU resource manager", "cryptography", "decision pipeline", "ingest bridge", "predictive governance projection"],
-    "test_breakdown": {
-      "core_engine_gtest": 7218,
-      "playwright_browser": 1845,
-      "cognitive_prometheus": 1185,
-      "tcms_case_management": 826,
-      "apex_end_to_end": 592,
-      "chimera_detection": 449,
-      "integration": 99,
-      "runner": 67,
-      "narrative": 25,
-      "config": 18,
-      "python": 18
-    },
-    "cpl_tests": 288,
-    "federation_tests": 361,
-    "crypto_kat": ["Ed25519 (RFC 8032)", "SHA-256 (FIPS 180-4)", "Blake3 (official vectors)"]
-  },
-  "sentinel": {
-    "cpp_functions": 4998,
-    "cpp_invariants": 10255,
-    "cpl_policies": 115,
-    "cpl_invariants": 1183,
-    "mutation_kill_rate": "84%",
-    "pre_commit_gate": true
+    "audited_subsystems_core_engine": 12,
+    "crypto_known_answer_tests": ["Ed25519 (RFC 8032)", "SHA-256 (FIPS 180-4)", "Blake3 (official vectors)"]
   },
   "capabilities": {
     "gpu_native_processing": true,
@@ -103,7 +77,6 @@
     "adversarial_self_testing": true,
     "predictive_governance": true,
     "entity_resolution_gpu": true,
-    "gap_detection": true,
     "build_attestation": true,
     "siem_integration": true,
     "constitutional_governance": true,
@@ -111,18 +84,25 @@
     "agent_sar_requires_human_mlro": true
   },
   "regulatory_frameworks": [
-    "EU AI Act",
     "AMLR / 6AMLD",
-    "FATF R15",
+    "EU AI Act",
+    "ECCTA Sections 188-189",
+    "FATF Recommendation 15",
     "NIST AI RMF",
     "ISO 42001",
     "MAS TRM",
     "GDPR",
-    "DORA"
+    "DORA",
+    "Wwft"
   ],
+  "key_regulatory_dates": {
+    "amlr_article_75_application": "2027-07-10",
+    "ecca_sections_188_189_in_force": "2024-01-01"
+  },
   "regulatory_engagement": {
-    "dnb_innovationhub": "under_review",
-    "fca_sandbox": "engaged"
+    "fca_digital_sandbox": "accepted (March 2026)",
+    "dnb_innovationhub": "engaged",
+    "nvidia_inception": "member (April 2026)"
   },
   "competitors": {
     "legacy_incumbents": ["NICE Actimize", "Oracle Financial Crime", "SAS"],
@@ -132,10 +112,10 @@
     "GPU-native architecture (not GPU-accelerated)",
     "Privacy-preserving cross-institutional detection via MPC (semi-honest security model)",
     "Cryptographic proof bundles for every compliance decision (912 bytes, Ed25519 signed)",
-    "Independent regulator verification: public key + proof bundle, no engine access",
+    "Independent regulator verification: public key plus proof bundle, no engine access",
     "Deterministic evaluation (byte-identical replay)",
     "Constitutional governance: agents cannot file SARs autonomously",
-    "Adversarial self-testing framework with 84% mutation kill rate",
+    "Adversarial self-testing framework with continuous mutation testing",
     "12,342 automated tests, 222,000 lines of test code, 396,000 lines of production C++/CUDA, 493 GPU kernels",
     "3-5 year estimated replication timeline for competitors"
   ],
@@ -148,7 +128,7 @@
   "target_market": {
     "primary": "Tier-1 and Tier-2 European banks",
     "secondary": "Fintechs, payment service providers",
-    "geographic_focus": "EU (AMLR compliance deadline mid-2027)"
+    "geographic_focus": "EU (AMLR Article 75 applies July 10, 2027)"
   },
-  "last_updated": "2026-03-23"
+  "last_updated": "2026-05-07"
 }

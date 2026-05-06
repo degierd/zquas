@@ -72,6 +72,62 @@
         }
     }
     </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is ZQUAS?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "ZQUAS is a GPU-native compliance engine built for cross-institutional financial crime detection without central data pooling. It evaluates 500,000 entities against 100 AML policies in under 2 seconds and produces a cryptographic proof bundle for every compliance decision that regulators verify independently with a public key alone."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What problem does ZQUAS solve?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Criminal networks deliberately split activity across multiple banks to stay below per-bank detection thresholds. Cross-institutional detection catches them, but data centralisation violates privacy law. TMNL proved this. ZQUAS uses Multi-Party Computation so banks cooperate without sharing raw customer data."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the regulatory deadline driving adoption?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "AMLR Article 75 applies on July 10, 2027. It permits cross-institutional information sharing for AML purposes with mandatory pseudonymisation. Cross-institutional monitoring infrastructure typically takes 18 to 24 months to build, which puts the practical decision window in 2026."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does ZQUAS protect customer data during cross-bank detection?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Cross-bank detection runs over Multi-Party Computation: ECDH-PSI on Curve25519 for entity matching, Yao's Garbled Circuits with Free-XOR for risk score comparison, and IKNP OT Extension for oblivious transfer. Each institution retains absolute data sovereignty. Zero raw customer data crosses institutional boundaries."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does a regulator verify a ZQUAS compliance decision?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "With a public key and the proof bundle. Every compliance decision produces a 912-byte cryptographic proof bundle, Ed25519 signed and Merkle-included. The supervisor runs a standalone command-line verifier. No engine access, no vendor software, no trust in the bank's reporting required."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is ZQUAS production-ready?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Tested and pilot-ready. 12,342 automated tests across 12 audited subsystems on the core engine. 222,000 lines of test code. 396,000 lines of production C++ and CUDA across 493 GPU kernels. Accepted into the FCA Digital Sandbox in March 2026. Member of the NVIDIA Inception programme."
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
 
@@ -540,6 +596,7 @@
                 <a href="use-case.html">Use Case</a>
                 <a href="about.html">About</a>
                 <a href="articles.html">Articles</a>
+                <a href="glossary.html">Glossary</a>
             </div>
             <div class="footer-col">
                 <h4>Get Involved</h4>

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://zquas.ai/</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-05-07</lastmod>
         <priority>1.0</priority>
     </url>
     <url>
@@ -27,7 +27,7 @@
     </url>
     <url>
         <loc>https://zquas.ai/articles.html</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-05-07</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
@@ -66,13 +66,18 @@
         <priority>0.7</priority>
     </url>
     <url>
+        <loc>https://zquas.ai/glossary.html</loc>
+        <lastmod>2026-05-07</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://zquas.ai/llms.txt</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-05-07</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
         <loc>https://zquas.ai/facts.json</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-05-07</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
