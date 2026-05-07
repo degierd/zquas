@@ -1,0 +1,83 @@
+{
+  "$schema": "https://agentskills.io/schemas/index/v0.2.0.json",
+  "version": "0.2.0",
+  "publisher": {
+    "name": "ZQUAS",
+    "url": "https://zquas.ai",
+    "contact": "danny@zquas.ai"
+  },
+  "skills": [
+    {
+      "name": "site-summary",
+      "type": "knowledge",
+      "description": "LLM-optimised summary of ZQUAS: what it is, who it serves, the engine's published benchmark numbers, and the regulatory frameworks it covers.",
+      "url": "https://zquas.ai/llms.txt",
+      "media_type": "text/plain",
+      "sha256": "0bc13b4f2a21de8bdf6761007c0108a967cdbe72e4f020a772968454f4290a1b"
+    },
+    {
+      "name": "site-summary-full",
+      "type": "knowledge",
+      "description": "Long-form companion to llms.txt with the verbatim content of the strongest pages on the site (homepage, technology, regulators, founder timeline).",
+      "url": "https://zquas.ai/llms-full.txt",
+      "media_type": "text/plain",
+      "sha256": "bed1f180a8491af9fcf11b3ec69754e96f15556913bd6d3a706d5a46b1476506"
+    },
+    {
+      "name": "facts",
+      "type": "knowledge",
+      "description": "Machine-readable fact sheet: benchmark numbers, federation protocols, regulatory engagement, founder profile, competitor positioning, locked thresholds.",
+      "url": "https://zquas.ai/facts.json",
+      "media_type": "application/json",
+      "sha256": "95c19e14ff8f8516a7906b5e8796cb1f51bc95664d1469d4eab0b81887c7d745"
+    },
+    {
+      "name": "glossary",
+      "type": "knowledge",
+      "description": "Definitions for the cryptographic, regulatory, and architectural terms used across ZQUAS: AMLR Article 75, MPC, ECDH-PSI, Garbled Circuits, GPU-native, cryptographic proof bundle, deterministic evaluation, and more.",
+      "url": "https://zquas.ai/glossary.html",
+      "media_type": "text/html",
+      "sha256": "7b39510784c714254a5830090adc00b6667cee6388f4db4e75ced11aa6d728c0"
+    },
+    {
+      "name": "position-paper-article-75",
+      "type": "knowledge",
+      "description": "Position paper on AMLR Article 75: how Multi-Party Computation enables full customer base federation for AML detection without sharing personal data. Legal argument, evidence, and a path to a pilot.",
+      "url": "https://zquas.ai/article-75.html",
+      "media_type": "text/html",
+      "sha256": "1611ec3fc8145fbf6b81f3a839cd2f88f9bcc8ba95b83956e40f8cb2e937d4bc"
+    },
+    {
+      "name": "position-paper-edge-to-federation",
+      "type": "knowledge",
+      "description": "Position paper on a unified architecture for real-time financial crime detection across institutional, cross-bank, and regulatory layers.",
+      "url": "https://zquas.ai/article-edge-to-federation.html",
+      "media_type": "text/html",
+      "sha256": "dd02cce61a780a3f600acb89f249fb7ad5b37be2738189bbd5398c63b6282f8b"
+    },
+    {
+      "name": "position-paper-beyond-banking",
+      "type": "knowledge",
+      "description": "Position paper on cross-sector federated detection across banks, telecommunications operators, and digital asset platforms.",
+      "url": "https://zquas.ai/article-beyond-banking.html",
+      "media_type": "text/html",
+      "sha256": "ada814da170f55893251b4b7c7a1bd42268c07b1260684f9abbe379e7847bec4"
+    },
+    {
+      "name": "one-pager",
+      "type": "knowledge",
+      "description": "Single-page PDF summary of the engine, benchmarks, and regulatory traction. Suitable for buyer hand-out.",
+      "url": "https://zquas.ai/zquas-onepager.pdf",
+      "media_type": "application/pdf",
+      "sha256": "f92ff6eeef3f6a4f2c2fb397454af294a1f393a3a2f792ff027dc771e4233f39"
+    },
+    {
+      "name": "articles-feed",
+      "type": "knowledge",
+      "description": "RSS 2.0 feed of all ZQUAS analysis articles, sorted newest-first. Updated whenever a new article is published.",
+      "url": "https://zquas.ai/feed.xml",
+      "media_type": "application/rss+xml",
+      "sha256": "a2ccde501f47eb26d3614082ecca0fb4fd65fd04e039996d3b9370e337c8008a"
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+# UK Banks Can Share AML Data Today: ECCTA Sections 188-189
+
+> While the EU waits until July 2027 for AMLR Article 75, the UK has already acted. ECCTA Sections 188 and 189 have been in force since January 2024. Here is what UK banks can do now.
+
+Source: https://zquas.ai/article-eccta-uk-aml-data-sharing.html
+Site: https://zquas.ai
+
+---
+[← Articles](articles.html)
+        February 2026 · Regulation · 8 min read
+
+
+# UK Banks Can Share AML Data Today: ECCTA Sections 188-189
+
+
+
+While the EU waits until July 2027 for AMLR Article 75, the United Kingdom has already acted. The Economic Crime and Corporate Transparency Act 2023 permits AML-regulated firms to share customer information for economic crime purposes. Sections 188 and 189 have been in force since January 15, 2024.
+
+
+
+
+
+
+
+## What ECCTA Permits
+
+
+
+            Section 188 of the Economic Crime and Corporate Transparency Act 2023 permits direct peer-to-peer sharing between regulated firms. A firm may share customer information when it has reasonable grounds to believe that the sharing will assist in preventing, detecting, or investigating economic crime. The sharing is between firms directly, without a central intermediary.
+
+
+
+
+            Section 189 permits indirect sharing through a third-party intermediary. The scope of Section 189 is narrower than Section 188. It applies to a defined subset of larger financial institutions and professional services firms. The intermediary model allows a central body to facilitate information exchange, subject to conditions that preserve confidentiality and limit onward use.
+
+
+
+
+            Both sections provide civil liability protection when the statutory conditions are met. Under Section 188, liability protection attaches when the "warning condition" is met, meaning the firm has taken safeguarding action as a result of the shared information, or when the "request condition" is met, meaning the sharing was in response to a request from another regulated firm with reasonable grounds. The liability protection resolves a significant inhibitor to information sharing that existed under the previous framework.
+
+
+
+
+## Scope: Economic Crime, Not Only AML
+
+
+
+            ECCTA covers all economic crime, a broader category than AML/CFT alone. Fraud, market abuse, sanctions evasion, and bribery all fall within scope. A UK bank may share customer information under Section 188 to assist in detecting fraud at another institution, not only to support AML/CFT monitoring.
+
+
+
+
+            AMLR Article 75, by contrast, is limited to AML/CFT obligations. The EU framework is more prescriptive in scope, more specific in its technical requirements, and more detailed about the governance of partnerships. ECCTA is broader and more flexible, reflecting the UK's post-Brexit approach to economic crime policy.
+
+
+
+
+## How ECCTA Differs from AMLR Article 75
+
+
+
+            Four differences between ECCTA and AMLR Article 75 are material for compliance teams operating in both jurisdictions.
+
+
+
+
+            ECCTA provides explicit civil liability protection for sharing. AMLR Article 75 creates the legal basis but does not address civil liability in the same terms. UK banks operating under ECCTA have a clearer statutory shield against claims arising from a good-faith share.
+
+
+
+
+            AMLR Article 75(4)(f) mandates pseudonymisation as a required technical safeguard. ECCTA does not specify technical standards for the sharing. UK banks must independently satisfy UK GDPR data minimisation requirements, but the regulatory text does not prescribe the technical method. This gives more flexibility and imposes more responsibility on the bank's legal and technical design.
+
+
+
+
+            AMLR Article 75 requires FIU consent before sharing suspicious transaction information. ECCTA has no equivalent requirement, though sharing that amounts to tipping off a subject, or sharing information in a way that prejudices an investigation, remains prohibited.
+
+
+
+
+            Both frameworks require that each institution retain independent decision-making. Neither ECCTA nor Article 75 permits one institution to outsource its compliance judgment to another.
+
+
+
+
+## UK GDPR Still Applies
+
+
+
+            ECCTA permits sharing but does not override UK GDPR. UK banks sharing customer information under Sections 188 or 189 must still identify a valid legal basis under UK GDPR Article 6. The economic crime prevention purpose, combined with the statutory framework in ECCTA, provides a strong basis under Article 6(1)(e), processing necessary for a task carried out in the public interest.
+
+
+
+
+            Data minimisation under UK GDPR Article 5(1)(c) applies regardless of ECCTA. Banks must limit sharing to what is necessary for the economic crime prevention purpose. Sharing full customer files when a risk signal would suffice does not satisfy the minimisation principle. Privacy-preserving computation offers the same advantage in the UK context as in the EU: intelligence is generated without transmitting raw personal data.
+
+
+
+
+            UK DPIAs remain required for high-risk processing. Cross-institutional sharing of financial data falls within the category of processing likely to result in high risk to individuals. Banks implementing ECCTA-based sharing programmes should complete DPIAs before going live.
+
+
+
+
+## Companies House Reform
+
+
+
+            ECCTA also reformed Companies House, requiring identity verification for company directors and persons with significant control. Enhanced entity data from Companies House improves the quality of entity matching across institutions. Cross-institutional detection depends on correctly identifying that a customer at one bank is the same legal entity as a customer at another bank. Reliable, verified entity data from Companies House reduces false matches and missed matches in that process.
+
+
+
+
+            The Companies House reform and the information-sharing provisions in Sections 188 and 189 are complementary. Better entity verification at source improves the accuracy of cross-institutional risk comparison.
+
+
+
+
+## The FCA Digital Sandbox
+
+
+
+            The FCA operates a Digital Sandbox that provides a regulatory-approved environment for testing innovative financial crime detection technologies. The Sandbox includes synthetic data sets representative of real transaction patterns, enabling vendors and banks to demonstrate detection performance without using live customer data.
+
+
+
+
+            For collaborative AML technologies, the Digital Sandbox provides a safe environment for bilateral testing between institutions. Banks can validate entity matching accuracy, cross-institutional risk signal quality, and integration performance before deploying in production. FCA engagement through the Sandbox also informs the regulator's understanding of new approaches, which supports subsequent supervisory approval.
+
+
+
+
+## The UK Opportunity
+
+
+
+            The UK regulatory framework for collaborative AML is the most advanced in Europe by application date. Sections 188 and 189 have been in force since January 2024. EU banks must wait until July 2027 for AMLR Article 75. UK banks have a two-and-a-half-year head start.
+
+
+
+
+            The legal basis exists. The sandbox infrastructure exists. The entity data infrastructure is improving. The technology to generate intelligence without sharing raw data exists. UK banks have the conditions to implement collaborative detection now, demonstrate results before EU banks begin, and build the operational experience that will define best practice when cross-border UK-EU partnerships become possible under future arrangements.
+
+
+
+            Danny de Gier
+
+                Founder, ZQUAS. 18+ years in financial crime compliance at Tier-1 banks and fintechs.
+                Professional Postgraduate Diploma in Financial Crime Compliance (ICA / University of Manchester).

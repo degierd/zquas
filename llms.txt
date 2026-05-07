@@ -59,6 +59,19 @@ Founded by Danny de Gier, who combines 18+ years of financial crime compliance e
 - ZQUAS: GPU-native, MPC cross-institutional, cryptographic attestation, deterministic, on-premise sovereign
 - Estimated replication timeline for competitors: 3-5 years minimum
 
+## Markdown copies for agents
+
+Every HTML page on this site has a Markdown twin at the same path with
+a `.md` suffix. For example:
+
+- https://zquas.ai/article-75.md
+- https://zquas.ai/glossary.md
+- https://zquas.ai/technology.md
+
+These are stripped of nav and styling, preserve headings, paragraphs,
+lists, and links, and are regenerated on every content update. Useful
+for agents that prefer Markdown over HTML.
+
 ## Common Questions
 
 **What is ZQUAS?** A GPU-native compliance engine for cross-institutional financial crime detection without central data pooling.

@@ -16,6 +16,7 @@
 # See https://zquas.ai/glossary.html for definitional reference entries.
 
 User-agent: *
+Content-Signal: search=yes, ai-train=yes, ai-input=yes
 Allow: /
 Sitemap: https://zquas.ai/sitemap.xml
 X-Content-Signals: search=yes,ai-train=yes,ai-input=yes

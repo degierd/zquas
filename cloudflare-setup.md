@@ -186,6 +186,70 @@ All can forward to your Gmail.
 
 ---
 
+## 9. RFC 8288 Link headers and Markdown content negotiation (10 minutes)
+
+These two together let AI agents discover documentation and request a
+clean Markdown version of any page on demand. Both are configured at
+Cloudflare; the static site does not have to do anything.
+
+### A. Link headers (RFC 8288)
+
+Cloudflare dashboard -> zquas.ai -> Rules -> Transform Rules ->
+Modify Response Header -> Create rule.
+
+- Rule name: `Link headers (all routes)`
+- When incoming request matches: All incoming requests
+- Then add headers (one per Set static action):
+
+| Header | Value |
+|---|---|
+| `link` | `</llms.txt>; rel="describedby"; type="text/plain"` |
+| `link` | `</facts.json>; rel="describedby"; type="application/json"` |
+| `link` | `</.well-known/agent-skills/index.json>; rel="agent-skills"` |
+| `link` | `</sitemap.xml>; rel="sitemap"; type="application/xml"` |
+| `link` | `</feed.xml>; rel="alternate"; type="application/rss+xml"` |
+
+If your dashboard only allows one `link` header, concatenate them with
+commas into a single `link:` value:
+
+```
+</llms.txt>; rel="describedby"; type="text/plain", </facts.json>; rel="describedby"; type="application/json", </.well-known/agent-skills/index.json>; rel="agent-skills", </sitemap.xml>; rel="sitemap"; type="application/xml", </feed.xml>; rel="alternate"; type="application/rss+xml"
+```
+
+### B. Markdown for Agents (Cloudflare native feature)
+
+Cloudflare ships a built-in feature that returns Markdown when an agent
+sends `Accept: text/markdown`. We have already pre-generated `.md` twins
+of every page (so `https://zquas.ai/article-75.md` works), but enabling
+the negotiated version lets agents request the same canonical URL with
+a header instead.
+
+Cloudflare dashboard -> zquas.ai -> AI -> AI Crawl Control (or
+"Markdown for Agents" depending on dashboard version) -> Enable.
+
+After enabling:
+
+```
+curl -H "Accept: text/markdown" https://zquas.ai/article-75.html
+```
+
+should return Markdown with `Content-Type: text/markdown`.
+
+### C. Verify
+
+```
+curl -I https://zquas.ai/ | grep -i ^link
+# Should show one or more Link: headers as configured above
+
+curl -H "Accept: text/markdown" -I https://zquas.ai/article-75.html | grep -i content-type
+# Should show: content-type: text/markdown (after Markdown for Agents is on)
+
+curl https://zquas.ai/article-75.md | head -10
+# Should show the pre-generated Markdown file
+```
+
+---
+
 ## After deployment
 
 Run these to verify everything works:
