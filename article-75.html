@@ -554,7 +554,7 @@
             Four real-world money laundering typologies were tested: trade-based money laundering (over-invoicing across three banks), correspondent banking wire stripping, shell company layering networks, and funnel account structuring with cryptocurrency exit. In each case, no individual bank's monitoring system would have escalated the entity. Only cross-institutional federation detected the pattern.
         </p>
         <p>
-            Every policy evaluation produces a Zero-Trust Adjudication Proof Bundle (ZAPB): a cryptographic attestation of the policy that fired, the inputs it read, and the verdict it produced. A regulator can independently verify, years after the fact, that the system correctly applied the approved policy to the available data.
+            Each policy evaluation produces a cryptographic proof bundle: an attestation of the policy that fired, the inputs it read, and the verdict it produced. A regulator can independently verify, years after the fact, that the system correctly applied the approved policy to the available data.
         </p>
 
         <hr class="section-rule">
@@ -800,7 +800,7 @@
             The MPC protocol is secure against a semi-honest adversary: a bank that follows the protocol correctly but attempts to extract additional information from the messages it receives. Under this model, a compromised bank learns nothing beyond the binary escalation signal.
         </p>
         <p>
-            Against a fully malicious adversary (a bank that deviates from the protocol), the current bilateral implementation provides limited protection. The mitigation is operational: the ZAPB attestation provides a cryptographic record of every input to every round. If a bank submits anomalous risk scores to probe the other bank's data, this pattern is detectable in the attestation log.
+            Against a fully malicious adversary (a bank that deviates from the protocol), the current bilateral implementation provides limited protection. The mitigation is operational: the cryptographic proof bundle provides a record of every input to every round. If a bank submits anomalous risk scores to probe the other bank's data, this pattern is detectable in the attestation log.
         </p>
         <p>
             Stronger malicious-adversary guarantees are architecturally designed for networks exceeding 30 institutions, based on 4-party MPC with guaranteed output delivery. This is not yet implemented. It is the natural evolution for large-scale production deployment.
@@ -817,7 +817,7 @@
 
         <p class="p-bold">1. Regulatory sandbox engagement (DNB InnovationHub / FCA Digital Sandbox)</p>
         <p>
-            Deploy the ZQUAS federation platform in a sandbox environment with synthetic or historical data from participating banks. Demonstrate cross-institutional detection of known laundering typologies. Measure false positive rates. Validate the ZAPB attestation mechanism. Establish whether MPC protocol messages constitute personal data under GDPR.
+            Deploy the ZQUAS federation platform in a sandbox environment with synthetic or historical data from participating banks. Demonstrate cross-institutional detection of known laundering typologies. Measure false positive rates. Validate the cryptographic attestation mechanism. Establish whether MPC protocol messages constitute personal data under GDPR.
         </p>
 
         <p class="p-bold">2. Data Protection Authority consultation</p>

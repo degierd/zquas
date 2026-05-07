@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benchmark: 150M+ Evaluations/sec, Under 10ms Alert Lifecycle — ZQUAS</title>
-    <meta name="description" content="Documented GPU benchmark of the ZQUAS F1 engine. 500K entities in under 2 seconds on NVIDIA RTX 5090. Alert lifecycle under 10ms.">
+    <meta name="description" content="Documented GPU benchmark of the ZQUAS engine. 500K entities in under 2 seconds on NVIDIA RTX 5090. Alert lifecycle under 10ms.">
     <meta property="og:title" content="Benchmark: 150M+ Evaluations/sec, Under 10ms Alert Lifecycle — ZQUAS">
-    <meta property="og:description" content="Documented GPU benchmark of the ZQUAS F1 engine. 500K entities in under 2 seconds on NVIDIA RTX 5090. Alert lifecycle under 10ms. 12,342 automated tests.">
+    <meta property="og:description" content="Documented GPU benchmark of the ZQUAS engine. 500K entities in under 2 seconds on NVIDIA RTX 5090. Alert lifecycle under 10ms. 12,342 automated tests.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zquas.ai/benchmark.html">
     <meta property="og:image" content="https://zquas.ai/og-image.png">
@@ -26,7 +26,7 @@
         "@context": "https://schema.org",
         "@type": "TechArticle",
         "headline": "Benchmark: 150M+ CEPS, Under 10ms Alert Lifecycle",
-        "description": "Documented GPU benchmark of the ZQUAS F1 engine. 500K entities in under 2 seconds on NVIDIA RTX 5090. Alert lifecycle under 10ms. 12,342 automated tests.",
+        "description": "Documented GPU benchmark of the ZQUAS engine. 500K entities in under 2 seconds on NVIDIA RTX 5090. Alert lifecycle under 10ms. 12,342 automated tests.",
         "datePublished": "2026-03-01",
         "author": {
             "@type": "Person",
@@ -78,7 +78,7 @@
         <div class="section-label">Benchmark Study</div>
         <h1 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.6rem); max-width: 700px; margin-bottom: 1.5rem;">500,000 entities. 100 policies. Under 2 seconds.</h1>
         <p class="section-desc">
-            A documented benchmark of the ZQUAS F1 engine at production scale. 150 million+ compliance policy evaluations per second. Alert lifecycle under 10ms from ingestion to triage. Every result measured on NVIDIA RTX 5090. Every decision signed.
+            A documented benchmark of the ZQUAS engine at production scale. 150 million+ compliance policy evaluations per second. Alert lifecycle under 10ms from ingestion to triage. Every result measured on NVIDIA RTX 5090. Every decision signed.
         </p>
         <div class="bench-meta">Benchmark date: March 2026 &middot; Hardware: NVIDIA RTX 5090 (Blackwell, sm_100, 170 SMs, 32GB VRAM)</div>
         <div class="bench-meta" style="margin-top: 0.6rem;">ZQUAS is a member of the NVIDIA Inception program.</div>
@@ -162,7 +162,7 @@
 
             <p>CEPS stands for Compliance Policy Evaluations Per Second. One evaluation is a single entity assessed against one policy. The engine evaluates all entities against all policies in parallel. 150M+ CEPS means over 150 million individual policy checks per second sustained at production scale.</p>
 
-            <p>The key metric for AML monitoring is not raw throughput but latency from event to triage. An alert that takes 24 hours to reach an analyst is an alert that arrives after the money has moved. The F1 engine produces a complete triage decision in 4.93ms: 12 microseconds for ingestion into the semantic entity graph, 271 microseconds for GPU policy evaluation, and 4.64ms for AI agent triage. Total: 4.93ms.</p>
+            <p>The key metric for AML monitoring is not raw throughput but latency from event to triage. An alert that takes 24 hours to reach an analyst is an alert that arrives after the money has moved. The engine produces a complete triage decision in 4.93ms: 12 microseconds for ingestion into the semantic entity graph, 271 microseconds for GPU policy evaluation, and 4.64ms for AI agent triage. Total: 4.93ms.</p>
 
             <p>This matters for real-time payment rails. SEPA Instant requires settlement in under 10 seconds. The engine evaluates the transaction in under 10 milliseconds. The agent triage decision is available before the settlement window closes.</p>
 
@@ -299,7 +299,7 @@
 
         <div class="bench-properties">
             <div class="bench-prop"><strong>Determinism:</strong> Verified. Same policy set, same input data, byte-identical verdicts across multiple runs.</div>
-            <div class="bench-prop"><strong>Proof generation:</strong> Every evaluation produces a ZAPB bundle (912 bytes, Ed25519 signed, Merkle-included) within the measured wall-clock time.</div>
+            <div class="bench-prop"><strong>Proof generation:</strong> Each evaluation produces a cryptographic proof bundle (912 bytes, Ed25519 signed, Merkle-included) within the measured wall-clock time.</div>
             <div class="bench-prop"><strong>Conditions:</strong> RelWithDebInfo build, MSVC, Windows 11, RTX 5090. Medians of 3 runs with 10 warmup iterations. Includes full proof pipeline (Merkle + Ed25519). Federation measured on TCP localhost.</div>
         </div>
     </div>
@@ -326,9 +326,9 @@
         <div class="analysis-body">
             <h2>Why This Matters for Banks</h2>
 
-            <p>A Tier-1 bank with 500,000 monitored entities evaluates its full portfolio against 100 AML policies in under 2 seconds. The same operation in overnight batch takes 24 hours. The F1 engine is millions of times faster than that cycle, measured on the same workload.</p>
+            <p>A Tier-1 bank with 500,000 monitored entities evaluates its full portfolio against 100 AML policies in under 2 seconds. The same operation in overnight batch takes 24 hours. The engine is millions of times faster than that cycle, measured on the same workload.</p>
 
-            <p>For real-time payment rails, the relevant number is alert lifecycle latency. SEPA Instant requires settlement in under 10 seconds. The F1 engine produces a complete triage decision in under 10ms. The analyst receives an alert with entity context, risk score, cross-institutional signal, and agent recommendation before the payment settles.</p>
+            <p>For real-time payment rails, the relevant number is alert lifecycle latency. SEPA Instant requires settlement in under 10 seconds. The engine produces a complete triage decision in under 10ms. The analyst receives an alert with entity context, risk score, cross-institutional signal, and agent recommendation before the payment settles.</p>
 
             <p>VRAM usage at 500K entities is well under 1GB. The RTX 5090 has 32GB. The vast majority of GPU memory is unused at the production benchmark workload. Headroom exists for larger entity populations, simultaneous federation computation, and concurrent agent workloads.</p>
 
@@ -364,7 +364,7 @@
 
             <p>Every benchmark result is covered by 12,342 automated tests across the codebase, with 7,218 core engine tests spanning 12 independently audited subsystems covering adversarial fuzzing, semantic graph, compliance policy language, GPU policy evaluation, AI agent triage, federation, UI, GPU resource management, cryptography, and decision pipelines. Crypto KAT tests cover Ed25519 (RFC 8032), SHA-256 (FIPS 180-4), and Blake3 (official vectors). Hardware differences will affect absolute throughput but not determinism or correctness.</p>
 
-            <p>ZAPB proof bundles (912 bytes per evaluation) are independently verifiable. A regulator with the public key can verify any proof bundle offline without engine access. The Merkle inclusion proof supports trees up to depth 20. 14 field-level tamper detection tests confirm that any modification to the proof bundle is detectable.</p>
+            <p>Cryptographic proof bundles (912 bytes per evaluation) are independently verifiable. A regulator with the public key can verify any proof bundle offline without engine access. The Merkle inclusion proof supports trees up to depth 20. Field-level tamper detection tests confirm that any modification to the proof bundle is detectable.</p>
         </div>
     </div>
 </section>

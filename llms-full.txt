@@ -62,23 +62,23 @@ Every compliance decision produces a cryptographic proof bundle. Your supervisor
 - **Deterministic Replay**: Any supervisory review can replay any epoch and get byte-identical results. The same policy applied to the same data always produces the same verdict. Auditability by construction, not by report.
 - **Coverage Gap Analysis**: The engine continuously maps policy coverage against registered regulatory frameworks. Gaps between your required controls and active policy set are identified in real time.
 
-Currently engaged with DNB InnovationHub and FCA regulatory sandbox programmes. Designed for supervisory scrutiny from day one.
+Accepted into the FCA Digital Sandbox in March 2026. DNB InnovationHub submission under review. Designed for supervisory scrutiny from day one.
 
 ### For Investors: Category-defining infrastructure at an inflection point
 
-The EU AMLR (effective mid-2027) forces every European financial institution to re-architect compliance. The incumbents can't get there. We're already built for it.
+AMLR Article 75 applies on July 10, 2027. Every European bank has to re-architect for cross-institutional detection within a fixed window. Most existing systems were not designed for it. ZQUAS was.
 
 - **EUR 200B+ Annual Market**: Global financial crime compliance spending exceeds EUR 200 billion annually. Banks spend 10-20% of operating budgets on compliance.
-- **Regulatory Forcing Function**: AMLR mid-2027 creates a hard deadline. EU AI Act classifies AML systems as high-risk with mandatory technical standards. Every bank in Europe must upgrade or rebuild.
-- **Defensible Technical Moat**: GPU-native compliance with privacy-preserving MPC, zero-knowledge governance proofs, and cryptographic attestation. No incumbent has this architecture. Replication timeline: 3-5 years minimum.
-- **Unique Founder Profile**: 18+ years hands-on compliance at Tier-1 banks combined with GPU systems programming (C++/CUDA/Vulkan). This intersection doesn't exist elsewhere.
-- **Regulator Traction**: DNB InnovationHub submission under review. FCA sandbox engaged.
-- **Land & Expand Model**: Enter via single-bank deployment (on-premise, sovereign). Expand to cross-institutional MPC network as adoption grows. Each additional node increases detection capability for all participants.
+- **Regulatory Forcing Function**: AMLR Article 75 creates a hard deadline of July 10, 2027. EU AI Act imposes technical standards on AI-based risk profiling systems used in AML. Many banks in Europe will need to upgrade or rebuild.
+- **Defensible Technical Moat**: GPU-native compliance with privacy-preserving MPC, zero-knowledge governance proofs, and cryptographic attestation. The combination is rare in the market. Replication takes a deep stack of specialised disciplines (GPU systems, applied cryptography, regulatory engineering) that are hard to assemble inside an existing roadmap.
+- **Unique Founder Profile**: 18+ years hands-on compliance at Tier-1 banks combined with GPU systems programming (C++/CUDA/Vulkan).
+- **Regulator Traction**: Accepted into the FCA Digital Sandbox (March 2026). DNB InnovationHub submission under review.
+- **Land & Expand Model**: Enter via single-bank deployment (on-premise, sovereign). Expand to cross-institutional MPC federation as adoption grows. Each additional participating institution increases detection capability for all members.
 
 ### Credentials
 
 - 18+ Years Financial Crime Compliance: Senior compliance roles at Tier-1 banks including RBS, Deutsche Bank, HSBC, and Commerzbank. Fintech compliance leadership at ClearBank, Vivid Money, and CoinMetro.
-- Regulatory Sandbox Engagement: DNB InnovationHub submission under review. FCA regulatory sandbox programme engaged.
+- Regulatory Sandbox Engagement: Accepted into the FCA Digital Sandbox (March 2026). DNB InnovationHub submission under review.
 - Academic Foundation: Professional Postgraduate Diploma in Financial Crime Compliance -- International Compliance Association / University of Manchester.
 
 Regulatory frameworks covered: EU AI Act, AMLR / 6AMLD, FATF R15, NIST AI RMF, ISO 42001, MAS TRM, GDPR, DORA.
@@ -173,7 +173,7 @@ Every compiled binary embeds deterministic hashes (BLAKE3 and SHA-256) of its ow
 
 ZQUAS produces cryptographic proof of every compliance decision. Your supervisory team verifies outcomes independently, without accessing bank systems, without installing vendor software, and without seeing underlying transaction data.
 
-Engaged with DNB InnovationHub and FCA Regulatory Sandbox.
+Accepted into the FCA Digital Sandbox (March 2026). DNB InnovationHub submission under review.
 
 ### Current Limitations: Trust-based supervision has structural gaps
 
@@ -436,7 +436,7 @@ ZQUAS is the engine I wished I'd had during every compliance role I ever held. I
 
 ### Career Timeline
 
-- 2024-Present: ZQUAS -- Founder & Engineer. GPU-native compliance engine. Engaged with DNB InnovationHub and FCA regulatory sandbox.
+- 2024-Present: ZQUAS -- Founder & Engineer. GPU-native compliance engine. Accepted into the FCA Digital Sandbox (March 2026). DNB InnovationHub submission under review.
 - Jul 2022-Feb 2024: ClearBank -- Global Cryptoassets / Risk Director. Digital asset risk appetite. Acting MLRO.
 - Mar 2020-Feb 2022: Vivid Money -- Group Chief Risk & Compliance Officer, MLRO. Board Member.
 - Apr 2019-Mar 2020: DLL / Rabobank -- Global AML Programme Lead. 35 jurisdictions.

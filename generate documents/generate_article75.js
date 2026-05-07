@@ -232,7 +232,7 @@ children.push(new Paragraph({ spacing: { after: 200 }, children: [] }));
 
 children.push(p("Four real-world money laundering typologies were tested: trade-based money laundering (over-invoicing across three banks), correspondent banking wire stripping, shell company layering networks, and funnel account structuring with cryptocurrency exit. In each case, no individual bank\u2019s monitoring system would have escalated the entity. Only cross-institutional federation detected the pattern."));
 
-children.push(p("Every policy evaluation produces a Zero-Trust Adjudication Proof Bundle (ZAPB): a cryptographic attestation of the policy that fired, the inputs it read, and the verdict it produced. A regulator can independently verify, years after the fact, that the system correctly applied the approved policy to the available data."));
+children.push(p("Each policy evaluation produces a cryptographic proof bundle: an attestation of the policy that fired, the inputs it read, and the verdict it produced. A regulator can independently verify, years after the fact, that the system correctly applied the approved policy to the available data."));
 
 // ════════════════════════════════════════════════════════════
 // WHY THIS FAST
@@ -350,7 +350,7 @@ children.push(h2("\u201CWhat if a participating bank is compromised?\u201D"));
 
 children.push(p("The MPC protocol is secure against a semi-honest (honest-but-curious) adversary: a bank that follows the protocol correctly but attempts to extract additional information from the messages it receives. Under this model, a compromised bank learns nothing beyond the binary escalation signal."));
 
-children.push(p("Against a fully malicious adversary (a bank that deviates from the protocol), the current bilateral implementation provides limited protection. A malicious bank could, for example, submit fabricated risk scores to probe the other bank\u2019s data. The mitigation is operational: the ZAPB attestation provides a cryptographic record of every input to every round. If a bank submits anomalous risk scores (e.g., systematically probing with different values), this pattern is detectable in the attestation log."));
+children.push(p("Against a fully malicious adversary (a bank that deviates from the protocol), the current bilateral implementation provides limited protection. A malicious bank could, for example, submit fabricated risk scores to probe the other bank\u2019s data. The mitigation is operational: the cryptographic proof bundle provides a record of every input to every round. If a bank submits anomalous risk scores (e.g., systematically probing with different values), this pattern is detectable in the attestation log."));
 
 children.push(p("The Mode B architecture (utility-based, FLASH 4-party MPC with malicious security) provides stronger guarantees: even if one of four utility nodes is fully compromised, the protocol produces correct output and reveals nothing beyond the output. This is a property of the FLASH protocol\u2019s guaranteed output delivery mechanism. Mode B is architecturally designed but not yet implemented. It is the natural evolution for networks exceeding 30 institutions."));
 
@@ -365,7 +365,7 @@ children.push(p("We are not asking regulators to take our word for it. We are as
 children.push(p("Specifically, we propose:"));
 
 children.push(pBold("1. Regulatory sandbox engagement (DNB InnovationHub / FCA Digital Sandbox)"));
-children.push(p("Deploy the ZQUAS federation platform in a sandbox environment with synthetic or historical data from participating banks. Demonstrate cross-institutional detection of known laundering typologies. Measure false positive rates. Validate the ZAPB attestation mechanism. Establish whether MPC protocol messages constitute personal data under GDPR."));
+children.push(p("Deploy the ZQUAS federation platform in a sandbox environment with synthetic or historical data from participating banks. Demonstrate cross-institutional detection of known laundering typologies. Measure false positive rates. Validate the cryptographic attestation mechanism. Establish whether MPC protocol messages constitute personal data under GDPR."));
 
 children.push(pBold("2. Data Protection Authority consultation"));
 children.push(p("Engage the Dutch Autoriteit Persoonsgegevens (AP) and/or the European Data Protection Board to obtain a formal assessment of whether MPC federation falls within the scope of personal data processing under GDPR. If it does not, the Article 75 restrictions on customer scope are inapplicable, and full customer base federation is legally permissible."));

@@ -175,7 +175,7 @@ children.push(p("Specifically:"));
 
 children.push(pBold("Entities: ", "minimum 5,000 per institution, up to 500,000 (configurable). Synthetic data with planted typologies or representative data from the bank\u2019s existing monitoring system."));
 children.push(pBold("Policies: ", "the full 29-policy ZQUAS Bank Compliance Policy Manual, adapted to each institution\u2019s regulatory perimeter if needed."));
-children.push(pBold("Federation: ", "bilateral MPC rounds between all Founding Partners via the ZQUAS relay. End-to-end encrypted, authenticated, with ZAPB attestation."));
+children.push(pBold("Federation: ", "bilateral MPC rounds between all Founding Partners via the ZQUAS relay. End-to-end encrypted, authenticated, with cryptographic attestation."));
 children.push(pBold("Detection: ", "four planted laundering typologies (trade-based ML, wire stripping, shell company layering, funnel account structuring) plus legitimate controls. Measured: detection rate, false positive rate, federation time."));
 
 children.push(h2("Timeline"));
@@ -268,7 +268,7 @@ children.push(pageBreak());
 
 children.push(h1("About ZQUAS"));
 
-children.push(p("ZQUAS is a GPU-native governance and financial crime compliance platform. The core engine executes deterministic compliance policies in real time on GPU, producing cryptographically attestable decisions for every verdict. Each decision produces a ZAPB (Zero-Trust Adjudication Proof Bundle)."));
+children.push(p("ZQUAS is a GPU-native governance and financial crime compliance platform. The core engine executes deterministic compliance policies in real time on GPU, producing cryptographically attestable decisions for each verdict. Each decision produces a 912-byte cryptographic proof bundle: a record of the policy that fired, the inputs it read, and the verdict it produced."));
 
 children.push(p("The federation layer enables privacy-preserving cross-institutional detection using Multi-Party Computation: ECDH-PSI for entity matching, Yao\u2019s Garbled Circuits for risk comparison, and Oblivious Transfer for secure key exchange. Banks detect cross-bank laundering patterns without any institution accessing any other institution\u2019s data."));
 

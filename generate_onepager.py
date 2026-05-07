@@ -297,7 +297,7 @@ def page2(c):
         ["Adjudication pipeline", "Triple-stream GPU: Load (H2D), Adjudicate (kernel), Commit (D2H + sign)"],
         ["Determinism", "Byte-identical replay guaranteed. Fixed-point arithmetic where applicable"],
         ["Entity resolution", "GPU-resident high-throughput hash table (~1.34GB VRAM), GNN risk scoring"],
-        ["Proof generation", "ZAPB: verdict hash (SipHash-128), Merkle proof, Ed25519 signature (912 bytes)"],
+        ["Proof generation", "Cryptographic proof bundle: verdict hash (SipHash-128), Merkle proof, Ed25519 signature (912 bytes)"],
         ["ZK governance proofs", "GPU-accelerated zero-knowledge governance proofs"],
     ]
     y = draw_table(c, y, engine_headers, engine_rows, engine_widths, font_size=7.5, row_h=14)
@@ -447,7 +447,7 @@ def page3(c):
 
     traction = [
         "DNB InnovationHub: Submission under review",
-        "FCA Sandbox: Regulatory sandbox programme engaged",
+        "FCA Digital Sandbox: Accepted (March 2026)",
         "NVIDIA Inception program member",
         "Benchmark: 150M+ CEPS on RTX 5090. 500,000 entities in under 2 seconds. Alert lifecycle under 10ms.",
         "Cross-institutional detection: under 10 seconds per bilateral round. 4/4 typologies detected.",
