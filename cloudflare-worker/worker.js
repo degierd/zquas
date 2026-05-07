@@ -32,6 +32,7 @@ const LINK_HEADER = [
   '</facts.json>; rel="describedby"; type="application/json"',
   '</.well-known/agent-skills/index.json>; rel="agent-skills"',
   '</.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"',
+  '</.well-known/mcp/server-card.json>; rel="mcp-server-card"; type="application/json"',
   '</sitemap.xml>; rel="sitemap"; type="application/xml"',
   '</feed.xml>; rel="alternate"; type="application/rss+xml"; title="ZQUAS Articles"',
   '</atom.xml>; rel="alternate"; type="application/atom+xml"; title="ZQUAS Articles"',

@@ -1,0 +1,16 @@
+{
+  "name": "zquas-mcp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MCP server for ZQUAS public knowledge. Streamable HTTP transport.",
+  "type": "module",
+  "scripts": {
+    "build-index": "python ../mcp-server/build_index.py",
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

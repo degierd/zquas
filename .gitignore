@@ -6,3 +6,8 @@ cloudflare-worker/node_modules/
 cloudflare-worker/.wrangler/
 cloudflare-worker/package-lock.json
 cloudflare-worker/.~lock.*
+
+mcp-server/node_modules/
+mcp-server/.wrangler/
+mcp-server/package-lock.json
+mcp-server/.~lock.*

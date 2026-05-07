@@ -1,0 +1,14 @@
+name = "zquas-mcp"
+main = "src/worker.js"
+compatibility_date = "2026-04-01"
+
+# Bind to a dedicated subdomain so the main site is not affected.
+# Cloudflare creates the route when you deploy. You'll also need a DNS
+# record for mcp.zquas.ai (any AAAA/A is fine; the Worker route takes
+# precedence). The DEPLOYMENT.md walks through this.
+routes = [
+  { pattern = "mcp.zquas.ai/*", zone_name = "zquas.ai" }
+]
+
+[observability]
+enabled = true

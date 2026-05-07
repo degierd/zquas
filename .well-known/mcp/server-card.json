@@ -1,0 +1,35 @@
+{
+  "serverInfo": {
+    "name": "zquas-knowledge",
+    "title": "ZQUAS Knowledge",
+    "version": "1.0.0"
+  },
+  "protocolVersion": "2025-06-18",
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "https://mcp.zquas.ai/mcp"
+  },
+  "capabilities": {
+    "resources": {
+      "listChanged": false,
+      "subscribe": false
+    },
+    "tools": {
+      "listChanged": false
+    },
+    "prompts": {
+      "listChanged": false
+    }
+  },
+  "instructions": "ZQUAS knowledge server. Public ZQUAS analysis, position papers, glossary, and benchmark facts. No customer or institution data. No live system state. Source of truth: every answer is grounded in https://zquas.ai. The search_zquas tool returns source URLs you should cite.",
+  "publisher": {
+    "name": "ZQUAS",
+    "url": "https://zquas.ai",
+    "contact": "danny@zquas.ai"
+  },
+  "documentation": "https://zquas.ai/glossary.html",
+  "client_setup": {
+    "claude_desktop": "Add to your Claude Desktop config (Settings -> Developer -> Edit Config): `\"zquas-knowledge\": { \"url\": \"https://mcp.zquas.ai/mcp\" }` under `mcpServers`.",
+    "test_endpoint": "curl -X POST https://mcp.zquas.ai/mcp -H 'content-type: application/json' -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-06-18\"}}'"
+  }
+}

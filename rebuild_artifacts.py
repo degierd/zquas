@@ -26,6 +26,7 @@ SCRIPTS = [
     "generate_markdown.py",
     "generate_agent_skills.py",
     "generate_onepager.py",
+    "mcp-server/build_index.py",
 ]
 
 

@@ -117,6 +117,18 @@ SKILLS = [
         "path": "feed.xml",
         "media_type": "application/rss+xml",
     },
+    {
+        "name": "mcp-server",
+        "type": "service",
+        "description": (
+            "MCP server at mcp.zquas.ai exposing ZQUAS knowledge as MCP "
+            "resources, tools (search_zquas, lookup_term, "
+            "get_benchmark_numbers), and prompts. Streamable HTTP "
+            "transport. Public, no auth."
+        ),
+        "path": ".well-known/mcp/server-card.json",
+        "media_type": "application/json",
+    },
 ]
 
 

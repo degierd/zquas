@@ -59,6 +59,20 @@ Founded by Danny de Gier, who combines 18+ years of financial crime compliance e
 - ZQUAS: GPU-native, MPC cross-institutional, cryptographic attestation, deterministic, on-premise sovereign
 - Estimated replication timeline for competitors: 3-5 years minimum
 
+## MCP server for AI assistants
+
+ZQUAS publishes an MCP server at https://mcp.zquas.ai/mcp. It exposes
+ZQUAS articles, glossary, position papers, and benchmark facts as MCP
+resources, and provides three tools (`search_zquas`, `lookup_term`,
+`get_benchmark_numbers`). Public, no authentication.
+
+To connect from Claude Desktop, add this to `claude_desktop_config.json`
+under `mcpServers`:
+
+    "zquas-knowledge": { "url": "https://mcp.zquas.ai/mcp" }
+
+The server card is at https://zquas.ai/.well-known/mcp/server-card.json.
+
 ## Markdown copies for agents
 
 Every HTML page on this site has a Markdown twin at the same path with

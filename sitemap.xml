@@ -76,6 +76,11 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://zquas.ai/.well-known/mcp/server-card.json</loc>
+        <lastmod>2026-05-07</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
         <loc>https://zquas.ai/feed.xml</loc>
         <lastmod>2026-05-07</lastmod>
         <priority>0.5</priority>

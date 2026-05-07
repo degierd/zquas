@@ -13,7 +13,7 @@
       "description": "LLM-optimised summary of ZQUAS: what it is, who it serves, the engine's published benchmark numbers, and the regulatory frameworks it covers.",
       "url": "https://zquas.ai/llms.txt",
       "media_type": "text/plain",
-      "sha256": "0bc13b4f2a21de8bdf6761007c0108a967cdbe72e4f020a772968454f4290a1b"
+      "sha256": "84ead7dc3f28262e212f29a2a17381c7e2215a41f35a3365f558103e6440f99a"
     },
     {
       "name": "site-summary-full",
@@ -69,7 +69,7 @@
       "description": "Single-page PDF summary of the engine, benchmarks, and regulatory traction. Suitable for buyer hand-out.",
       "url": "https://zquas.ai/zquas-onepager.pdf",
       "media_type": "application/pdf",
-      "sha256": "f92ff6eeef3f6a4f2c2fb397454af294a1f393a3a2f792ff027dc771e4233f39"
+      "sha256": "4314c34ed01dd91ed9b0ddd2d297f62b4fc2be7d10bf50156b04a0fd8e740e92"
     },
     {
       "name": "articles-feed",
@@ -78,6 +78,14 @@
       "url": "https://zquas.ai/feed.xml",
       "media_type": "application/rss+xml",
       "sha256": "a2ccde501f47eb26d3614082ecca0fb4fd65fd04e039996d3b9370e337c8008a"
+    },
+    {
+      "name": "mcp-server",
+      "type": "service",
+      "description": "MCP server at mcp.zquas.ai exposing ZQUAS knowledge as MCP resources, tools (search_zquas, lookup_term, get_benchmark_numbers), and prompts. Streamable HTTP transport. Public, no auth.",
+      "url": "https://zquas.ai/.well-known/mcp/server-card.json",
+      "media_type": "application/json",
+      "sha256": "28cf3f42d6cd6a9387fcd778d34322275a979f03a3709ec609c48230114c655f"
     }
   ]
 }
