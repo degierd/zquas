@@ -346,6 +346,30 @@ Submission under review with De Nederlandsche Bank's InnovationHub, the Dutch ce
 
 
 
+        AI-Ready Distribution
+
+
+## Connect ZQUAS to your AI assistant
+
+
+
+
+
+
+### Model Context Protocol server
+
+
+
+ZQUAS publishes a public MCP server at `https://mcp.zquas.ai/mcp`. Compliance officers, analysts, regulators, and engineers running Claude Desktop, Claude Code, Cursor, Zed, or any other MCP-compatible AI tool can add one line to their config and have ZQUAS available as a first-class knowledge source. The model can search every page, look up glossary terms, and retrieve published benchmark numbers as structured data. Public, no authentication. Built so an AI assistant grounds its answers in current ZQUAS material rather than stale training data.
+
+
+
+Server card: [/.well-known/mcp/server-card.json](/.well-known/mcp/server-card.json). Setup instructions: [/llms.txt](/llms.txt).
+
+
+
+
+
         Contact
 
 

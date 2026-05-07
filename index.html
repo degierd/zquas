@@ -479,7 +479,46 @@
     </div>
 </section>
 
-<section class="audience-section" id="for-investors">
+<section class="audience-section" id="for-ai">
+    <div class="container">
+        <div class="section-label">For AI Assistants</div>
+        <h2 class="section-title">Connect ZQUAS to your AI.</h2>
+        <p class="section-desc">
+            ZQUAS publishes a Model Context Protocol server. Add one line to your AI assistant's config and it can query ZQUAS articles, glossary entries, position papers, and benchmark facts on demand. Public, no authentication. Useful for compliance officers, analysts, regulators, and engineers who want their AI to ground answers in current ZQUAS material rather than stale training data.
+        </p>
+        <div class="mcp-grid">
+            <div class="mcp-card">
+                <div class="mcp-card-label">ENDPOINT</div>
+                <code class="mcp-code">https://mcp.zquas.ai/mcp</code>
+            </div>
+            <div class="mcp-card">
+                <div class="mcp-card-label">CLAUDE DESKTOP CONFIG</div>
+                <pre class="mcp-pre"><code>"mcpServers": {
+  "zquas-knowledge": {
+    "url": "https://mcp.zquas.ai/mcp"
+  }
+}</code></pre>
+            </div>
+        </div>
+        <div class="mcp-features">
+            <div class="mcp-feat">
+                <strong>Three tools.</strong>
+                <span>Search every ZQUAS page, look up glossary terms, retrieve published benchmark numbers as structured JSON.</span>
+            </div>
+            <div class="mcp-feat">
+                <strong>45 resources.</strong>
+                <span>Every article, position paper, and reference page exposed as a directly readable Markdown resource.</span>
+            </div>
+            <div class="mcp-feat">
+                <strong>Three prompts.</strong>
+                <span>Pre-written prompts for explaining ZQUAS to a Head of AML, comparing to legacy systems, or assessing AMLR Article 75 impact.</span>
+            </div>
+        </div>
+        <p class="section-note">Server card: <a href="/.well-known/mcp/server-card.json" style="color: var(--accent);">/.well-known/mcp/server-card.json</a>. Works with Claude Desktop, Claude Code, Cursor, Zed, and any other MCP client. Streamable HTTP transport. Free.</p>
+    </div>
+</section>
+
+<section class="audience-section alt-bg" id="for-investors">
     <div class="container">
         <div class="section-label">For Investors</div>
         <h2 class="section-title">Category-defining infrastructure at an inflection point</h2>

@@ -347,6 +347,56 @@ Accepted into the FCA Digital Sandbox in March 2026. DNB InnovationHub submissio
 
 
 
+        For AI Assistants
+
+
+## Connect ZQUAS to your AI.
+
+
+
+            ZQUAS publishes a Model Context Protocol server. Add one line to your AI assistant's config and it can query ZQUAS articles, glossary entries, position papers, and benchmark facts on demand. Public, no authentication. Useful for compliance officers, analysts, regulators, and engineers who want their AI to ground answers in current ZQUAS material rather than stale training data.
+
+
+
+
+                ENDPOINT
+                `https://mcp.zquas.ai/mcp`
+
+
+                CLAUDE DESKTOP CONFIG
+
+
+```
+`"mcpServers": {
+  "zquas-knowledge": {
+    "url": "https://mcp.zquas.ai/mcp"
+  }
+}`
+```
+
+
+
+
+
+                **Three tools.**
+                Search every ZQUAS page, look up glossary terms, retrieve published benchmark numbers as structured JSON.
+
+
+                **45 resources.**
+                Every article, position paper, and reference page exposed as a directly readable Markdown resource.
+
+
+                **Three prompts.**
+                Pre-written prompts for explaining ZQUAS to a Head of AML, comparing to legacy systems, or assessing AMLR Article 75 impact.
+
+
+
+
+Server card: [/.well-known/mcp/server-card.json](/.well-known/mcp/server-card.json). Works with Claude Desktop, Claude Code, Cursor, Zed, and any other MCP client. Streamable HTTP transport. Free.
+
+
+
+
         For Investors
 
 
