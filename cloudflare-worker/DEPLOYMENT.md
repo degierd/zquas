@@ -1,73 +1,98 @@
-# Deploying the zquas.ai edge worker
+# Deploy the zquas.ai edge worker
 
-`worker.js` in this directory is a single Cloudflare Worker that does
-three things at the edge:
+Run two commands. Cloudflare handles the rest.
 
-1. Adds RFC 8288 `Link` response headers on every HTML page.
-2. Honours `Accept: text/markdown` content negotiation by serving the
-   pre-generated `.md` twin of any HTML page.
-3. Overrides `Content-Type` for paths where GitHub Pages defaults are
-   wrong (`api-catalog` -> `application/linkset+json`, `feed.xml` ->
-   `application/rss+xml`, etc.).
+## Prerequisites
 
-## One-time deployment (5 minutes)
+- Node.js 20 or newer.
+  - Check: `node --version`
+  - Install if needed: https://nodejs.org/ (LTS).
 
-1. Cloudflare dashboard -> **Workers & Pages**.
-2. Click **Create** -> **Hello World** template -> any name (e.g.
-   `zquas-edge`).
-3. Replace the template's `worker.js` with the contents of
-   `cloudflare-worker/worker.js` from this repo.
-4. Click **Deploy**.
-5. Open the worker -> **Settings** -> **Triggers** -> **Routes** ->
-   **Add route**:
-   - Zone: `zquas.ai`
-   - Route: `*zquas.ai/*`
-6. Click **Save**.
+That is the only prerequisite. Wrangler installs itself via `npm`, and
+it logs into Cloudflare via your browser the first time it runs.
+
+## Two commands
+
+Open a terminal in the repo root.
+
+```
+cd cloudflare-worker
+npm install
+npx wrangler deploy
+```
+
+**What you will see:**
+
+1. `npm install` downloads Wrangler into `node_modules/`. Takes ~30s.
+2. `npx wrangler deploy` opens a browser tab the first time you run
+   it, asking you to authorise Wrangler against your Cloudflare
+   account. Click **Allow**. The terminal then proceeds.
+3. Wrangler reads `wrangler.toml`, uploads `worker.js`, creates the
+   Worker called `zquas-edge`, and binds it to the routes
+   `zquas.ai/*` and `www.zquas.ai/*`. Output ends with
+   `Current Version ID: <some-uuid>` and the deployed URL.
+
+That is the whole deploy. The Worker is now live on every request to
+zquas.ai.
 
 ## Verify (1 minute)
 
 ```
-# 1. Link header present on the homepage
 curl -sI https://zquas.ai/ | grep -i ^link
+# Expect: link: </llms.txt>; rel="describedby"...
 
-# 2. Markdown content negotiation works
 curl -sH "Accept: text/markdown" -I https://zquas.ai/article-75.html | grep -i content-type
 # Expect: content-type: text/markdown; charset=utf-8
 
-# 3. Default HTML still works
-curl -sI https://zquas.ai/article-75.html | grep -i content-type
-# Expect: content-type: text/html; charset=utf-8
-
-# 4. API catalog has the right MIME type
 curl -sI https://zquas.ai/.well-known/api-catalog | grep -i content-type
 # Expect: content-type: application/linkset+json; charset=utf-8
 
-# 5. RSS feed has the right MIME type
-curl -sI https://zquas.ai/feed.xml | grep -i content-type
-# Expect: content-type: application/rss+xml; charset=utf-8
+curl -sI https://zquas.ai/article-75.html | grep -i content-type
+# Expect: content-type: text/html; charset=utf-8 (browsers still get HTML)
 ```
 
-## Updating the worker
+If all four match, you are done.
 
-When this file changes (e.g. you want a new Link relation, new MIME
-override), open the worker in the Cloudflare dashboard, paste the new
-`worker.js`, and click Deploy. Routes do not need to be reconfigured.
+## Updating the Worker later
 
-## Why a Worker instead of Transform Rules
+Whenever `worker.js` changes:
 
-Transform Rules can do MIME type and header injection too. The worker is
-chosen here because:
+```
+cd cloudflare-worker
+npx wrangler deploy
+```
 
-- It is one config artefact in the repo (worker.js) that travels with
-  the code, instead of a list of UI clicks documented in a separate
-  markdown file.
-- Markdown content negotiation needs server logic (read Accept header,
-  fetch a different upstream URL). Transform Rules cannot do that.
-- The MIME overrides and the Link headers can live alongside the
-  negotiation logic.
+That is it. No re-routing, no DNS changes.
 
-If you do not want to run a Worker, the Transform Rule equivalents are
-documented in `cloudflare-setup.md` -> sections 2 (MIME types) and 9
-(Link headers + Markdown). Cloudflare's native "Markdown for Agents"
-feature can replace the negotiation logic entirely. The Worker is the
-most flexible option; the others are progressively simpler tradeoffs.
+## Watching logs in real time
+
+```
+cd cloudflare-worker
+npx wrangler tail
+```
+
+Streams every request's status code, latency, and any console output
+from the Worker. Useful when debugging.
+
+## What if something goes wrong
+
+- **`Authentication error` from Wrangler:** Re-run, choose
+  `npx wrangler login` first if it does not auto-prompt.
+- **`Zone "zquas.ai" not found in your account`:** the Cloudflare
+  account you authorised does not own the `zquas.ai` zone. Authorise
+  the right account: `npx wrangler logout`, then redeploy.
+- **Worker deployed but site looks broken:** disable the routes from
+  Cloudflare dashboard -> Workers & Pages -> `zquas-edge` ->
+  Settings -> Triggers -> remove the routes. The site reverts to
+  un-Worker'd in seconds. Then debug locally with
+  `npx wrangler dev` (runs the Worker on http://localhost:8787 with
+  zquas.ai responses proxied through it).
+
+## What this avoids
+
+The dashboard upload page you saw earlier (the drag-and-drop one) is
+Cloudflare's static-site uploader. It refuses Worker scripts because
+those need server-side execution, not static hosting. Wrangler is the
+official path for Workers. The dashboard "Create Worker" flow is also
+fine, but it requires manually pasting the file in and clicking
+through routes -- this CLI path does it in two commands.

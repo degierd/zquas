@@ -1,0 +1,14 @@
+name = "zquas-edge"
+main = "worker.js"
+compatibility_date = "2026-04-01"
+
+# Run on every request to zquas.ai (apex + www).
+# Wrangler will create both routes when you deploy.
+routes = [
+  { pattern = "zquas.ai/*", zone_name = "zquas.ai" },
+  { pattern = "www.zquas.ai/*", zone_name = "zquas.ai" }
+]
+
+# Logging in the Cloudflare dashboard (Workers -> Logs -> Live tail).
+[observability]
+enabled = true

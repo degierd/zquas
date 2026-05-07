@@ -1,2 +1,7 @@
 .claude/
 linkedin/
+
+# Cloudflare Worker tooling
+cloudflare-worker/node_modules/
+cloudflare-worker/.wrangler/
+cloudflare-worker/package-lock.json
