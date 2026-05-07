@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://zquas.ai/</loc>
         <lastmod>2026-05-07</lastmod>
         <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://zquas.ai/og-image.png</image:loc>
+            <image:title>ZQUAS — Sovereign Compliance Infrastructure</image:title>
+        </image:image>
     </url>
     <url>
         <loc>https://zquas.ai/technology.html</loc>
@@ -69,6 +74,16 @@
         <loc>https://zquas.ai/glossary.html</loc>
         <lastmod>2026-05-07</lastmod>
         <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://zquas.ai/feed.xml</loc>
+        <lastmod>2026-05-07</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://zquas.ai/atom.xml</loc>
+        <lastmod>2026-05-07</lastmod>
+        <priority>0.5</priority>
     </url>
     <url>
         <loc>https://zquas.ai/llms.txt</loc>

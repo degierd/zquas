@@ -1,0 +1,18 @@
+# ZQUAS Security Disclosure Policy
+# RFC 9116 (https://www.rfc-editor.org/rfc/rfc9116)
+
+Contact: mailto:security@zquas.ai
+Contact: mailto:danny@zquas.ai
+Expires: 2027-05-07T00:00:00.000Z
+Preferred-Languages: en, nl
+Canonical: https://zquas.ai/.well-known/security.txt
+Policy: https://zquas.ai/security.html
+Acknowledgments: https://zquas.ai/security.html#hall-of-fame
+
+# We welcome reports about vulnerabilities in this website and in the
+# ZQUAS engine. Engine reports must be encrypted (PGP key available
+# on request) and should describe the affected version, reproduction
+# steps, and expected vs observed behaviour.
+#
+# Please do not test against production banking deployments. Use the
+# benchmark harness or request a sandbox tenant.

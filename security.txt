@@ -1,0 +1,4 @@
+# See https://zquas.ai/.well-known/security.txt
+Contact: mailto:security@zquas.ai
+Expires: 2027-05-07T00:00:00.000Z
+Canonical: https://zquas.ai/.well-known/security.txt

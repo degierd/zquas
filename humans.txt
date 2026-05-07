@@ -1,0 +1,22 @@
+/* TEAM */
+
+Founder & Engineer:    Danny de Gier
+Contact:               danny@zquas.ai
+LinkedIn:              https://www.linkedin.com/in/danny-de-gier-prof-pgdip-fcc/
+From:                  Zwolle, Netherlands
+
+/* THANKS */
+
+  - The five Dutch banks that built TMNL and proved
+    cross-institutional detection works. Their architecture
+    failed in court. The detection thesis did not.
+  - Andrew Yao, for the protocol that made this possible.
+
+/* SITE */
+
+Last update:   2026-05-07
+Standards:     HTML5, CSS3, JSON-LD, Schema.org, Open Graph
+Components:    Static HTML, no JavaScript framework, no tracking,
+               no cookie banner because we set no cookies.
+Hosting:       The bank's infrastructure for the engine.
+               This site is static and trivially mirrored.

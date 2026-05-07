@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+<title>ZQUAS Articles</title>
+<link>https://zquas.ai/articles.html</link>
+<atom:link href="https://zquas.ai/feed.xml" rel="self" type="application/rss+xml" />
+<description>Analysis and perspective on compliance technology, regulatory architecture, and the future of cross-institutional financial crime detection.</description>
+<language>en-GB</language>
+<lastBuildDate>Thu, 07 May 2026 09:00:00 +0000</lastBuildDate>
+<pubDate>Fri, 15 May 2026 09:00:00 +0000</pubDate>
+<image><url>https://zquas.ai/og-image.png</url><title>ZQUAS</title><link>https://zquas.ai/</link></image>
+<copyright>(c) ZQUAS. Bounded Compliance on an Unbounded Platform.</copyright>
+<managingEditor>danny@zquas.ai (Danny de Gier)</managingEditor>
+<webMaster>danny@zquas.ai (Danny de Gier)</webMaster>
+<generator>generate_feed.py</generator>
+<docs>https://www.rssboard.org/rss-specification</docs>
+<item>
+<title>Why We Built Our Own AI Inference Engine</title>
+<link>https://zquas.ai/article-inference-engine.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-inference-engine.html</guid>
+<description>ChatGPT runs on one. Llama runs on one. We wrote our own. Why a financial crime company built its own GPU inference engine in C++23 and CUDA, and why regulated AI decisions need a different stack from the one a chatbot needs.</description>
+<pubDate>Fri, 15 May 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>Beyond Banking: Cross-Sector Federated Detection for Financial Crime, Telecommunications Fraud, and Digital Asset Compliance</title>
+<link>https://zquas.ai/article-beyond-banking.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-beyond-banking.html</guid>
+<description>A single detection engine that correlates risk signals across banks, telecommunications operators, and digital asset platforms without sharing raw data between institutions. The same code, the same cryptographic protocols, the same GPU-native detection pipeline, applied to every regulated sector where financial crime operates.</description>
+<pubDate>Wed, 15 Apr 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>What Article 75 Was Afraid to Permit</title>
+<link>https://zquas.ai/article-75.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-75.html</guid>
+<description>AMLR Article 75 restricts cross-institutional data sharing to high-risk customers. The criminals who are hardest to catch are the ones who stay low-risk at every bank. Multi-Party Computation resolves the paradox: full customer base federation without sharing a single byte of personal data. The evidence, the legal argument, and the path to a pilot.</description>
+<pubDate>Sun, 15 Mar 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>From Edge to Federation: A Unified Architecture for Real-Time Financial Crime Detection</title>
+<link>https://zquas.ai/article-edge-to-federation.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-edge-to-federation.html</guid>
+<description>A single detection engine that replaces overnight batch processing with continuous real-time monitoring. Three layers, one binary. Institutional real-time monitoring, cross-bank federation without data sharing, and regulatory interface. Three use cases, the ESG case, and the regulatory alignment map.</description>
+<pubDate>Sun, 15 Mar 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>The AML Industry Has Never Proven Detection Works. We Built a Way to Measure It.</title>
+<link>https://zquas.ai/article-fcns.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-fcns.html</guid>
+<description>Every AML vendor claims high detection rates. Not a single one can prove it. The ZQUAS Financial Crime Network Simulator generates complete financial ecosystems at production scale, embeds criminal networks of known structure and difficulty, and measures detection accuracy with mathematical precision.</description>
+<pubDate>Sun, 15 Mar 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>What Does Real-Time Actually Mean?</title>
+<link>https://zquas.ai/article-real-time-monitoring-defined.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-real-time-monitoring-defined.html</guid>
+<description>Every transaction monitoring vendor claims real-time. The term has three distinct meanings with fundamentally different implications for detection capability. A framework for evaluating what real-time actually delivers.</description>
+<pubDate>Sun, 15 Mar 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>EU AI Act and AML: Is Your Transaction Monitoring System High-Risk?</title>
+<link>https://zquas.ai/article-ai-act-aml-classification.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-ai-act-aml-classification.html</guid>
+<description>The EU AI Act is the first comprehensive AI regulation in the world. Most AML transaction monitoring systems are excluded from high-risk classification. But the profiling exception creates an important grey area that banks using AI-based customer risk scoring cannot ignore.</description>
+<pubDate>Sun, 15 Mar 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>The 16-Month Window: Why Banks Must Act Before July 2027</title>
+<link>https://zquas.ai/article-july-2027-aml-infrastructure-deadline.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-july-2027-aml-infrastructure-deadline.html</guid>
+<description>AMLR Article 75 applies on July 10, 2027. Cross-institutional monitoring infrastructure takes 18 to 24 months to build. Banks that begin vendor evaluation in Q1 2026 can be ready. Banks that wait until 2027 cannot.</description>
+<pubDate>Sun, 15 Mar 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>UK Banks Can Share AML Data Today: ECCTA Sections 188-189</title>
+<link>https://zquas.ai/article-eccta-uk-aml-data-sharing.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-eccta-uk-aml-data-sharing.html</guid>
+<description>While the EU waits until July 2027 for AMLR Article 75, the UK has already acted. ECCTA Sections 188 and 189 have been in force since January 2024. UK banks have the legal basis to implement collaborative AML detection now.</description>
+<pubDate>Sun, 15 Feb 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>From TMNL to Article 75: The Netherlands&#x27; Path to Collaborative AML</title>
+<link>https://zquas.ai/article-tmnl-to-article-75-netherlands.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-tmnl-to-article-75-netherlands.html</guid>
+<description>In 2019, five Dutch banks created the most ambitious collaborative AML project in Europe. By 2025, it was being wound down. The technology was right. The legal framework was not ready. AMLR Article 75 changes that.</description>
+<pubDate>Sun, 15 Feb 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>MPC and GDPR: What the EDPB Actually Says</title>
+<link>https://zquas.ai/article-edpb-mpc-gdpr-accountability.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-edpb-mpc-gdpr-accountability.html</guid>
+<description>The European Data Protection Board has identified multi-party computation as an accountability tool for cross-border data processing. Their position is more specific and more supportive than most compliance teams realise. Here is what it says and what it means for collaborative AML.</description>
+<pubDate>Sun, 15 Feb 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>What AMLR Article 75 Means for Dutch Banks</title>
+<link>https://zquas.ai/article-amlr-article-75-dutch-banks.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-amlr-article-75-dutch-banks.html</guid>
+<description>The Netherlands tried collaborative AML detection. It failed because the law was not ready. AMLR Article 75 creates an explicit legal basis for bank-to-bank information sharing. Dutch banks now have 16 months to build what TMNL could not.</description>
+<pubDate>Sun, 15 Feb 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>Why Cross-Institutional AML Detection Requires a New Architecture</title>
+<link>https://zquas.ai/article-cross-institutional-detection.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-cross-institutional-detection.html</guid>
+<description>Joint transaction monitoring initiatives have stalled across Europe. The core assumption — that centralising data is the path to better detection — is architecturally flawed. Privacy-preserving computation offers a fundamentally different approach.</description>
+<pubDate>Sun, 15 Feb 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>What Running a Multi-Bank Monitoring Network Actually Looks Like</title>
+<link>https://zquas.ai/article-interbank-operations.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-interbank-operations.html</guid>
+<description>The architecture papers write themselves. The hard part is operations. How do banks join? Who sets the rules? What happens when one bank&#x27;s policy change affects another bank&#x27;s alerts? These are the questions that determine whether a network works or collapses.</description>
+<pubDate>Thu, 15 Jan 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>The EUR 200 Billion Compliance Market Nobody Has Disrupted</title>
+<link>https://zquas.ai/article-200b-market.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-200b-market.html</guid>
+<description>Financial institutions spend more on compliance than on almost any other technology category. The tooling hasn&#x27;t fundamentally changed in 15 years. Here&#x27;s why, and what&#x27;s about to break that open.</description>
+<pubDate>Thu, 15 Jan 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>Privacy-Preserving Detection Under AMLR</title>
+<link>https://zquas.ai/article-privacy-preserving-amlr.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-privacy-preserving-amlr.html</guid>
+<description>The EU AMLR creates a catch-22 for cross-institutional detection. You can only share data about customers you&#x27;ve already identified as high-risk. But you need shared data to identify them in the first place. There is a way through this.</description>
+<pubDate>Thu, 15 Jan 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>Batch Processing Is a Liability on Real-Time Payment Rails</title>
+<link>https://zquas.ai/article-batch-processing.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-batch-processing.html</guid>
+<description>Your payment infrastructure settles in seconds. Your AML monitoring runs overnight. That gap is where both criminals and regulators will find you.</description>
+<pubDate>Thu, 15 Jan 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>The Real Cost of 95% False Positives</title>
+<link>https://zquas.ai/article-false-positives.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-false-positives.html</guid>
+<description>Everyone in compliance knows the number. Ninety-five percent of AML alerts are false positives. But the real damage isn&#x27;t in the alerts themselves. It&#x27;s in everything that happens around them.</description>
+<pubDate>Thu, 15 Jan 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>From Trust-Based Audit to Cryptographic Verification</title>
+<link>https://zquas.ai/article-cryptographic-verification.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-cryptographic-verification.html</guid>
+<description>Current supervisory models depend on banks accurately reporting how their systems work. Cryptographic attestation replaces that trust with mathematical proof. Here&#x27;s what changes for supervisors.</description>
+<pubDate>Mon, 15 Dec 2025 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>Supervising AI in AML: What Article 12 Actually Requires</title>
+<link>https://zquas.ai/article-eu-ai-act-article12.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-eu-ai-act-article12.html</guid>
+<description>The EU AI Act may classify AI-based AML risk profiling as high-risk. Article 12 demands record-keeping. But what does technically adequate record-keeping look like when a system makes millions of decisions per day?</description>
+<pubDate>Mon, 15 Dec 2025 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>What Your AML Vendor Can&#x27;t Prove</title>
+<link>https://zquas.ai/article-vendor-proof-gap.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-vendor-proof-gap.html</guid>
+<description>Your monitoring system generates alerts, case files, and reports. But can it cryptographically prove that a specific policy was applied to specific data at a specific time? That question is coming.</description>
+<pubDate>Mon, 15 Dec 2025 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>Same Data, Same Rules, Different Verdict: The Determinism Problem in AML</title>
+<link>https://zquas.ai/article-determinism-problem.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-determinism-problem.html</guid>
+<description>Run the same transaction through the same monitoring system tomorrow and you might get a different result. That&#x27;s not a bug. It&#x27;s an architecture problem. And regulators are starting to notice.</description>
+<pubDate>Mon, 15 Dec 2025 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>AMLR 2027: Why Every Bank in Europe Faces a Hard Rebuild Deadline</title>
+<link>https://zquas.ai/article-amlr-forcing-function.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-amlr-forcing-function.html</guid>
+<description>This isn&#x27;t a regulatory update banks can absorb with a policy tweak. AMLR requires architectural changes that legacy monitoring systems weren&#x27;t designed for. The deadline is mid-2027. The rebuild starts now.</description>
+<pubDate>Sat, 15 Nov 2025 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>Why GPU-Native Compliance Is a Moat, Not a Feature</title>
+<link>https://zquas.ai/article-gpu-moat.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-gpu-moat.html</guid>
+<description>Competitors can copy a feature in a sprint. They can&#x27;t replicate a GPU-native architecture with privacy-preserving MPC and cryptographic attestation in under three years. Here&#x27;s why the gap is structural.</description>
+<pubDate>Sat, 15 Nov 2025 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>Land, Expand, Network: How Sovereign Compliance Scales</title>
+<link>https://zquas.ai/article-business-model.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-business-model.html</guid>
+<description>Start with one bank. Add cross-institutional detection as the federation grows. Each new participant makes the system better for everyone. The business model has network effects built into the architecture.</description>
+<pubDate>Sat, 15 Nov 2025 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>Why Compliance Tech Hasn&#x27;t Been Disrupted Yet, and What Changes That</title>
+<link>https://zquas.ai/article-why-now.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-why-now.html</guid>
+<description>The most conservative buyers in the most regulated industry, using tools that haven&#x27;t changed in 15 years. There are specific reasons this market has resisted disruption. Those reasons are expiring.</description>
+<pubDate>Sat, 15 Nov 2025 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>If Your AI Compliance System Can&#x27;t Attack Itself, How Do You Know It Works?</title>
+<link>https://zquas.ai/article-adversarial-testing.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-adversarial-testing.html</guid>
+<description>The EU AI Act requires continuous risk management for high-risk AI systems. Most AML vendors test against historical data. That tells you how the system performed in the past. It says nothing about how it will handle attacks it hasn&#x27;t seen yet.</description>
+<pubDate>Mon, 15 Sep 2025 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>Reactive Compliance Is a Losing Strategy. Here&#x27;s What Comes After.</title>
+<link>https://zquas.ai/article-predictive-compliance.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-predictive-compliance.html</guid>
+<description>Every compliance system on the market tells you what already happened. What if the system could tell you what&#x27;s about to go wrong, before it does? That&#x27;s not a hypothetical anymore.</description>
+<pubDate>Mon, 15 Sep 2025 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>Why a Governance Runtime Is Worth More Than a Monitoring Tool</title>
+<link>https://zquas.ai/article-governance-runtime.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-governance-runtime.html</guid>
+<description>The difference between a compliance monitoring tool and a governance runtime is the difference between a dashcam and an autopilot. One records what happened. The other prevents what shouldn&#x27;t.</description>
+<pubDate>Mon, 15 Sep 2025 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>Your New Compliance System Won&#x27;t Work If It Can&#x27;t Talk to Your Old One</title>
+<link>https://zquas.ai/article-integration-reality.html</link>
+<guid isPermaLink="true">https://zquas.ai/article-integration-reality.html</guid>
+<description>The most common reason compliance technology projects fail isn&#x27;t the technology. It&#x27;s integration. If the new system can&#x27;t ingest from your existing payment rails and export to your existing SIEM, it&#x27;s dead on arrival.</description>
+<pubDate>Mon, 15 Sep 2025 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+<item>
+<title>Transaction Monitoring Netherlands: What Went Wrong, What Comes Next</title>
+<link>https://zquas.ai/tmnl.html</link>
+<guid isPermaLink="true">https://zquas.ai/tmnl.html</guid>
+<description>The most ambitious cross-institutional AML initiative in Europe was shut down because its architecture couldn&#x27;t be reconciled with privacy law. A complete analysis of what happened, why it failed, and what the alternative architecture looks like.</description>
+<pubDate>Thu, 07 May 2026 09:00:00 +0000</pubDate>
+<dc:creator>Danny de Gier</dc:creator>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,29 @@
+{
+  "name": "ZQUAS",
+  "short_name": "ZQUAS",
+  "description": "GPU-native compliance engine for cross-institutional financial crime detection without central data pooling.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#0a0d14",
+  "theme_color": "#0a0d14",
+  "lang": "en-GB",
+  "icons": [
+    {
+      "src": "/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
