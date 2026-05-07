@@ -1,0 +1,80 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://zquas.ai/llms.txt",
+      "describedby": [
+        {
+          "href": "https://zquas.ai/llms-full.txt",
+          "type": "text/plain"
+        }
+      ],
+      "service-meta": [
+        {
+          "href": "https://zquas.ai/llms.txt",
+          "type": "text/plain",
+          "title": "LLM-optimised summary of ZQUAS"
+        }
+      ]
+    },
+    {
+      "anchor": "https://zquas.ai/facts.json",
+      "service-meta": [
+        {
+          "href": "https://zquas.ai/facts.json",
+          "type": "application/json",
+          "title": "Machine-readable fact sheet (benchmark numbers, regulatory engagement, capabilities)"
+        }
+      ]
+    },
+    {
+      "anchor": "https://zquas.ai/.well-known/agent-skills/index.json",
+      "service-desc": [
+        {
+          "href": "https://zquas.ai/.well-known/agent-skills/index.json",
+          "type": "application/json",
+          "title": "Agent Skills Discovery index (RFC v0.2.0)"
+        }
+      ]
+    },
+    {
+      "anchor": "https://zquas.ai/sitemap.xml",
+      "service-desc": [
+        {
+          "href": "https://zquas.ai/sitemap.xml",
+          "type": "application/xml",
+          "title": "Site URL inventory"
+        }
+      ]
+    },
+    {
+      "anchor": "https://zquas.ai/feed.xml",
+      "service-desc": [
+        {
+          "href": "https://zquas.ai/feed.xml",
+          "type": "application/rss+xml",
+          "title": "RSS feed of ZQUAS analysis articles"
+        },
+        {
+          "href": "https://zquas.ai/atom.xml",
+          "type": "application/atom+xml",
+          "title": "Atom feed of ZQUAS analysis articles"
+        }
+      ]
+    },
+    {
+      "anchor": "https://zquas.ai/glossary.html",
+      "service-doc": [
+        {
+          "href": "https://zquas.ai/glossary.html",
+          "type": "text/html",
+          "title": "ZQUAS glossary (regulatory, cryptographic, architectural terms)"
+        },
+        {
+          "href": "https://zquas.ai/glossary.md",
+          "type": "text/markdown",
+          "title": "Glossary in Markdown"
+        }
+      ]
+    }
+  ]
+}
