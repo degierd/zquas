@@ -1421,6 +1421,80 @@ h1 .accent { color: var(--accent); }
     color: var(--text-muted);
 }
 
+/* Team cards (About page) */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+.team-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.75rem;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+.team-card:hover {
+    border-color: var(--border-accent);
+    background: var(--bg-card-hover);
+}
+.team-card-head {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    margin-bottom: 1.25rem;
+}
+.team-photo {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid var(--border-accent);
+}
+.team-card-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 0.4rem;
+}
+.team-card-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    line-height: 1.5;
+}
+.team-card p {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+.team-card p:last-child {
+    margin-bottom: 0;
+}
+.team-card-prev {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+}
+.team-card-prev strong {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+@media (max-width: 720px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1.5rem;
+    }
+}
+
 .about-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;

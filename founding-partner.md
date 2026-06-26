@@ -370,4 +370,4 @@ Contact us directly. No sales process. A conversation with the founder.
 
 
             The Founding Partner Programme is limited to three institutions. Terms are subject to formal agreement. Performance figures are from testing on production hardware with synthetic data. False positive rates on live customer data should be established through the pilot. This page does not constitute a contractual offer.
-            © 2026 ZQUAS. All rights reserved.
+            © June 2026 ZQUAS. All rights reserved.

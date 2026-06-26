@@ -595,12 +595,12 @@ def page4(c):
 
 def page5(c):
     draw_bg(c)
-    draw_header_footer(c, "Founder & Engineering", 5)
+    draw_header_footer(c, "Team & Engineering", 5)
 
     y = H - MARGIN - 28
 
-    # Founder
-    y = section_header(c, y, "Founder")
+    # Team
+    y = section_header(c, y, "Team")
 
     c.setFont("Helvetica-Bold", 12)
     c.setFillColor(TEXT_PRIMARY)
@@ -642,7 +642,26 @@ def page5(c):
                    "decision and is extremely rare in the talent market.",
                    size=8.5, max_width=col_w, leading=11.5)
 
-    y = min(ly, ry) - 10
+    y = min(ly, ry) - 14
+
+    # Martin van Aalderen
+    c.setFont("Helvetica-Bold", 12)
+    c.setFillColor(TEXT_PRIMARY)
+    c.drawString(MARGIN, y, "Martin van Aalderen")
+    c.setFont("Helvetica-Bold", 10)
+    c.setFillColor(ACCENT)
+    c.drawString(MARGIN + pdfmetrics.stringWidth("Martin van Aalderen  ", "Helvetica-Bold", 12), y + 1,
+                 "Chief Commercial & Corporate Development Officer")
+    y -= 16
+    y = wrap_text(c, MARGIN, y,
+                  "Entrepreneur with 20+ years in global financial markets. Former founder "
+                  "and CEO of Object+, a financial software firm operating across Europe and "
+                  "the United States. Career spanning banking, capital markets, and enterprise "
+                  "software at Object+, ABN AMRO, and ING. Leads commercial strategy, "
+                  "partnerships, and corporate development.",
+                  size=8.5, max_width=CW, leading=11.5)
+
+    y -= 10
     draw_line(c, y)
     y -= 18
 

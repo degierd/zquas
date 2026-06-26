@@ -275,6 +275,58 @@ The engine doesn't just solve compliance problems technically. It solves them in
 
 
 
+        Team
+
+
+## The people behind ZQUAS
+
+
+
+
+
+                ![Danny de Gier](team/danny-de-gier.jpg) 
+
+                    Danny de Gier
+                    Founder & Engineer
+
+
+
+
+18 years in financial crime compliance at Tier-1 banks. RBS, Deutsche Bank, HSBC, Commerzbank on the banking side. ClearBank, Vivid Money, CoinMetro on the fintech side.
+
+
+
+Self-taught GPU engineer. Writes the C++, CUDA, and Vulkan that ZQUAS runs on. Every design decision in the engine comes from sitting across the table from examiners and defending monitoring systems he knew were inadequate.
+
+
+
+**Professional Postgraduate Diploma in Financial Crime Compliance**, International Compliance Association / University of Manchester.
+
+
+
+
+                ![Martin van Aalderen](team/martin-van-aalderen.jpg) 
+
+                    Martin van Aalderen
+                    Chief Commercial & Corporate Development Officer
+
+
+
+
+Entrepreneur with 20+ years in global financial markets. Former founder and CEO of Object+, a financial software firm operating across Europe and the United States.
+
+
+
+Spent his career at the intersection of banking, capital markets, and enterprise software. Leads commercial strategy, partnerships, and corporate development at ZQUAS, taking the engine to banks and financial institutions.
+
+
+
+**Previous:** Object+ Financial Services BV, Object+Chicago LLC, ABN AMRO, ING.
+
+
+
+
+
         Advisory Board
 
 

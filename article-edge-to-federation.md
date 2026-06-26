@@ -707,4 +707,4 @@ The technology exists. The regulatory mandate is not arriving. It is here. AMLA 
 
 
 
-*© 2026 ZQUAS. All rights reserved. Implementation details and protocol specifications are proprietary.*
+*© June 2026 ZQUAS. All rights reserved. Implementation details and protocol specifications are proprietary.*
