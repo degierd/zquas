@@ -68,6 +68,33 @@ Spent his career at the intersection of banking, capital markets, and enterprise
 
 
 
+        Advisory Board
+
+
+## Guided by practitioners
+
+
+
+
+
+
+### Frenkel Drevers — Regulatory Advisor
+
+
+
+25+ years in financial services regulation. Former Manager at the Autoriteit Financiële Markten (AFM), the Dutch financial markets regulator, where he led supervisory audits, managed MiFID implementation, and provided regulatory interpretation guidance to financial institutions.
+
+
+
+Subsequently spent 15 years advising banks, fintechs, and payment institutions on compliance, risk management, and regulatory licensing (DNB, AFM, FSMA) at Charco & Dique / Projective Group. Now independent, supporting international payment institutions and investment firms on compliance and governance.
+
+
+
+Frenkel brings direct regulatory experience from both sides of the table: as regulator and as advisor to regulated firms.
+
+
+
+
 
         The Founder's Story
 
@@ -324,34 +351,6 @@ ZQUAS is different because every design decision comes from direct experience. T
 
 
 The engine doesn't just solve compliance problems technically. It solves them in the way that compliance professionals actually need them solved.
-
-
-
-
-        Advisory Board
-
-
-## Guided by practitioners
-
-
-
-
-
-
-### Frenkel Drevers — Regulatory Advisor
-
-
-
-25+ years in financial services regulation. Former Manager at the Autoriteit Financiële Markten (AFM), the Dutch financial markets regulator, where he led supervisory audits, managed MiFID implementation, and provided regulatory interpretation guidance to financial institutions.
-
-
-
-Subsequently spent 15 years advising banks, fintechs, and payment institutions on compliance, risk management, and regulatory licensing (DNB, AFM, FSMA) at Charco & Dique / Projective Group. Now independent, supporting international payment institutions and investment firms on compliance and governance.
-
-
-
-Frenkel brings direct regulatory experience from both sides of the table: as regulator and as advisor to regulated firms.
-
 
 
 
