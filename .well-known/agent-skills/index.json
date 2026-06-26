@@ -69,7 +69,7 @@
       "description": "Single-page PDF summary of the engine, benchmarks, and regulatory traction. Suitable for buyer hand-out.",
       "url": "https://zquas.ai/zquas-onepager.pdf",
       "media_type": "application/pdf",
-      "sha256": "cacdce1015e5d05e422b188a0ed146dfc18293600a94d066c09fb9725d6243cb"
+      "sha256": "cf753f3e4f424c15279821b27170e77c44c898f99a487014bd22d06baee97de4"
     },
     {
       "name": "articles-feed",
