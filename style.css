@@ -1488,6 +1488,22 @@ h1 .accent { color: var(--accent); }
     color: var(--text-secondary);
     font-weight: 600;
 }
+.team-card-link {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    font-size: 0.85rem;
+}
+.team-card-link a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+.team-card-link a:hover {
+    opacity: 0.75;
+}
 @media (max-width: 720px) {
     .team-grid {
         grid-template-columns: 1fr;
