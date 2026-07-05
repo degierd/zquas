@@ -33,6 +33,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=3">
+    <script src="config.js?v=1"></script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -159,6 +160,13 @@
                     <a href="why-different.html">Why Different</a>
                     <a href="benchmark.html">Benchmark</a>
                     <a href="engineering.html">Engineering</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-vigil hidden>
+                <a href="#platform" class="nav-dropdown-toggle">Solutions <span class="nav-arrow">&#x25BE;</span></a>
+                <div class="nav-dropdown-menu">
+                    <a href="#for-banks">Financial Crime</a>
+                    <a href="vigil.html">Airspace Security: VIGIL</a>
                 </div>
             </div>
             <a href="regulators.html">Regulators</a>
@@ -413,6 +421,40 @@
     </div>
 </section>
 
+<section class="problem-section" id="platform-domains" data-vigil hidden>
+    <div class="container">
+        <div class="section-label">The Platform</div>
+        <h2 class="section-title">One Engine. Multiple Domains.</h2>
+        <p class="section-desc">
+            ZQUAS is not an AML product with a platform ambition. It is a GPU-native detection engine, the F1 Engine, on which regulated domains run as tenants: same ingestion plane, same policy compiler, same adjudication, same evidence layer, same federation.
+        </p>
+        <p class="section-desc">
+            Financial crime is the first tenant, live in the FCA Digital Sandbox. Airspace security is the second: VIGIL, hostile-drone pattern detection for the European counter-UAS market, is in active development on the identical engine. The composability is proven, not promised: the second tenant was brought up with zero changes to the engine core.
+        </p>
+        <p class="section-desc">
+            Detecting laundering networks across banks and detecting coordinated drone incursions across sensors are the same problem: many entities, many events, hostile patterns hiding in legitimate traffic, and decisions that must survive regulatory and legal scrutiny afterwards.
+        </p>
+        <div class="tenant-grid">
+            <a href="#for-banks" class="tenant-card">
+                <div class="tenant-card-head">
+                    <h3>Financial Crime</h3>
+                    <span class="tenant-status live">Live &middot; FCA Digital Sandbox</span>
+                </div>
+                <p>Real-time laundering detection across institutions without sharing customer data. Sanctions and PEP screening with attested lineage. Deterministic, regulator-replayable decisions.</p>
+                <span class="tenant-card-cta">See the compliance flow &rarr;</span>
+            </a>
+            <a href="vigil.html" class="tenant-card">
+                <div class="tenant-card-head">
+                    <h3>VIGIL Airspace Security</h3>
+                    <span class="tenant-status dev">In development</span>
+                </div>
+                <p>Hostile-pattern detection over drone tracks: loitering, corridor incursion, coordinated swarms, perimeter probing, identity spoofing. Civil and military sensors detect jointly without pooling raw data.</p>
+                <span class="tenant-card-cta">Explore VIGIL &rarr;</span>
+            </a>
+        </div>
+    </div>
+</section>
+
 <section class="audience-section" id="for-banks">
     <div class="container">
         <div class="section-label">For Financial Institutions</div>
@@ -549,6 +591,10 @@
             <div class="investor-card">
                 <h3>Land &amp; Expand Model</h3>
                 <p>Enter via single-bank deployment (on-premise, sovereign). Expand to cross-institutional MPC federation as adoption grows. Each additional bank increases detection capability for all participants.</p>
+            </div>
+            <div class="investor-card" data-vigil hidden>
+                <h3>Platform economics, proven</h3>
+                <p>The second regulated domain, airspace security, runs on the same engine with zero engine changes. The Dutch MoD has committed between 1 and 2.5 billion euros to counter-drone capability; the EU drone wall initiative targets initial capability by end 2026. For ZQUAS, the marginal cost of a new vertical is a tenant, not a rebuild. One engine, two regulated domains, one evidence discipline.</p>
             </div>
         </div>
     </div>

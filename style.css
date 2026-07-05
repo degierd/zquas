@@ -2342,3 +2342,81 @@ footer {
     .qual-list { padding: 0 1.5rem; }
     .about-prose { padding: 0 1.5rem; }
 }
+
+/* ── VIGIL / PLATFORM TENANTS ── */
+/* Enforce hiding for VIGIL-gated elements even where display is otherwise set.
+   config.js removes [hidden] when VIGIL_ENABLED is true. */
+[data-vigil][hidden] { display: none !important; }
+
+.tenant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.tenant-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.3s, background 0.3s;
+}
+.tenant-card:hover {
+    border-color: var(--border-accent);
+    background: var(--bg-card-hover);
+}
+.tenant-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.tenant-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+.tenant-status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 100px;
+    white-space: nowrap;
+}
+.tenant-status.live {
+    color: var(--success);
+    background: rgba(52, 211, 153, 0.08);
+    border: 1px solid rgba(52, 211, 153, 0.3);
+}
+.tenant-status.dev {
+    color: var(--warn);
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+.tenant-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0 0 1.25rem;
+}
+.tenant-card-cta {
+    margin-top: auto;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+/* VIGIL typology cards reuse the problem-card look; number badge instead of icon */
+.vigil-typology .icon {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+}
