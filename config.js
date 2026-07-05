@@ -9,7 +9,7 @@
  * Flip this single flag to turn the whole VIGIL surface on or off.
  */
 window.ZQUAS_CONFIG = {
-    VIGIL_ENABLED: false
+    VIGIL_ENABLED: true
 };
 
 (function () {
