@@ -7,6 +7,7 @@
  *   2. Markdown for Agents content negotiation: when a request to an
  *      .html page sends `Accept: text/markdown`, return the .md twin
  *      with `Content-Type: text/markdown`.
+ *   3. Server-side gating of the VIGIL tenant.
  *
  * Routes (configure in Cloudflare): zquas.ai/*
  *
@@ -16,14 +17,28 @@
  *   - Pre-existing response headers are preserved; we only add and (for
  *     markdown) replace where appropriate.
  *
+ * VIGIL gating (env var VIGIL_ENABLED, see wrangler.toml):
+ *   config.js hides VIGIL in the browser by setting the `hidden` attribute.
+ *   That is not a gate. A crawler parses the raw DOM and reads hidden text,
+ *   and /vigil.html was served with a 200 to anything that did not run JS.
+ *   This worker is the authoritative gate. When VIGIL_ENABLED is not "true":
+ *     - /vigil.html, /vigil and /vigil.md redirect to the home page,
+ *     - every [data-vigil] element is removed from HTML before it leaves
+ *       the edge, so hidden markup never reaches a crawler at all.
+ *   Flipping the tenant on means setting VIGIL_ENABLED = "true" here AND
+ *   VIGIL_ENABLED = true in config.js. The worker is what actually matters.
+ *
  * Deployment:
  *   1. Cloudflare dashboard -> Workers & Pages -> Create -> "Hello world"
  *      template -> paste this file's contents -> Deploy.
+ *      (Or `npx wrangler deploy` from this directory.)
  *   2. Add a route: zone zquas.ai, route `*zquas.ai/*`.
  *   3. Confirm via:
  *        curl -I https://zquas.ai/                      (Link header present)
  *        curl -H "Accept: text/markdown" -I https://zquas.ai/article-75.html
  *          (Content-Type: text/markdown)
+ *        curl -sI https://zquas.ai/vigil.html           (302 while gated)
+ *        curl -s https://zquas.ai/ | grep -c data-vigil (0 while gated)
  */
 
 const LINK_HEADER = [
@@ -49,6 +64,21 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const accept = request.headers.get('accept') || '';
+    const vigilEnabled = String(env && env.VIGIL_ENABLED) === 'true';
+
+    // 0. VIGIL gate. Runs before markdown negotiation so that a request for
+    //    /vigil.html cannot be answered with /vigil.md, and before the origin
+    //    fetch so the tenant's HTML never leaves GitHub Pages.
+    if (!vigilEnabled && isGatedPath(url.pathname)) {
+      return new Response(null, {
+        status: 302,
+        headers: {
+          location: new URL('/', url).toString(),
+          'x-robots-tag': 'noindex, nofollow',
+          'cache-control': 'no-store',
+        },
+      });
+    }
 
     // 1. Markdown content negotiation.
     //    If the client wants markdown and the request is for an HTML
@@ -103,13 +133,38 @@ export default {
       }
     }
 
-    return new Response(originResponse.body, {
+    const response = new Response(originResponse.body, {
       status: originResponse.status,
       statusText: originResponse.statusText,
       headers,
     });
+
+    // Remove flag-gated tenant markup before it reaches any client. The
+    // `hidden` attribute config.js sets only affects rendering: a crawler
+    // reads the text anyway. Removing the element is what actually gates it.
+    if (isHtml && !vigilEnabled) {
+      return new HTMLRewriter()
+        .on('[data-vigil]', {
+          element(el) {
+            el.remove();
+          },
+        })
+        .transform(response);
+    }
+
+    return response;
   },
 };
+
+/**
+ * Paths belonging to the flag-gated VIGIL tenant.
+ * Matched case-insensitively, ignoring a trailing slash, so /VIGIL.html
+ * and /vigil/ are covered as well as the .md twin.
+ */
+function isGatedPath(pathname) {
+  const p = pathname.toLowerCase().replace(/\/+$/, '');
+  return p === '/vigil' || p === '/vigil.html' || p === '/vigil.md';
+}
 
 /**
  * Override Content-Type for paths where GitHub Pages defaults are wrong.

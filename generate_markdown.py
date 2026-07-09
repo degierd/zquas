@@ -19,8 +19,21 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 SITE = "https://zquas.ai"
 
-# HTML pages that should NOT get a Markdown twin
-SKIP = {"404.html", "demo.html"}
+# HTML pages that should NOT get a Markdown twin.
+# vigil.html is gated: the tenant is not public, and a Markdown twin would
+# publish it to agents regardless of the client-side flag in config.js.
+SKIP = {"404.html", "demo.html", "vigil.html"}
+
+# Elements carrying this attribute belong to a flag-gated tenant. They are
+# present in the HTML but hidden client-side, so a crawler reading the raw
+# DOM would still see them. Drop the whole subtree from the Markdown twin.
+GATED_ATTR = "data-vigil"
+
+# Void elements never carry a closing tag, so they must not affect nesting depth.
+VOID = {
+    "area", "base", "br", "col", "embed", "hr", "img", "input",
+    "link", "meta", "param", "source", "track", "wbr",
+}
 
 
 class Md(HTMLParser):
@@ -35,6 +48,8 @@ class Md(HTMLParser):
         self.pending_link: str | None = None
         self.in_table_cell = False
         self.last_text_kind: str = ""  # for spacing
+        self.gated_tag: str | None = None  # tag name that opened a gated subtree
+        self.gated_depth = 0               # nesting depth of that same tag name
 
     def _push_skip_if_needed(self, tag: str) -> bool:
         if tag in {"nav", "footer", "script", "style", "noscript", "svg"}:
@@ -50,6 +65,15 @@ class Md(HTMLParser):
 
     def handle_starttag(self, tag, attrs) -> None:
         attrs_d = dict(attrs)
+        # Swallow everything inside a gated subtree, including its own text.
+        if self.gated_depth:
+            if tag == self.gated_tag and tag not in VOID:
+                self.gated_depth += 1
+            return
+        if GATED_ATTR in attrs_d:
+            self.gated_tag = tag
+            self.gated_depth = 1
+            return
         if tag == "main":
             self.in_main = True
             return
@@ -118,6 +142,12 @@ class Md(HTMLParser):
                 self.out.append(f"![{alt}]({src}) ")
 
     def handle_endtag(self, tag) -> None:
+        if self.gated_depth:
+            if tag == self.gated_tag:
+                self.gated_depth -= 1
+                if self.gated_depth == 0:
+                    self.gated_tag = None
+            return
         if tag == "main":
             self.in_main = False
             return
@@ -162,6 +192,8 @@ class Md(HTMLParser):
             self.out.append(" | ")
 
     def handle_data(self, data) -> None:
+        if self.gated_depth:
+            return
         if not self.in_main or self.in_skip:
             return
         if not data.strip() and not self.out:

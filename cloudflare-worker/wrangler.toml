@@ -9,6 +9,14 @@ routes = [
   { pattern = "www.zquas.ai/*", zone_name = "zquas.ai" }
 ]
 
+# VIGIL tenant gate. "true" reveals /vigil.html and the [data-vigil] blocks
+# on the homepage. Anything else keeps them off the public site entirely.
+# This is the authoritative gate. config.js only affects rendering in a
+# browser, which does not stop a crawler. Keep the two in step, and redeploy
+# the worker (`npx wrangler deploy`) after changing this value.
+[vars]
+VIGIL_ENABLED = "false"
+
 # Logging in the Cloudflare dashboard (Workers -> Logs -> Live tail).
 [observability]
 enabled = true

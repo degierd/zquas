@@ -6,7 +6,15 @@
  *             and /vigil.html redirects to the home page.
  *   true   -> VIGIL content is revealed everywhere and /vigil.html is reachable.
  *
- * Flip this single flag to turn the whole VIGIL surface on or off.
+ * THIS FILE IS NOT A GATE. It runs in the browser. A crawler that does not
+ * execute JavaScript reads the hidden markup anyway, and previously fetched
+ * /vigil.html with a 200. The authoritative gate is VIGIL_ENABLED in
+ * cloudflare-worker/wrangler.toml, which removes [data-vigil] elements at the
+ * edge and redirects /vigil.html. What remains here is a rendering fallback so
+ * the page does not flash gated content before the worker-stripped HTML lands.
+ *
+ * To turn the tenant on: set VIGIL_ENABLED = true here, set it to "true" in
+ * wrangler.toml, then redeploy the worker. Both, or the surface stays hidden.
  */
 window.ZQUAS_CONFIG = {
     VIGIL_ENABLED: false

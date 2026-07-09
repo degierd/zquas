@@ -49,9 +49,37 @@ curl -sI https://zquas.ai/.well-known/api-catalog | grep -i content-type
 
 curl -sI https://zquas.ai/article-75.html | grep -i content-type
 # Expect: content-type: text/html; charset=utf-8 (browsers still get HTML)
+
+curl -so /dev/null -w '%{http_code}\n' https://zquas.ai/vigil.html
+# Expect: 302 while VIGIL_ENABLED = "false" (200 would mean the tenant is public)
+
+curl -s https://zquas.ai/ | grep -c data-vigil
+# Expect: 0 while gated. Any other number means gated markup is reaching crawlers.
 ```
 
-If all four match, you are done.
+If all six match, you are done.
+
+## The VIGIL gate
+
+`VIGIL_ENABLED` in `wrangler.toml` is the only thing that actually hides the
+VIGIL tenant. `config.js` sets a `hidden` attribute in the browser, which does
+nothing for a crawler: it parses the raw DOM and reads hidden text. Before this
+worker rule existed, `https://zquas.ai/vigil.html` answered every non-JS client
+with a 200 and 20 KB of tenant content, and assistants summarising ZQUAS picked
+it up.
+
+While `VIGIL_ENABLED` is not `"true"` the worker redirects `/vigil.html`,
+`/vigil` and `/vigil.md` to the home page, and strips every `[data-vigil]`
+element from HTML at the edge.
+
+To launch the tenant, set `VIGIL_ENABLED = "true"` here, set `VIGIL_ENABLED:
+true` in `config.js`, redeploy the worker, and re-run the two checks above
+expecting `200` and a non-zero count.
+
+Note that the worker cannot gate the source repository. While
+`github.com/degierd/zquas` is public, `vigil.html` is readable from
+`raw.githubusercontent.com` and from the commit history regardless of this
+setting.
 
 ## Updating the Worker later
 
