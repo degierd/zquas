@@ -13,7 +13,7 @@
       "description": "LLM-optimised summary of ZQUAS: what it is, who it serves, the engine's published benchmark numbers, and the regulatory frameworks it covers.",
       "url": "https://zquas.ai/llms.txt",
       "media_type": "text/plain",
-      "sha256": "84ead7dc3f28262e212f29a2a17381c7e2215a41f35a3365f558103e6440f99a"
+      "sha256": "33fddc5569b55db7a1358e16ca770c04206ca29953d505abb629482b03786831"
     },
     {
       "name": "site-summary-full",
@@ -69,7 +69,7 @@
       "description": "Single-page PDF summary of the engine, benchmarks, and regulatory traction. Suitable for buyer hand-out.",
       "url": "https://zquas.ai/zquas-onepager.pdf",
       "media_type": "application/pdf",
-      "sha256": "928b04f7a8a4385d10931fa3b4d7814c3609a262c3689598f7be93f3c56d3129"
+      "sha256": "59862f24504cda4249b844cc28ae50f7155306c69774fa18af14265a43fa63ca"
     },
     {
       "name": "articles-feed",
@@ -77,7 +77,7 @@
       "description": "RSS 2.0 feed of all ZQUAS analysis articles, sorted newest-first. Updated whenever a new article is published.",
       "url": "https://zquas.ai/feed.xml",
       "media_type": "application/rss+xml",
-      "sha256": "49dc8e21ef34a049fd173be47d9312608ad5ca1a88a438cd4c85da243270c0e9"
+      "sha256": "cfb4b036c87ed57cf9f25d156de97a42d3788ffe254166cb36c0728cd10847c9"
     },
     {
       "name": "mcp-server",

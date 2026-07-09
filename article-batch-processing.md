@@ -7,7 +7,7 @@ Site: https://zquas.ai
 
 ---
 [← Articles](articles.html)
-        January 2026 · Banks · 6 min read
+        January 2026 · Updated June 2026 · Banks · 6 min read
 
 
 # Batch Processing Is a Liability on Real-Time Payment Rails
@@ -45,17 +45,17 @@ Your payment infrastructure settles in seconds. Your AML monitoring runs overnig
 
 
 
-            The EU Instant Payments Regulation (2024/886) and the EBA's guidance on fraud prevention for instant payments set clear expectations: screening and risk assessment must happen before or during settlement, not after. AMLR will reinforce this direction when it takes effect in 2027.
+            Two different controls are in play here, and it is worth keeping them apart. Blocking a payment before it executes is a fraud control. AML monitoring is retrospective by design: it investigates, files SARs, freezes accounts, and refers cases to law enforcement. Regulation (EU) 2024/886 and the EBA's guidance on fraud prevention for instant payments set expectations on the pre-settlement side, and AMLR Article 75 reinforces the AML side when it applies from July 10, 2027.
 
 
 
 
-            The logic is straightforward. If you offer instant payments, you need instant monitoring. Offering a payment product that settles in seconds while monitoring for fraud and money laundering on a next-day basis is a control gap. Regulators will treat it as one.
+            AML is not required to stop the payment. But its instruments, the freeze, the referral, the closed account, only work on money and accounts that are still there. Running detection on a next-day cycle while the money settles in ten seconds does not make the monitoring invalid. It makes the response arrive after the things it acts on have moved.
 
 
 
 
-            Some banks have tried to address this by adding a pre-screening step before instant payments clear. Run the payment through a quick sanctions check and a basic fraud score, and if it passes, let it go. But this is a thin layer. It catches sanctioned names and obvious velocity anomalies. It doesn't catch the coordinated cross-account patterns that characterise professional money laundering.
+            Some banks have tried to address this by adding a pre-screening step before instant payments clear. Run the payment through a quick sanctions check and a basic fraud score, and if it passes, let it go. But this is a thin layer. It catches sanctioned names and obvious velocity anomalies, and it doesn't catch the coordinated cross-account patterns that characterise professional money laundering.
 
 
 
@@ -79,7 +79,7 @@ Your payment infrastructure settles in seconds. Your AML monitoring runs overnig
 
 
 
-            True real-time monitoring means every transaction is evaluated against the full policy set, with access to the customer's complete transaction history and entity relationships, before the payment settles. That's a different class of computational problem. It requires an architecture designed for parallelism from the ground up.
+            True real-time monitoring means every transaction is evaluated against the full policy set, with access to the customer's complete transaction history and entity relationships, as the activity happens rather than on the next sweep. That's a different class of computational problem. It requires an architecture designed for parallelism from the ground up.
 
 
 
@@ -131,17 +131,27 @@ Your payment infrastructure settles in seconds. Your AML monitoring runs overnig
 
 
 
-            Banks rolling out instant payment capabilities need to ask their monitoring vendors a direct question: can your system evaluate our full policy set against every transaction before settlement completes?
+            Banks rolling out instant payment capabilities need to ask their monitoring vendors a direct question: how stale is the customer's risk picture at the moment you evaluate a transaction, and how long after the money moves does an alert reach an analyst?
 
 
 
 
-            If the answer is "we can do a pre-screening check" or "we process in near-real-time batches," that's not sufficient. It creates a control gap between payment speed and monitoring speed. Regulators will find that gap. If they don't find it during an examination, they'll find it after an incident.
+            If the answer is "we run a pre-screening check" or "we process in near-real-time batches," that's not sufficient. It creates a control gap between the speed of the money and the speed of the response. Regulators will find that gap. If they don't find it during an examination, they'll find it after an incident.
 
 
 
 
-            The technology to close this gap exists now. GPU-native compliance engines can process at payment speed with full detection depth. The question isn't whether real-time monitoring is possible. It's whether your current architecture can deliver it, or whether you need a different one.
+            Batch does not disappear. It remains the right tool for long-horizon typologies and for the deep investigations that produce freezes and referrals. What it can no longer be is the only cadence at which detection runs.
+
+
+
+
+            The technology to close this gap exists now. GPU-native compliance engines evaluate the full entity population continuously, with full detection depth. The question isn't whether real-time monitoring is possible. It's whether your current architecture can deliver it, or whether you need a different one.
+
+
+
+
+            For the longer argument about what instant, irrevocable rails actually change, and what they do not, see [When the Money Has Already Moved](article-instant-payments.html).
 
 
 

@@ -1,151 +1,187 @@
-# The Real Cost of 95% False Positives
+# The 95% Problem
 
-> Everyone in compliance knows the number. But the real damage isn't in the alerts themselves. It's in everything that happens around them.
+> Most AML alerts are false positives. Modern systems already use customer context, baselines and machine learning, yet stay bounded by network visibility that ends at the bank's own perimeter.
 
 Source: https://zquas.ai/article-false-positives.html
 Site: https://zquas.ai
 
 ---
 [← Articles](articles.html)
-        January 2026 · Banks · 7 min read
+        June 2026 · Analysis · 6 min read
 
 
-# The Real Cost of 95% False Positives
+# The 95% Problem
 
 
 
-Everyone in compliance knows the number. Ninety-five percent of AML alerts are false positives. But the real damage isn't in the alerts themselves. It's in everything that happens around them.
+Anti-money laundering systems flag enormous volumes of legitimate activity as suspicious. The cost is not only the wasted review. It is the genuine criminal activity hiding inside the noise, and the fact that the context needed to tell the two apart increasingly lies beyond any single institution's reach.
 
 
 
 
 
 
-            I've spent 18 years in financial crime compliance at banks like Deutsche Bank, HSBC, and RBS. In every single one, the alert backlog was the dominant fact of life. Not the risk models. Not the regulatory exams. The backlog.
+            Every compliance team knows the number, even if nobody says it out loud. In transaction monitoring, the large majority of alerts are false. Figures above ninety percent are reported routinely in regulatory speeches, supervisory reviews, and industry studies, and the real rate varies widely by bank, jurisdiction, and scenario. But the direction is not in dispute.
 
 
 
 
-            Let me walk through what that 95% number actually costs, because the headline figure hides where the money really goes.
+            An analyst working through a hundred alerts in a day may find that the overwhelming majority describe nothing more than a customer behaving normally. That is usually discussed as an efficiency problem. The more consequential problem sits underneath it.
 
 
 
 
-## Analyst Hours Are Just the Start
+## Context Is the Constraint, and It Stops at the Perimeter
 
 
 
-            A typical Tier-1 bank employs 3,000 to 6,000 people in AML operations. In the Netherlands alone, the banking sector had roughly 6,000 full-time AML staff as of 2019. That number has grown since.
+            It would be convenient to blame this on primitive technology, and inconvenient for that story that it is largely untrue. Modern monitoring is not a wall of fixed thresholds. Good systems already reason with customer risk scores, behavioural baselines, peer groups, and expected activity. They already draw on KYC data, occupation, geography, adverse media, and watchlists.
 
 
 
 
-            Most of those people spend their days reviewing alerts that turn out to be nothing. Open the case. Pull the customer profile. Check transaction history. Cross-reference against sanctions lists. Write a disposition note. Close the case. Repeat.
+            Rules and models can and do reference customer context. The picture of the customer they work from is far richer than a single transaction. The limit is not that these systems are blind. It is that the context each one holds is bounded, and it is bounded most sharply at the edge of the institution.
 
 
 
 
-            At an average fully-loaded cost of €80,000 per analyst per year, a 3,000-person team costs €240 million annually. If 95% of their work is wasted on false alerts, that's roughly €228 million spent investigating legitimate business activity. Every year. At one bank.
+            A bank can build a detailed picture of how a customer behaves at that bank. It cannot see how the same customer behaves everywhere else, because that activity sits in other institutions and never reaches it. The context runs out exactly where the customer's activity crosses to another bank. That is precisely where a great deal of laundering is designed to live.
 
 
 
 
-            But the analyst cost is the part everyone already knows. The hidden costs are worse.
+## The Cost Is Not the Review. It Is the Miss.
 
 
 
+            The direct cost is visible on any compliance budget. Institutions spend heavily on alert review, much of it consumed by cases that were never going to be anything. But the expensive failure is the one that does not appear on a budget line. When most alerts are noise, the ones that matter are buried inside it.
 
-## Customer Damage
 
 
 
-            When a monitoring system flags a transaction, many banks freeze the account pending review. For a business customer, that can mean missed payroll, failed supplier payments, or a collapsed deal. I've seen legitimate import-export companies locked out of their accounts for weeks because a wire to a correspondent bank in a higher-risk jurisdiction triggered an alert.
+            An analyst working through a long queue of mostly-nothing is not in a strong position to recognise the single case that is actually a laundering network.
 
 
 
 
-            Those customers don't come back. And they tell other businesses. The reputational cost doesn't show up in the compliance budget, but the commercial banking teams feel it.
 
+Alert fatigue is not a morale issue. It is a detection failure. The false positives are not just wasting time. They are camouflage for the true positives.
 
 
 
-            Worse, when alert volumes are overwhelming, analysts rush through reviews. They develop shortcuts. They start pattern-matching against the last hundred cases they cleared rather than genuinely investigating. This means the rare true positive buried in the pile gets the same cursory treatment as the false ones. The system designed to catch criminals ends up giving criminals cover through sheer noise.
 
 
+            This part is well supported. Work from the FATF, the Wolfsberg Group, and academic studies points the same way: high alert volumes reduce investigation quality, analyst attention, and time per case. A system that floods its analysts with noise is not only inefficient. It is worse at catching criminals, because it has made the real signals harder to see.
 
 
-## The Regulatory Trap
 
 
+## Better Rules and Models Hit the Same Ceiling
 
-            Here's the part that keeps compliance officers up at night. Regulators don't just want you to catch money laundering. They want you to demonstrate that your monitoring system works effectively. When 95% of your alerts are false positives, what does that tell the examiner?
 
 
+            The instinctive response to a missed case is to add a rule, and over years the rule set grows into the hundreds. Mature programmes work hard against the resulting volume. They tune thresholds, add suppression logic, segment customers, and retire rules that have stopped earning their place. Increasingly they layer machine learning on top to suppress false positives and rank what remains.
 
 
-            It tells them your rules are too broad. But if you tighten the rules to reduce false positives, you risk missing real suspicious activity. And the fine for missing a SAR filing is existential. ING paid €775 million. ABN AMRO paid €480 million. Nobody gets fired for filing too many SARs. People absolutely get fired for missing one.
 
 
+            That genuinely helps. Models do real work in modern AML, and they often reduce false positives substantially. Dismissing any of it would be wrong. But all of it meets the same ceiling.
 
 
-            So the system stays miscalibrated. Banks accept the waste because the alternative, being accused of insufficient monitoring, is worse. This is rational behavior by individual institutions, but it's collectively insane.
 
 
+            Tuning reshuffles how the system reasons about the information it already has. A model reasons only about the data it was given. Neither adds the information that is missing. A capable model trained on one bank's view is still confined to one bank's view.
 
 
-## Why Rules-Based Monitoring Creates This Problem
 
 
+            If the underlying data never contained what was needed to separate a criminal from a customer, better technique redistributes the error rather than removing it. Better modelling raises the ceiling the data allows. It does not lift the data's own limit.
 
-            Traditional transaction monitoring works by setting thresholds. Transactions above €10,000 to certain jurisdictions. Cash deposits above a certain frequency. Wire transfers that match known typologies.
 
 
 
+## The Rise of Network Context
 
-            The problem is that these rules have no context. They don't know that the customer is a flower importer who has been sending €15,000 to Kenya every month for eight years. They don't know that the sudden spike in transaction volume coincides with Valentine's Day. They just see: amount exceeds threshold, jurisdiction matches risk list, generate alert.
 
 
+            One of the most significant recent advances in AML is not a sharper threshold or a bigger model. It is looking at relationships rather than at transactions in isolation. Graph and network analysis have moved to the centre of the field precisely because so much of what matters is relational: mule rings, layering chains, shell structures, hidden beneficial ownership, and coordinated activity that no single transaction reveals. Seen as a network, a set of individually unremarkable accounts can resolve into an obvious pattern.
 
 
-            Every compliance professional knows this. The fix seems obvious: add context. But adding context in a rules-based system means adding more rules, more exceptions, more complexity. And every new rule interacts with every existing rule in ways that are hard to predict and impossible to test exhaustively.
 
 
+## Context Has a Ceiling Too, and Only the Network Breaks It
 
 
-## What Changes With Full Graph Context
 
+            Context is not a silver bullet, and it is worth saying so plainly. A determined criminal manipulates it. They age mule accounts, build a plausible transaction history, and mimic a legitimate business until the activity looks entirely normal. Richer context alone does not defeat a patient adversary.
 
 
-            The alternative is to evaluate every transaction with full knowledge of the entity's network. Not just this transaction in isolation, but this customer's entire relationship map. Who they transact with. Who those counterparties transact with. What the normal pattern looks like across the network. Where the deviations are.
 
 
+            But notice what defeats single-bank context in every one of those cases. The manufactured normality is constructed at one institution, for the eyes of one institution. A criminal can build a clean history at your bank. Building a clean position across the entire network, at every institution they touch at once, is far harder.
 
 
-            When you can propagate risk scores across the entire entity graph in real time, the threshold problem disappears. You're not asking "does this transaction exceed a number?" You're asking "does this pattern look anomalous given everything we know about this network?" That's a different question entirely, and it produces different alert quality.
 
 
+            The coordination that makes the scheme work is exactly what becomes visible when the view spans institutions. Synthetic normality is a single-bank illusion. It is the strongest argument for context that does not stop at the perimeter, not against it.
 
 
-            GPU-accelerated graph analysis makes this practical at scale. Running full network context evaluation on millions of transactions per second isn't theoretical anymore. It's measurable. And when you combine it with deterministic policy enforcement, where the same data and same policies always produce the same verdict, you get something compliance officers have never had: a system they can actually explain to the regulator with confidence.
 
 
+## Investigate Risk, Not Noise
 
 
-## The Bottom Line
 
+            So the goal is not the impossible one of a system that emits only genuine alerts. Precision and recall trade against each other, and any honest detection system lives with that trade. The goal is to move it: to raise fewer alerts on noise and more on what actually matters, by giving the system the context that decides the difference.
 
 
-            The 95% false positive rate isn't a technology problem. It's an architecture problem. Rules without context produce noise. Context at scale requires compute power that wasn't available when most monitoring systems were designed.
 
 
+            Better context does not abolish false positives. It reduces how often the system mistakes an ordinary customer for a suspicious one, and how often it misses a suspicious one hiding as ordinary.
 
 
-            The cost isn't just €200 million a year in wasted analyst time. It's damaged customer relationships, weakened detection of actual criminals, and a regulatory dynamic that punishes precision. Banks know this. Regulators know this. The architecture just hasn't caught up.
 
 
+## Where the Missing Context Comes From
 
 
-            It's catching up now.
+
+            The context that breaks the single-bank ceiling has to come from other institutions. That is where earlier attempts came undone. The obvious way to share it is to pool everyone's data in one place, and privacy law has made that road increasingly hard to sustain. GDPR Article 5(1)(c) sets data minimisation against bulk pooling, and AMLR Article 75 opens only a narrow gateway, restricted to customers a bank has already assessed as higher-risk.
+
+
+
+
+            [Transaction Monitoring Netherlands](tmnl.html) was the most ambitious attempt at the pooled model in Europe. It was wound down. The technology worked. The legal basis for centralising customer data across five banks did not.
+
+
+
+
+            This is the problem ZQUAS is built to solve, and the entire point is to solve it without that central database. Two institutions can compute the overlap between their entities and signals without either revealing its underlying customer data, using private set intersection over elliptic-curve Diffie-Hellman (ECDH-PSI). Joint analysis across several parties runs as secure multi-party computation. In both cases the raw data never leaves the institution that holds it.
+
+
+
+
+            Only cryptographically protected values ever cross an institutional boundary, and no central platform holds anyone's records. It is not the pooled model that earlier consortia moved away from, and it is not the prohibitive overhead of fully homomorphic encryption. It is private set intersection and multi-party computation, run peer to peer, with GPU acceleration used to reduce the computational cost of the cryptography and the detection itself.
+
+
+
+
+            GPU acceleration is not what makes the cross-institutional exchange practical. The binding constraints there are communication and protocol rounds, not arithmetic. What the hardware buys is keeping the compute side cheap enough to run at scale.
+
+
+
+
+            The result is the one thing tuning, modelling, and single-bank graphs cannot provide: network context that is substantially harder for a criminal to manipulate by looking normal at any single bank, delivered without a central store of pooled data. This is not a complete solution, and it does not pretend to be. A criminal who deliberately spreads activity through institutions or jurisdictions outside the participating network stays only partially visible. What it removes is the option of hiding in plain sight across the banks that do take part.
+
+
+
+
+            It is not a replacement for rules, models, analysts, or good KYC. It is the missing layer that lets all of them work on a fuller picture.
+
+
+
+
+            See how the [architecture](architecture.html) resolves cross-institutional context without pooling data, or follow [the full detection flow from transaction to SAR](use-case.html).
 
 
 

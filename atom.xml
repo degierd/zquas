@@ -5,10 +5,26 @@
 <link href="https://zquas.ai/atom.xml" rel="self" type="application/atom+xml" />
 <link href="https://zquas.ai/articles.html" rel="alternate" type="text/html" />
 <id>https://zquas.ai/atom.xml</id>
-<updated>2026-05-15T09:00:00+00:00</updated>
+<updated>2026-06-15T09:00:00+00:00</updated>
 <author><name>Danny de Gier</name><email>danny@zquas.ai</email><uri>https://www.linkedin.com/in/danny-de-gier-prof-pgdip-fcc/</uri></author>
 <rights>(c) ZQUAS</rights>
 <generator uri="https://zquas.ai/">generate_feed.py</generator>
+<entry>
+<title>When the Money Has Already Moved</title>
+<link href="https://zquas.ai/article-instant-payments.html" rel="alternate" type="text/html" />
+<id>https://zquas.ai/article-instant-payments.html</id>
+<published>2026-06-15T09:00:00+00:00</published>
+<updated>2026-06-15T09:00:00+00:00</updated>
+<summary type="text">Instant payments do not make AML obsolete, and they do not turn transaction monitoring into payment authorisation. What they change is the economics of time, and the premium on detection that keeps pace with the rails instead of trailing them by a day.</summary>
+</entry>
+<entry>
+<title>The 95% Problem</title>
+<link href="https://zquas.ai/article-false-positives.html" rel="alternate" type="text/html" />
+<id>https://zquas.ai/article-false-positives.html</id>
+<published>2026-06-15T09:00:00+00:00</published>
+<updated>2026-06-15T09:00:00+00:00</updated>
+<summary type="text">Most AML alerts are false positives. Modern systems already use customer context, baselines and machine learning, yet they stay bounded by network visibility that ends at the bank&#x27;s own perimeter. The cost is not the wasted review. It is the criminal hiding inside the noise.</summary>
+</entry>
 <entry>
 <title>Why We Built Our Own AI Inference Engine</title>
 <link href="https://zquas.ai/article-inference-engine.html" rel="alternate" type="text/html" />
@@ -146,14 +162,6 @@
 <summary type="text">Your payment infrastructure settles in seconds. Your AML monitoring runs overnight. That gap is where both criminals and regulators will find you.</summary>
 </entry>
 <entry>
-<title>The Real Cost of 95% False Positives</title>
-<link href="https://zquas.ai/article-false-positives.html" rel="alternate" type="text/html" />
-<id>https://zquas.ai/article-false-positives.html</id>
-<published>2026-01-15T09:00:00+00:00</published>
-<updated>2026-01-15T09:00:00+00:00</updated>
-<summary type="text">Everyone in compliance knows the number. Ninety-five percent of AML alerts are false positives. But the real damage isn&#x27;t in the alerts themselves. It&#x27;s in everything that happens around them.</summary>
-</entry>
-<entry>
 <title>From Trust-Based Audit to Cryptographic Verification</title>
 <link href="https://zquas.ai/article-cryptographic-verification.html" rel="alternate" type="text/html" />
 <id>https://zquas.ai/article-cryptographic-verification.html</id>
@@ -253,8 +261,8 @@
 <title>Transaction Monitoring Netherlands: What Went Wrong, What Comes Next</title>
 <link href="https://zquas.ai/tmnl.html" rel="alternate" type="text/html" />
 <id>https://zquas.ai/tmnl.html</id>
-<published>2026-06-26T09:00:00+00:00</published>
-<updated>2026-06-26T09:00:00+00:00</updated>
+<published>2026-07-09T09:00:00+00:00</published>
+<updated>2026-07-09T09:00:00+00:00</updated>
 <summary type="text">The most ambitious cross-institutional AML initiative in Europe was shut down because its architecture couldn&#x27;t be reconciled with privacy law. A complete analysis of what happened, why it failed, and what the alternative architecture looks like.</summary>
 </entry>
 </feed>

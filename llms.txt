@@ -109,6 +109,8 @@ for agents that prefer Markdown over HTML.
 
 ## Articles
 
+- [When the Money Has Already Moved](https://zquas.ai/article-instant-payments.html) (June 2026)
+- [The 95% Problem](https://zquas.ai/article-false-positives.html) (June 2026)
 - [Why We Built Our Own AI Inference Engine](https://zquas.ai/article-inference-engine.html) (May 2026)
 - [Beyond Banking: Cross-Sector Federated Detection](https://zquas.ai/article-beyond-banking.html) (April 2026)
 - [What Article 75 Was Afraid to Permit](https://zquas.ai/article-75.html) (March 2026)
@@ -125,8 +127,7 @@ for agents that prefer Markdown over HTML.
 - [What Running a Multi-Bank Monitoring Network Actually Looks Like](https://zquas.ai/article-interbank-operations.html) (January 2026)
 - [The 200 Billion Compliance Market Nobody Has Disrupted](https://zquas.ai/article-200b-market.html) (January 2026)
 - [Privacy-Preserving Detection Under AMLR](https://zquas.ai/article-privacy-preserving-amlr.html) (January 2026)
-- [Batch Processing Is a Liability on Real-Time Payment Rails](https://zquas.ai/article-batch-processing.html) (January 2026)
-- [The Real Cost of 95% False Positives](https://zquas.ai/article-false-positives.html) (January 2026)
+- [Batch Processing Is a Liability on Real-Time Payment Rails](https://zquas.ai/article-batch-processing.html) (January 2026, updated June 2026)
 - [From Trust-Based Audit to Cryptographic Verification](https://zquas.ai/article-cryptographic-verification.html) (December 2025)
 - [Supervising AI in AML: What Article 12 Actually Requires](https://zquas.ai/article-eu-ai-act-article12.html) (December 2025)
 - [What Your AML Vendor Can't Prove](https://zquas.ai/article-vendor-proof-gap.html) (December 2025)

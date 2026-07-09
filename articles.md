@@ -14,7 +14,30 @@ Analysis and perspective on compliance technology, regulatory architecture, and 
 
 
         [
-            May 2026 · Engineering · 9 min read
+            June 2026 · Banks · 7 min read
+
+
+## When the Money Has Already Moved
+
+
+
+Instant payments do not make AML obsolete, and they do not turn transaction monitoring into payment authorisation. What they change is the economics of time, and the premium on detection that keeps pace with the rails instead of trailing them by a day.
+
+        ](article-instant-payments.html)
+
+    [
+        June 2026 · Analysis · 6 min read
+
+
+## The 95% Problem
+
+
+
+Most AML alerts are false positives. Modern systems already use customer context, baselines and machine learning, yet they stay bounded by network visibility that ends at the bank's own perimeter. The cost is not the wasted review. It is the criminal hiding inside the noise.
+
+    ](article-false-positives.html)
+    [
+        May 2026 · Engineering · 9 min read
 
 
 ## Why We Built Our Own AI Inference Engine
@@ -23,8 +46,7 @@ Analysis and perspective on compliance technology, regulatory architecture, and 
 
 ChatGPT runs on one. Llama runs on one. We wrote our own. Why a financial crime company built its own GPU inference engine in C++23 and CUDA, and why regulated AI decisions need a different stack from the one a chatbot needs.
 
-        ](article-inference-engine.html)
-
+    ](article-inference-engine.html)
     [
         Position Paper · April 2026 · 30 min read
 
@@ -201,17 +223,6 @@ The EU AMLR creates a catch-22 for cross-institutional detection. You can only s
 Your payment infrastructure settles in seconds. Your AML monitoring runs overnight. That gap is where both criminals and regulators will find you.
 
     ](article-batch-processing.html)
-    [
-        January 2026 · Banks · 7 min read
-
-
-## The Real Cost of 95% False Positives
-
-
-
-Everyone in compliance knows the number. Ninety-five percent of AML alerts are false positives. But the real damage isn't in the alerts themselves. It's in everything that happens around them.
-
-    ](article-false-positives.html)
     [
         December 2025 · Regulators · 7 min read
 

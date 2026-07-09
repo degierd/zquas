@@ -182,12 +182,12 @@
     </url>
     <url>
         <loc>https://zquas.ai/article-false-positives.html</loc>
-        <lastmod>2026-01-15</lastmod>
+        <lastmod>2026-06-10</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-batch-processing.html</loc>
-        <lastmod>2026-01-15</lastmod>
+        <lastmod>2026-06-23</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
@@ -259,6 +259,11 @@
         <loc>https://zquas.ai/article-integration-reality.html</loc>
         <lastmod>2025-09-15</lastmod>
         <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://zquas.ai/article-instant-payments.html</loc>
+        <lastmod>2026-06-23</lastmod>
+        <priority>0.8</priority>
     </url>
     <url>
         <loc>https://zquas.ai/article-inference-engine.html</loc>
