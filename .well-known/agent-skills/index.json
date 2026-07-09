@@ -69,7 +69,7 @@
       "description": "Single-page PDF summary of the engine, benchmarks, and regulatory traction. Suitable for buyer hand-out.",
       "url": "https://zquas.ai/zquas-onepager.pdf",
       "media_type": "application/pdf",
-      "sha256": "59862f24504cda4249b844cc28ae50f7155306c69774fa18af14265a43fa63ca"
+      "sha256": "427e2588668e787f341b2f9189b20a2679c2c8315a5220221d575640ed404863"
     },
     {
       "name": "articles-feed",
@@ -77,7 +77,7 @@
       "description": "RSS 2.0 feed of all ZQUAS analysis articles, sorted newest-first. Updated whenever a new article is published.",
       "url": "https://zquas.ai/feed.xml",
       "media_type": "application/rss+xml",
-      "sha256": "cfb4b036c87ed57cf9f25d156de97a42d3788ffe254166cb36c0728cd10847c9"
+      "sha256": "9e2e1e6642ab1ba7095337b3112c7cd16837121fdb50c4329954b0a536c01dfe"
     },
     {
       "name": "mcp-server",

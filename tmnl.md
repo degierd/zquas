@@ -6,7 +6,7 @@ Source: https://zquas.ai/tmnl.html
 Site: https://zquas.ai
 
 ---
-Case Analysis
+Case Analysis · March 2026
 
 
 # Transaction Monitoring Netherlands: What Went Wrong, What Comes Next

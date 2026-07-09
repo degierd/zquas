@@ -26,6 +26,13 @@ MONTHS = {
     "september": 9, "october": 10, "november": 11, "december": 12,
 }
 
+# Fallback pubDate for an entry whose .article-meta carries no month and year.
+# This used to be date.today(), which re-stamped undated entries on every
+# rebuild. Feed readers sort by pubDate, not document order, so those entries
+# resurfaced as brand new to every subscriber each time the feeds were built.
+# A fixed sentinel older than the archive keeps them stable and at the bottom.
+UNDATED_SENTINEL = date(2020, 1, 1)
+
 ARTICLE_RE = re.compile(
     r'<a href="(article-[^"]+\.html|tmnl\.html)"[^>]*class="article-item[^"]*"[^>]*>'
     r'\s*<div class="article-meta">([^<]+)</div>'
@@ -79,14 +86,14 @@ def _clean(s: str) -> str:
 
 def rfc822(d: date | None) -> str:
     if d is None:
-        d = date.today()
+        d = UNDATED_SENTINEL
     dt = datetime(d.year, d.month, d.day, 9, 0, 0, tzinfo=timezone.utc)
     return dt.strftime("%a, %d %b %Y %H:%M:%S +0000")
 
 
 def iso(d: date | None) -> str:
     if d is None:
-        d = date.today()
+        d = UNDATED_SENTINEL
     return f"{d.isoformat()}T09:00:00+00:00"
 
 
@@ -156,6 +163,15 @@ def main():
     items = parse_articles()
     if not items:
         raise SystemExit("No articles parsed from articles.html")
+    undated = [i for i in items if i["pub_date"] is None]
+    if undated:
+        print(
+            f"warning: {len(undated)} entry(s) have no month and year in their "
+            f".article-meta line. Falling back to {UNDATED_SENTINEL.isoformat()} "
+            f"so the feed stays stable. Add a date to sort them properly:"
+        )
+        for u in undated:
+            print(f"  - {u['url']}")
     rss = build_rss(items)
     atom = build_atom(items)
     (ROOT / "feed.xml").write_text(rss, encoding="utf-8")

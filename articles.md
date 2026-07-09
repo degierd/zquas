@@ -114,6 +114,17 @@ The EU AI Act is the first comprehensive AI regulation in the world. Most AML tr
 
     ](article-ai-act-aml-classification.html)
     [
+        March 2026 · Industry · 7 min read
+
+
+## Transaction Monitoring Netherlands: What Went Wrong, What Comes Next
+
+
+
+The most ambitious cross-institutional AML initiative in Europe was shut down because its architecture couldn't be reconciled with privacy law. A complete analysis of what happened, why it failed, and what the alternative architecture looks like.
+
+    ](tmnl.html)
+    [
         March 2026 · Strategy · 8 min read
 
 
@@ -355,14 +366,3 @@ The difference between a compliance monitoring tool and a governance runtime is 
 The most common reason compliance technology projects fail isn't the technology. It's integration. If the new system can't ingest from your existing payment rails and export to your existing SIEM, it's dead on arrival.
 
     ](article-integration-reality.html)
-    [
-        Analysis · Industry
-
-
-## Transaction Monitoring Netherlands: What Went Wrong, What Comes Next
-
-
-
-The most ambitious cross-institutional AML initiative in Europe was shut down because its architecture couldn't be reconciled with privacy law. A complete analysis of what happened, why it failed, and what the alternative architecture looks like.
-
-    ](tmnl.html)
