@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build-index": "python ../mcp-server/build_index.py",
+    "test": "node test_worker.mjs",
     "deploy": "wrangler deploy",
     "dev": "wrangler dev",
     "tail": "wrangler tail"
