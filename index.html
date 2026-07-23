@@ -32,7 +32,7 @@
     <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=4">
     <script src="config.js?v=4"></script>
     <script type="application/ld+json">
     {
@@ -181,58 +181,55 @@
 
 <main>
 
-<section class="hero">
+<section class="hero hero--home">
     <div class="hero-content">
-        <h1 class="hero-headline">
-            Criminals move money<br>
-            across banks.<br>
-            <span class="hero-headline-accent">You only see yours.</span>
-        </h1>
-        <p class="hero-resolution">
-            ZQUAS detects cross-institutional laundering patterns
-            without sharing a single byte of customer data.
-        </p>
-        <p class="hero-method">
-            Privacy-preserving multi-party computation across participating banks.
-        </p>
-        <div class="hero-stats">
-            <a href="benchmark.html" class="hero-stat-link">
-                <div class="hero-stat">
-                    <div class="val">< 2s</div>
-                    <div class="label">500K entities, 100 policies &#x2197;</div>
+        <div class="hero-grid">
+            <div class="hero-copy">
+                <a href="article-fca-sandbox.html" class="hero-eyebrow">
+                    <span class="dot"></span>
+                    <span class="hero-eyebrow-text">FCA Supercharged Sandbox &middot; Second Cohort &middot; July 2026 <span class="hero-eyebrow-arrow">&rarr;</span></span>
+                </a>
+                <h1 class="hero-headline">
+                    Criminals move money<br>
+                    across banks.<br>
+                    <span class="hero-headline-accent">You only see yours.</span>
+                </h1>
+                <p class="hero-resolution">
+                    ZQUAS detects cross-institutional laundering patterns
+                    without sharing a single byte of customer data.
+                </p>
+                <p class="hero-method">
+                    Privacy-preserving multi-party computation across participating banks.
+                </p>
+                <div class="hero-actions">
+                    <a href="article-75.html" class="hero-cta-primary">Read the Position Paper &rarr;</a>
+                    <a href="founding-partner.html" class="hero-cta-secondary">Founding Partner Programme</a>
                 </div>
-            </a>
-            <div class="hero-stat">
-                <div class="val">< 10ms</div>
-                <div class="label">Alert lifecycle, ingestion to triage</div>
+                <a href="zquas-onepager.pdf" class="hero-download" target="_blank">Download One-Pager (PDF)</a>
             </div>
-            <div class="hero-stat">
-                <div class="val">12,342</div>
-                <div class="label">Automated tests across the codebase</div>
+            <div class="hero-proof" aria-label="Published benchmark results, verified by deterministic replay">
+                <div class="hero-proof-head">
+                    <span>Supervisory replay</span>
+                    <span>standalone verifier</span>
+                </div>
+                <div class="hero-proof-body">
+                    <div class="proof-row proof-row--cmd"><span class="cmd">$ zquas-verify --epoch 2026-07</span></div>
+                    <div class="proof-row"><span class="k">policies</span><span class="v">100 evaluated &middot; deterministic replay</span></div>
+                    <div class="proof-row"><span class="k">entities</span><span class="v">500,000 scored in 1,170 ms</span></div>
+                    <div class="proof-row"><span class="k">alert</span><span class="v">ingestion to triage in 3.92 ms</span></div>
+                    <div class="proof-row"><span class="k">federation</span><span class="v">bilateral round 7.8 s at 100K entities</span></div>
+                    <div class="proof-row"><span class="k">proof</span><span class="v">912-byte bundle &middot; Ed25519 signed</span></div>
+                    <div class="proof-row proof-row--ok"><span class="k">result</span><span class="v">VERIFIED &middot; byte-identical replay</span></div>
+                </div>
+                <a href="benchmark.html" class="hero-proof-link">Every number measured. See the benchmark &#x2197;</a>
             </div>
         </div>
-        <div class="hero-badges-row">
-            <a href="article-fca-sandbox.html" class="hero-badge">
-                <span class="dot"></span>
-                FCA Supercharged Sandbox &middot; Second cohort, July 2026
-            </a>
-            <div class="hero-badge">
-                <span class="dot"></span>
-                Accepted into FCA Digital Sandbox
-            </div>
-            <div class="hero-badge">
-                <span class="dot"></span>
-                DNB InnovationHub submission under review
-            </div>
-            <a href="about.html#programmes" class="hero-badge-img" aria-label="NVIDIA Inception program member">
-                <img src="nvidia-inception-badge.png" alt="NVIDIA Inception Program" width="416" height="176">
-            </a>
+        <div class="hero-cred-row">
+            <span>Accepted into the FCA Digital Sandbox &middot; March 2026</span>
+            <span>DNB InnovationHub &middot; Submission under review</span>
+            <span>NVIDIA Inception program member</span>
+            <span>12,342 automated tests</span>
         </div>
-        <div class="hero-actions">
-            <a href="article-75.html" class="hero-cta-primary">Read the Position Paper &rarr;</a>
-            <a href="founding-partner.html" class="hero-cta-secondary">Founding Partner Programme</a>
-        </div>
-        <a href="zquas-onepager.pdf" class="hero-download" target="_blank">Download One-Pager (PDF)</a>
     </div>
 </section>
 

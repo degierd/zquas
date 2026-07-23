@@ -6,63 +6,60 @@ Source: https://zquas.ai
 Site: https://zquas.ai
 
 ---
+[
+
+                    FCA Supercharged Sandbox · Second Cohort · July 2026 →
+                ](article-fca-sandbox.html)
+
+
 # 
-            Criminals move money
+                    Criminals move money
 
-            across banks.
+                    across banks.
 
-            You only see yours.
-
-
-
-
-            ZQUAS detects cross-institutional laundering patterns
-            without sharing a single byte of customer data.
+                    You only see yours.
 
 
 
 
-            Privacy-preserving multi-party computation across participating banks.
+                    ZQUAS detects cross-institutional laundering patterns
+                    without sharing a single byte of customer data.
 
 
 
-            [
 
-                    < 2s
-                    500K entities, 100 policies ↗
-
-            ](benchmark.html)
-
-                < 10ms
-                Alert lifecycle, ingestion to triage
-
-
-                12,342
-                Automated tests across the codebase
+                    Privacy-preserving multi-party computation across participating banks.
 
 
 
-            [
+                    [Read the Position Paper →](article-75.html)
+                    [Founding Partner Programme](founding-partner.html)
 
-                FCA Supercharged Sandbox · Second cohort, July 2026
-            ](article-fca-sandbox.html)
-
-
-                Accepted into FCA Digital Sandbox
+                [Download One-Pager (PDF)](zquas-onepager.pdf)
 
 
 
-                DNB InnovationHub submission under review
-
-            [
-                ![NVIDIA Inception Program](nvidia-inception-badge.png) 
-            ](about.html#programmes)
+                    Supervisory replay
+                    standalone verifier
 
 
-            [Read the Position Paper →](article-75.html)
-            [Founding Partner Programme](founding-partner.html)
+                    $ zquas-verify --epoch 2026-07
+                    policies100 evaluated · deterministic replay
+                    entities500,000 scored in 1,170 ms
+                    alertingestion to triage in 3.92 ms
+                    federationbilateral round 7.8 s at 100K entities
+                    proof912-byte bundle · Ed25519 signed
+                    resultVERIFIED · byte-identical replay
 
-        [Download One-Pager (PDF)](zquas-onepager.pdf)
+                [Every number measured. See the benchmark ↗](benchmark.html)
+
+
+
+            Accepted into the FCA Digital Sandbox · March 2026
+            DNB InnovationHub · Submission under review
+            NVIDIA Inception program member
+            12,342 automated tests
+
 
 
 

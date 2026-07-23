@@ -37,7 +37,7 @@
       "description": "Definitions for the cryptographic, regulatory, and architectural terms used across ZQUAS: AMLR Article 75, MPC, ECDH-PSI, Garbled Circuits, GPU-native, cryptographic proof bundle, deterministic evaluation, and more.",
       "url": "https://zquas.ai/glossary.html",
       "media_type": "text/html",
-      "sha256": "ef4dd201089fd8ef1e52e5213c4c3a441555bf8002e17005e556249a59ab57ce"
+      "sha256": "b0de22c6d60dae9ccc8cb6118a2a09611f85bcd0870fa95ac06f9e2183ded8c2"
     },
     {
       "name": "position-paper-article-75",
@@ -45,7 +45,7 @@
       "description": "Position paper on AMLR Article 75: how Multi-Party Computation enables full customer base federation for AML detection without sharing personal data. Legal argument, evidence, and a path to a pilot.",
       "url": "https://zquas.ai/article-75.html",
       "media_type": "text/html",
-      "sha256": "fabc289c0648f1d6466a9e3c470125541042a61a70480a1f4f387b71e085980d"
+      "sha256": "238311b5af5abc823a293d635e615ebbb37ab28a4499a184a1e9c3611ededc46"
     },
     {
       "name": "position-paper-edge-to-federation",
@@ -53,7 +53,7 @@
       "description": "Position paper on a unified architecture for real-time financial crime detection across institutional, cross-bank, and regulatory layers.",
       "url": "https://zquas.ai/article-edge-to-federation.html",
       "media_type": "text/html",
-      "sha256": "8f1a86aef54fd3e44cf9ce8c2044b22d19dea64299fad6b46b79f44674c0c167"
+      "sha256": "79aa953457d416d1a53a59a0b748bdc0ef956a65f063c1f4240847dfae9ef45b"
     },
     {
       "name": "position-paper-beyond-banking",
@@ -61,7 +61,7 @@
       "description": "Position paper on cross-sector federated detection across banks, telecommunications operators, and digital asset platforms.",
       "url": "https://zquas.ai/article-beyond-banking.html",
       "media_type": "text/html",
-      "sha256": "ba8759c1e9464169cc9d93351762cae3fa6dc13e87d690c5b501ca0b47ca643a"
+      "sha256": "30313f06cda6b74aa07adb9af9d4ed635fc5e948de241daca6e02d83bddac26f"
     },
     {
       "name": "one-pager",
@@ -69,7 +69,7 @@
       "description": "Single-page PDF summary of the engine, benchmarks, and regulatory traction. Suitable for buyer hand-out.",
       "url": "https://zquas.ai/zquas-onepager.pdf",
       "media_type": "application/pdf",
-      "sha256": "42e5cd41f9d50d5bfd149fce63e9ffe76875a642486e3511721259c172238dd6"
+      "sha256": "4bd204f545192df9303f58c707e8afe95a649b13733161c29e95509442f85270"
     },
     {
       "name": "articles-feed",
