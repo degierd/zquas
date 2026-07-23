@@ -5,10 +5,18 @@
 <link href="https://zquas.ai/atom.xml" rel="self" type="application/atom+xml" />
 <link href="https://zquas.ai/articles.html" rel="alternate" type="text/html" />
 <id>https://zquas.ai/atom.xml</id>
-<updated>2026-06-15T09:00:00+00:00</updated>
+<updated>2026-07-15T09:00:00+00:00</updated>
 <author><name>Danny de Gier</name><email>danny@zquas.ai</email><uri>https://www.linkedin.com/in/danny-de-gier-prof-pgdip-fcc/</uri></author>
 <rights>(c) ZQUAS</rights>
 <generator uri="https://zquas.ai/">generate_feed.py</generator>
+<entry>
+<title>Why We Applied to the FCA&#x27;s Supercharged Sandbox</title>
+<link href="https://zquas.ai/article-fca-sandbox.html" rel="alternate" type="text/html" />
+<id>https://zquas.ai/article-fca-sandbox.html</id>
+<published>2026-07-15T09:00:00+00:00</published>
+<updated>2026-07-15T09:00:00+00:00</updated>
+<summary type="text">We have joined the second cohort of the FCA&#x27;s Supercharged Sandbox. Why we applied, how we use AI in a system that has to answer to regulators, where determinism ends and the model begins, and what participation does and does not mean.</summary>
+</entry>
 <entry>
 <title>When the Money Has Already Moved</title>
 <link href="https://zquas.ai/article-instant-payments.html" rel="alternate" type="text/html" />

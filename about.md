@@ -123,6 +123,16 @@ ZQUAS is a member of the NVIDIA Inception program. Inception is NVIDIA's global 
 
 
 
+### FCA Supercharged Sandbox
+
+
+
+ZQUAS joined the second cohort of the Financial Conduct Authority's Supercharged Sandbox, announced by the FCA on 22 July 2026. The Supercharged Sandbox is the FCA's environment for experimenting with advanced AI in financial services, built on the Digital Sandbox with support from NayaOne and NVIDIA, and with Anthropic providing participants access to Claude for this cohort. ZQUAS is one of 21 organisations selected from 199 applications. Read [why we applied](article-fca-sandbox.html).
+
+
+
+
+
 ### FCA Digital Sandbox
 
 

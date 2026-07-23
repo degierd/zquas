@@ -448,6 +448,7 @@ def page3(c):
     traction = [
         "DNB InnovationHub: Submission under review",
         "FCA Digital Sandbox: Accepted (March 2026)",
+        "FCA Supercharged Sandbox: Second cohort, one of 21 firms (July 2026)",
         "NVIDIA Inception program member",
         "Benchmark: 150M+ CEPS on RTX 5090. 500,000 entities in under 2 seconds. Alert lifecycle under 10ms.",
         "Cross-institutional detection: under 10 seconds per bilateral round. 4/4 typologies detected.",

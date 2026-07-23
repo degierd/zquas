@@ -14,7 +14,19 @@ Analysis and perspective on compliance technology, regulatory architecture, and 
 
 
         [
-            June 2026 · Banks · 7 min read
+            July 2026 · Company · 7 min read
+
+
+## Why We Applied to the FCA's Supercharged Sandbox
+
+
+
+We have joined the second cohort of the FCA's Supercharged Sandbox. Why we applied, how we use AI in a system that has to answer to regulators, where determinism ends and the model begins, and what participation does and does not mean.
+
+        ](article-fca-sandbox.html)
+
+    [
+        June 2026 · Banks · 7 min read
 
 
 ## When the Money Has Already Moved
@@ -23,8 +35,7 @@ Analysis and perspective on compliance technology, regulatory architecture, and 
 
 Instant payments do not make AML obsolete, and they do not turn transaction monitoring into payment authorisation. What they change is the economics of time, and the premium on detection that keeps pace with the rails instead of trailing them by a day.
 
-        ](article-instant-payments.html)
-
+    ](article-instant-payments.html)
     [
         June 2026 · Analysis · 6 min read
 
