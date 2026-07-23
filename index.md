@@ -42,6 +42,10 @@ Site: https://zquas.ai
 
 
 
+            [
+
+                FCA Supercharged Sandbox · Second cohort, July 2026
+            ](article-fca-sandbox.html)
 
 
                 Accepted into FCA Digital Sandbox
@@ -342,7 +346,7 @@ The engine continuously maps policy coverage against registered regulatory frame
 
 
 
-Accepted into the FCA Digital Sandbox in March 2026. DNB InnovationHub submission under review. Designed for supervisory scrutiny from day one.
+Joined the second cohort of the FCA Supercharged Sandbox in July 2026. Accepted into the FCA Digital Sandbox in March 2026. DNB InnovationHub submission under review. Designed for supervisory scrutiny from day one.
 
 
 
@@ -455,7 +459,7 @@ GPU-native compliance with privacy-preserving MPC, zero-knowledge governance pro
 
 
 
-Accepted into the FCA Digital Sandbox (March 2026). DNB InnovationHub submission under review. Regulators are among the hardest stakeholders to reach. Early engagement signals institutional credibility and reduces commercial risk for prospective banks.
+Joined the second cohort of the FCA Supercharged Sandbox in July 2026, one of 21 firms named in the FCA's announcement. Accepted into the FCA Digital Sandbox (March 2026). DNB InnovationHub submission under review. Regulators are among the hardest stakeholders to reach, and early engagement signals institutional credibility and reduces commercial risk for prospective banks.
 
 
 
@@ -496,7 +500,7 @@ Senior compliance roles at Tier-1 banks including RBS, Deutsche Bank, HSBC, and 
 
 
 
-Accepted into the FCA Digital Sandbox in March 2026. DNB InnovationHub submission under review. Purpose-built for supervisory scrutiny from day one.
+Joined the second cohort of the FCA's Supercharged Sandbox in July 2026, one of 21 firms selected from 199 applications. Accepted into the FCA Digital Sandbox in March 2026. DNB InnovationHub submission under review. Purpose-built for supervisory scrutiny from day one.
 
 
 

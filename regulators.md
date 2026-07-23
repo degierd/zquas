@@ -18,7 +18,7 @@ For Supervisory Authorities
 
 
 
-            Accepted into the FCA Digital Sandbox · DNB InnovationHub under review
+            FCA Supercharged Sandbox second cohort · FCA Digital Sandbox · DNB InnovationHub under review
 
 
 
@@ -337,7 +337,7 @@ The predictive compliance engine simulates governance state forward in time. It 
 
 
 
-            ZQUAS is purpose-built for supervisory evaluation. Accepted into the FCA Digital Sandbox in March 2026. DNB InnovationHub submission under review.
+            ZQUAS is purpose-built for supervisory evaluation. Accepted into the FCA Digital Sandbox in March 2026. Joined the second cohort of the FCA Supercharged Sandbox in July 2026. DNB InnovationHub submission under review.
 
 
 
