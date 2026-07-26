@@ -252,7 +252,7 @@ def page2(c):
          "CSV, API, or real-time feed. Multilingual column mapping (Dutch, German, French, English).",
          "Entities in semantic knowledge graph"],
         ["2. Evaluation",
-         "Every entity evaluated against 100 AML policies on GPU. 150 million+ evaluations/second.",
+         "Every entity evaluated against 100 AML policies on GPU. 190 million evaluations/second at batch 4,096.",
          "Risk score + verdict per entity per policy"],
         ["3. Proof",
          "Every evaluation produces an Ed25519-signed cryptographic proof. Independently verifiable.",
@@ -350,12 +350,12 @@ def page3(c):
     widths = [220, CW - 220]
     rows = [
         ["500,000 entities x 100 policies", "Under 2 seconds"],
-        ["Policy throughput", "150 million+ evaluations/second"],
+        ["Policy throughput", "190 million evaluations/second at batch 4,096"],
         ["Alert lifecycle (ingestion to triage)", "Under 10 milliseconds"],
         ["Federation per bilateral round", "Under 10 seconds"],
         ["Agent triage (50,000 entities)", "Under 10 milliseconds"],
         ["Total GPU memory", "Under 1 GB"],
-        ["Automated tests", "12,342 (222K lines test code)"],
+        ["Automated tests", "13,336 (222K lines test code)"],
         ["Scaling", "Linear (2x entities = 2x time)"],
     ]
     y = draw_table(c, y, headers, rows, widths, font_size=7.5, row_h=14)
@@ -429,12 +429,12 @@ def page4(c):
     y = section_header(c, y, "At a Glance")
 
     stats = [
-        ("150M+", "policy evaluations/sec"),
+        ("190M", "policy evaluations/sec"),
         ("<2s", "500K entities, 100 policies"),
         ("<10ms", "alert lifecycle"),
         ("<10s", "federation per round"),
         ("<1 GB", "total VRAM"),
-        ("12,342", "automated tests"),
+        ("13,336", "automated tests"),
     ]
 
     col_w = CW / 3

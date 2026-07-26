@@ -265,7 +265,7 @@
                         <td class="cap-label">Architecture</td>
                         <td>Database and rules engine. SQL queries on stored transactions.</td>
                         <td>Database with ML models. Batch scoring added to existing pipeline.</td>
-                        <td class="zquas-val">GPU-native entity system. Each monitored account carries its own state, risk profile, and decision history, evaluated against the policy set on every change. 150 million+ policy evaluations per second. Alert lifecycle under 10ms.</td>
+                        <td class="zquas-val">GPU-native entity system. Each monitored account carries its own state, risk profile, and decision history, evaluated against the policy set on every change. 190 million policy evaluations per second at batch 4,096. Alert lifecycle under 10ms.</td>
                     </tr>
                     <tr>
                         <td class="cap-label">AI Integration</td>
@@ -277,13 +277,13 @@
                         <td class="cap-label">Cross-Institutional Detection</td>
                         <td class="val-no">Not possible. Each institution operates in isolation.</td>
                         <td class="val-no">Not possible. Same data silo, better algorithms.</td>
-                        <td class="zquas-val">Privacy-preserving federation: ECDH-PSI + Garbled Circuits + OT. Banks jointly detect suspicious entities without sharing data. ~15 seconds per bilateral round at 100K entities. Dual Ed25519 attestation per round.</td>
+                        <td class="zquas-val">Privacy-preserving federation: ECDH-PSI + Garbled Circuits + OT. Banks jointly detect suspicious entities without sharing data. ~3.1 seconds per bilateral round at 100K entities. Dual Ed25519 attestation per round.</td>
                     </tr>
                     <tr>
                         <td class="cap-label">Processing Speed</td>
                         <td>Batch. Overnight or hourly. Thousands of decisions per second.</td>
                         <td>Near-real-time. Minutes to hours. Tens of thousands per second.</td>
-                        <td class="zquas-val">Sub-10ms alert lifecycle. 500,000 entities evaluated in under 2 seconds on a single GPU. 150M+ policy evaluations per second.</td>
+                        <td class="zquas-val">Sub-10ms alert lifecycle. 500,000 entities evaluated in under 2 seconds on a single GPU. 190M policy evaluations per second at batch 4,096.</td>
                     </tr>
                     <tr>
                         <td class="cap-label">Governance Model</td>
@@ -346,7 +346,7 @@
         <h2 class="section-title">The Numbers</h2>
         <div class="stats-row">
             <div class="stat-box">
-                <div class="stat-val">150M+</div>
+                <div class="stat-val">190M</div>
                 <div class="stat-label">compliance policy evaluations per second</div>
             </div>
             <div class="stat-box">
@@ -358,7 +358,7 @@
                 <div class="stat-label">500K entities, 100 policies</div>
             </div>
             <div class="stat-box">
-                <div class="stat-val">12,342</div>
+                <div class="stat-val">13,336</div>
                 <div class="stat-label">automated tests</div>
             </div>
         </div>

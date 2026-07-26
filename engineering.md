@@ -1,6 +1,6 @@
 # Engineering Standards | ZQUAS
 
-> Engineering standards behind the ZQUAS compliance engine. 12,342 automated tests, 222,000 lines of test code, FCNS detection benchmark, defence-grade build hardening, reproducible binaries, proven cryptography.
+> Engineering standards behind the ZQUAS compliance engine. 13,336 automated tests, 222,000 lines of test code, FCNS detection benchmark, defence-grade build hardening, reproducible binaries, proven cryptography.
 
 Source: https://zquas.ai/engineering.html
 Site: https://zquas.ai
@@ -22,11 +22,11 @@ How we build matters as much as what we build.
 
 
 
-## 12,342 Tests
+## 13,336 Tests
 
 
 
-The engine is verified by 12,342 automated tests across 222,000 lines of test code: more test code than most companies have production code. Coverage spans cryptographic correctness, GPU compute validation, governance logic, compliance rules, privacy-preserving federation protocols, financial crime detection, synthetic benchmarking, browser-level UI, and infrastructure. The breakdown: 7,218 core engine tests (GTest, 12 audited subsystems), 1,845 Playwright browser tests, 1,185 AI agent tests, 826 case management tests, 592 end-to-end pipeline tests, 449 detection pipeline tests, plus integration, runner, narrative, config, and Python harnesses. Every test runs on every build. Zero tolerance for failures. Categories include known-answer tests against published cryptographic vectors, cross-validation between independent implementations (GPU vs CPU), boundary value analysis, adversarial input testing, determinism verification across repeated runs, multi-institution federation integration tests with realistic data distributions, and end-to-end browser tests verifying that the operator console renders real data from real detection pipelines.
+The engine is verified by 13,336 automated tests across 222,000 lines of test code: more test code than most companies have production code. Coverage spans cryptographic correctness, GPU compute validation, governance logic, compliance rules, privacy-preserving federation protocols, financial crime detection, synthetic benchmarking, browser-level UI, and infrastructure. The breakdown, counted by each harness's own lister and verified on 12 June 2026: 11,734 GTest, 980 Playwright browser tests, 622 pytest. The shape matters as much as the count: roughly 7 percent are full-scale composition, integration and locked-number proofs at realistic scale, and roughly 93 percent are unit, boundary and single-subsystem correctness tests. A bare count implies more assurance than it delivers, so we publish both. Every test runs on every build. Zero tolerance for failures. Categories include known-answer tests against published cryptographic vectors, cross-validation between independent implementations (GPU vs CPU), boundary value analysis, adversarial input testing, determinism verification across repeated runs, multi-institution federation integration tests with realistic data distributions, and end-to-end browser tests verifying that the operator console renders real data from real detection pipelines.
 
 
 
@@ -48,7 +48,7 @@ The engine includes the Financial Crime Network Simulator (FCNS): the first synt
 
 
 
-All detection, scoring, federation, and simulation runs on GPU. 396,000 lines of C++ and CUDA. 493 GPU kernels covering detection, federation, cryptography, simulation, attestation, and adversarial fuzzing. Over 150 million policy evaluations per second. 500,000 entities evaluated in under 2 seconds. Zero CPU fallback paths in the detection pipeline. Every kernel is a CUDA global function in a dedicated compute file. Tests call GPU kernels directly with device memory. No CPU wrappers hiding GPU execution. The engine does not use GPU as an accelerator. GPU is the only execution path.
+All detection, scoring, federation, and simulation runs on GPU. 396,000 lines of C++ and CUDA. 493 GPU kernels covering detection, federation, cryptography, simulation, attestation, and adversarial fuzzing. 190 million policy evaluations per second at batch 4,096. 500,000 entities evaluated in under 2 seconds. Zero CPU fallback paths in the detection pipeline. Every kernel is a CUDA global function in a dedicated compute file. Tests call GPU kernels directly with device memory. No CPU wrappers hiding GPU execution. The engine does not use GPU as an accelerator. GPU is the only execution path.
 
 
 
@@ -59,7 +59,7 @@ All detection, scoring, federation, and simulation runs on GPU. 396,000 lines of
 
 
 
-Cross-bank detection uses Multi-Party Computation: the data never leaves the bank. Private Set Intersection for identity matching. Arithmetic Secret Sharing and Garbled Circuits for joint risk computation. Oblivious Transfer Extension for efficient protocol execution. The federation protocol runs over the open internet. The security is in the cryptography, not the network. Same elliptic curve foundations as Bitcoin, stronger privacy guarantees. Benchmarked at 602 milliseconds for three-bank federation with zero false positives.
+Cross-bank detection uses Multi-Party Computation: the data never leaves the bank. Private Set Intersection for identity matching. Arithmetic Secret Sharing and Garbled Circuits for joint risk computation. Oblivious Transfer Extension for efficient protocol execution. The federation protocol runs over the open internet. The security is in the cryptography, not the network. Same elliptic curve foundations as Bitcoin, stronger privacy guarantees. Benchmarked across a three-bank topology at 100,000 entities per party: the largest bilateral round completes in 3.1 seconds, the other two in 1.5 and 1.4 seconds, against a 10-second bound enforced in continuous integration.
 
 
 
@@ -121,7 +121,7 @@ Financial computations use fixed-point arithmetic with explicit precision guaran
 
 
 
-                    12,342
+                    13,336
                     tests
 
 
@@ -141,7 +141,7 @@ Financial computations use fixed-point arithmetic with explicit precision guaran
                     floating-point in risk logic
 
 
-                    150M+
+                    190M
                     policy evaluations per second
 
 
@@ -153,5 +153,5 @@ Financial computations use fixed-point arithmetic with explicit precision guaran
                     detection metrics
 
 
-                    602ms
-                    three-bank federation
+                    3.1s
+                    largest bilateral round, three-bank, 100K entities each

@@ -306,7 +306,7 @@ One end-to-end execution of the cross-institutional MPC protocol between two par
 
 
 
-ZQUAS publishes a benchmark of under 10 seconds for 100,000 entities (measured: 7.8 seconds). Both parties sign the result with Ed25519.
+ZQUAS publishes a benchmark of under 10 seconds for 100,000 entities (measured: 3.1 seconds). Both parties sign the result with Ed25519.
 
 
 
@@ -338,7 +338,7 @@ Throughput metric for compliance engines. One CEPS is one entity evaluated again
 
 
 
-The ZQUAS engine sustains 150 million plus CEPS on a single NVIDIA RTX 5090.
+The ZQUAS engine sustains 190 million CEPS at a dispatch batch of 4,096 entities on a single NVIDIA RTX 5090, with a 100 million floor enforced in continuous integration.
 
 
 

@@ -71,7 +71,7 @@ The EU has now created the legal basis. AMLR Article 75 (applicable July 2027) e
 | 
                             Processing Speed | 
                             Batch processing. Overnight or hourly cycles. | 
-                            150 million+ compliance policy evaluations per second. 
+                            190 million compliance policy evaluations per second at batch 4,096. 
 
                             GPU-native computation evaluates the entire entity population continuously. There is no queue. There is no overnight batch. 
 | 
@@ -129,7 +129,7 @@ The EU has now created the legal basis. AMLR Article 75 (applicable July 2027) e
 
 
 
-                150M+
+                190M
                 compliance policy evaluations per second
 
 
@@ -141,7 +141,7 @@ The EU has now created the legal basis. AMLR Article 75 (applicable July 2027) e
                 500K entities, 100 policies
 
 
-                12,342
+                13,336
                 automated tests
 
 

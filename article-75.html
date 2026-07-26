@@ -543,7 +543,7 @@
                 <tbody>
                     <tr>
                         <td class="td-label">Single node: 500,000 entities, 100 AML policies</td>
-                        <td class="td-accent">under 2 seconds (measured: 1,204ms)</td>
+                        <td class="td-accent">under 2 seconds (measured: 1,584ms)</td>
                     </tr>
                     <tr>
                         <td class="td-label">Alert lifecycle: ingestion to agent triage</td>
@@ -551,7 +551,7 @@
                     </tr>
                     <tr>
                         <td class="td-label">Sustained throughput</td>
-                        <td class="td-accent">150 million+ CEPS (compliance policy evaluations per second)</td>
+                        <td class="td-accent">190 million CEPS at batch 4,096 (compliance policy evaluations per second)</td>
                     </tr>
                     <tr>
                         <td class="td-label">Detection accuracy</td>
@@ -559,7 +559,7 @@
                     </tr>
                     <tr>
                         <td class="td-label">Federation: 100K entities, bilateral round</td>
-                        <td>~15 seconds per bilateral round (TCP localhost; real network adds latency)</td>
+                        <td>~3.1 seconds per bilateral round at 100K entities per party (TCP localhost, 10s bound enforced in CI; real network adds latency)</td>
                     </tr>
                     <tr>
                         <td class="td-label">Memory stability (50-epoch endurance test)</td>
@@ -674,7 +674,7 @@
                     <tr>
                         <td class="td-label">500,000</td>
                         <td class="td-accent">under 2 seconds</td>
-                        <td>150M+ CEPS</td>
+                        <td>190M CEPS at batch 4,096</td>
                         <td>4/4</td>
                         <td>29 (100 rules)</td>
                     </tr>
@@ -683,7 +683,7 @@
         </div>
 
         <p>
-            Three things to note. Throughput increases with entity count because larger batches amortise the fixed cost of GPU kernel launches. At 500K entities, the engine sustains 150 million+ compliance policy evaluations per second. These times are for GPU policy evaluation including full proof generation (Merkle root + Ed25519 signature). The 29 policies are not simplified test rules. They are the complete policy set spanning sanctions screening, PEP/EDD, transaction monitoring, fraud, KYC, crypto, and conduct, audited line-by-line with zero critical discrepancies.
+            Three things to note. Throughput increases with batch size because larger batches amortise the fixed cost of GPU kernel launches. At the engine's maximum dispatch batch of 4,096 entities, it sustains 190 million compliance policy evaluations per second, with a 100 million floor enforced in continuous integration. That rate is measured at batch scale and is not extrapolated to the 500,000-entity cycle, which is reported as wall-clock time above. These times are for GPU policy evaluation including full proof generation (Merkle root + Ed25519 signature). The 29 policies are not simplified test rules. They are the complete policy set spanning sanctions screening, PEP/EDD, transaction monitoring, fraud, KYC, crypto, and conduct, audited line-by-line with zero critical discrepancies.
         </p>
 
         <h2>Privacy-preserving federation performance</h2>
@@ -702,7 +702,7 @@
                     <tr>
                         <td class="td-label">2-bank bilateral round</td>
                         <td>100,000</td>
-                        <td class="td-accent">~15 seconds (TCP localhost)</td>
+                        <td class="td-accent">~3.1 seconds (TCP localhost)</td>
                         <td>ECDH-PSI + GC + IKNP OT</td>
                     </tr>
                     <tr>

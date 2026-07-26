@@ -190,7 +190,7 @@ def page1(c):
     # Stats row
     stat_w = CW / 3
     stats = [
-        ("150M+", "POLICY EVALUATIONS / SEC"),
+        ("190M", "POLICY EVALUATIONS / SEC"),
         ("29", "POLICIES IN PARALLEL"),
         ("6", "AML DOMAINS"),
     ]
@@ -248,7 +248,7 @@ def page1(c):
     left_items = [
         ("GPU-Native Processing",
          "Full policy sets evaluated against every transaction simultaneously on GPU. "
-         "Real-time, not batch. 150 million+ policy evaluations per second per installation."),
+         "Real-time, not batch. 190 million policy evaluations per second at batch 4,096 per installation."),
         ("Privacy-Preserving MPC",
          "Cross-institutional detection via secure multi-party computation, validated in "
          "controlled testing with three simulated banks. No central data pool. No GDPR "
@@ -292,7 +292,7 @@ def page2(c):
     engine_headers = ["Capability", "Detail"]
     engine_widths = [140, CW - 140]
     engine_rows = [
-        ["Processing speed", "150M+ CEPS. 500K entities in under 2 seconds. Alert lifecycle under 10ms."],
+        ["Processing speed", "190M CEPS at batch 4,096. 500K entities in under 2 seconds. Alert lifecycle under 10ms."],
         ["Policy language", "CPL: lexer, parser, semantic analyser, compiler to GPU bytecode"],
         ["Adjudication pipeline", "Triple-stream GPU: Load (H2D), Adjudicate (kernel), Commit (D2H + sign)"],
         ["Determinism", "Byte-identical replay guaranteed. Fixed-point arithmetic where applicable"],
@@ -431,7 +431,7 @@ def page3(c):
         ["Cross-bank detection", "No", "No", "Yes (validated, pilot-ready)"],
         ["Cryptographic proof", "No", "No", "Yes (Ed25519, Merkle)"],
         ["Deterministic eval", "No", "No", "Yes (byte-identical)"],
-        ["Real-time at scale", "Limited", "Partial", "150M+ CEPS. Under 2s at 500K entities."],
+        ["Real-time at scale", "Limited", "Partial", "190M CEPS at batch 4,096. Under 2s at 500K entities."],
         ["Adversarial self-testing", "No", "No", "Continuous (GPU)"],
         ["Regulator verification", "Trust-based", "Trust-based", "Independent CLI"],
         ["Replication timeline", "N/A", "N/A", "3-5 years minimum"],
@@ -450,9 +450,9 @@ def page3(c):
         "FCA Digital Sandbox: Accepted (March 2026)",
         "FCA Supercharged Sandbox: Second cohort, one of 21 firms (July 2026)",
         "NVIDIA Inception program member",
-        "Benchmark: 150M+ CEPS on RTX 5090. 500,000 entities in under 2 seconds. Alert lifecycle under 10ms.",
+        "Benchmark: 190M CEPS at batch 4,096 on RTX 5090. 500,000 entities in under 2 seconds. Alert lifecycle under 10ms.",
         "Cross-institutional detection: under 10 seconds per bilateral round. 4/4 typologies detected.",
-        "Test coverage: 12,342 automated tests, 222,000 lines of test code",
+        "Test coverage: 13,336 automated tests, 222,000 lines of test code",
         "Regulatory frameworks: EU AI Act, AMLR, FATF R15, NIST AI RMF, ISO 42001, MAS TRM, GDPR, DORA",
     ]
     for text in traction:
@@ -565,7 +565,7 @@ def page4(c):
     result_rows = [
         ["Single-bank pipeline (500K entities, 100 policies)", "Under 2 seconds"],
         ["Bilateral federation round (100K entities per bank)", "Under 10 seconds"],
-        ["Peak throughput", "150M+ CEPS (compliance policy evaluations/sec)"],
+        ["Peak throughput", "190M CEPS at batch 4,096 (compliance policy evaluations/sec)"],
         ["Typologies detected", "4/4 at every scale, per-entity verified"],
         ["Transport security", "AES-256-GCM + Ed25519 on every round"],
         ["Data shared between banks", "Zero bytes of customer data"],
@@ -676,7 +676,7 @@ def page5(c):
         ["Codebase", "396K lines C++/CUDA, 222K lines test code, 618K total, 493 GPU kernels"],
         ["GPU targets", "sm_86, sm_89, sm_100, sm_120"],
         ["Build hardening", "/sdl, /guard:cf, /GS, /Qspectre, /CETCOMPAT, /HIGHENTROPYVA"],
-        ["Testing", "12,342 automated tests, 222,000 lines of test code, 12 audited subsystems"],
+        ["Testing", "13,336 automated tests, 222,000 lines of test code, 12 audited subsystems"],
         ["Cryptography", "BLAKE3, SHA-256, Ed25519, ZK-optimised hash functions, SipHash-128"],
         ["Entity system", "High-performance entity component system"],
         ["Serialisation", "Custom binary format (64B-aligned, std140-compatible)"],

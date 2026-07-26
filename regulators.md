@@ -263,7 +263,7 @@ Data protection by design. Privacy-preserving MPC architecture eliminates cross-
 
 
 
-Digital operational resilience. ICT risk management, incident reporting, and third-party oversight. 12,342 automated tests across the codebase, with 7,218 core engine tests across 12 audited subsystems. Ed25519-signed audit trail for every compliance decision. Binary self-verification and build attestation with embedded cryptographic hashes for runtime integrity verification.
+Digital operational resilience. ICT risk management, incident reporting, and third-party oversight. 13,336 automated tests across the codebase, verified 12 June 2026: 11,734 GTest, 980 Playwright, 622 pytest, of which roughly 7 percent are full-scale composition and locked-number proofs. Ed25519-signed audit trail for every compliance decision. Binary self-verification and build attestation with embedded cryptographic hashes for runtime integrity verification.
 
 
 

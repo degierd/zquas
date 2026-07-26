@@ -272,19 +272,19 @@ The privacy guarantee is mathematical, not administrative.
                         Measured result 
 | 
                         Single node: 500,000 entities, 100 AML policies | 
-                        under 2 seconds (measured: 1,204ms) 
+                        under 2 seconds (measured: 1,584ms) 
 | 
                         Alert lifecycle: ingestion to agent triage | 
                         under 10ms (full lifecycle breakdown on benchmark page) 
 | 
                         Sustained throughput | 
-                        150 million+ CEPS (compliance policy evaluations per second) 
+                        190 million CEPS at batch 4,096 (compliance policy evaluations per second) 
 | 
                         Detection accuracy | 
                         4/4 typologies detected at every scale, per-entity verified 
 | 
                         Federation: 100K entities, bilateral round | 
-                        ~15 seconds per bilateral round (TCP localhost; real network adds latency) 
+                        ~3.1 seconds per bilateral round at 100K entities per party (TCP localhost, 10s bound enforced in CI; real network adds latency) 
 | 
                         Memory stability (50-epoch endurance test) | 
                         0 MB VRAM leak, 0 MB RSS growth 
@@ -414,10 +414,10 @@ The privacy guarantee is mathematical, not administrative.
 | 
                         500,000 | 
                         under 2 seconds | 
-                        150M+ CEPS | 
+                        190M CEPS at batch 4,096 | 
                         4/4 | 
                         29 (100 rules) 
-            Three things to note. Throughput increases with entity count because larger batches amortise the fixed cost of GPU kernel launches. At 500K entities, the engine sustains 150 million+ compliance policy evaluations per second. These times are for GPU policy evaluation including full proof generation (Merkle root + Ed25519 signature). The 29 policies are not simplified test rules. They are the complete policy set spanning sanctions screening, PEP/EDD, transaction monitoring, fraud, KYC, crypto, and conduct, audited line-by-line with zero critical discrepancies.
+            Three things to note. Throughput increases with batch size because larger batches amortise the fixed cost of GPU kernel launches. At the engine's maximum dispatch batch of 4,096 entities, it sustains 190 million compliance policy evaluations per second, with a 100 million floor enforced in continuous integration. That rate is measured at batch scale and is not extrapolated to the 500,000-entity cycle, which is reported as wall-clock time above. These times are for GPU policy evaluation including full proof generation (Merkle root + Ed25519 signature). The 29 policies are not simplified test rules. They are the complete policy set spanning sanctions screening, PEP/EDD, transaction monitoring, fraud, KYC, crypto, and conduct, audited line-by-line with zero critical discrepancies.
 
 
 
@@ -437,7 +437,7 @@ The privacy guarantee is mathematical, not administrative.
 | 
                         2-bank bilateral round | 
                         100,000 | 
-                        ~15 seconds (TCP localhost) | 
+                        ~3.1 seconds (TCP localhost) | 
                         ECDH-PSI + GC + IKNP OT 
 | 
                         Attestation per round | 

@@ -1,4 +1,4 @@
-# Benchmark: 150M+ Evaluations/sec, Under 10ms Alert Lifecycle
+# Benchmark: 190M Policy Evaluations/sec, Under 10ms Per Alert
 
 > Documented GPU benchmark of the ZQUAS engine. 500K entities in under 2 seconds on NVIDIA RTX 5090. Alert lifecycle under 10ms.
 
@@ -13,7 +13,7 @@ Benchmark Study
 
 
 
-            A documented benchmark of the ZQUAS engine at production scale. 150 million+ compliance policy evaluations per second. Alert lifecycle under 10ms from ingestion to triage. Every result measured on NVIDIA RTX 5090. Every decision signed.
+            A documented benchmark of the ZQUAS engine. 190 million compliance policy evaluations per second at a dispatch batch of 4,096. Alert lifecycle under 10ms per alert, from ingestion to triage. Every result measured on NVIDIA RTX 5090 against synthetic data with realistic parameter distributions. Every decision signed.
 
 
         Benchmark date: March 2026 · Hardware: NVIDIA RTX 5090 (Blackwell, sm_100, 170 SMs, 32GB VRAM)
@@ -105,7 +105,7 @@ Benchmark Study
 
 
 
-CEPS stands for Compliance Policy Evaluations Per Second. One evaluation is a single entity assessed against one policy. The engine evaluates all entities against all policies in parallel. 150M+ CEPS means over 150 million individual policy checks per second sustained at production scale.
+CEPS stands for Compliance Policy Evaluations Per Second. One evaluation is a single entity assessed against one policy. The engine evaluates all entities against all policies in parallel. The measured figure is 190 million CEPS at a dispatch batch of 4,096 entities on an RTX 5090, timed end to end including host-to-device transfer, kernel execution, device-to-host readback, Merkle construction and Ed25519 signing. A regression floor of 100 million CEPS is enforced in continuous integration. The figure is measured at that batch size and is not extrapolated to the 500,000-entity cycle, which is reported separately as wall-clock above.
 
 
 
@@ -230,11 +230,11 @@ These are representative compliance domains. The specific rules, thresholds, and
 
 
                 < 2s
-                500K entities × 100 policies (1,204ms)
+                500K entities × 100 policies (1,584ms)
 
 
-                150M+
-                CEPS sustained at production scale
+                190M
+                CEPS at batch 4,096 (CI floor 100M)
 
 
                 < 10ms
@@ -244,7 +244,7 @@ These are representative compliance domains. The specific rules, thresholds, and
 
 
             **Alert lifecycle breakdown:** semantic graph ingestion 12µs → GPU policy evaluation 271µs → AI agent triage 4,644µs → total 4.93ms
-            **Scaling:** Linear confirmed. 2× entities = 2× time. CEPS stable at 150M+ for production-scale batches (250K+).
+            **Scaling:** Linear confirmed. 2× entities = 2× time.
             **VRAM usage:** 76MB active GPU memory for the policy evaluation pipeline (0.2% of 32GB). Total system memory including the GPU resource manager: 426MB (1.3%).
             **Speedup vs. 24h batch:** Millions of times faster than a standard overnight batch cycle.
 
@@ -260,33 +260,31 @@ These are representative compliance domains. The specific rules, thresholds, and
 | 
                     Entity Count | 
                     Policies | 
-                    Wall-clock | 
-                    CEPS 
+                    Wall-clock 
 | 
                     10,000 | 
                     100 | 
-                    24.5ms | 
-                    166M 
+                    24.5ms 
 | 
                     50,000 | 
                     100 | 
-                    120.8ms | 
-                    183M 
+                    120.8ms 
 | 
                     100,000 | 
                     100 | 
-                    237.7ms | 
-                    188M 
+                    237.7ms 
 | 
                     250,000 | 
                     100 | 
-                    607.9ms | 
-                    190M 
+                    607.9ms 
 | 
                     500,000 | 
                     100 | 
-                    1,204ms | 
-                    189M 
+                    1,584ms 
+The 500,000-entity row was re-measured on 24 July 2026 at 1,584 ms, with verdict-leaf audit anchoring live in every epoch. The smaller rows are from the March 2026 run and predate that change, so they understate current wall-clock. Throughput per second is reported separately below, at the batch size it was measured at.
+
+
+
 ### GPU AI Agent System
 
 
@@ -367,7 +365,7 @@ Federation benchmarks measure cross-institutional detection performance. The pro
 
 
 
-At 100,000 entities, a bilateral round completes in approximately 15 seconds over TCP localhost. Real network conditions add latency. Each bilateral round produces dual Ed25519 attestation: both parties sign, and a regulator can verify the result using only the public keys and the proof bundle. No engine access required.
+At 100,000 entities per party with 30,000 matches, a bilateral round completes in 3.1 seconds over TCP localhost, against a 10-second bound enforced in continuous integration. Real network conditions add latency, and the production mesh adds its secure-channel layer. Each bilateral round produces dual Ed25519 attestation: both parties sign, and a regulator can verify the result using only the public keys and the proof bundle. No engine access required.
 
 
 
@@ -392,7 +390,7 @@ The benchmark is deterministic. Running the benchmark suite with the same policy
 
 
 
-Every benchmark result is covered by 12,342 automated tests across the codebase, with 7,218 core engine tests spanning 12 independently audited subsystems covering adversarial fuzzing, semantic graph, compliance policy language, GPU policy evaluation, AI agent triage, federation, UI, GPU resource management, cryptography, and decision pipelines. Crypto KAT tests cover Ed25519 (RFC 8032), SHA-256 (FIPS 180-4), and Blake3 (official vectors). Hardware differences will affect absolute throughput but not determinism or correctness.
+Every benchmark result is covered by 13,336 automated tests across the codebase (11,734 GTest, 980 Playwright, 622 pytest, verified 12 June 2026). Roughly 7 percent are full-scale composition and locked-number proofs and the remainder are unit and boundary tests, because a bare count implies more assurance than it delivers. Coverage spans 12 independently audited subsystems covering adversarial fuzzing, semantic graph, compliance policy language, GPU policy evaluation, AI agent triage, federation, UI, GPU resource management, cryptography, and decision pipelines. Crypto KAT tests cover Ed25519 (RFC 8032), SHA-256 (FIPS 180-4), and Blake3 (official vectors). Hardware differences will affect absolute throughput but not determinism or correctness.
 
 
 

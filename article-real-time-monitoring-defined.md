@@ -147,7 +147,7 @@ Every transaction monitoring vendor claims real-time. The term appears on every 
 
 
 
-            A Level 3 system evaluates the entire customer population, potentially millions of entities, multiple times per second. Every entity's risk is current at all times. When a transaction arrives, the governance decision has already been made. Graph relationships, network topology, and cross-entity patterns are continuously evaluated, not deferred. The 29 transactions per second arrive into a system that is processing 150 million+ policy evaluations per second. The transaction is not the trigger for computation. It is a data point absorbed into a computation that is already running.
+            A Level 3 system evaluates the entire customer population, potentially millions of entities, multiple times per second. Every entity's risk is current at all times. When a transaction arrives, the governance decision has already been made. Graph relationships, network topology, and cross-entity patterns are continuously evaluated, not deferred. The 29 transactions per second arrive into a system that is processing 190 million policy evaluations per second at batch 4,096. The transaction is not the trigger for computation. It is a data point absorbed into a computation that is already running.
 
 
 

@@ -45,9 +45,9 @@ Site: https://zquas.ai
 
                     $ zquas-verify --epoch 2026-07
                     policies100 evaluated · deterministic replay
-                    entities500,000 scored in 1,170 ms
+                    entities500,000 scored in 1,584 ms
                     alertingestion to triage in 3.92 ms
-                    federationbilateral round 7.8 s at 100K entities
+                    federationbilateral round 3.1 s at 100K entities
                     proof912-byte bundle · Ed25519 signed
                     resultVERIFIED · byte-identical replay
 
@@ -58,7 +58,7 @@ Site: https://zquas.ai
             Accepted into the FCA Digital Sandbox · March 2026
             DNB InnovationHub · Submission under review
             NVIDIA Inception program member
-            12,342 automated tests
+            13,336 automated tests
 
 
 
@@ -79,7 +79,7 @@ Site: https://zquas.ai
                     HTML · Verified results
 
                 Federation Performance Across the Full Dutch Banking Sector
-                500,000 entities in under 2 seconds. 150 million+ evaluations per second. Alert lifecycle under 10ms. NVIDIA RTX 5090. Every result signed.
+                500,000 entities in under 2 seconds. 190 million policy evaluations per second at batch 4,096. Alert lifecycle under 10ms per alert. NVIDIA RTX 5090, synthetic data. Every result signed.
             ](benchmark.html)
             [
 
@@ -172,7 +172,7 @@ Legacy rule-based systems generate overwhelming alert volumes. Compliance teams 
 
 
 
-Full policy sets evaluated against every entity simultaneously on GPU. No sampling, no sequential rule execution. 150 million+ policy evaluations per second. Alert lifecycle under 10ms.
+Full policy sets evaluated against every entity simultaneously on GPU. No sampling, no sequential rule execution. 190 million policy evaluations per second at batch 4,096 on RTX 5090. Alert lifecycle under 10ms per alert.
 
 
 
@@ -243,14 +243,6 @@ Built-in compliance evidence production for EU AI Act, NIST AI RMF, ISO 42001, F
 
             Replace fragmented monitoring silos with a single GPU-native compliance engine that runs your entire policy set against every transaction — in real time, with full entity graph context.
 
-
-
-
-                70%+
-                False positive reduction
-
-
-Full network context for every decision eliminates context-blind threshold alerts. Your analysts investigate real risk, not noise.
 
 
 

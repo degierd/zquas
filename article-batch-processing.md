@@ -103,7 +103,7 @@ Your payment infrastructure settles in seconds. Your AML monitoring runs overnig
 
 
 
-            This is what 150 million+ compliance policy evaluations per second looks like in practice. 500,000 entities evaluated against 100 AML policies in under 2 seconds on NVIDIA RTX 5090. Not a burst benchmark. A production-scale workload.
+            This is what 190 million compliance policy evaluations per second at batch 4,096 looks like in practice. 500,000 entities evaluated against 100 AML policies in under 2 seconds on NVIDIA RTX 5090. Not a burst benchmark. A production-scale workload.
 
 
 

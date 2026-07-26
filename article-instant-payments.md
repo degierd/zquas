@@ -181,7 +181,7 @@ Retrospective is not the problem. Slowly retrospective is where the value leaks 
 
 
 
-            The binding constraint on the cross-institutional exchange is communication and protocol rounds rather than arithmetic. A bilateral federation round completes in under 10 seconds, measured at 7.8 seconds across 100,000 entities. That exchange runs on a longer timescale than the local decision it informs.
+            The binding constraint on the cross-institutional exchange is communication and protocol rounds rather than arithmetic. A bilateral federation round completes in under 10 seconds, measured at 3.1 seconds across 100,000 entities. That exchange runs on a longer timescale than the local decision it informs.
 
 
 

@@ -135,7 +135,7 @@
                 "name": "Is ZQUAS production-ready?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Tested and pilot-ready. 12,342 automated tests across 12 audited subsystems on the core engine. 222,000 lines of test code. 396,000 lines of production C++ and CUDA across 493 GPU kernels. Accepted into the FCA Digital Sandbox in March 2026 and the second cohort of the FCA Supercharged Sandbox in July 2026. Member of the NVIDIA Inception programme."
+                    "text": "Tested and pilot-ready. 13,336 automated tests (11,734 GTest, 980 Playwright, 622 pytest); roughly 7 percent are full-scale composition and locked-number proofs, the remainder unit and boundary tests. 222,000 lines of test code. 396,000 lines of production C++ and CUDA across 493 GPU kernels. Accepted into the FCA Digital Sandbox in March 2026 and the second cohort of the FCA Supercharged Sandbox in July 2026. Member of the NVIDIA Inception programme."
                 }
             }
         ]
@@ -215,9 +215,9 @@
                 <div class="hero-proof-body">
                     <div class="proof-row proof-row--cmd"><span class="cmd">$ zquas-verify --epoch 2026-07</span></div>
                     <div class="proof-row"><span class="k">policies</span><span class="v">100 evaluated &middot; deterministic replay</span></div>
-                    <div class="proof-row"><span class="k">entities</span><span class="v">500,000 scored in 1,170 ms</span></div>
+                    <div class="proof-row"><span class="k">entities</span><span class="v">500,000 scored in 1,584 ms</span></div>
                     <div class="proof-row"><span class="k">alert</span><span class="v">ingestion to triage in 3.92 ms</span></div>
-                    <div class="proof-row"><span class="k">federation</span><span class="v">bilateral round 7.8 s at 100K entities</span></div>
+                    <div class="proof-row"><span class="k">federation</span><span class="v">bilateral round 3.1 s at 100K entities</span></div>
                     <div class="proof-row"><span class="k">proof</span><span class="v">912-byte bundle &middot; Ed25519 signed</span></div>
                     <div class="proof-row proof-row--ok"><span class="k">result</span><span class="v">VERIFIED &middot; byte-identical replay</span></div>
                 </div>
@@ -228,7 +228,7 @@
             <span>Accepted into the FCA Digital Sandbox &middot; March 2026</span>
             <span>DNB InnovationHub &middot; Submission under review</span>
             <span>NVIDIA Inception program member</span>
-            <span>12,342 automated tests</span>
+            <span>13,336 automated tests</span>
         </div>
     </div>
 </section>
@@ -251,7 +251,7 @@
                     <span class="doc-format">HTML &middot; Verified results</span>
                 </div>
                 <div class="doc-title">Federation Performance Across the Full Dutch Banking Sector</div>
-                <div class="doc-desc">500,000 entities in under 2 seconds. 150 million+ evaluations per second. Alert lifecycle under 10ms. NVIDIA RTX 5090. Every result signed.</div>
+                <div class="doc-desc">500,000 entities in under 2 seconds. 190 million policy evaluations per second at batch 4,096. Alert lifecycle under 10ms per alert. NVIDIA RTX 5090, synthetic data. Every result signed.</div>
             </a>
             <a href="engineering.html" class="doc-item">
                 <div class="doc-meta">
@@ -391,7 +391,7 @@
             <div class="arch-card">
                 <div class="arch-tag">GPU-NATIVE</div>
                 <h3>Real-Time Adjudication</h3>
-                <p>Full policy sets evaluated against every entity simultaneously on GPU. No sampling, no sequential rule execution. 150 million+ policy evaluations per second. Alert lifecycle under 10ms.</p>
+                <p>Full policy sets evaluated against every entity simultaneously on GPU. No sampling, no sequential rule execution. 190 million policy evaluations per second at batch 4,096 on RTX 5090. Alert lifecycle under 10ms per alert.</p>
             </div>
             <div class="arch-card">
                 <div class="arch-tag">PRIVACY-PRESERVING</div>
@@ -464,11 +464,6 @@
             Replace fragmented monitoring silos with a single GPU-native compliance engine that runs your entire policy set against every transaction — in real time, with full entity graph context.
         </p>
         <div class="metric-grid">
-            <div class="metric-card">
-                <span class="metric-val">70%+</span>
-                <span class="metric-label">False positive reduction</span>
-                <p>Full network context for every decision eliminates context-blind threshold alerts. Your analysts investigate real risk, not noise.</p>
-            </div>
             <div class="metric-card">
                 <span class="metric-val">Real-time</span>
                 <span class="metric-label">Not overnight batch</span>

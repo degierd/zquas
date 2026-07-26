@@ -282,7 +282,7 @@ Joint presentation to regulator. Demonstrate detection. Discuss GDPR position on
                 Alert lifecycle: ingestion to triage
 
 
-                150M+
+                190M
                 CEPS: compliance policy evaluations per second
 
 
@@ -290,7 +290,7 @@ Joint presentation to regulator. Demonstrate detection. Discuss GDPR position on
                 Real-world typologies detected, per-entity verified
 
 
-                12,342
+                13,336
                 Automated tests across the codebase
 
 

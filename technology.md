@@ -51,7 +51,7 @@ Compliance policies are written in a domain-specific language designed for regul
 
 
 
-The compiled policy bytecode executes on GPU. Each entity is evaluated against the full policy set in parallel. The engine processes 500,000 entities across 100 AML policies in under 2 seconds, sustaining 150 million+ compliance policy evaluations per second. Alert lifecycle under 10ms. Results are deterministic: same policy version, same input data, same verdict.
+The compiled policy bytecode executes on GPU. Each entity is evaluated against the full policy set in parallel. The engine processes 500,000 entities across 100 AML policies in under 2 seconds, sustaining 190 million compliance policy evaluations per second at batch 4,096. Alert lifecycle under 10ms. Results are deterministic: same policy version, same input data, same verdict.
 
 
 
@@ -90,7 +90,7 @@ Every batch of compliance decisions produces a sealed proof bundle. The bundle i
 
 
 
-When multiple institutions run ZQUAS, cross-bank detection activates via privacy-preserving federation. The protocol combines ECDH-PSI (X25519) for entity matching, Yao's Garbled Circuits (Free-XOR) for risk comparison, and IKNP OT Extension (Chou-Orlandi base OT on P-256) for oblivious transfer. Security model: semi-honest. Transport: AES-256-GCM with X25519 key exchange. Each institution retains full data sovereignty. No raw entity data crosses institutional boundaries. At 100,000 entities, a bilateral round completes in approximately 15 seconds. Both parties sign the result with Ed25519. A regulator verifies the attestation with a public key alone. 361 tests, zero critical findings.
+When multiple institutions run ZQUAS, cross-bank detection activates via privacy-preserving federation. The protocol combines ECDH-PSI (X25519) for entity matching, Yao's Garbled Circuits (Free-XOR) for risk comparison, and IKNP OT Extension (Chou-Orlandi base OT on P-256) for oblivious transfer. Security model: semi-honest. Transport: AES-256-GCM with X25519 key exchange. Each institution retains full data sovereignty. No raw entity data crosses institutional boundaries. At 100,000 entities, a bilateral round completes in approximately 3.1 seconds. Both parties sign the result with Ed25519. A regulator verifies the attestation with a public key alone. 361 tests, zero critical findings.
 
 
 
@@ -227,7 +227,7 @@ MSVC /sdl, /guard:cf, /GS, /Qspectre, /fp:strict. Linker: /CETCOMPAT, /DYNAMICBA
 
 
 
-12,342 automated tests across the codebase. 7,218 core engine tests across 12 independently audited subsystems (GTest). 1,845 Playwright browser tests. 1,185 AI agent tests. 826 case management tests. 592 end-to-end pipeline tests. 449 detection pipeline tests. CPL engine: 288 tests. Federation: 361 tests. Crypto KAT tests: Ed25519 (RFC 8032), SHA-256 (FIPS 180-4), Blake3 (official vectors).
+13,336 automated tests across the codebase, verified 12 June 2026: 11,734 GTest, 980 Playwright browser tests, 622 pytest. Roughly 7 percent are full-scale composition and locked-number proofs, the remainder unit and boundary tests. CPL engine: 288 tests. Federation: 361 tests. Crypto KAT tests: Ed25519 (RFC 8032), SHA-256 (FIPS 180-4), Blake3 (official vectors).
 
 
 

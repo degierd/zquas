@@ -71,7 +71,7 @@ Built from the ground up as a GPU-native runtime. Each monitored entity carries 
                         Architecture | 
                         Database and rules engine. SQL queries on stored transactions. | 
                         Database with ML models. Batch scoring added to existing pipeline. | 
-                        GPU-native entity system. Each monitored account carries its own state, risk profile, and decision history, evaluated against the policy set on every change. 150 million+ policy evaluations per second. Alert lifecycle under 10ms. 
+                        GPU-native entity system. Each monitored account carries its own state, risk profile, and decision history, evaluated against the policy set on every change. 190 million policy evaluations per second at batch 4,096. Alert lifecycle under 10ms. 
 | 
                         AI Integration | 
                         None. Rules are manually authored and maintained. | 
@@ -81,12 +81,12 @@ Built from the ground up as a GPU-native runtime. Each monitored entity carries 
                         Cross-Institutional Detection | 
                         Not possible. Each institution operates in isolation. | 
                         Not possible. Same data silo, better algorithms. | 
-                        Privacy-preserving federation: ECDH-PSI + Garbled Circuits + OT. Banks jointly detect suspicious entities without sharing data. ~15 seconds per bilateral round at 100K entities. Dual Ed25519 attestation per round. 
+                        Privacy-preserving federation: ECDH-PSI + Garbled Circuits + OT. Banks jointly detect suspicious entities without sharing data. ~3.1 seconds per bilateral round at 100K entities. Dual Ed25519 attestation per round. 
 | 
                         Processing Speed | 
                         Batch. Overnight or hourly. Thousands of decisions per second. | 
                         Near-real-time. Minutes to hours. Tens of thousands per second. | 
-                        Sub-10ms alert lifecycle. 500,000 entities evaluated in under 2 seconds on a single GPU. 150M+ policy evaluations per second. 
+                        Sub-10ms alert lifecycle. 500,000 entities evaluated in under 2 seconds on a single GPU. 190M policy evaluations per second at batch 4,096. 
 | 
                         Governance Model | 
                         Configuration files. Change management committees. Months to update a rule. | 
@@ -134,7 +134,7 @@ Built from the ground up as a GPU-native runtime. Each monitored entity carries 
 
 
 
-                150M+
+                190M
                 compliance policy evaluations per second
 
 
@@ -146,7 +146,7 @@ Built from the ground up as a GPU-native runtime. Each monitored entity carries 
                 500K entities, 100 policies
 
 
-                12,342
+                13,336
                 automated tests
 
 

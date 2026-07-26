@@ -202,7 +202,7 @@ The institutional installation also collects and correlates signals in real-time
 
 
 
-At validated performance levels, the institutional installation processes 500,000 entities in under 2 seconds on a single GPU, with over 150 million policy evaluations per second. This is not batch processing measured in hours. It is continuous monitoring measured in seconds.
+At validated performance levels, the institutional installation processes 500,000 entities in under 2 seconds on a single GPU, with 190 million policy evaluations per second at batch 4,096. This is not batch processing measured in hours. It is continuous monitoring measured in seconds.
 
 
 
@@ -318,7 +318,7 @@ The challenge is speed. With the rise of instant payment rails (SEPA Instant in 
 
 
 
-The F1 Engine's policy evaluation rate (over 150 million checks per second) means that a complete sanctions screen of the bank's entire customer base against all global sanctions lists can complete in the time it takes a legacy system to screen a single transaction. For banks processing millions of transactions daily through instant payment channels, this is not a performance luxury. It is a regulatory necessity.
+The F1 Engine's policy evaluation rate (190 million policy checks per second at batch 4,096) means that a complete sanctions screen of the bank's entire customer base against all global sanctions lists can complete in the time it takes a legacy system to screen a single transaction. For banks processing millions of transactions daily through instant payment channels, this is not a performance luxury. It is a regulatory necessity.
 
 
 
@@ -562,11 +562,11 @@ Claims of architectural innovation require evidence. The F1 Engine is a measured
 
 
 
-**Codebase:** 396,000 lines of C++ and CUDA across 493 GPU kernels. 222,000 lines of test code. 618,000 lines total. One codebase, three deployment targets: the banking detection engine, the AI inference layer, and the cross-bank federation layer. Every kernel is a __global__ function in a .cu file. No CPU fallback. 12,342 automated tests.
+**Codebase:** 396,000 lines of C++ and CUDA across 493 GPU kernels. 222,000 lines of test code. 618,000 lines total. One codebase, three deployment targets: the banking detection engine, the AI inference layer, and the cross-bank federation layer. Every kernel is a __global__ function in a .cu file. No CPU fallback. 13,336 automated tests.
 
 
 
-**Performance:** 500,000 customers processed in under 2 seconds end-to-end. Over 150 million policy checks per second. A single cross-bank matching round for 100,000 customers: under 10 seconds. Time from detection to alert: under 10 milliseconds. All numbers measured on a single GPU.
+**Performance:** 500,000 customers processed in under 2 seconds end-to-end. 190 million policy checks per second at batch 4,096. A single cross-bank matching round for 100,000 customers: under 10 seconds. Time from detection to alert: under 10 milliseconds. All numbers measured on a single GPU.
 
 
 
@@ -679,7 +679,7 @@ The following table maps the ZQUAS architecture to the specific regulatory requi
                     Real-time risk assessment for payment intervention decisions 
 | 
                     **EU Instant Payments Reg (2024/886):** Real-time sanctions screening | 
-                    GPU-native screening at 150M+ checks per second 
+                    GPU-native screening at 190M checks per second 
 | 
                     **MiCA:** AML obligations for crypto asset service providers | 
                     Same engine deployable to crypto exchanges, federation-compatible 

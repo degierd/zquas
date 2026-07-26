@@ -56,9 +56,9 @@
             {"@type": "DefinedTerm", "name": "ECCTA Sections 188-189", "description": "Sections 188 and 189 of the UK Economic Crime and Corporate Transparency Act 2023. Provide a legal basis for inter-bank AML information sharing. In force since January 2024."},
             {"@type": "DefinedTerm", "name": "TMNL", "description": "Transaction Monitoring Netherlands. A joint initiative by five Dutch banks to pool transaction data for cross-institutional monitoring. Wound down because centralised data pooling could not be reconciled with privacy law."},
             {"@type": "DefinedTerm", "name": "GPU-native compliance engine", "description": "A compliance engine designed from the ground up to execute on GPU. Distinct from a GPU-accelerated engine, where a CPU pipeline offloads selected operations to a GPU."},
-            {"@type": "DefinedTerm", "name": "CEPS (Compliance Policy Evaluations per Second)", "description": "Throughput metric for compliance engines. One CEPS is one entity evaluated against one policy. The ZQUAS engine sustains 150 million plus CEPS on a single NVIDIA RTX 5090."},
+            {"@type": "DefinedTerm", "name": "CEPS (Compliance Policy Evaluations per Second)", "description": "Throughput metric for compliance engines. One CEPS is one entity evaluated against one policy. The ZQUAS engine sustains 190 million CEPS at a dispatch batch of 4,096 entities on a single NVIDIA RTX 5090, with a 100 million floor enforced in continuous integration."},
             {"@type": "DefinedTerm", "name": "Alert Lifecycle", "description": "The wall-clock time from a transaction arriving at the engine to a triaged alert being available to a compliance officer. ZQUAS publishes a benchmark of under 10ms (measured: 3.92ms)."},
-            {"@type": "DefinedTerm", "name": "Bilateral Round", "description": "One end-to-end execution of the cross-institutional MPC protocol between two participating institutions. ZQUAS publishes a benchmark of under 10 seconds for 100,000 entities (measured: 7.8s)."},
+            {"@type": "DefinedTerm", "name": "Bilateral Round", "description": "One end-to-end execution of the cross-institutional MPC protocol between two participating institutions. ZQUAS publishes a benchmark of under 10 seconds for 100,000 entities (measured: 3.1s)."},
             {"@type": "DefinedTerm", "name": "Cryptographic Proof Bundle", "description": "A signed, Merkle-included artefact produced for every compliance decision. Contains the policy hash, input hash, verdict hashes, Merkle root, and Ed25519 signature. 912 bytes per evaluation."},
             {"@type": "DefinedTerm", "name": "Deterministic Evaluation", "description": "Property of an evaluation engine such that the same inputs and the same policy always produce the same output, byte for byte, on any compliant deployment."},
             {"@type": "DefinedTerm", "name": "Constitutional Governance", "description": "An architectural pattern in which AI agents operate under hard-coded rules they cannot modify. In ZQUAS, agents cannot file a Suspicious Activity Report (SAR) without human MLRO sign-off."},
@@ -354,7 +354,7 @@
             <div class="glossary-term" id="bilateral-round">
                 <h3>Bilateral Round</h3>
                 <p>One end-to-end execution of the cross-institutional MPC protocol between two participating institutions.</p>
-                <p>ZQUAS publishes a benchmark of under 10 seconds for 100,000 entities (measured: 7.8 seconds). Both parties sign the result with Ed25519.</p>
+                <p>ZQUAS publishes a benchmark of under 10 seconds for 100,000 entities (measured: 3.1 seconds). Both parties sign the result with Ed25519.</p>
             </div>
             <div class="glossary-term" id="policy-language">
                 <h3>Policy Language</h3>
@@ -368,7 +368,7 @@
             <div class="glossary-term" id="ceps">
                 <h3>CEPS (Compliance Policy Evaluations per Second)</h3>
                 <p>Throughput metric for compliance engines. One CEPS is one entity evaluated against one policy.</p>
-                <p>The ZQUAS engine sustains 150 million plus CEPS on a single NVIDIA RTX 5090.</p>
+                <p>The ZQUAS engine sustains 190 million CEPS at a dispatch batch of 4,096 entities on a single NVIDIA RTX 5090, with a 100 million floor enforced in continuous integration.</p>
             </div>
             <div class="glossary-term" id="alert-lifecycle">
                 <h3>Alert Lifecycle</h3>

@@ -268,7 +268,7 @@
 
               <rect x="620" y="280" width="168" height="128" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1"/>
               <text x="704" y="310" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#58A6FF" text-anchor="middle">Bank data centre</text>
-              <text x="704" y="328" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">150M+ policy evals/sec</text>
+              <text x="704" y="328" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">190M policy evals/sec</text>
               <text x="704" y="342" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#8B949E" text-anchor="middle">5 detection dimensions</text>
               <text x="704" y="362" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#D29922" text-anchor="middle">Same binary everywhere</text>
             </g>
@@ -296,7 +296,7 @@
 
         <p>The institutional installation also collects and correlates signals in real-time as transactions arrive. An ATM withdrawal in Rotterdam at 14:00, combined with an ATM withdrawal in Utrecht at 14:30 by the same customer, combined with a federation warning from a partner bank that arrived at 13:45: the engine sees all three signals within seconds and fires the alert while the pattern is still forming.</p>
 
-        <p>At validated performance levels, the institutional installation processes 500,000 entities in under 2 seconds on a single GPU, with over 150 million policy evaluations per second. This is not batch processing measured in hours. It is continuous monitoring measured in seconds.</p>
+        <p>At validated performance levels, the institutional installation processes 500,000 entities in under 2 seconds on a single GPU, with 190 million policy evaluations per second at batch 4,096. This is not batch processing measured in hours. It is continuous monitoring measured in seconds.</p>
 
         <p>The difference this makes is concrete. In the mule network scenario from Section 2: the batch system generates an alert on Wednesday morning, two days after the first withdrawal. The real-time system generates an alert on Monday at 15:01, ninety minutes after the first withdrawal. Same crime. Same data. Same detection rules. The only difference is when the engine processes the transaction.</p>
 
@@ -499,7 +499,7 @@
 
         <p>The challenge is speed. With the rise of instant payment rails (SEPA Instant in Europe, Faster Payments in the UK, FedNow in the US), transactions settle in seconds. The sanctions screening must complete before the transaction settles. Legacy systems that screen in 200 to 500 milliseconds per transaction are under pressure. A GPU-native engine that screens the entire population against the full sanctions list in seconds provides a fundamentally different level of capability.</p>
 
-        <p>The F1 Engine's policy evaluation rate (over 150 million checks per second) means that a complete sanctions screen of the bank's entire customer base against all global sanctions lists can complete in the time it takes a legacy system to screen a single transaction. For banks processing millions of transactions daily through instant payment channels, this is not a performance luxury. It is a regulatory necessity.</p>
+        <p>The F1 Engine's policy evaluation rate (190 million policy checks per second at batch 4,096) means that a complete sanctions screen of the bank's entire customer base against all global sanctions lists can complete in the time it takes a legacy system to screen a single transaction. For banks processing millions of transactions daily through instant payment channels, this is not a performance luxury. It is a regulatory necessity.</p>
 
         <h3>Use Case 3: Real-Time Payment Intervention (UK, and Emerging in EU)</h3>
 
@@ -699,9 +699,9 @@
 
         <p>Claims of architectural innovation require evidence. The F1 Engine is a measured engineering artefact, not a design document.</p>
 
-        <p><strong>Codebase:</strong> 396,000 lines of C++ and CUDA across 493 GPU kernels. 222,000 lines of test code. 618,000 lines total. One codebase, three deployment targets: the banking detection engine, the AI inference layer, and the cross-bank federation layer. Every kernel is a __global__ function in a .cu file. No CPU fallback. 12,342 automated tests.</p>
+        <p><strong>Codebase:</strong> 396,000 lines of C++ and CUDA across 493 GPU kernels. 222,000 lines of test code. 618,000 lines total. One codebase, three deployment targets: the banking detection engine, the AI inference layer, and the cross-bank federation layer. Every kernel is a __global__ function in a .cu file. No CPU fallback. 13,336 automated tests.</p>
 
-        <p><strong>Performance:</strong> 500,000 customers processed in under 2 seconds end-to-end. Over 150 million policy checks per second. A single cross-bank matching round for 100,000 customers: under 10 seconds. Time from detection to alert: under 10 milliseconds. All numbers measured on a single GPU.</p>
+        <p><strong>Performance:</strong> 500,000 customers processed in under 2 seconds end-to-end. 190 million policy checks per second at batch 4,096. A single cross-bank matching round for 100,000 customers: under 10 seconds. Time from detection to alert: under 10 milliseconds. All numbers measured on a single GPU.</p>
 
         <p><strong>Portability:</strong> The minimum GPU requirement is a 2017-era NVIDIA card with 4 gigabytes of memory. The engine has been validated on a Quadro P2000 purchased for EUR 299: 1,000 entities, 21 million transactions, 123 policies, every criminal found, on hardware that costs less than a restaurant dinner. The same binary, unmodified, runs on an RTX 5090 with 32 gigabytes of memory processing 100,000 entities.</p>
 
@@ -931,7 +931,7 @@
                 </tr>
                 <tr style="border-bottom: 1px solid #21262D;">
                     <td style="padding: 0.75rem; color: #C9D1D9; font-size: 0.9rem;"><strong>EU Instant Payments Reg (2024/886):</strong> Real-time sanctions screening</td>
-                    <td style="padding: 0.75rem; color: #8B949E; font-size: 0.9rem;">GPU-native screening at 150M+ checks per second</td>
+                    <td style="padding: 0.75rem; color: #8B949E; font-size: 0.9rem;">GPU-native screening at 190M checks per second</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #21262D;">
                     <td style="padding: 0.75rem; color: #C9D1D9; font-size: 0.9rem;"><strong>MiCA:</strong> AML obligations for crypto asset service providers</td>
